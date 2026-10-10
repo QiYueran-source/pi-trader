@@ -8,3 +8,9 @@
 
 # 依赖
 .rely
+
+# 数据库
+database
+
+# 缓存
+__pycache__
