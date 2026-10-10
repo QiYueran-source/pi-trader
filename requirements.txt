@@ -2,4 +2,5 @@ polars
 pandas
 numpy
 tushare
-dotenv
+python-dotenv
+mcp>=1.0.0

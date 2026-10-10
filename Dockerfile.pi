@@ -24,22 +24,21 @@ COPY .rely/uv /usr/local/bin/uv
 COPY .rely/uvx /usr/local/bin/uvx
 RUN chmod +x /usr/local/bin/uv /usr/local/bin/uvx
 
-# 创建虚拟环境
-RUN uv venv
-
-# 安装依赖
+# 虚拟环境
 COPY requirements.txt /tmp/requirements.txt
 RUN uv venv /opt/venv --python 3.12 \
   && uv pip install \
        --python /opt/venv/bin/python \
-       -r /tmp/requirements.txt
+       -r /tmp/requirements.txt \
        -i https://pypi.tuna.tsinghua.edu.cn/simple
-
 ENV VIRTUAL_ENV=/opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
 
 # 工作目录 
 WORKDIR /pi-trader
+
+# 安装飞书网关
+RUN pi install --local npm:pi-feishu@1.1.5
 
 # 启动pi  
 ENTRYPOINT ["pi"]
