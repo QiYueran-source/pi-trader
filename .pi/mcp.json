@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "knowledge-graph": {
+      "command": "/opt/venv/bin/python",
+      "args": [
+        "/pi-trader/.pi/mcp-servers/kg/mcp_server.py"
+      ],
+      "env": {
+        "KG_DB_PATH": "/pi-trader/database/knowledge_graph.db"
+      }
+    },
+    "trade-management": {
+      "command": "/opt/venv/bin/python",
+      "args": [
+        "/pi-trader/.pi/mcp-servers/trade/mcp_server.py"
+      ],
+      "env": {
+        "TRADE_DB_PATH": "/pi-trader/database/trade_management.db"
+      }
+    }
+  }
+}
