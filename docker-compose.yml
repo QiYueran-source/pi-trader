@@ -1,0 +1,18 @@
+services:
+  pi:
+    build:
+      context: .
+      dockerfile: Dockerfile.pi
+    image: pi-sandbox
+    stdin_open: true
+    tty: true
+    environment:
+      - .env
+      - .secrets.env
+    volumes:
+      - .:/pi-trader
+      # 容器内的 Pi 配置/会话持久化，不挂宿主机 ~/.pi/agent
+      - pi-agent-home:/root/.pi/agent
+
+volumes:
+  pi-agent-home:
