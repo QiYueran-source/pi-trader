@@ -1,0 +1,33 @@
+# 21:30 财经分析复盘
+
+加载 `financial-analysis` 技能，按技能中的复盘检查清单执行复盘。
+
+## 执行流程
+
+### 1. 判断交易日
+
+```bash
+/opt/hermes/.venv/bin/python3 /hermes-trader/cronjob/utils/is_trading_day.py
+```
+
+输出：`<TRADING_DAY|NON_TRADING_DAY>|<今天日期>|<下一个交易日>`
+
+- **TRADING_DAY** → 走正常复盘流程
+- **NON_TRADING_DAY** → 推送「非交易日跳过，下一交易日：{日期}」+ 落简报后退出
+
+### 2. 交易日：正常复盘
+
+按 `financial-analysis` 技能中 `references/review.md` 的复盘核心规则 + 完整执行命令序列执行：
+
+1. 进入 skill 目录 → pre_scan → track_performance → review
+2. 写复盘文件 `knowledge/笔记/财经分析/{今天日期}/财经分析复盘.md`（所有来源合并一份）
+3. 落简报到 `knowledge/摘要/.abstract/{今天日期}_global-2130-financial-analysis-review.txt`
+4. 两步同步（KG → Git）
+5. **周一复盘须覆盖前一周末**的周末要闻 + 盘后荐股
+
+### 3. 推送结果
+
+最终回复即推送内容，包含：
+- 今日总命中率
+- 各来源表现（和信/开源）
+- 最准确判断 / 最大出入

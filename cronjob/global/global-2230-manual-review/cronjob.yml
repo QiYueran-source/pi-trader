@@ -1,0 +1,10 @@
+# 22:30 主观复盘追问（人工交互式） - Cronjob 配置
+name: global-2230-manual-review
+schedule: "30 22 * * *"        # 每天 22:30（交易日判断由脚本内处理）
+workdir: /hermes-trader
+mode: agent
+model: deepseek-v4-flash-0731 # Provider: custom
+deliver: origin
+prompt: prompt.txt
+created_at: 2026-09-28
+description: 每交易日 22:30 推送「复盘清单」（看市场/看自己/写计划三段）+ 当日交易事实自动核对；只发清单不写结论，归档与次日计划由用户回答后的会话完成

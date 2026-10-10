@@ -1,0 +1,9 @@
+# 热门板块回调低吸体系 · 回放执行当日交易计划
+name: hot-sector-pullback-1900-replay-execute
+schedule: "0 19 * * *"        # 每天 19:00（交易日判断由脚本内处理）
+workdir: /hermes-trader
+mode: agent
+model: deepseek-v4-flash-0731   # Provider: custom
+deliver: origin                 # 投递到飞书
+prompt: prompt.txt              # 任务指令文件
+description: 交易日 19:00 严格回放当日正式计划，并在 MNZH 模拟账户记账

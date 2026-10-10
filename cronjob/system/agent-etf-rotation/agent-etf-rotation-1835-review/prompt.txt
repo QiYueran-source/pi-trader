@@ -1,0 +1,26 @@
+# ETF轮动体系 · 每日复盘
+
+## 目标
+
+在交易日盘后复盘当日计划和模拟执行，为下一交易日决策留下正式、可追溯的复盘结论。
+
+## 执行前必读
+
+1. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/system.yml`
+2. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/体系运作流程.md`
+3. `knowledge/交易/交易计划/RULES.md`
+4. `knowledge/交易/交易复盘/RULES.md`
+5. `knowledge/交易/交易计划/{今天日期}/基于Agent的ETF轮动体系.md`
+6. 当日过程资料与 `hermes-trade` 中 `mnzh` 账户的 `agent_etf_rotation_system` 交易记录、持仓和盈亏。
+
+## 执行边界
+
+- 按体系流程完成交易日判断、执行复盘和体系复盘。
+- 无成交时仍生成复盘，说明无交易是否符合计划；不得臆造交易或执行结果。
+- 按复盘规则落盘唯一正式复盘：`knowledge/交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系.md`。
+- 不生成下一交易日计划、不修改静态规则、不处理历史文件。
+
+## 输出
+
+- 写入简报：`knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-1835-review.txt`。
+- 最终消息只给复盘摘要和下一决策参考。
