@@ -1,0 +1,11 @@
+# 红利ETF网格 · 收盘事实、状态与计划 - Cronjob 配置
+name: div-etf-grid-trade-1810-risk-monitor
+job_id: 
+schedule: "10 18 * * *"        # 每天 18:10（交易日判断由脚本内处理）
+workdir: /hermes-trader
+mode: agent
+model: deepseek-v4-flash-0731 # Provider: custom
+deliver: origin             # 投递到飞书
+prompt: prompt.txt          # 任务指令文件
+created_at: 2026-06-13
+description: 交易日 18:10 汇总真实持仓与日期化事实，固化状态并生成下一交易日唯一正式计划
