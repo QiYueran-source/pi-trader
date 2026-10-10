@@ -13,6 +13,7 @@ services:
       - .:/pi-trader
       # 容器内的 Pi 配置/会话持久化，不挂宿主机 ~/.pi/agent
       - pi-agent-home:/root/.pi/agent
+      - ./.pi/models.json:/root/.pi/agent/models.json:ro
 
 volumes:
   pi-agent-home:

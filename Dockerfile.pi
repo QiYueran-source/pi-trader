@@ -37,8 +37,7 @@ ENV PATH="/opt/venv/bin:${PATH}"
 # 工作目录 
 WORKDIR /pi-trader
 
-# 安装飞书网关
-RUN pi install --local npm:pi-feishu@1.1.5
-
-# 启动pi  
-ENTRYPOINT ["pi"]
+# 启动脚本
+COPY entrypoint.sh /usr/local/bin/pi-entrypoint
+RUN chmod +x /usr/local/bin/pi-entrypoint
+ENTRYPOINT ["/usr/local/bin/pi-entrypoint"]
