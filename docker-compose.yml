@@ -3,7 +3,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.pi
+      args:
+        PI_UID: "${UID}"
+        PI_GID: "${GID}"
     image: pi-sandbox
+    user: "${UID}:${GID}"
     stdin_open: true
     tty: true
     env_file:
@@ -12,8 +16,8 @@ services:
     volumes:
       - .:/pi-trader
       # 容器内的 Pi 配置/会话持久化，不挂宿主机 ~/.pi/agent
-      - pi-agent-home:/root/.pi/agent
-      - ./.pi/models.json:/root/.pi/agent/models.json:ro
+      - pi-agent-home:/home/node/.pi/agent
+      - ./.pi/models.json:/home/node/.pi/agent/models.json:ro
 
 volumes:
   pi-agent-home:

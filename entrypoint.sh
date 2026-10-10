@@ -19,17 +19,10 @@ mkdir -p "$PROJECT_DIR/.pi"
 if [[ ! -s "$PROJECT_SETTINGS" ]] || ! grep -q "pi-feishu" "$PROJECT_SETTINGS"; then
   echo "安装项目级飞书扩展：$FEISHU_PACKAGE" >&2
   pi install --local --approve "$FEISHU_PACKAGE"
-
-  # 容器默认以 root 运行，尽量把新生成的项目配置归还给挂载目录的宿主用户。
-  PROJECT_UID="$(stat -c '%u' "$PROJECT_DIR" 2>/dev/null || true)"
-  PROJECT_GID="$(stat -c '%g' "$PROJECT_DIR" 2>/dev/null || true)"
-  if [[ "$PROJECT_UID" =~ ^[0-9]+$ && "$PROJECT_UID" != 0 ]]; then
-    chown -R "$PROJECT_UID:${PROJECT_GID:-$PROJECT_UID}" "$PROJECT_DIR/.pi" 2>/dev/null || true
-  fi
 fi
 
 # Pi 的全局配置目录由 Compose 的命名卷提供，models.json 由宿主机只读挂载。
-MODEL_CONFIG="${PI_MODEL_CONFIG:-/root/.pi/agent/models.json}"
+MODEL_CONFIG="${PI_MODEL_CONFIG:-/home/node/.pi/agent/models.json}"
 
 if [[ ! -r "$MODEL_CONFIG" ]]; then
   echo "错误：找不到模型配置文件：$MODEL_CONFIG" >&2
