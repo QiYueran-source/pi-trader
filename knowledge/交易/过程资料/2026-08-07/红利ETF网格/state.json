@@ -1,0 +1,50 @@
+{
+  "last_update": "2026-08-07",
+  "state_machine": {
+    "current_state": "normal",
+    "last_signal": null,
+    "last_transition": null
+  },
+  "state_before_switch": null,
+  "grid_dividend": {
+    "code": "515180",
+    "name": "红利ETF",
+    "exchange": "SH",
+    "latest_price": 1.414,
+    "latest_date": "20260807",
+    "buy_step": 2.28,
+    "sell_step": 2.34,
+    "max_drop_pct": 7.61,
+    "pullback_buy": 0.46,
+    "pullback_sell": 0.47,
+    "coefficient": 0.3,
+    "step_min": 0.5,
+    "buy_shares": 1000,
+    "sell_shares": 800,
+    "pullback_buy_coeff": 0.2,
+    "pullback_sell_coeff": 0.2
+  },
+  "grid_dual": {
+    "code": "159781",
+    "name": "双创50ETF",
+    "exchange": "SZ",
+    "latest_price": 1.145,
+    "latest_date": "20260807",
+    "buy_step": 4.96,
+    "sell_step": 5.22,
+    "max_drop_pct": 24.8,
+    "pullback_buy": 0.99,
+    "pullback_sell": 1.04,
+    "coefficient": 0.2,
+    "step_min": 0.5,
+    "buy_shares": 400,
+    "sell_shares": 400,
+    "pullback_buy_coeff": 0.2,
+    "pullback_sell_coeff": 0.2
+  },
+  "资金池": {
+    "total_capital": 11000,
+    "cash_available": 11000,
+    "_desc": "可用资金，随触发情况变化，状态切换时大幅变动"
+  }
+}

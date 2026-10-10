@@ -1,0 +1,1462 @@
+{
+  "date": "20260807",
+  "params": {
+    "window_days": 10,
+    "ma_periods": [
+      5,
+      10
+    ],
+    "vol_window": 5,
+    "max_board_limit": 10
+  },
+  "stats": {
+    "total_candidates": 349,
+    "candidate_sectors": 62,
+    "sectors_with_limitup": 30,
+    "max_board_overall": 4
+  },
+  "candidate_sectors": [
+    "IT设备",
+    "专用机械",
+    "中成药",
+    "互联网",
+    "仓储物流",
+    "供气供热",
+    "元器件",
+    "全国地产",
+    "其他建材",
+    "化学制药",
+    "化工原料",
+    "化工机械",
+    "化纤",
+    "区域地产",
+    "医疗保健",
+    "医药商业",
+    "半导体",
+    "园区开发",
+    "塑料",
+    "家居用品",
+    "家用电器",
+    "小金属",
+    "工程机械",
+    "建筑工程",
+    "影视音像",
+    "新型电力",
+    "旅游景点",
+    "服饰",
+    "机床制造",
+    "机械基件",
+    "染料涂料",
+    "水泥",
+    "水运",
+    "汽车配件",
+    "火力发电",
+    "煤炭开采",
+    "环境保护",
+    "玻璃",
+    "生物制药",
+    "电器仪表",
+    "电气设备",
+    "白酒",
+    "百货",
+    "石油加工",
+    "石油贸易",
+    "矿物制品",
+    "红黄酒",
+    "综合类",
+    "航空",
+    "船舶",
+    "装修装饰",
+    "证券",
+    "超市连锁",
+    "软件服务",
+    "通信设备",
+    "铅锌",
+    "铜",
+    "铝",
+    "陶瓷",
+    "食品",
+    "饲料",
+    "黄金"
+  ],
+  "dimensions": {
+    "涨停数排名": [
+      {
+        "sector": "元器件",
+        "limit_up_count": 15
+      },
+      {
+        "sector": "化学制药",
+        "limit_up_count": 8
+      },
+      {
+        "sector": "生物制药",
+        "limit_up_count": 7
+      },
+      {
+        "sector": "化工原料",
+        "limit_up_count": 5
+      },
+      {
+        "sector": "通信设备",
+        "limit_up_count": 4
+      },
+      {
+        "sector": "医疗保健",
+        "limit_up_count": 4
+      },
+      {
+        "sector": "半导体",
+        "limit_up_count": 4
+      },
+      {
+        "sector": "小金属",
+        "limit_up_count": 2
+      },
+      {
+        "sector": "专用机械",
+        "limit_up_count": 2
+      },
+      {
+        "sector": "医药商业",
+        "limit_up_count": 2
+      },
+      {
+        "sector": "建筑工程",
+        "limit_up_count": 2
+      },
+      {
+        "sector": "装修装饰",
+        "limit_up_count": 2
+      },
+      {
+        "sector": "汽车配件",
+        "limit_up_count": 2
+      },
+      {
+        "sector": "黄金",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "铅锌",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "其他建材",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "家居用品",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "服饰",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "机床制造",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "家用电器",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "电气设备",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "水泥",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "塑料",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "电器仪表",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "火力发电",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "玻璃",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "铜",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "中成药",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "IT设备",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "机械基件",
+        "limit_up_count": 1
+      },
+      {
+        "sector": "互联网",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "仓储物流",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "供气供热",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "全国地产",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "化工机械",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "化纤",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "区域地产",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "园区开发",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "工程机械",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "影视音像",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "新型电力",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "旅游景点",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "染料涂料",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "水运",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "煤炭开采",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "环境保护",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "白酒",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "百货",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "石油加工",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "石油贸易",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "矿物制品",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "红黄酒",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "综合类",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "航空",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "船舶",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "证券",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "超市连锁",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "软件服务",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "铝",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "陶瓷",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "食品",
+        "limit_up_count": 0
+      },
+      {
+        "sector": "饲料",
+        "limit_up_count": 0
+      }
+    ],
+    "最高连板归属": {
+      "highest_board_count": 4,
+      "highest_board_code": "001267.SZ",
+      "highest_board_name": "汇绿生态",
+      "highest_board_sector": "通信设备",
+      "candidate_sectors_contain": {
+        "IT设备": 0,
+        "专用机械": 0,
+        "中成药": 0,
+        "互联网": 0,
+        "仓储物流": 0,
+        "供气供热": 0,
+        "元器件": 0,
+        "全国地产": 0,
+        "其他建材": 0,
+        "化学制药": 0,
+        "化工原料": 0,
+        "化工机械": 0,
+        "化纤": 0,
+        "区域地产": 0,
+        "医疗保健": 0,
+        "医药商业": 0,
+        "半导体": 0,
+        "园区开发": 0,
+        "塑料": 0,
+        "家居用品": 0,
+        "家用电器": 0,
+        "小金属": 0,
+        "工程机械": 0,
+        "建筑工程": 0,
+        "影视音像": 0,
+        "新型电力": 0,
+        "旅游景点": 0,
+        "服饰": 0,
+        "机床制造": 0,
+        "机械基件": 0,
+        "染料涂料": 0,
+        "水泥": 0,
+        "水运": 0,
+        "汽车配件": 0,
+        "火力发电": 0,
+        "煤炭开采": 0,
+        "环境保护": 0,
+        "玻璃": 0,
+        "生物制药": 0,
+        "电器仪表": 0,
+        "电气设备": 0,
+        "白酒": 0,
+        "百货": 0,
+        "石油加工": 0,
+        "石油贸易": 0,
+        "矿物制品": 0,
+        "红黄酒": 0,
+        "综合类": 0,
+        "航空": 0,
+        "船舶": 0,
+        "装修装饰": 0,
+        "证券": 0,
+        "超市连锁": 0,
+        "软件服务": 0,
+        "通信设备": 1,
+        "铅锌": 0,
+        "铜": 0,
+        "铝": 0,
+        "陶瓷": 0,
+        "食品": 0,
+        "饲料": 0,
+        "黄金": 0
+      }
+    },
+    "连板梯队": [
+      {
+        "sector": "元器件",
+        "1板": 11,
+        "2板": 2,
+        "3板": 0,
+        "4板": 2,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "化学制药",
+        "1板": 8,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "生物制药",
+        "1板": 6,
+        "2板": 0,
+        "3板": 0,
+        "4板": 1,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "化工原料",
+        "1板": 3,
+        "2板": 1,
+        "3板": 1,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "医疗保健",
+        "1板": 4,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "半导体",
+        "1板": 2,
+        "2板": 1,
+        "3板": 1,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "通信设备",
+        "1板": 1,
+        "2板": 2,
+        "3板": 0,
+        "4板": 1,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "专用机械",
+        "1板": 2,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "医药商业",
+        "1板": 1,
+        "2板": 1,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "小金属",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 1,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "建筑工程",
+        "1板": 2,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "汽车配件",
+        "1板": 2,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "装修装饰",
+        "1板": 2,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "IT设备",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "中成药",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "其他建材",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "塑料",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "家居用品",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "家用电器",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "服饰",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "机床制造",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "机械基件",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "水泥",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "火力发电",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "玻璃",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "电器仪表",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "电气设备",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "铅锌",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "铜",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "黄金",
+        "1板": 1,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "互联网",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "仓储物流",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "供气供热",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "全国地产",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "化工机械",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "化纤",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "区域地产",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "园区开发",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "工程机械",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "影视音像",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "新型电力",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "旅游景点",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "染料涂料",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "水运",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "煤炭开采",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "环境保护",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "白酒",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "百货",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "石油加工",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "石油贸易",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "矿物制品",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "红黄酒",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "综合类",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "航空",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "船舶",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "证券",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "超市连锁",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "软件服务",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "铝",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "陶瓷",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "食品",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      },
+      {
+        "sector": "饲料",
+        "1板": 0,
+        "2板": 0,
+        "3板": 0,
+        "4板": 0,
+        "5板": 0,
+        "6板+": 0
+      }
+    ],
+    "技术形态": [
+      {
+        "sector": "IT设备",
+        "ma5_pct": 1.39,
+        "ma10_pct": 1.22,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "专用机械",
+        "ma5_pct": 1.96,
+        "ma10_pct": 1.23,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "中成药",
+        "ma5_pct": 0.64,
+        "ma10_pct": 0.81,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "互联网",
+        "ma5_pct": 1.27,
+        "ma10_pct": 1.78,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "仓储物流",
+        "ma5_pct": 0.29,
+        "ma10_pct": 0.69,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "供气供热",
+        "ma5_pct": 0.88,
+        "ma10_pct": 0.66,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "元器件",
+        "ma5_pct": 3.12,
+        "ma10_pct": 1.48,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "全国地产",
+        "ma5_pct": 0.6,
+        "ma10_pct": 0.93,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "其他建材",
+        "ma5_pct": 0.9,
+        "ma10_pct": 0.94,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "化学制药",
+        "ma5_pct": 1.64,
+        "ma10_pct": 1.11,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "化工原料",
+        "ma5_pct": 1.86,
+        "ma10_pct": 1.37,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "化工机械",
+        "ma5_pct": 0.55,
+        "ma10_pct": 0.67,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "化纤",
+        "ma5_pct": 0.94,
+        "ma10_pct": 1.11,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "区域地产",
+        "ma5_pct": 0.71,
+        "ma10_pct": 0.88,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "医疗保健",
+        "ma5_pct": 1.24,
+        "ma10_pct": 1.18,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "医药商业",
+        "ma5_pct": 0.85,
+        "ma10_pct": 1.01,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "半导体",
+        "ma5_pct": 2.71,
+        "ma10_pct": 0.92,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "园区开发",
+        "ma5_pct": 0.18,
+        "ma10_pct": 0.91,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "塑料",
+        "ma5_pct": 1.65,
+        "ma10_pct": 1.29,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "家居用品",
+        "ma5_pct": 1.2,
+        "ma10_pct": 1.22,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "家用电器",
+        "ma5_pct": 0.7,
+        "ma10_pct": 0.97,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "小金属",
+        "ma5_pct": 2.36,
+        "ma10_pct": 1.47,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "工程机械",
+        "ma5_pct": 0.5,
+        "ma10_pct": 0.72,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "建筑工程",
+        "ma5_pct": 0.87,
+        "ma10_pct": 1.02,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "影视音像",
+        "ma5_pct": 0.37,
+        "ma10_pct": 1.22,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "新型电力",
+        "ma5_pct": 0.17,
+        "ma10_pct": 0.37,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "旅游景点",
+        "ma5_pct": 0.07,
+        "ma10_pct": 0.79,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "服饰",
+        "ma5_pct": 0.69,
+        "ma10_pct": 1.11,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "机床制造",
+        "ma5_pct": 1.68,
+        "ma10_pct": 1.4,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "机械基件",
+        "ma5_pct": 1.94,
+        "ma10_pct": 1.38,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "染料涂料",
+        "ma5_pct": 2.0,
+        "ma10_pct": 1.49,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "水泥",
+        "ma5_pct": 0.71,
+        "ma10_pct": 0.85,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "水运",
+        "ma5_pct": 0.27,
+        "ma10_pct": 0.57,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "汽车配件",
+        "ma5_pct": 0.94,
+        "ma10_pct": 1.02,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "火力发电",
+        "ma5_pct": 0.43,
+        "ma10_pct": 0.3,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "煤炭开采",
+        "ma5_pct": 0.92,
+        "ma10_pct": 0.7,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "环境保护",
+        "ma5_pct": 1.19,
+        "ma10_pct": 0.96,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "玻璃",
+        "ma5_pct": 2.47,
+        "ma10_pct": 1.55,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "生物制药",
+        "ma5_pct": 2.31,
+        "ma10_pct": 1.21,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "电器仪表",
+        "ma5_pct": 1.75,
+        "ma10_pct": 1.31,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "电气设备",
+        "ma5_pct": 1.23,
+        "ma10_pct": 1.06,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "白酒",
+        "ma5_pct": -0.49,
+        "ma10_pct": 0.79,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "百货",
+        "ma5_pct": 0.15,
+        "ma10_pct": 0.89,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "石油加工",
+        "ma5_pct": 0.65,
+        "ma10_pct": 0.66,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "石油贸易",
+        "ma5_pct": 0.76,
+        "ma10_pct": 0.55,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "矿物制品",
+        "ma5_pct": 2.58,
+        "ma10_pct": 1.16,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "红黄酒",
+        "ma5_pct": -0.05,
+        "ma10_pct": 0.87,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "综合类",
+        "ma5_pct": 0.71,
+        "ma10_pct": 1.05,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "航空",
+        "ma5_pct": 1.13,
+        "ma10_pct": 0.85,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "船舶",
+        "ma5_pct": 0.83,
+        "ma10_pct": 0.69,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "装修装饰",
+        "ma5_pct": 1.53,
+        "ma10_pct": 1.16,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "证券",
+        "ma5_pct": -0.12,
+        "ma10_pct": 0.13,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "超市连锁",
+        "ma5_pct": -0.26,
+        "ma10_pct": 0.77,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "软件服务",
+        "ma5_pct": 1.15,
+        "ma10_pct": 1.61,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "通信设备",
+        "ma5_pct": 2.4,
+        "ma10_pct": 1.28,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "铅锌",
+        "ma5_pct": 2.92,
+        "ma10_pct": 1.93,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "铜",
+        "ma5_pct": 2.63,
+        "ma10_pct": 1.66,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "铝",
+        "ma5_pct": 1.0,
+        "ma10_pct": 0.99,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "陶瓷",
+        "ma5_pct": 1.18,
+        "ma10_pct": 1.74,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "食品",
+        "ma5_pct": 0.12,
+        "ma10_pct": 0.9,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "饲料",
+        "ma5_pct": 0.14,
+        "ma10_pct": 0.73,
+        "ma5_gt_ma10": false,
+        "volume_ratio": null,
+        "valid": true
+      },
+      {
+        "sector": "黄金",
+        "ma5_pct": 2.62,
+        "ma10_pct": 2.19,
+        "ma5_gt_ma10": true,
+        "volume_ratio": null,
+        "valid": true
+      }
+    ]
+  }
+}

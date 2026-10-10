@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-01",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "state_before",
+  "generated_at": "2026-09-01T10:10:18.094619+00:00",
+  "state": "normal",
+  "source_state": "prior_snapshot",
+  "position_snapshot": {
+    "date": "2026-08-27",
+    "system_id": "div_etf_grid_trade",
+    "artifact": "positions",
+    "source": "yhzq_query",
+    "positions_source": "not_provided",
+    "positions": {
+      "dividend": {
+        "shares": 0,
+        "market_value_amount": 0
+      },
+      "growth": {
+        "shares": 0,
+        "market_value_amount": 0
+      }
+    }
+  }
+}

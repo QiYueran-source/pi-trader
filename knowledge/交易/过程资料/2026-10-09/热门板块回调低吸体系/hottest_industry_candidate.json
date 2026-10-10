@@ -1,0 +1,69 @@
+{
+  "date": "20261009",
+  "params": {
+    "limit_up_window_days": 22,
+    "min_limit_up_count": 1,
+    "max_limit_up_count": 2,
+    "pullback_ma_period": 10,
+    "rebound_window_days": 5
+  },
+  "stats": {
+    "total_limit_up_stocks": 677,
+    "final_candidates": 4
+  },
+  "candidates": [
+    {
+      "code": "002343.SZ",
+      "name": "慈文传媒",
+      "industry": "影视音像",
+      "board_count": 2,
+      "board_dates": [
+        "20260908",
+        "20261009"
+      ],
+      "current_close": 6.08,
+      "pullback_ma": 5.722,
+      "pullback_pct": -1.78,
+      "bounceback_days": 1
+    },
+    {
+      "code": "600715.SH",
+      "name": "文投控股",
+      "industry": "影视音像",
+      "board_count": 1,
+      "board_dates": [
+        "20261009"
+      ],
+      "current_close": 1.76,
+      "pullback_ma": 1.658,
+      "pullback_pct": 0.0,
+      "bounceback_days": 1
+    },
+    {
+      "code": "601929.SH",
+      "name": "吉视传媒",
+      "industry": "影视音像",
+      "board_count": 1,
+      "board_dates": [
+        "20261009"
+      ],
+      "current_close": 2.5,
+      "pullback_ma": 2.39,
+      "pullback_pct": 0.0,
+      "bounceback_days": 1
+    },
+    {
+      "code": "600640.SH",
+      "name": "国脉文化",
+      "industry": "影视音像",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "current_close": 12.94,
+      "pullback_ma": 12.568,
+      "pullback_pct": 7.3,
+      "bounceback_days": 1
+    }
+  ]
+}

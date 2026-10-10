@@ -1,0 +1,32 @@
+{
+  "date": "2026-08-10",
+  "system_id": "zslof_timing_trade",
+  "artifact": "signal_facts",
+  "generated_at": "2026-08-10T10:50:39.043499+00:00",
+  "instrument": {
+    "instrument_id": "zslof",
+    "ts_code": "161716.SZ",
+    "name": "招商双债增强债券(LOF)"
+  },
+  "market": {
+    "trade_date": "20260810",
+    "close": 1.657,
+    "source_data_start_date": "20260810"
+  },
+  "strategy_position": "hold",
+  "signal": null,
+  "next_trading_action": "hold",
+  "state_anchors": {
+    "peak": 1.657,
+    "trough": 1.652,
+    "buy_trough": 1.652,
+    "last_sell_peak": null
+  },
+  "parameters": {
+    "confirmation_days": 2,
+    "stop_loss_enabled": true,
+    "chase_enabled": true,
+    "order_amount": 10000,
+    "execution_timing": "next_open"
+  }
+}

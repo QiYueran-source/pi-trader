@@ -1,0 +1,128 @@
+---
+uuid: ea480081b43448acb500b242d9533f46
+title: process-documentation-pattern
+tags:
+  - 交易体系
+  - 参考
+updated: 2026-08-05 07:38:33
+links: []
+system-id: hot_sector_pullback_system
+---
+
+# 交易体系过程资料落盘设计模式
+
+> Absorbed from `process-documentation-pattern` skill (2026-07-05 consolidation).
+> This is the abstracted design pattern; `hot-sector-pullback-system` implements it concretely.
+
+## Overview
+
+Defines the standard pattern for persisting **AI reasoning process** into `交易/过程资料/`. This is the companion design pattern to the params-render-template data pipeline.
+
+| Mode | Responsibility | Output |
+|------|--------------|--------|
+| **Three-piece** (params-render-template) | Script-driven mechanical computation | `交易/过程资料/{date}/{system}/*.json` + formatted tables |
+| **Process documentation** (this pattern) | AI **reasoning judgment** on mechanical results | `交易/过程资料/{date}/{system}/*.md` |
+
+## Core principle
+
+```
+Scripts produce data (facts) → AI makes judgments (reasoning) → Persist process docs → Trading plan (execution instructions)
+    ↑                            ↑                               ↑                     ↑
+  过程资料/{date}/{system}/*.json  process docs  records "why"  records "how to do"
+```
+
+- **Process docs** record "why this was decided"; **trading plans** record "so what to do"
+- Linked via frontmatter `links`
+- **Output can be concise, but analysis flow cannot be simplified**
+
+## Triggers
+
+Load this pattern when:
+- Creating or modifying a trading system that needs AI reasoning archival
+- Finding a trading system that lacks process-documentation output
+- Asking "why was that decision made back then" — the answer should be in process docs
+
+## Persistence timing: two types
+
+### 1. Mandatory (every analysis must produce)
+
+AI persists immediately after completing a phase. Examples:
+
+| System | Mandatory file | Timing |
+|--------|---------------|--------|
+| ETF rotation | `ETF轮动-选股分析.md` | After comprehensive analysis |
+| Hot sector pullback | `板块热度研判.md` | After judging hot sectors |
+
+Content: raw data + reasoning process + final judgment
+
+### 2. Optional (only when complex decisions)
+
+Persist when multi-candidate comparison or holdings decisions have trade-offs:
+
+| System | Optional file | Skip condition |
+|--------|--------------|----------------|
+| Hot sector pullback | `综合研判.md` | No holdings + no signals → simple "no-op" explanation |
+
+## Standard 7-step process checklist
+
+Each process document **must** contain this complete flow:
+
+```
+① Data collection      →  Fetch latest quotes, multi-day comparison, position P&L
+② Environment judgment →  5-dimension evaluation
+③ Candidate ranking    →  Horizontal comparison of all candidates
+④ Position review      →  Is original logic still valid?
+⑤ Adjustment judgment  →  Switch, hold, or go to cash?
+⑥ Risk review          →  4 dimensions one-by-one (see below)
+⑦ Comprehensive conclusion → Final conclusion
+```
+
+**Output can be concise** (don't be verbose), but the 7 steps cannot be skipped. Day 1 and day 30 of holding get the same complete analysis.
+
+### 4-dimension risk review (cannot be omitted)
+
+| Dimension | Core question |
+|-----------|--------------|
+| ① Confidence risk | Is evidence clear and consistent? Any conflicting signals? |
+| ② Scenario failure risk | Is the original holding logic still valid? Any premise broken? |
+| ③ Price & drawdown risk | Is price abnormal? Drawdown exceeded? Floating status? |
+| ④ Event risk | Any major event windows approaching? |
+
+Risk review without signal changes can output "normal, no change" — but the whole section cannot disappear.
+
+## Directory organization
+
+```
+交易/过程资料/
+├── RULES.md                    ← Top-level rules
+├── {date}/                     ← By-date first-level directory
+│   └── 热门板块回调低吸体系/
+│       ├── 板块热度研判.md       ← Hot sector pullback (mandatory)
+│       └── 综合研判.md           ← Hot sector pullback (optional)
+```
+
+## Sync requirements
+
+After writing process docs:
+
+```bash
+# KG sync（RAG 已停用）
+python3 /opt/data/skills/knowledge-graph/scripts/kg_cli.py sync --path "交易/过程资料/{path}"
+
+# Git commit (can be merged with trading plan commit)
+```
+
+## Common pitfalls
+
+1. **Risk review skipped** ❌ — On drawdown days or long holding periods, AI tends to skip risk review. Write "normal, no change" instead.
+2. **Confused with briefing** ❌ — Briefings (`.abstract`) record "what was done"; process docs record "why it was thought that way." Different purposes.
+3. **Template-copying** ❌ — Consecutive holding periods can have concise output, but data collection & environment judgment must fetch **latest** data, not copy yesterday's.
+4. **Report vs. execution confusion** ❌ — Process docs should NOT contain execution instructions (that's the trading plan's job); trading plans should NOT contain long reasoning (that's process docs' job).
+
+## Current practice
+
+| System | Process doc file | Type | Status |
+|--------|----------------|------|--------|
+| ETF rotation | `ETF轮动-选股分析.md` | Mandatory | ✅ Live |
+| Hot sector pullback | `板块热度研判.md` | Mandatory | ✅ Live |
+| Hot sector pullback | `综合研判.md` | Optional | ✅ Live |

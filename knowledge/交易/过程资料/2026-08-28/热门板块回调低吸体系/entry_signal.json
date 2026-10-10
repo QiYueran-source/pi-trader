@@ -1,0 +1,294 @@
+{
+  "date": "20260828",
+  "source": "/hermes-trader/knowledge/交易/过程资料/2026-08-28/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 44,
+    "with_daily_data": 5559,
+    "signals": 16
+  },
+  "signals": [
+    {
+      "code": "603086.SH",
+      "name": "先达股份",
+      "industry": "农药化肥",
+      "board_count": 1,
+      "board_dates": [
+        "20260828"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260828",
+      "close": 6.33,
+      "breakout_ma": 5.802,
+      "breakout_above_pct": 9.1,
+      "volume": 225159,
+      "volume_ma": 75571,
+      "volume_ratio": 2.98
+    },
+    {
+      "code": "002915.SZ",
+      "name": "中欣氟材",
+      "industry": "化工原料",
+      "board_count": 2,
+      "board_dates": [
+        "20260806",
+        "20260828"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260828",
+      "close": 18.87,
+      "breakout_ma": 17.22,
+      "breakout_above_pct": 9.58,
+      "volume": 272036,
+      "volume_ma": 110946,
+      "volume_ratio": 2.45
+    },
+    {
+      "code": "603938.SH",
+      "name": "三孚股份",
+      "industry": "化工原料",
+      "board_count": 2,
+      "board_dates": [
+        "20260804",
+        "20260827"
+      ],
+      "pullback_pct": 3.23,
+      "signal_date": "20260828",
+      "close": 46.41,
+      "breakout_ma": 43.048,
+      "breakout_above_pct": 7.81,
+      "volume": 344981,
+      "volume_ma": 166476,
+      "volume_ratio": 2.07
+    },
+    {
+      "code": "688152.SH",
+      "name": "麒麟信安",
+      "industry": "软件服务",
+      "board_count": 2,
+      "board_dates": [
+        "20260818",
+        "20260828"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260828",
+      "close": 38.04,
+      "breakout_ma": 32.808,
+      "breakout_above_pct": 15.95,
+      "volume": 73329,
+      "volume_ma": 38333,
+      "volume_ratio": 1.91
+    },
+    {
+      "code": "600470.SH",
+      "name": "六国化工",
+      "industry": "农药化肥",
+      "board_count": 1,
+      "board_dates": [
+        "20260825"
+      ],
+      "pullback_pct": 5.9,
+      "signal_date": "20260828",
+      "close": 6.28,
+      "breakout_ma": 5.952,
+      "breakout_above_pct": 5.51,
+      "volume": 554404,
+      "volume_ma": 302790,
+      "volume_ratio": 1.83
+    },
+    {
+      "code": "603002.SH",
+      "name": "宏昌电子",
+      "industry": "化工原料",
+      "board_count": 2,
+      "board_dates": [
+        "20260817",
+        "20260827"
+      ],
+      "pullback_pct": 0.45,
+      "signal_date": "20260828",
+      "close": 17.67,
+      "breakout_ma": 16.226,
+      "breakout_above_pct": 8.9,
+      "volume": 1290720,
+      "volume_ma": 714393,
+      "volume_ratio": 1.81
+    },
+    {
+      "code": "300598.SZ",
+      "name": "诚迈科技",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20260818"
+      ],
+      "pullback_pct": -2.92,
+      "signal_date": "20260828",
+      "close": 33.59,
+      "breakout_ma": 32.434,
+      "breakout_above_pct": 3.56,
+      "volume": 231284,
+      "volume_ma": 131342,
+      "volume_ratio": 1.76
+    },
+    {
+      "code": "301630.SZ",
+      "name": "同宇新材",
+      "industry": "化工原料",
+      "board_count": 1,
+      "board_dates": [
+        "20260826"
+      ],
+      "pullback_pct": 0.6,
+      "signal_date": "20260828",
+      "close": 198.0,
+      "breakout_ma": 185.876,
+      "breakout_above_pct": 6.52,
+      "volume": 30480,
+      "volume_ma": 17489,
+      "volume_ratio": 1.74
+    },
+    {
+      "code": "601678.SH",
+      "name": "滨化股份",
+      "industry": "化工原料",
+      "board_count": 1,
+      "board_dates": [
+        "20260806"
+      ],
+      "pullback_pct": -6.46,
+      "signal_date": "20260828",
+      "close": 6.81,
+      "breakout_ma": 6.428,
+      "breakout_above_pct": 5.94,
+      "volume": 2456784,
+      "volume_ma": 1511341,
+      "volume_ratio": 1.63
+    },
+    {
+      "code": "603010.SH",
+      "name": "万盛股份",
+      "industry": "化工原料",
+      "board_count": 1,
+      "board_dates": [
+        "20260817"
+      ],
+      "pullback_pct": -1.86,
+      "signal_date": "20260828",
+      "close": 12.16,
+      "breakout_ma": 11.59,
+      "breakout_above_pct": 4.92,
+      "volume": 134904,
+      "volume_ma": 91954,
+      "volume_ratio": 1.47
+    },
+    {
+      "code": "600536.SH",
+      "name": "中国软件",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20260818"
+      ],
+      "pullback_pct": -1.97,
+      "signal_date": "20260828",
+      "close": 33.77,
+      "breakout_ma": 33.058,
+      "breakout_above_pct": 2.15,
+      "volume": 433816,
+      "volume_ma": 299038,
+      "volume_ratio": 1.45
+    },
+    {
+      "code": "603232.SH",
+      "name": "格尔软件",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20260812"
+      ],
+      "pullback_pct": -14.28,
+      "signal_date": "20260828",
+      "close": 15.43,
+      "breakout_ma": 15.08,
+      "breakout_above_pct": 2.32,
+      "volume": 160828,
+      "volume_ma": 117521,
+      "volume_ratio": 1.37
+    },
+    {
+      "code": "920130.BJ",
+      "name": "立方控股",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20260731"
+      ],
+      "pullback_pct": -5.48,
+      "signal_date": "20260828",
+      "close": 19.3,
+      "breakout_ma": 17.448,
+      "breakout_above_pct": 10.61,
+      "volume": 75856,
+      "volume_ma": 56830,
+      "volume_ratio": 1.33
+    },
+    {
+      "code": "605033.SH",
+      "name": "美邦股份",
+      "industry": "农药化肥",
+      "board_count": 2,
+      "board_dates": [
+        "20260730",
+        "20260810"
+      ],
+      "pullback_pct": 3.57,
+      "signal_date": "20260828",
+      "close": 20.3,
+      "breakout_ma": 19.614,
+      "breakout_above_pct": 3.5,
+      "volume": 82018,
+      "volume_ma": 62064,
+      "volume_ratio": 1.32
+    },
+    {
+      "code": "688095.SH",
+      "name": "福昕软件",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20260731"
+      ],
+      "pullback_pct": -7.24,
+      "signal_date": "20260828",
+      "close": 62.18,
+      "breakout_ma": 58.58,
+      "breakout_above_pct": 6.15,
+      "volume": 78577,
+      "volume_ma": 60720,
+      "volume_ratio": 1.29
+    },
+    {
+      "code": "603217.SH",
+      "name": "元利科技",
+      "industry": "化工原料",
+      "board_count": 2,
+      "board_dates": [
+        "20260803",
+        "20260825"
+      ],
+      "pullback_pct": 5.42,
+      "signal_date": "20260828",
+      "close": 29.93,
+      "breakout_ma": 28.494,
+      "breakout_above_pct": 5.04,
+      "volume": 60708,
+      "volume_ma": 49849,
+      "volume_ratio": 1.22
+    }
+  ]
+}

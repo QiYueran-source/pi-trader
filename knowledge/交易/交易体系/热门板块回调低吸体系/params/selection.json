@@ -1,0 +1,7 @@
+{
+  "limit_up_window_days": 22,
+  "min_limit_up_count": 1,
+  "max_limit_up_count": 2,
+  "pullback_ma_period": 10,
+  "rebound_window_days": 5
+}

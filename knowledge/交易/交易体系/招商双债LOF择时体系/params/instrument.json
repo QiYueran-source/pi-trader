@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "instrument": {
+    "instrument_id": "zslof",
+    "ts_code": "161716.SZ",
+    "name": "招商双债增强债券(LOF)"
+  },
+  "account": {
+    "account_id": "YHZQ",
+    "broker_name": "银河证券"
+  },
+  "commission": {
+    "commission_ratio": 0.00005,
+    "minimum_commission_exempt": true,
+    "description": "万0.5，免最低佣金"
+  }
+}

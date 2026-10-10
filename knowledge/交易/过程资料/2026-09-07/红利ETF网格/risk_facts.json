@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-07",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "risk_facts",
+  "generated_at": "2026-09-07T10:33:59.567982+00:00",
+  "parameter_schema_version": 1,
+  "positions_source": "knowledge/交易/过程资料/2026-09-07/红利ETF网格/positions.json",
+  "calibration_source": "/hermes-trader/knowledge/交易/过程资料/2026-09-04/红利ETF网格/grid_parameters.json",
+  "facts": {
+    "dividend": {
+      "market": {
+        "trade_date": "20260907",
+        "close": 1.436,
+        "daily_change_ratio": -0.01169993,
+        "volume_ratio": 1.13474564,
+        "average_range_ratio": 0.01225291,
+        "consecutive_down_trading_days": 1,
+        "consecutive_down_loss_ratio": 0.01169993
+      },
+      "calibration_reference": {
+        "latest_close": 1.453,
+        "lower_boundary": 1.08975,
+        "upper_boundary": 1.8889
+      },
+      "position": {
+        "shares": 0,
+        "market_value_amount": 0.0,
+        "position_ratio": 0.0
+      },
+      "threshold_hits": {
+        "below_price_boundary": false,
+        "above_price_boundary": false,
+        "position_fuse": false,
+        "consecutive_down": false,
+        "sharp_drop_with_volume": false,
+        "sharp_rise_notice": false,
+        "sharp_rise_take_profit_notice": false
+      }
+    }
+  }
+}

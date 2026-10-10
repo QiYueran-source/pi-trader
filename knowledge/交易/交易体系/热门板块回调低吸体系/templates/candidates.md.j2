@@ -1,0 +1,20 @@
+---
+uuid: {{ report_uuid }}
+title: 热门板块回调低吸体系 - 候选股 {{ data.date }}
+tags:
+  - 交易体系
+  - 过程资料
+  - 候选筛选
+updated: {{ updated_at }}
+links: []
+system-id: hot_sector_pullback_system
+---
+
+# 候选股 | {{ data.date }}
+
+共 {{ data.stats.final_candidates }} 只候选。
+
+| 代码 | 名称 | 行业 | 涨停数 | 最新价 | 均线 | 回调 |
+|---|---|---|---:|---:|---:|---:|
+{% for item in data.candidates %}| {{ item.code }} | {{ item.name }} | {{ item.industry }} | {{ item.board_count }} | {{ item.current_close }} | {{ item.pullback_ma }} | {{ item.pullback_pct }}% |
+{% endfor %}

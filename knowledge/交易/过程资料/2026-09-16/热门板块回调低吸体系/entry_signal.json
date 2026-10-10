@@ -1,0 +1,273 @@
+{
+  "date": "20260916",
+  "source": "knowledge/交易/过程资料/2026-09-16/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 39,
+    "with_daily_data": 5565,
+    "signals": 15
+  },
+  "signals": [
+    {
+      "code": "002137.SZ",
+      "name": "实益达",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260916",
+      "close": 8.2,
+      "breakout_ma": 7.642,
+      "breakout_above_pct": 7.3,
+      "volume": 644652,
+      "volume_ma": 155713,
+      "volume_ratio": 4.14
+    },
+    {
+      "code": "003026.SZ",
+      "name": "中晶科技",
+      "industry": "半导体",
+      "board_count": 2,
+      "board_dates": [
+        "20260915",
+        "20260916"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260916",
+      "close": 33.64,
+      "breakout_ma": 29.37,
+      "breakout_above_pct": 14.54,
+      "volume": 154771,
+      "volume_ma": 62108,
+      "volume_ratio": 2.49
+    },
+    {
+      "code": "002213.SZ",
+      "name": "大为股份",
+      "industry": "半导体",
+      "board_count": 1,
+      "board_dates": [
+        "20260915"
+      ],
+      "pullback_pct": 0.31,
+      "signal_date": "20260916",
+      "close": 29.58,
+      "breakout_ma": 28.014,
+      "breakout_above_pct": 5.59,
+      "volume": 261750,
+      "volume_ma": 124060,
+      "volume_ratio": 2.11
+    },
+    {
+      "code": "688478.SH",
+      "name": "晶升股份",
+      "industry": "半导体",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260916",
+      "close": 47.78,
+      "breakout_ma": 41.628,
+      "breakout_above_pct": 14.78,
+      "volume": 85300,
+      "volume_ma": 44617,
+      "volume_ratio": 1.91
+    },
+    {
+      "code": "301486.SZ",
+      "name": "致尚科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260916",
+      "close": 214.34,
+      "breakout_ma": 189.79,
+      "breakout_above_pct": 12.94,
+      "volume": 124766,
+      "volume_ma": 65893,
+      "volume_ratio": 1.89
+    },
+    {
+      "code": "600667.SH",
+      "name": "太极实业",
+      "industry": "半导体",
+      "board_count": 1,
+      "board_dates": [
+        "20260910"
+      ],
+      "pullback_pct": 1.25,
+      "signal_date": "20260916",
+      "close": 20.23,
+      "breakout_ma": 19.47,
+      "breakout_above_pct": 3.9,
+      "volume": 3552883,
+      "volume_ma": 2000057,
+      "volume_ratio": 1.78
+    },
+    {
+      "code": "600237.SH",
+      "name": "铜峰电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260911"
+      ],
+      "pullback_pct": 5.64,
+      "signal_date": "20260916",
+      "close": 9.74,
+      "breakout_ma": 9.358,
+      "breakout_above_pct": 4.08,
+      "volume": 623681,
+      "volume_ma": 363755,
+      "volume_ratio": 1.71
+    },
+    {
+      "code": "605358.SH",
+      "name": "立昂微",
+      "industry": "半导体",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260916",
+      "close": 44.87,
+      "breakout_ma": 41.62,
+      "breakout_above_pct": 7.81,
+      "volume": 497330,
+      "volume_ma": 299953,
+      "volume_ratio": 1.66
+    },
+    {
+      "code": "688368.SH",
+      "name": "晶丰明源",
+      "industry": "半导体",
+      "board_count": 1,
+      "board_dates": [
+        "20260827"
+      ],
+      "pullback_pct": 4.28,
+      "signal_date": "20260916",
+      "close": 146.28,
+      "breakout_ma": 134.23,
+      "breakout_above_pct": 8.98,
+      "volume": 74889,
+      "volume_ma": 46579,
+      "volume_ratio": 1.61
+    },
+    {
+      "code": "603375.SH",
+      "name": "盛景微",
+      "industry": "半导体",
+      "board_count": 1,
+      "board_dates": [
+        "20260902"
+      ],
+      "pullback_pct": 9.51,
+      "signal_date": "20260916",
+      "close": 47.45,
+      "breakout_ma": 44.928,
+      "breakout_above_pct": 5.61,
+      "volume": 35463,
+      "volume_ma": 23981,
+      "volume_ratio": 1.48
+    },
+    {
+      "code": "603435.SH",
+      "name": "嘉德利",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260827"
+      ],
+      "pullback_pct": -8.5,
+      "signal_date": "20260916",
+      "close": 48.77,
+      "breakout_ma": 47.164,
+      "breakout_above_pct": 3.41,
+      "volume": 38706,
+      "volume_ma": 27569,
+      "volume_ratio": 1.4
+    },
+    {
+      "code": "600707.SH",
+      "name": "彩虹股份",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260818"
+      ],
+      "pullback_pct": -15.56,
+      "signal_date": "20260916",
+      "close": 9.12,
+      "breakout_ma": 8.762,
+      "breakout_above_pct": 4.09,
+      "volume": 1287195,
+      "volume_ma": 932497,
+      "volume_ratio": 1.38
+    },
+    {
+      "code": "002134.SZ",
+      "name": "天津普林",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260827"
+      ],
+      "pullback_pct": 9.32,
+      "signal_date": "20260916",
+      "close": 24.74,
+      "breakout_ma": 23.88,
+      "breakout_above_pct": 3.6,
+      "volume": 158606,
+      "volume_ma": 123012,
+      "volume_ratio": 1.29
+    },
+    {
+      "code": "600641.SH",
+      "name": "先导基电",
+      "industry": "半导体",
+      "board_count": 1,
+      "board_dates": [
+        "20260827"
+      ],
+      "pullback_pct": -1.62,
+      "signal_date": "20260916",
+      "close": 33.45,
+      "breakout_ma": 31.206,
+      "breakout_above_pct": 7.19,
+      "volume": 689283,
+      "volume_ma": 544416,
+      "volume_ratio": 1.27
+    },
+    {
+      "code": "002636.SZ",
+      "name": "金安国纪",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260827",
+        "20260910"
+      ],
+      "pullback_pct": 7.81,
+      "signal_date": "20260916",
+      "close": 82.42,
+      "breakout_ma": 81.564,
+      "breakout_above_pct": 1.05,
+      "volume": 739261,
+      "volume_ma": 614689,
+      "volume_ratio": 1.2
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "date": "2026-08-27",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-08-27T10:09:54.361278+00:00",
+  "source_trade_date": "20260827",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 83,
+    "sector_count": 42,
+    "technology_stock_count": 12,
+    "technology_stock_ratio": 0.14457831
+  },
+  "top_sectors": [
+    {
+      "industry": "通信设备",
+      "limit_up_count": 7,
+      "sample_stocks": [
+        {
+          "ts_code": "000586.SZ",
+          "name": "汇源通信",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "002396.SZ",
+          "name": "星网锐捷",
+          "pct_change_ratio": 0.099934
+        },
+        {
+          "ts_code": "003040.SZ",
+          "name": "楚天龙",
+          "pct_change_ratio": 0.099824
+        }
+      ],
+      "is_technology": true
+    },
+    {
+      "industry": "元器件",
+      "limit_up_count": 6,
+      "sample_stocks": [
+        {
+          "ts_code": "001232.SZ",
+          "name": "嘉立创",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "002134.SZ",
+          "name": "天津普林",
+          "pct_change_ratio": 0.100146
+        },
+        {
+          "ts_code": "002636.SZ",
+          "name": "金安国纪",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "半导体",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "001309.SZ",
+          "name": "德明利",
+          "pct_change_ratio": 0.100003
+        },
+        {
+          "ts_code": "300456.SZ",
+          "name": "赛微电子",
+          "pct_change_ratio": 0.20013
+        },
+        {
+          "ts_code": "600641.SH",
+          "name": "先导基电",
+          "pct_change_ratio": 0.099968
+        }
+      ],
+      "is_technology": true
+    },
+    {
+      "industry": "种植业",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "600108.SH",
+          "name": "亚盛集团",
+          "pct_change_ratio": 0.098837
+        },
+        {
+          "ts_code": "600359.SH",
+          "name": "新农开发",
+          "pct_change_ratio": 0.100147
+        },
+        {
+          "ts_code": "600371.SH",
+          "name": "万向德农",
+          "pct_change_ratio": 0.099581
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化工原料",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "600378.SH",
+          "name": "昊华科技",
+          "pct_change_ratio": 0.100114
+        },
+        {
+          "ts_code": "601208.SH",
+          "name": "东材科技",
+          "pct_change_ratio": 0.09991
+        },
+        {
+          "ts_code": "603002.SH",
+          "name": "宏昌电子",
+          "pct_change_ratio": 0.100195
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "000576.SZ",
+          "name": "甘化科工",
+          "pct_change_ratio": 0.100413
+        },
+        {
+          "ts_code": "002953.SZ",
+          "name": "日丰股份",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "603618.SH",
+          "name": "杭电股份",
+          "pct_change_ratio": 0.099937
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "汽车配件",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002190.SZ",
+          "name": "成飞集成",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "002536.SZ",
+          "name": "飞龙股份",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "603319.SH",
+          "name": "美湖股份",
+          "pct_change_ratio": 0.100112
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "食品",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002515.SZ",
+          "name": "金字火腿",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "002852.SZ",
+          "name": "道道全",
+          "pct_change_ratio": 0.100248
+        },
+        {
+          "ts_code": "603237.SH",
+          "name": "五芳斋",
+          "pct_change_ratio": 0.099723
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "塑料",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002886.SZ",
+          "name": "沃特股份",
+          "pct_change_ratio": 0.099908
+        },
+        {
+          "ts_code": "301591.SZ",
+          "name": "肯特股份",
+          "pct_change_ratio": 0.2
+        },
+        {
+          "ts_code": "603580.SH",
+          "name": "艾艾精工",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "专用机械",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "600330.SH",
+          "name": "天通股份",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "600397.SH",
+          "name": "江钨装备",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "603011.SH",
+          "name": "合锻智能",
+          "pct_change_ratio": 0.100219
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

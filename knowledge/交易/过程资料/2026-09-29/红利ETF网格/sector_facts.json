@@ -1,0 +1,221 @@
+{
+  "date": "2026-09-29",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-09-29T10:12:18.008229+00:00",
+  "source_trade_date": "20260929",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 59,
+    "sector_count": 30,
+    "technology_stock_count": 5,
+    "technology_stock_ratio": 0.08474576
+  },
+  "top_sectors": [
+    {
+      "industry": "元器件",
+      "limit_up_count": 7,
+      "sample_stocks": [
+        {
+          "ts_code": "000823.SZ",
+          "name": "超声电子",
+          "pct_change_ratio": 0.10009
+        },
+        {
+          "ts_code": "002815.SZ",
+          "name": "崇达技术",
+          "pct_change_ratio": 0.09991
+        },
+        {
+          "ts_code": "002913.SZ",
+          "name": "奥士康",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "汽车配件",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "000678.SZ",
+          "name": "襄阳轴承",
+          "pct_change_ratio": 0.100469
+        },
+        {
+          "ts_code": "002813.SZ",
+          "name": "路畅科技",
+          "pct_change_ratio": 0.100083
+        },
+        {
+          "ts_code": "301560.SZ",
+          "name": "众捷股份",
+          "pct_change_ratio": 0.200142
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "002058.SZ",
+          "name": "紫竹高科",
+          "pct_change_ratio": 0.10006
+        },
+        {
+          "ts_code": "002074.SZ",
+          "name": "国轩高科",
+          "pct_change_ratio": 0.100115
+        },
+        {
+          "ts_code": "002882.SZ",
+          "name": "金龙羽",
+          "pct_change_ratio": 0.10009
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "全国地产",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000002.SZ",
+          "name": "万科A",
+          "pct_change_ratio": 0.09973
+        },
+        {
+          "ts_code": "000036.SZ",
+          "name": "华联控股",
+          "pct_change_ratio": 0.099217
+        },
+        {
+          "ts_code": "600657.SH",
+          "name": "信达地产",
+          "pct_change_ratio": 0.100977
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "广告包装",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000607.SZ",
+          "name": "华媒控股",
+          "pct_change_ratio": 0.101333
+        },
+        {
+          "ts_code": "002799.SZ",
+          "name": "环球印务",
+          "pct_change_ratio": 0.100583
+        },
+        {
+          "ts_code": "002846.SZ",
+          "name": "英联股份",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "染料涂料",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "301190.SZ",
+          "name": "善水科技",
+          "pct_change_ratio": 0.2
+        },
+        {
+          "ts_code": "603188.SH",
+          "name": "亚邦股份",
+          "pct_change_ratio": 0.100897
+        },
+        {
+          "ts_code": "603980.SH",
+          "name": "吉华集团",
+          "pct_change_ratio": 0.099502
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "出版业",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "600825.SH",
+          "name": "新华传媒",
+          "pct_change_ratio": 0.100585
+        },
+        {
+          "ts_code": "601811.SH",
+          "name": "新华文轩",
+          "pct_change_ratio": 0.099892
+        },
+        {
+          "ts_code": "601949.SH",
+          "name": "中国出版",
+          "pct_change_ratio": 0.100733
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "环境保护",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "000068.SZ",
+          "name": "华控赛格",
+          "pct_change_ratio": 0.099379
+        },
+        {
+          "ts_code": "603200.SH",
+          "name": "上海洗霸",
+          "pct_change_ratio": 0.100081
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "区域地产",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002244.SZ",
+          "name": "滨江集团",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "600325.SH",
+          "name": "华发股份",
+          "pct_change_ratio": 0.100746
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "IT设备",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002866.SZ",
+          "name": "传艺科技",
+          "pct_change_ratio": 0.100287
+        },
+        {
+          "ts_code": "002912.SZ",
+          "name": "中新赛克",
+          "pct_change_ratio": 0.100113
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

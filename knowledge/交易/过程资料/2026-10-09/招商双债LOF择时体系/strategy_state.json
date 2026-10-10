@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-09",
+  "system_id": "zslof_timing_trade",
+  "artifact": "strategy_state",
+  "generated_at": "2026-10-09T11:36:28.814208+00:00",
+  "source_state": "/hermes-trader/knowledge/交易/过程资料/2026-10-08/招商双债LOF择时体系/strategy_state.json",
+  "state": {
+    "strategy_position": "hold",
+    "peak": 1.655,
+    "trough": 1.654,
+    "no_high_days": 1,
+    "no_low_days": 0,
+    "buy_trough": 1.654,
+    "last_sell_peak": null,
+    "last_processed_trade_date": "20261009",
+    "last_signal": "buy",
+    "last_signal_trade_date": "20261008"
+  }
+}

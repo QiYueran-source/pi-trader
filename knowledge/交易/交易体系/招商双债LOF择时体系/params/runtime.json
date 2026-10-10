@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "process_root": "knowledge/交易/过程资料",
+  "directory_date_format": "%Y-%m-%d",
+  "trading_day_only": true,
+  "history_lookback_calendar_days": 40,
+  "strategy_state_file": "strategy_state.json",
+  "signal_facts_file": "signal_facts.json",
+  "report_file": "signal_report.md",
+  "state_lookup": "latest_prior_process_date",
+  "allow_future_state": false
+}

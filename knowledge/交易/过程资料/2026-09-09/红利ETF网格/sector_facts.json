@@ -1,0 +1,206 @@
+{
+  "date": "2026-09-09",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-09-09T10:17:02.269035+00:00",
+  "source_trade_date": "20260909",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 53,
+    "sector_count": 36,
+    "technology_stock_count": 3,
+    "technology_stock_ratio": 0.05660377
+  },
+  "top_sectors": [
+    {
+      "industry": "元器件",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "002913.SZ",
+          "name": "奥士康",
+          "pct_change_ratio": 0.099274
+        },
+        {
+          "ts_code": "603186.SH",
+          "name": "华正新材",
+          "pct_change_ratio": 0.10001
+        },
+        {
+          "ts_code": "603328.SH",
+          "name": "依顿电子",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "食品",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000523.SZ",
+          "name": "红棉股份",
+          "pct_change_ratio": 0.10101
+        },
+        {
+          "ts_code": "000972.SZ",
+          "name": "中基健康",
+          "pct_change_ratio": 0.100756
+        },
+        {
+          "ts_code": "605077.SH",
+          "name": "华康股份",
+          "pct_change_ratio": 0.099761
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "机械基件",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002046.SZ",
+          "name": "国机精工",
+          "pct_change_ratio": 0.099926
+        },
+        {
+          "ts_code": "301699.SZ",
+          "name": "N洛轴股份",
+          "pct_change_ratio": 1.014484
+        },
+        {
+          "ts_code": "603308.SH",
+          "name": "应流股份",
+          "pct_change_ratio": 0.100024
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002498.SZ",
+          "name": "汉缆股份",
+          "pct_change_ratio": 0.099379
+        },
+        {
+          "ts_code": "600192.SH",
+          "name": "长城电工",
+          "pct_change_ratio": 0.100418
+        },
+        {
+          "ts_code": "600869.SH",
+          "name": "远东股份",
+          "pct_change_ratio": 0.100177
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "农业综合",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "000019.SZ",
+          "name": "深粮控股",
+          "pct_change_ratio": 0.10013
+        },
+        {
+          "ts_code": "000930.SZ",
+          "name": "中粮科技",
+          "pct_change_ratio": 0.099485
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "农药化肥",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "000912.SZ",
+          "name": "泸天化",
+          "pct_change_ratio": 0.099366
+        },
+        {
+          "ts_code": "002470.SZ",
+          "name": "金正大",
+          "pct_change_ratio": 0.098814
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化工原料",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002068.SZ",
+          "name": "黑猫股份",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "603650.SH",
+          "name": "彤程新材",
+          "pct_change_ratio": 0.100017
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "煤炭开采",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "600121.SH",
+          "name": "郑州煤电",
+          "pct_change_ratio": 0.100386
+        },
+        {
+          "ts_code": "600403.SH",
+          "name": "大有能源",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "种植业",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "600359.SH",
+          "name": "新农开发",
+          "pct_change_ratio": 0.100503
+        },
+        {
+          "ts_code": "600540.SH",
+          "name": "新赛股份",
+          "pct_change_ratio": 0.100763
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "百货",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "600778.SH",
+          "name": "友好集团",
+          "pct_change_ratio": 0.099338
+        },
+        {
+          "ts_code": "600865.SH",
+          "name": "百大集团",
+          "pct_change_ratio": 0.099709
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "date": "20260917",
+  "source": "knowledge/交易/过程资料/2026-09-17/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 14,
+    "with_daily_data": 5566,
+    "signals": 10
+  },
+  "signals": [
+    {
+      "code": "603266.SH",
+      "name": "天龙股份",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20260915"
+      ],
+      "pullback_pct": 6.87,
+      "signal_date": "20260917",
+      "close": 17.88,
+      "breakout_ma": 16.344,
+      "breakout_above_pct": 9.4,
+      "volume": 169802,
+      "volume_ma": 40512,
+      "volume_ratio": 4.19
+    },
+    {
+      "code": "002806.SZ",
+      "name": "华锋股份",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "pullback_pct": -5.12,
+      "signal_date": "20260917",
+      "close": 14.82,
+      "breakout_ma": 14.676,
+      "breakout_above_pct": 0.98,
+      "volume": 234775,
+      "volume_ma": 65496,
+      "volume_ratio": 3.58
+    },
+    {
+      "code": "603960.SH",
+      "name": "克来机电",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20260917"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260917",
+      "close": 17.0,
+      "breakout_ma": 15.794,
+      "breakout_above_pct": 7.64,
+      "volume": 179264,
+      "volume_ma": 60378,
+      "volume_ratio": 2.97
+    },
+    {
+      "code": "600609.SH",
+      "name": "金杯汽车",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20260917"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260917",
+      "close": 3.58,
+      "breakout_ma": 3.402,
+      "breakout_above_pct": 5.23,
+      "volume": 825553,
+      "volume_ma": 284764,
+      "volume_ratio": 2.9
+    },
+    {
+      "code": "001365.SZ",
+      "name": "天海电子",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20260917"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260917",
+      "close": 37.51,
+      "breakout_ma": 34.232,
+      "breakout_above_pct": 9.58,
+      "volume": 86185,
+      "volume_ma": 30151,
+      "volume_ratio": 2.86
+    },
+    {
+      "code": "000981.SZ",
+      "name": "山子高科",
+      "industry": "汽车配件",
+      "board_count": 2,
+      "board_dates": [
+        "20260914",
+        "20260917"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260917",
+      "close": 3.01,
+      "breakout_ma": 2.842,
+      "breakout_above_pct": 5.91,
+      "volume": 8866166,
+      "volume_ma": 3491388,
+      "volume_ratio": 2.54
+    },
+    {
+      "code": "002976.SZ",
+      "name": "瑞玛精密",
+      "industry": "汽车配件",
+      "board_count": 2,
+      "board_dates": [
+        "20260914",
+        "20260916"
+      ],
+      "pullback_pct": 0.46,
+      "signal_date": "20260917",
+      "close": 26.42,
+      "breakout_ma": 25.146,
+      "breakout_above_pct": 5.07,
+      "volume": 191256,
+      "volume_ma": 81667,
+      "volume_ratio": 2.34
+    },
+    {
+      "code": "600699.SH",
+      "name": "均胜电子",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20260917"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260917",
+      "close": 19.87,
+      "breakout_ma": 18.612,
+      "breakout_above_pct": 6.76,
+      "volume": 548532,
+      "volume_ma": 243718,
+      "volume_ratio": 2.25
+    },
+    {
+      "code": "603009.SH",
+      "name": "北特科技",
+      "industry": "汽车配件",
+      "board_count": 2,
+      "board_dates": [
+        "20260907",
+        "20260917"
+      ],
+      "pullback_pct": -3.01,
+      "signal_date": "20260917",
+      "close": 47.37,
+      "breakout_ma": 44.524,
+      "breakout_above_pct": 6.39,
+      "volume": 121668,
+      "volume_ma": 70295,
+      "volume_ratio": 1.73
+    },
+    {
+      "code": "301550.SZ",
+      "name": "斯菱智驱",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "pullback_pct": -3.84,
+      "signal_date": "20260917",
+      "close": 94.0,
+      "breakout_ma": 89.278,
+      "breakout_above_pct": 5.29,
+      "volume": 136593,
+      "volume_ma": 94696,
+      "volume_ratio": 1.44
+    }
+  ]
+}

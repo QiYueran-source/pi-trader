@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-09",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "switch_instruction",
+  "generated_at": "2026-09-09T10:18:05.244757+00:00",
+  "transition": {
+    "decision": "keep",
+    "from_state": "normal",
+    "to_state": "normal"
+  },
+  "order_instructions": [],
+  "condition_order_modes": {
+    "dividend": {
+      "buy_enabled": true,
+      "sell_enabled": true
+    },
+    "growth": {
+      "buy_enabled": true,
+      "sell_enabled": true
+    }
+  },
+  "notice": "本文件是人工券商执行指令，不直接下单；价格、时点与成交结果必须在交易计划和执行记录中确认。"
+}

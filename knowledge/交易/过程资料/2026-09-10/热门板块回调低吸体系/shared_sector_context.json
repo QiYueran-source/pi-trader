@@ -1,0 +1,202 @@
+{
+  "date": "2026-09-10",
+  "artifact": "shared_sector_context",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-09-10T11:26:33.447783+00:00",
+  "source": {
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "path": "/hermes-trader/knowledge/交易/过程资料/2026-09-10/红利ETF网格/sector_facts.json"
+  },
+  "context": {
+    "date": "2026-09-10",
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "generated_at": "2026-09-10T10:12:59.115981+00:00",
+    "source_trade_date": "20260910",
+    "classification_parameter_version": 1,
+    "limit_up": {
+      "stock_count": 41,
+      "sector_count": 29,
+      "technology_stock_count": 3,
+      "technology_stock_ratio": 0.07317073
+    },
+    "top_sectors": [
+      {
+        "industry": "元器件",
+        "limit_up_count": 4,
+        "sample_stocks": [
+          {
+            "ts_code": "000823.SZ",
+            "name": "超声电子",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "002636.SZ",
+            "name": "金安国纪",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "601231.SH",
+            "name": "环旭电子",
+            "pct_change_ratio": 0.100079
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "水力发电",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "000722.SZ",
+            "name": "湖南发展",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "000993.SZ",
+            "name": "闽东电力",
+            "pct_change_ratio": 0.100262
+          },
+          {
+            "ts_code": "600644.SH",
+            "name": "乐山电力",
+            "pct_change_ratio": 0.1
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "玻璃",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "002201.SZ",
+            "name": "九鼎新材",
+            "pct_change_ratio": 0.100437
+          },
+          {
+            "ts_code": "600876.SH",
+            "name": "凯盛新能",
+            "pct_change_ratio": 0.100139
+          },
+          {
+            "ts_code": "603601.SH",
+            "name": "再升科技",
+            "pct_change_ratio": 0.100552
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "电气设备",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "002531.SZ",
+            "name": "天顺风能",
+            "pct_change_ratio": 0.100318
+          },
+          {
+            "ts_code": "600192.SH",
+            "name": "长城电工",
+            "pct_change_ratio": 0.100127
+          },
+          {
+            "ts_code": "603105.SH",
+            "name": "芯能科技",
+            "pct_change_ratio": 0.099738
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "多元金融",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "000532.SZ",
+            "name": "华金资本",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "600318.SH",
+            "name": "新力金融",
+            "pct_change_ratio": 0.10068
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "供气供热",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "001299.SZ",
+            "name": "美能能源",
+            "pct_change_ratio": 0.100465
+          },
+          {
+            "ts_code": "603318.SH",
+            "name": "水发燃气",
+            "pct_change_ratio": 0.099894
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "建筑工程",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "600491.SH",
+            "name": "ST龙元",
+            "pct_change_ratio": 0.101911
+          },
+          {
+            "ts_code": "603316.SH",
+            "name": "诚邦股份",
+            "pct_change_ratio": 0.10007
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "农业综合",
+        "limit_up_count": 1,
+        "sample_stocks": [
+          {
+            "ts_code": "000048.SZ",
+            "name": "京基智农",
+            "pct_change_ratio": 0.100047
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "染料涂料",
+        "limit_up_count": 1,
+        "sample_stocks": [
+          {
+            "ts_code": "000565.SZ",
+            "name": "渝三峡A",
+            "pct_change_ratio": 0.100139
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "旅游景点",
+        "limit_up_count": 1,
+        "sample_stocks": [
+          {
+            "ts_code": "000978.SZ",
+            "name": "桂林旅游",
+            "pct_change_ratio": 0.099886
+          }
+        ],
+        "is_technology": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "date": "20260813",
+  "params": {
+    "limit_up_window_days": 22,
+    "min_limit_up_count": 1,
+    "max_limit_up_count": 2,
+    "pullback_ma_period": 10,
+    "rebound_window_days": 5
+  },
+  "stats": {
+    "total_limit_up_stocks": 886,
+    "final_candidates": 1
+  },
+  "candidates": [
+    {
+      "code": "002626.SZ",
+      "name": "金达威",
+      "industry": "医疗保健",
+      "board_count": 1,
+      "board_dates": [
+        "20260810"
+      ],
+      "current_close": 16.4,
+      "pullback_ma": 15.119,
+      "pullback_pct": -0.36,
+      "bounceback_days": 5
+    }
+  ]
+}

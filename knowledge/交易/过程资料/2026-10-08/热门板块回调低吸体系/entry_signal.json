@@ -1,0 +1,1272 @@
+{
+  "date": "20261008",
+  "source": "/hermes-trader/knowledge/交易/过程资料/2026-10-08/热门板块回调低吸体系/full_market_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 141,
+    "with_daily_data": 5572,
+    "signals": 73
+  },
+  "signals": [
+    {
+      "code": "603788.SH",
+      "name": "宁波高发",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 15.0,
+      "breakout_ma": 13.936,
+      "breakout_above_pct": 7.63,
+      "volume": 109499,
+      "volume_ma": 14183,
+      "volume_ratio": 7.72
+    },
+    {
+      "code": "920627.BJ",
+      "name": "力王股份",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 17.83,
+      "breakout_ma": 14.2,
+      "breakout_above_pct": 25.56,
+      "volume": 126131,
+      "volume_ma": 17724,
+      "volume_ratio": 7.12
+    },
+    {
+      "code": "603948.SH",
+      "name": "建业股份",
+      "industry": "化工原料",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -2.67,
+      "signal_date": "20261008",
+      "close": 20.79,
+      "breakout_ma": 19.98,
+      "breakout_above_pct": 4.05,
+      "volume": 95706,
+      "volume_ma": 16552,
+      "volume_ratio": 5.78
+    },
+    {
+      "code": "002316.SZ",
+      "name": "亚联发展",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": 0.61,
+      "signal_date": "20261008",
+      "close": 4.98,
+      "breakout_ma": 4.618,
+      "breakout_above_pct": 7.84,
+      "volume": 1267493,
+      "volume_ma": 232882,
+      "volume_ratio": 5.44
+    },
+    {
+      "code": "600513.SH",
+      "name": "联环药业",
+      "industry": "化学制药",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 16.6,
+      "breakout_ma": 15.224,
+      "breakout_above_pct": 9.04,
+      "volume": 456336,
+      "volume_ma": 87103,
+      "volume_ratio": 5.24
+    },
+    {
+      "code": "600152.SH",
+      "name": "维科技术",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260929"
+      ],
+      "pullback_pct": 10.34,
+      "signal_date": "20261008",
+      "close": 9.18,
+      "breakout_ma": 8.24,
+      "breakout_above_pct": 11.41,
+      "volume": 1148520,
+      "volume_ma": 219458,
+      "volume_ratio": 5.23
+    },
+    {
+      "code": "603906.SH",
+      "name": "龙蟠科技",
+      "industry": "电气设备",
+      "board_count": 2,
+      "board_dates": [
+        "20260930",
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 20.94,
+      "breakout_ma": 18.352,
+      "breakout_above_pct": 14.1,
+      "volume": 838118,
+      "volume_ma": 167385,
+      "volume_ratio": 5.01
+    },
+    {
+      "code": "603188.SH",
+      "name": "亚邦股份",
+      "industry": "染料涂料",
+      "board_count": 2,
+      "board_dates": [
+        "20260929",
+        "20260930"
+      ],
+      "pullback_pct": -6.67,
+      "signal_date": "20261008",
+      "close": 5.04,
+      "breakout_ma": 4.862,
+      "breakout_above_pct": 3.66,
+      "volume": 921465,
+      "volume_ma": 189776,
+      "volume_ratio": 4.86
+    },
+    {
+      "code": "301513.SZ",
+      "name": "尚水智能",
+      "industry": "专用机械",
+      "board_count": 2,
+      "board_dates": [
+        "20260929",
+        "20261008"
+      ],
+      "pullback_pct": -0.01,
+      "signal_date": "20261008",
+      "close": 67.81,
+      "breakout_ma": 52.642,
+      "breakout_above_pct": 28.81,
+      "volume": 97198,
+      "volume_ma": 20303,
+      "volume_ratio": 4.79
+    },
+    {
+      "code": "300893.SZ",
+      "name": "松原安全",
+      "industry": "汽车配件",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -3.9,
+      "signal_date": "20261008",
+      "close": 14.54,
+      "breakout_ma": 13.838,
+      "breakout_above_pct": 5.07,
+      "volume": 264037,
+      "volume_ma": 59613,
+      "volume_ratio": 4.43
+    },
+    {
+      "code": "920779.BJ",
+      "name": "武汉蓝电",
+      "industry": "电器仪表",
+      "board_count": 1,
+      "board_dates": [
+        "20260929"
+      ],
+      "pullback_pct": 16.65,
+      "signal_date": "20261008",
+      "close": 33.13,
+      "breakout_ma": 26.842,
+      "breakout_above_pct": 23.43,
+      "volume": 81795,
+      "volume_ma": 19244,
+      "volume_ratio": 4.25
+    },
+    {
+      "code": "000692.SZ",
+      "name": "惠天热电",
+      "industry": "供气供热",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": 0.44,
+      "signal_date": "20261008",
+      "close": 4.61,
+      "breakout_ma": 4.322,
+      "breakout_above_pct": 6.66,
+      "volume": 698933,
+      "volume_ma": 172084,
+      "volume_ratio": 4.06
+    },
+    {
+      "code": "002419.SZ",
+      "name": "天虹股份",
+      "industry": "百货",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -3.73,
+      "signal_date": "20261008",
+      "close": 4.9,
+      "breakout_ma": 4.746,
+      "breakout_above_pct": 3.24,
+      "volume": 736128,
+      "volume_ma": 186082,
+      "volume_ratio": 3.96
+    },
+    {
+      "code": "002074.SZ",
+      "name": "国轩高科",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260929"
+      ],
+      "pullback_pct": 9.14,
+      "signal_date": "20261008",
+      "close": 31.3,
+      "breakout_ma": 28.462,
+      "breakout_above_pct": 9.97,
+      "volume": 1193870,
+      "volume_ma": 319273,
+      "volume_ratio": 3.74
+    },
+    {
+      "code": "600592.SH",
+      "name": "龙溪股份",
+      "industry": "机械基件",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -4.01,
+      "signal_date": "20261008",
+      "close": 15.55,
+      "breakout_ma": 15.2,
+      "breakout_above_pct": 2.3,
+      "volume": 302135,
+      "volume_ma": 86890,
+      "volume_ratio": 3.48
+    },
+    {
+      "code": "603189.SH",
+      "name": "*ST网达",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 10.2,
+      "breakout_ma": 9.592,
+      "breakout_above_pct": 6.34,
+      "volume": 85985,
+      "volume_ma": 24695,
+      "volume_ratio": 3.48
+    },
+    {
+      "code": "300530.SZ",
+      "name": "领湃科技",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 24.08,
+      "breakout_ma": 20.24,
+      "breakout_above_pct": 18.97,
+      "volume": 177258,
+      "volume_ma": 54656,
+      "volume_ratio": 3.24
+    },
+    {
+      "code": "600131.SH",
+      "name": "国网信通",
+      "industry": "通信设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -2.08,
+      "signal_date": "20261008",
+      "close": 15.07,
+      "breakout_ma": 14.516,
+      "breakout_above_pct": 3.82,
+      "volume": 223049,
+      "volume_ma": 75214,
+      "volume_ratio": 2.97
+    },
+    {
+      "code": "603185.SH",
+      "name": "弘元绿能",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -1.85,
+      "signal_date": "20261008",
+      "close": 14.87,
+      "breakout_ma": 14.272,
+      "breakout_above_pct": 4.19,
+      "volume": 226061,
+      "volume_ma": 77456,
+      "volume_ratio": 2.92
+    },
+    {
+      "code": "605287.SH",
+      "name": "德才股份",
+      "industry": "装修装饰",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -2.3,
+      "signal_date": "20261008",
+      "close": 36.53,
+      "breakout_ma": 35.242,
+      "breakout_above_pct": 3.65,
+      "volume": 96307,
+      "volume_ma": 33113,
+      "volume_ratio": 2.91
+    },
+    {
+      "code": "600072.SH",
+      "name": "中船科技",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -2.37,
+      "signal_date": "20261008",
+      "close": 9.47,
+      "breakout_ma": 9.1,
+      "breakout_above_pct": 4.07,
+      "volume": 713054,
+      "volume_ma": 246896,
+      "volume_ratio": 2.89
+    },
+    {
+      "code": "603919.SH",
+      "name": "金徽酒",
+      "industry": "白酒",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -3.1,
+      "signal_date": "20261008",
+      "close": 16.86,
+      "breakout_ma": 16.34,
+      "breakout_above_pct": 3.18,
+      "volume": 156906,
+      "volume_ma": 54959,
+      "volume_ratio": 2.85
+    },
+    {
+      "code": "002226.SZ",
+      "name": "江南化工",
+      "industry": "化工原料",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": -0.94,
+      "signal_date": "20261008",
+      "close": 5.29,
+      "breakout_ma": 5.066,
+      "breakout_above_pct": 4.42,
+      "volume": 825682,
+      "volume_ma": 293342,
+      "volume_ratio": 2.81
+    },
+    {
+      "code": "002805.SZ",
+      "name": "丰元股份",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 17.67,
+      "breakout_ma": 16.204,
+      "breakout_above_pct": 9.05,
+      "volume": 245644,
+      "volume_ma": 94133,
+      "volume_ratio": 2.61
+    },
+    {
+      "code": "000503.SZ",
+      "name": "国新健康",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20260928"
+      ],
+      "pullback_pct": 6.05,
+      "signal_date": "20261008",
+      "close": 7.89,
+      "breakout_ma": 7.5,
+      "breakout_above_pct": 5.2,
+      "volume": 533191,
+      "volume_ma": 205356,
+      "volume_ratio": 2.6
+    },
+    {
+      "code": "688196.SH",
+      "name": "卓越新能",
+      "industry": "环境保护",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 36.12,
+      "breakout_ma": 32.276,
+      "breakout_above_pct": 11.91,
+      "volume": 63994,
+      "volume_ma": 24874,
+      "volume_ratio": 2.57
+    },
+    {
+      "code": "600663.SH",
+      "name": "陆家嘴",
+      "industry": "园区开发",
+      "board_count": 2,
+      "board_dates": [
+        "20260930",
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 11.12,
+      "breakout_ma": 9.576,
+      "breakout_above_pct": 16.12,
+      "volume": 392284,
+      "volume_ma": 159216,
+      "volume_ratio": 2.46
+    },
+    {
+      "code": "001332.SZ",
+      "name": "锡装股份",
+      "industry": "专用机械",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "pullback_pct": -1.49,
+      "signal_date": "20261008",
+      "close": 28.47,
+      "breakout_ma": 27.242,
+      "breakout_above_pct": 4.51,
+      "volume": 59052,
+      "volume_ma": 24217,
+      "volume_ratio": 2.44
+    },
+    {
+      "code": "001336.SZ",
+      "name": "楚环科技",
+      "industry": "专用机械",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 20.65,
+      "breakout_ma": 19.358,
+      "breakout_above_pct": 6.67,
+      "volume": 61213,
+      "volume_ma": 25055,
+      "volume_ratio": 2.44
+    },
+    {
+      "code": "603127.SH",
+      "name": "昭衍新药",
+      "industry": "医疗保健",
+      "board_count": 1,
+      "board_dates": [
+        "20260930"
+      ],
+      "pullback_pct": 5.6,
+      "signal_date": "20261008",
+      "close": 52.06,
+      "breakout_ma": 47.602,
+      "breakout_above_pct": 9.37,
+      "volume": 835788,
+      "volume_ma": 345710,
+      "volume_ratio": 2.42
+    },
+    {
+      "code": "002672.SZ",
+      "name": "东江环保",
+      "industry": "环境保护",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "pullback_pct": -4.96,
+      "signal_date": "20261008",
+      "close": 3.83,
+      "breakout_ma": 3.718,
+      "breakout_above_pct": 3.01,
+      "volume": 367354,
+      "volume_ma": 162670,
+      "volume_ratio": 2.26
+    },
+    {
+      "code": "603928.SH",
+      "name": "兴业股份",
+      "industry": "化工原料",
+      "board_count": 2,
+      "board_dates": [
+        "20260930",
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 14.38,
+      "breakout_ma": 12.716,
+      "breakout_above_pct": 13.09,
+      "volume": 257582,
+      "volume_ma": 113802,
+      "volume_ratio": 2.26
+    },
+    {
+      "code": "600032.SH",
+      "name": "浙江新能",
+      "industry": "新型电力",
+      "board_count": 2,
+      "board_dates": [
+        "20260928",
+        "20260929"
+      ],
+      "pullback_pct": -4.77,
+      "signal_date": "20261008",
+      "close": 7.78,
+      "breakout_ma": 7.566,
+      "breakout_above_pct": 2.83,
+      "volume": 844422,
+      "volume_ma": 384270,
+      "volume_ratio": 2.2
+    },
+    {
+      "code": "002342.SZ",
+      "name": "巨力索具",
+      "industry": "机械基件",
+      "board_count": 1,
+      "board_dates": [
+        "20260928"
+      ],
+      "pullback_pct": -2.53,
+      "signal_date": "20261008",
+      "close": 8.46,
+      "breakout_ma": 8.346,
+      "breakout_above_pct": 1.37,
+      "volume": 1679817,
+      "volume_ma": 770500,
+      "volume_ratio": 2.18
+    },
+    {
+      "code": "002565.SZ",
+      "name": "顺灏股份",
+      "industry": "造纸",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 9.28,
+      "breakout_ma": 8.664,
+      "breakout_above_pct": 7.11,
+      "volume": 1705893,
+      "volume_ma": 791641,
+      "volume_ratio": 2.15
+    },
+    {
+      "code": "603538.SH",
+      "name": "美诺华",
+      "industry": "化学制药",
+      "board_count": 2,
+      "board_dates": [
+        "20260903",
+        "20260930"
+      ],
+      "pullback_pct": 3.04,
+      "signal_date": "20261008",
+      "close": 29.46,
+      "breakout_ma": 27.386,
+      "breakout_above_pct": 7.57,
+      "volume": 865049,
+      "volume_ma": 414594,
+      "volume_ratio": 2.09
+    },
+    {
+      "code": "605011.SH",
+      "name": "杭州热电",
+      "industry": "供气供热",
+      "board_count": 2,
+      "board_dates": [
+        "20260911",
+        "20260930"
+      ],
+      "pullback_pct": -0.52,
+      "signal_date": "20261008",
+      "close": 19.11,
+      "breakout_ma": 18.088,
+      "breakout_above_pct": 5.65,
+      "volume": 265895,
+      "volume_ma": 128048,
+      "volume_ratio": 2.08
+    },
+    {
+      "code": "000036.SZ",
+      "name": "华联控股",
+      "industry": "全国地产",
+      "board_count": 1,
+      "board_dates": [
+        "20260929"
+      ],
+      "pullback_pct": -4.75,
+      "signal_date": "20261008",
+      "close": 4.01,
+      "breakout_ma": 4.006,
+      "breakout_above_pct": 0.1,
+      "volume": 744315,
+      "volume_ma": 361051,
+      "volume_ratio": 2.06
+    },
+    {
+      "code": "603863.SH",
+      "name": "松炀资源",
+      "industry": "造纸",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 13.62,
+      "breakout_ma": 12.446,
+      "breakout_above_pct": 9.43,
+      "volume": 86150,
+      "volume_ma": 42720,
+      "volume_ratio": 2.02
+    },
+    {
+      "code": "601026.SH",
+      "name": "道生天合",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "pullback_pct": -4.45,
+      "signal_date": "20261008",
+      "close": 15.24,
+      "breakout_ma": 14.93,
+      "breakout_above_pct": 2.08,
+      "volume": 94423,
+      "volume_ma": 46998,
+      "volume_ratio": 2.01
+    },
+    {
+      "code": "000068.SZ",
+      "name": "华控赛格",
+      "industry": "环境保护",
+      "board_count": 1,
+      "board_dates": [
+        "20260929"
+      ],
+      "pullback_pct": -3.95,
+      "signal_date": "20261008",
+      "close": 3.4,
+      "breakout_ma": 3.366,
+      "breakout_above_pct": 1.01,
+      "volume": 374476,
+      "volume_ma": 186500,
+      "volume_ratio": 2.01
+    },
+    {
+      "code": "600719.SH",
+      "name": "大连热电",
+      "industry": "供气供热",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "pullback_pct": -0.36,
+      "signal_date": "20261008",
+      "close": 8.39,
+      "breakout_ma": 8.104,
+      "breakout_above_pct": 3.53,
+      "volume": 478478,
+      "volume_ma": 256901,
+      "volume_ratio": 1.86
+    },
+    {
+      "code": "002860.SZ",
+      "name": "星帅尔",
+      "industry": "家用电器",
+      "board_count": 1,
+      "board_dates": [
+        "20260921"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260921",
+      "close": 18.39,
+      "breakout_ma": 16.744,
+      "breakout_above_pct": 9.83,
+      "volume": 246658,
+      "volume_ma": 138147,
+      "volume_ratio": 1.79
+    },
+    {
+      "code": "605069.SH",
+      "name": "正和生态",
+      "industry": "环境保护",
+      "board_count": 2,
+      "board_dates": [
+        "20260911",
+        "20260914"
+      ],
+      "pullback_pct": 0.32,
+      "signal_date": "20261008",
+      "close": 12.69,
+      "breakout_ma": 12.148,
+      "breakout_above_pct": 4.46,
+      "volume": 226504,
+      "volume_ma": 129115,
+      "volume_ratio": 1.75
+    },
+    {
+      "code": "002490.SZ",
+      "name": "山东墨龙",
+      "industry": "化工机械",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 7.6,
+      "breakout_ma": 7.112,
+      "breakout_above_pct": 6.86,
+      "volume": 676974,
+      "volume_ma": 389826,
+      "volume_ratio": 1.74
+    },
+    {
+      "code": "002669.SZ",
+      "name": "康达新材",
+      "industry": "化工原料",
+      "board_count": 1,
+      "board_dates": [
+        "20260914"
+      ],
+      "pullback_pct": 6.91,
+      "signal_date": "20261008",
+      "close": 14.7,
+      "breakout_ma": 14.474,
+      "breakout_above_pct": 1.56,
+      "volume": 540345,
+      "volume_ma": 313208,
+      "volume_ratio": 1.73
+    },
+    {
+      "code": "600982.SH",
+      "name": "宁波能源",
+      "industry": "供气供热",
+      "board_count": 1,
+      "board_dates": [
+        "20260929"
+      ],
+      "pullback_pct": -2.55,
+      "signal_date": "20261008",
+      "close": 5.35,
+      "breakout_ma": 5.198,
+      "breakout_above_pct": 2.92,
+      "volume": 660572,
+      "volume_ma": 402107,
+      "volume_ratio": 1.64
+    },
+    {
+      "code": "301697.SZ",
+      "name": "贝特利",
+      "industry": "化工原料",
+      "board_count": 2,
+      "board_dates": [
+        "20260901",
+        "20261008"
+      ],
+      "pullback_pct": -28.22,
+      "signal_date": "20261008",
+      "close": 31.51,
+      "breakout_ma": 28.836,
+      "breakout_above_pct": 9.27,
+      "volume": 203348,
+      "volume_ma": 126128,
+      "volume_ratio": 1.61
+    },
+    {
+      "code": "000595.SZ",
+      "name": "新能股份",
+      "industry": "新型电力",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "pullback_pct": -2.91,
+      "signal_date": "20261008",
+      "close": 5.68,
+      "breakout_ma": 5.514,
+      "breakout_above_pct": 3.01,
+      "volume": 397170,
+      "volume_ma": 247040,
+      "volume_ratio": 1.61
+    },
+    {
+      "code": "002972.SZ",
+      "name": "科安达",
+      "industry": "运输设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "pullback_pct": -1.15,
+      "signal_date": "20261008",
+      "close": 13.77,
+      "breakout_ma": 13.264,
+      "breakout_above_pct": 3.81,
+      "volume": 128813,
+      "volume_ma": 80167,
+      "volume_ratio": 1.61
+    },
+    {
+      "code": "002029.SZ",
+      "name": "七匹狼",
+      "industry": "服饰",
+      "board_count": 2,
+      "board_dates": [
+        "20260918",
+        "20260924"
+      ],
+      "pullback_pct": -0.76,
+      "signal_date": "20261008",
+      "close": 9.19,
+      "breakout_ma": 9.028,
+      "breakout_above_pct": 1.79,
+      "volume": 440107,
+      "volume_ma": 273940,
+      "volume_ratio": 1.61
+    },
+    {
+      "code": "000523.SZ",
+      "name": "红棉股份",
+      "industry": "食品",
+      "board_count": 2,
+      "board_dates": [
+        "20260908",
+        "20260909"
+      ],
+      "pullback_pct": -19.72,
+      "signal_date": "20261008",
+      "close": 3.5,
+      "breakout_ma": 3.288,
+      "breakout_above_pct": 6.45,
+      "volume": 2909214,
+      "volume_ma": 1850890,
+      "volume_ratio": 1.57
+    },
+    {
+      "code": "603355.SH",
+      "name": "莱克电气",
+      "industry": "家用电器",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "pullback_pct": 7.88,
+      "signal_date": "20261008",
+      "close": 32.44,
+      "breakout_ma": 30.908,
+      "breakout_above_pct": 4.96,
+      "volume": 66009,
+      "volume_ma": 42157,
+      "volume_ratio": 1.57
+    },
+    {
+      "code": "600577.SH",
+      "name": "精达股份",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "pullback_pct": 1.38,
+      "signal_date": "20261008",
+      "close": 8.84,
+      "breakout_ma": 8.534,
+      "breakout_above_pct": 3.59,
+      "volume": 1026057,
+      "volume_ma": 663567,
+      "volume_ratio": 1.55
+    },
+    {
+      "code": "301486.SZ",
+      "name": "致尚科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "pullback_pct": -2.09,
+      "signal_date": "20261008",
+      "close": 209.86,
+      "breakout_ma": 195.698,
+      "breakout_above_pct": 7.24,
+      "volume": 117054,
+      "volume_ma": 76425,
+      "volume_ratio": 1.53
+    },
+    {
+      "code": "600400.SH",
+      "name": "红豆股份",
+      "industry": "服饰",
+      "board_count": 2,
+      "board_dates": [
+        "20260907",
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 3.62,
+      "breakout_ma": 3.39,
+      "breakout_above_pct": 6.78,
+      "volume": 1101905,
+      "volume_ma": 718153,
+      "volume_ratio": 1.53
+    },
+    {
+      "code": "601872.SH",
+      "name": "招商轮船",
+      "industry": "水运",
+      "board_count": 2,
+      "board_dates": [
+        "20260909",
+        "20260917"
+      ],
+      "pullback_pct": 0.82,
+      "signal_date": "20261008",
+      "close": 22.03,
+      "breakout_ma": 20.73,
+      "breakout_above_pct": 6.27,
+      "volume": 2275849,
+      "volume_ma": 1525027,
+      "volume_ratio": 1.49
+    },
+    {
+      "code": "002733.SZ",
+      "name": "雄韬股份",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 18.89,
+      "breakout_ma": 17.608,
+      "breakout_above_pct": 7.28,
+      "volume": 162850,
+      "volume_ma": 109932,
+      "volume_ratio": 1.48
+    },
+    {
+      "code": "600617.SH",
+      "name": "国新能源",
+      "industry": "供气供热",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 3.74,
+      "breakout_ma": 3.382,
+      "breakout_above_pct": 10.59,
+      "volume": 523281,
+      "volume_ma": 360431,
+      "volume_ratio": 1.45
+    },
+    {
+      "code": "002487.SZ",
+      "name": "大金重工",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260915"
+      ],
+      "pullback_pct": 23.25,
+      "signal_date": "20261008",
+      "close": 48.61,
+      "breakout_ma": 43.796,
+      "breakout_above_pct": 10.99,
+      "volume": 918373,
+      "volume_ma": 652269,
+      "volume_ratio": 1.41
+    },
+    {
+      "code": "603192.SH",
+      "name": "汇得科技",
+      "industry": "化工原料",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "pullback_pct": 1.24,
+      "signal_date": "20261008",
+      "close": 21.15,
+      "breakout_ma": 20.438,
+      "breakout_above_pct": 3.48,
+      "volume": 48779,
+      "volume_ma": 34976,
+      "volume_ratio": 1.39
+    },
+    {
+      "code": "605196.SH",
+      "name": "华通线缆",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260921"
+      ],
+      "pullback_pct": -1.79,
+      "signal_date": "20261008",
+      "close": 34.0,
+      "breakout_ma": 33.798,
+      "breakout_above_pct": 0.6,
+      "volume": 180638,
+      "volume_ma": 131155,
+      "volume_ratio": 1.38
+    },
+    {
+      "code": "601975.SH",
+      "name": "招商南油",
+      "industry": "水运",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 4.97,
+      "breakout_ma": 4.582,
+      "breakout_above_pct": 8.47,
+      "volume": 2972763,
+      "volume_ma": 2164086,
+      "volume_ratio": 1.37
+    },
+    {
+      "code": "002531.SZ",
+      "name": "天顺风能",
+      "industry": "电气设备",
+      "board_count": 2,
+      "board_dates": [
+        "20260910",
+        "20260915"
+      ],
+      "pullback_pct": 6.91,
+      "signal_date": "20261008",
+      "close": 8.35,
+      "breakout_ma": 7.838,
+      "breakout_above_pct": 6.53,
+      "volume": 1797442,
+      "volume_ma": 1331876,
+      "volume_ratio": 1.35
+    },
+    {
+      "code": "603686.SH",
+      "name": "福龙马",
+      "industry": "环境保护",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "pullback_pct": -2.39,
+      "signal_date": "20261008",
+      "close": 15.1,
+      "breakout_ma": 14.522,
+      "breakout_above_pct": 3.98,
+      "volume": 502087,
+      "volume_ma": 378739,
+      "volume_ratio": 1.33
+    },
+    {
+      "code": "000158.SZ",
+      "name": "常山北明",
+      "industry": "软件服务",
+      "board_count": 1,
+      "board_dates": [
+        "20260901"
+      ],
+      "pullback_pct": -8.93,
+      "signal_date": "20261008",
+      "close": 12.64,
+      "breakout_ma": 12.35,
+      "breakout_above_pct": 2.35,
+      "volume": 406133,
+      "volume_ma": 309446,
+      "volume_ratio": 1.31
+    },
+    {
+      "code": "600408.SH",
+      "name": "安泰集团",
+      "industry": "焦炭加工",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 3.44,
+      "breakout_ma": 3.132,
+      "breakout_above_pct": 9.83,
+      "volume": 646927,
+      "volume_ma": 492498,
+      "volume_ratio": 1.31
+    },
+    {
+      "code": "300522.SZ",
+      "name": "世名科技",
+      "industry": "染料涂料",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 16.56,
+      "breakout_ma": 14.976,
+      "breakout_above_pct": 10.58,
+      "volume": 261136,
+      "volume_ma": 208004,
+      "volume_ratio": 1.26
+    },
+    {
+      "code": "002780.SZ",
+      "name": "三夫户外",
+      "industry": "服饰",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "pullback_pct": 8.12,
+      "signal_date": "20261008",
+      "close": 15.18,
+      "breakout_ma": 14.814,
+      "breakout_above_pct": 2.47,
+      "volume": 93808,
+      "volume_ma": 74305,
+      "volume_ratio": 1.26
+    },
+    {
+      "code": "605177.SH",
+      "name": "东亚药业",
+      "industry": "化学制药",
+      "board_count": 1,
+      "board_dates": [
+        "20260908"
+      ],
+      "pullback_pct": 16.59,
+      "signal_date": "20261008",
+      "close": 25.72,
+      "breakout_ma": 25.306,
+      "breakout_above_pct": 1.64,
+      "volume": 132782,
+      "volume_ma": 106186,
+      "volume_ratio": 1.25
+    },
+    {
+      "code": "600847.SH",
+      "name": "万里股份",
+      "industry": "电气设备",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "pullback_pct": -5.89,
+      "signal_date": "20261008",
+      "close": 13.1,
+      "breakout_ma": 12.862,
+      "breakout_above_pct": 1.85,
+      "volume": 60673,
+      "volume_ma": 48835,
+      "volume_ratio": 1.24
+    },
+    {
+      "code": "600310.SH",
+      "name": "广西能源",
+      "industry": "水力发电",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 4.97,
+      "breakout_ma": 4.604,
+      "breakout_above_pct": 7.95,
+      "volume": 828529,
+      "volume_ma": 667355,
+      "volume_ratio": 1.24
+    },
+    {
+      "code": "605298.SH",
+      "name": "必得科技",
+      "industry": "运输设备",
+      "board_count": 1,
+      "board_dates": [
+        "20261008"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261008",
+      "close": 44.97,
+      "breakout_ma": 42.792,
+      "breakout_above_pct": 5.09,
+      "volume": 8643,
+      "volume_ma": 6962,
+      "volume_ratio": 1.24
+    }
+  ]
+}

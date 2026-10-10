@@ -1,0 +1,216 @@
+{
+  "date": "2026-09-24",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-09-24T10:13:34.137036+00:00",
+  "source_trade_date": "20260924",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 57,
+    "sector_count": 35,
+    "technology_stock_count": 5,
+    "technology_stock_ratio": 0.0877193
+  },
+  "top_sectors": [
+    {
+      "industry": "汽车配件",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "000678.SZ",
+          "name": "襄阳轴承",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "603767.SH",
+          "name": "中马传动",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "603949.SH",
+          "name": "雪龙集团",
+          "pct_change_ratio": 0.10026
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "医疗保健",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000710.SZ",
+          "name": "贝瑞基因",
+          "pct_change_ratio": 0.0999
+        },
+        {
+          "ts_code": "002622.SZ",
+          "name": "皓宸医疗",
+          "pct_change_ratio": 0.101215
+        },
+        {
+          "ts_code": "920201.BJ",
+          "name": "N百瑞吉",
+          "pct_change_ratio": 3.314252
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "机械基件",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002164.SZ",
+          "name": "宁波东力",
+          "pct_change_ratio": 0.100253
+        },
+        {
+          "ts_code": "301311.SZ",
+          "name": "昆船智能",
+          "pct_change_ratio": 0.200267
+        },
+        {
+          "ts_code": "301699.SZ",
+          "name": "洛轴股份",
+          "pct_change_ratio": 0.199865
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "软件服务",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "300300.SZ",
+          "name": "海峡创新",
+          "pct_change_ratio": 0.199778
+        },
+        {
+          "ts_code": "688682.SH",
+          "name": "霍莱沃",
+          "pct_change_ratio": 0.199873
+        },
+        {
+          "ts_code": "920748.BJ",
+          "name": "路桥信息",
+          "pct_change_ratio": 0.299858
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "出版业",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "600825.SH",
+          "name": "新华传媒",
+          "pct_change_ratio": 0.100567
+        },
+        {
+          "ts_code": "601811.SH",
+          "name": "新华文轩",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "603230.SH",
+          "name": "内蒙新华",
+          "pct_change_ratio": 0.10006
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "601218.SH",
+          "name": "吉鑫科技",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "601567.SH",
+          "name": "三星电气",
+          "pct_change_ratio": 0.100203
+        },
+        {
+          "ts_code": "920200.BJ",
+          "name": "振宏股份",
+          "pct_change_ratio": 0.101864
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "林业",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "000592.SZ",
+          "name": "平潭发展",
+          "pct_change_ratio": 0.100251
+        },
+        {
+          "ts_code": "002679.SZ",
+          "name": "福建金森",
+          "pct_change_ratio": 0.099715
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "服饰",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "001234.SZ",
+          "name": "泰慕士",
+          "pct_change_ratio": 0.100062
+        },
+        {
+          "ts_code": "002029.SZ",
+          "name": "七匹狼",
+          "pct_change_ratio": 0.099762
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "半导体",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002119.SZ",
+          "name": "康强电子",
+          "pct_change_ratio": 0.099926
+        },
+        {
+          "ts_code": "603375.SH",
+          "name": "盛景微",
+          "pct_change_ratio": 0.100067
+        }
+      ],
+      "is_technology": true
+    },
+    {
+      "industry": "水泥",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002205.SZ",
+          "name": "国统股份",
+          "pct_change_ratio": 0.099828
+        },
+        {
+          "ts_code": "600802.SH",
+          "name": "福建水泥",
+          "pct_change_ratio": 0.099668
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

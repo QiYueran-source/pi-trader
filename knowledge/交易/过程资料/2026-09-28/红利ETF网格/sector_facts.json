@@ -1,0 +1,181 @@
+{
+  "date": "2026-09-28",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-09-28T10:11:48.427535+00:00",
+  "source_trade_date": "20260928",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 35,
+    "sector_count": 26,
+    "technology_stock_count": 1,
+    "technology_stock_ratio": 0.02857143
+  },
+  "top_sectors": [
+    {
+      "industry": "软件服务",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000503.SZ",
+          "name": "国新健康",
+          "pct_change_ratio": 0.100592
+        },
+        {
+          "ts_code": "002232.SZ",
+          "name": "启明信息",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "688244.SH",
+          "name": "永信至诚",
+          "pct_change_ratio": 0.2
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "汽车配件",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000678.SZ",
+          "name": "襄阳轴承",
+          "pct_change_ratio": 0.100207
+        },
+        {
+          "ts_code": "000980.SZ",
+          "name": "众泰汽车",
+          "pct_change_ratio": 0.098039
+        },
+        {
+          "ts_code": "603949.SH",
+          "name": "雪龙集团",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "元器件",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "000020.SZ",
+          "name": "深华发A",
+          "pct_change_ratio": 0.099925
+        },
+        {
+          "ts_code": "002962.SZ",
+          "name": "五方光电",
+          "pct_change_ratio": 0.099851
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化学制药",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "000513.SZ",
+          "name": "丽珠集团",
+          "pct_change_ratio": 0.100073
+        },
+        {
+          "ts_code": "600488.SH",
+          "name": "津药药业",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "机械基件",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002342.SZ",
+          "name": "巨力索具",
+          "pct_change_ratio": 0.100127
+        },
+        {
+          "ts_code": "002347.SZ",
+          "name": "泰尔股份",
+          "pct_change_ratio": 0.099315
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "600241.SH",
+          "name": "时代万恒",
+          "pct_change_ratio": 0.099863
+        },
+        {
+          "ts_code": "601218.SH",
+          "name": "吉鑫科技",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化工原料",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "603968.SH",
+          "name": "醋化股份",
+          "pct_change_ratio": 0.100284
+        },
+        {
+          "ts_code": "605366.SH",
+          "name": "宏柏新材",
+          "pct_change_ratio": 0.099783
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "房产服务",
+      "limit_up_count": 1,
+      "sample_stocks": [
+        {
+          "ts_code": "000011.SZ",
+          "name": "深物业A",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "农业综合",
+      "limit_up_count": 1,
+      "sample_stocks": [
+        {
+          "ts_code": "001201.SZ",
+          "name": "东瑞股份",
+          "pct_change_ratio": 0.100273
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "影视音像",
+      "limit_up_count": 1,
+      "sample_stocks": [
+        {
+          "ts_code": "001330.SZ",
+          "name": "博纳影业",
+          "pct_change_ratio": 0.100346
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

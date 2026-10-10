@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-29",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "positions",
+  "source": "yhzq_query",
+  "positions_source": "not_provided",
+  "positions": {
+    "dividend": { "shares": 0, "market_value_amount": 0 },
+    "growth": { "shares": 0, "market_value_amount": 0 }
+  },
+  "note": "YHZQ 实际持仓仍未提供（长期缺失）；零值仅为占位，不得视为真实空仓。hermes-trade 账本旁证（2026-09-29 盘后复核，09-29 无网格成交入账）：515180 裸代码口径剩余 0，515180.SH 口径剩余 800 份（07-27 买入 400@1.38、09-28 买入 400@1.40），合计约 800 份；159781.SZ 剩余 6100 份（08-14 买入 4100@1.146、09-28 买入 1000@1.039 + 1000@1.011）。账本非券商查询事实，不得替代；且 2026-09-29 计划中的人工减仓 5000 份（159781）未见成交回执。"
+}

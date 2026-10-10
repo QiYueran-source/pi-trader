@@ -1,0 +1,35 @@
+---
+uuid: {{ report_uuid }}
+title: 红利ETF网格 - 风险事实 {{ data.date }}
+tags:
+  - 交易体系
+  - 过程资料
+  - 风险事实
+updated: {{ updated_at }}
+links: []
+system-id: div_etf_grid_trade
+---
+
+# 风险事实 | {{ data.date }}
+
+> 来源：`{{ source_path }}`。本报告只陈述事实和阈值命中，不生成交易结论。
+
+{% for instrument_id, fact in data.facts.items() %}
+## {{ instrument_id }}
+
+| 指标 | 值 |
+|---|---:|
+| 收盘价 | {{ '%.4f'|format(fact.market.close) }} |
+| 日涨跌幅 | {{ '%.2f%%'|format(fact.market.daily_change_ratio * 100) }} |
+| 量比 | {{ '%.2f'|format(fact.market.volume_ratio) }} |
+| 平均振幅 | {{ '%.2f%%'|format(fact.market.average_range_ratio * 100) }} |
+| 连续下跌 | {{ fact.market.consecutive_down_trading_days }} 个交易日 |
+| 连续下跌累计幅度 | {{ '%.2f%%'|format(fact.market.consecutive_down_loss_ratio * 100) }} |
+| 持仓占比 | {{ '%.2f%%'|format(fact.position.position_ratio * 100) }} |
+
+## 阈值命中
+
+{% for name, hit in fact.threshold_hits.items() -%}
+- `{{ name }}`：{{ '是' if hit else '否' }}
+{% endfor %}
+{% endfor %}

@@ -1,0 +1,67 @@
+{
+  "date": "20261009",
+  "source": "knowledge/交易/过程资料/2026-10-09/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 4,
+    "with_daily_data": 5573,
+    "signals": 3
+  },
+  "signals": [
+    {
+      "code": "600715.SH",
+      "name": "文投控股",
+      "industry": "影视音像",
+      "board_count": 1,
+      "board_dates": [
+        "20261009"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261009",
+      "close": 1.76,
+      "breakout_ma": 1.654,
+      "breakout_above_pct": 6.41,
+      "volume": 1252124,
+      "volume_ma": 468822,
+      "volume_ratio": 2.67
+    },
+    {
+      "code": "601929.SH",
+      "name": "吉视传媒",
+      "industry": "影视音像",
+      "board_count": 1,
+      "board_dates": [
+        "20261009"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261009",
+      "close": 2.5,
+      "breakout_ma": 2.344,
+      "breakout_above_pct": 6.66,
+      "volume": 1997251,
+      "volume_ma": 1363528,
+      "volume_ratio": 1.46
+    },
+    {
+      "code": "600640.SH",
+      "name": "国脉文化",
+      "industry": "影视音像",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "pullback_pct": 7.3,
+      "signal_date": "20261009",
+      "close": 12.94,
+      "breakout_ma": 12.59,
+      "breakout_above_pct": 2.78,
+      "volume": 224573,
+      "volume_ma": 172519,
+      "volume_ratio": 1.3
+    }
+  ]
+}

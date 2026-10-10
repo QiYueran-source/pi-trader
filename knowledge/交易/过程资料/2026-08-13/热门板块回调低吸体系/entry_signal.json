@@ -1,0 +1,33 @@
+{
+  "date": "20260813",
+  "source": "/hermes-trader/knowledge/交易/过程资料/2026-08-13/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 1,
+    "with_daily_data": 5555,
+    "signals": 1
+  },
+  "signals": [
+    {
+      "code": "002626.SZ",
+      "name": "金达威",
+      "industry": "医疗保健",
+      "board_count": 1,
+      "board_dates": [
+        "20260810"
+      ],
+      "pullback_pct": -0.36,
+      "signal_date": "20260813",
+      "close": 16.4,
+      "breakout_ma": 16.082,
+      "breakout_above_pct": 1.98,
+      "volume": 133187,
+      "volume_ma": 74646,
+      "volume_ratio": 1.78
+    }
+  ]
+}

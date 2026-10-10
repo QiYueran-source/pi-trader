@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "initial_state": "normal",
+  "states": {
+    "normal": {
+      "grid_mode": "dual_grid",
+      "dividend": {
+        "buy_enabled": true,
+        "sell_enabled": true
+      },
+      "growth": {
+        "buy_enabled": true,
+        "sell_enabled": true
+      }
+    },
+    "bull": {
+      "grid_mode": "disabled",
+      "dividend": {
+        "buy_enabled": false,
+        "sell_enabled": true,
+        "target_position": "zero"
+      },
+      "growth": {
+        "buy_enabled": true,
+        "sell_enabled": false,
+        "target_position": "manual_full"
+      }
+    },
+    "bear": {
+      "grid_mode": "disabled",
+      "dividend": {
+        "buy_enabled": true,
+        "sell_enabled": false,
+        "target_position": "manual_full"
+      },
+      "growth": {
+        "buy_enabled": false,
+        "sell_enabled": true,
+        "target_position": "zero"
+      }
+    }
+  },
+  "allowed_transitions": {
+    "normal": ["bull", "bear"],
+    "bull": ["normal"],
+    "bear": ["normal"]
+  },
+  "transition_policy": {
+    "require_explicit_evidence": true,
+    "allow_direct_bull_bear_transition": false,
+    "on_conflicting_evidence": "keep_current_state"
+  }
+}

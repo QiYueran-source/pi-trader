@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "calibration": {
+    "schedule": "weekly_last_trading_day_or_manual",
+    "fetch_lookback_calendar_days": 60,
+    "step_window_trading_days": 22,
+    "minimum_step_ratio": 0.01
+  },
+  "step_formula": {
+    "buy_step": "max_drawdown_ratio * drawdown_coefficient",
+    "sell_step": "1 / (1 - buy_step_ratio) - 1"
+  },
+  "portfolio": {
+    "shared_capital_pool": true,
+    "reserve_capital_ratio": 0.15
+  },
+  "grids": {
+    "dividend": {
+      "drawdown_coefficient": 0.15,
+      "buy_shares": 1000,
+      "sell_shares": 800,
+      "buy_confirmation_rebound_ratio": 0.2,
+      "sell_confirmation_pullback_ratio": 0.2,
+      "step_window_trading_days": 10
+    },
+    "growth": {
+      "drawdown_coefficient": 0.2,
+      "buy_shares": 1000,
+      "sell_shares": 1000,
+      "buy_confirmation_rebound_ratio": 0.2,
+      "sell_confirmation_pullback_ratio": 0.2,
+      "step_window_trading_days": 22
+    }
+  }
+}

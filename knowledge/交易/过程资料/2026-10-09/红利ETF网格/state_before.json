@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-09",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "state_before",
+  "generated_at": "2026-10-09T10:13:00.474908+00:00",
+  "state": "normal",
+  "source_state": "prior_snapshot",
+  "position_snapshot": {
+    "date": "2026-10-09",
+    "system_id": "div_etf_grid_trade",
+    "artifact": "positions",
+    "source": "yhzq_query",
+    "positions_source": "not_provided",
+    "positions": {
+      "dividend": {
+        "shares": 0,
+        "market_value_amount": 0
+      },
+      "growth": {
+        "shares": 0,
+        "market_value_amount": 0
+      }
+    },
+    "note": "YHZQ 双标的实际持仓仍未提供（连续多日缺失，含 2026-10-09）；零值仅为占位，不得视为真实空仓。hermes-trade 账本旁证（体系独立记账，2026-10-09 盘后按 DB 实际记录复核）：体系 div_etf_grid_trade 净持仓 515180.SH 0 份（09-28 买入 400@1.400、09-30 卖出 400@1.414）、159781.SZ 5,000 份（09-28 买入 1000@1.039 + 1000@1.011、09-30 买入 1000@0.984、10-08 买入 1000@0.961 + 1000@0.942）；现金余额 15,068.60（名义本金 20,000 独立记账）。注：09-30/10-08 简报中的账本数字（515180 400 份、159781 2,000 份、现金 17,390.00）与账本 DB 实际记录不符，疑为陈旧抄录，本次以 DB 复核值为准。账本为按体系独立记账的旁证，非券商账户查询事实，不得替代真实持仓。同一 YHZQ 账户下 159781 与主观多头体系共仓（subjective_long 账本净持 4,000 份），网格卖出腿须核对实际可用份额。09-29 计划要求的人工减仓 5,000 份（159781）在账本中仍无对应卖出记录。"
+  }
+}

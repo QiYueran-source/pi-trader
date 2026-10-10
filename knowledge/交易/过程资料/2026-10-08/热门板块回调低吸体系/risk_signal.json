@@ -1,0 +1,49 @@
+{
+  "date": "20261008",
+  "params": {
+    "opening_signal": {
+      "bar_frequency": "5min",
+      "start_time": "09:30",
+      "end_time": "10:00",
+      "reference_price": "session_open",
+      "rapid_drop_pct": 0.03,
+      "fallback_sources": [
+        "official",
+        "promax"
+      ]
+    },
+    "prudent_tag": {
+      "state_file": "prudent_tags.json",
+      "valid_trading_days": 3,
+      "snapshot_lookback_trading_days": 3,
+      "refresh_on_bearish_signal": true
+    },
+    "position_state": {
+      "state_file": "state.json"
+    },
+    "exit_rules": {
+      "hard_stop_loss_pct": 0.05,
+      "ma5": {
+        "period": 5,
+        "break_action": "observe_or_reduce",
+        "normal_observation_days": 3,
+        "prudent_observation_days": 0,
+        "reduce_ratio": 0.5
+      },
+      "ma10": {
+        "period": 10,
+        "break_action": "liquidate",
+        "execution_timing": "next_open"
+      }
+    }
+  },
+  "data_sources": {},
+  "stats": {
+    "positions": 0,
+    "evaluated": 0,
+    "actions": 0,
+    "hold": 0
+  },
+  "risk_actions": [],
+  "holdings": []
+}

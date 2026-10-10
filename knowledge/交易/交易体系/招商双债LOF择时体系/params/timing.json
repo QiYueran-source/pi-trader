@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "confirmation_days": 2,
+  "stop_loss_enabled": true,
+  "chase_enabled": true,
+  "order_amount": 25000,
+  "signal_timing": "close_confirmed",
+  "execution_timing": "next_open",
+  "counter_semantics": {
+    "no_high": "close <= peak increments counter; sell requires close < peak",
+    "no_low": "close >= trough increments counter; buy requires close > trough",
+    "stop_loss_priority": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "check.date": "2026-08-05",
+  "selection.code": "515180",
+  "selection.name": "红利ETF易方达",
+  "check.latest_price": 1.399,
+  "check.baseline_price": 1.432,
+  "check.daily_change_pct": "-0.29",
+  "check.daily_drop_pct": "0.29",
+  "check.daily_rise_pct": "0.00",
+  "check.lower_level": 1.074,
+  "check.upper_level": 1.862,
+  "check.dist_to_lower_pct": "30.26",
+  "check.dist_to_upper_pct": "24.87",
+  "check.vol_ratio": "1",
+  "check.consec_down_days": 3,
+  "check.consec_down_loss_pct": "2.32",
+  "check.amp_22": "1.76",
+  "check.amp_trend": "📈 振幅放大",
+  "check.market_state": "高波动",
+  "check.state_change": "无变化"
+}

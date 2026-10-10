@@ -1,0 +1,5 @@
+2026-07-07 财经分析复盘cronjob改21:30
+- 重命名目录：global-1900-market-review → global-2130-financial-analysis-review
+- 更新cronjob.yml：schedule改为30 21
+- 更新prompt.txt：标题改21:30财经分析复盘，范围覆盖所有来源财经分析
+- 李永献/晚间教学案例统一归入和信证券（文件+DB+KG已同步）

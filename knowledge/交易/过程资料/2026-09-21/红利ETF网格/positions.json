@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-21",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "positions",
+  "source": "yhzq_query",
+  "positions_source": "not_provided",
+  "positions": {
+    "dividend": { "shares": 0, "market_value_amount": 0 },
+    "growth": { "shares": 0, "market_value_amount": 0 }
+  },
+  "note": "YHZQ 实际持仓仍未提供；零值仅为占位，不得视为真实空仓。hermes-trade 账本显示 515180 剩余 400、159781 剩余 4100，但非券商查询事实，不得替代。"
+}

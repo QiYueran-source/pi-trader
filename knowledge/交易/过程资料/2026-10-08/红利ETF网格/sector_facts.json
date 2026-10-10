@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-08",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-10-08T10:13:23.837663+00:00",
+  "source_trade_date": "20261008",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 46,
+    "sector_count": 28,
+    "technology_stock_count": 1,
+    "technology_stock_ratio": 0.02173913
+  },
+  "top_sectors": [
+    {
+      "industry": "电气设备",
+      "limit_up_count": 8,
+      "sample_stocks": [
+        {
+          "ts_code": "002058.SZ",
+          "name": "紫竹高科",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "002733.SZ",
+          "name": "雄韬股份",
+          "pct_change_ratio": 0.100175
+        },
+        {
+          "ts_code": "002805.SZ",
+          "name": "丰元股份",
+          "pct_change_ratio": 0.100249
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化工原料",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "301697.SZ",
+          "name": "贝特利",
+          "pct_change_ratio": 0.199924
+        },
+        {
+          "ts_code": "600722.SH",
+          "name": "金牛化工",
+          "pct_change_ratio": 0.099864
+        },
+        {
+          "ts_code": "603928.SH",
+          "name": "兴业股份",
+          "pct_change_ratio": 0.10023
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "专用机械",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "001336.SZ",
+          "name": "楚环科技",
+          "pct_change_ratio": 0.10016
+        },
+        {
+          "ts_code": "301513.SZ",
+          "name": "尚水智能",
+          "pct_change_ratio": 0.199752
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "家用电器",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002242.SZ",
+          "name": "九阳股份",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "601956.SH",
+          "name": "东贝集团",
+          "pct_change_ratio": 0.099602
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "造纸",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002565.SZ",
+          "name": "顺灏股份",
+          "pct_change_ratio": 0.099526
+        },
+        {
+          "ts_code": "603863.SH",
+          "name": "松炀资源",
+          "pct_change_ratio": 0.100162
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "服饰",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002687.SZ",
+          "name": "乔治白",
+          "pct_change_ratio": 0.100358
+        },
+        {
+          "ts_code": "600400.SH",
+          "name": "红豆股份",
+          "pct_change_ratio": 0.100304
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "运输设备",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002774.SZ",
+          "name": "快意电梯",
+          "pct_change_ratio": 0.099942
+        },
+        {
+          "ts_code": "605298.SH",
+          "name": "必得科技",
+          "pct_change_ratio": 0.100049
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "染料涂料",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "300522.SZ",
+          "name": "世名科技",
+          "pct_change_ratio": 0.2
+        },
+        {
+          "ts_code": "603823.SH",
+          "name": "百合花",
+          "pct_change_ratio": 0.098562
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "水运",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "600026.SH",
+          "name": "中远海能",
+          "pct_change_ratio": 0.100195
+        },
+        {
+          "ts_code": "601975.SH",
+          "name": "招商南油",
+          "pct_change_ratio": 0.099558
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化学制药",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "600513.SH",
+          "name": "联环药业",
+          "pct_change_ratio": 0.100066
+        },
+        {
+          "ts_code": "600812.SH",
+          "name": "华北制药",
+          "pct_change_ratio": 0.100402
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

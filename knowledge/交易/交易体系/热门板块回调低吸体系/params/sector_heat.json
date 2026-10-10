@@ -1,0 +1,6 @@
+{
+  "limit_up_window_days": 10,
+  "trend_ma_periods": [5, 10],
+  "volume_ratio_window_days": 5,
+  "max_consecutive_limit_up_days": 10
+}

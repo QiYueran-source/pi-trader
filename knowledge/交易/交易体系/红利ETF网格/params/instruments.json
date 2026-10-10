@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "account": {
+    "account_id": "YHZQ",
+    "broker_name": "银河证券",
+    "total_capital_amount": 20000,
+    "currency": "CNY"
+  },
+  "commission": {
+    "etf_commission_ratio": 5e-05,
+    "etf_no_minimum_commission": true,
+    "stamp_duty_sell_ratio": 0,
+    "transfer_fee_ratio": 0
+  },
+  "instruments": {
+    "dividend": {
+      "ts_code": "515180.SH",
+      "name": "红利ETF易方达",
+      "lot_size_shares": 100
+    },
+    "growth": {
+      "ts_code": "159781.SZ",
+      "name": "双创50ETF易方达",
+      "lot_size_shares": 100
+    }
+  },
+  "data_sources": {
+    "daily_price": "tushare.fund_daily",
+    "fund_metadata": "tushare.fund_basic"
+  }
+}

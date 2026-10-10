@@ -1,0 +1,11 @@
+{
+  "date": "2026-09-14",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "positions",
+  "source": "yhzq_query",
+  "positions_source": "not_provided",
+  "positions": {
+    "dividend": { "shares": 0, "market_value_amount": 0 },
+    "growth": { "shares": 0, "market_value_amount": 0 }
+  }
+}

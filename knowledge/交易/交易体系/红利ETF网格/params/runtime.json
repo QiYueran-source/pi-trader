@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "process_root": "knowledge/交易/过程资料",
+  "directory_date_format": "%Y-%m-%d",
+  "trading_day_only": true,
+  "state_snapshot": {
+    "file_name": "state_after.json",
+    "lookup": "latest_prior_trading_day",
+    "allow_same_day_read": true,
+    "allow_future_read": false
+  }
+}

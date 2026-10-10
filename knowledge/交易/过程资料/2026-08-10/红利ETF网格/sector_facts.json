@@ -1,0 +1,236 @@
+{
+  "date": "2026-08-10",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-08-10T10:21:52.727066+00:00",
+  "source_trade_date": "20260810",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 106,
+    "sector_count": 52,
+    "technology_stock_count": 2,
+    "technology_stock_ratio": 0.01886792
+  },
+  "top_sectors": [
+    {
+      "industry": "电气设备",
+      "limit_up_count": 7,
+      "sample_stocks": [
+        {
+          "ts_code": "001388.SZ",
+          "name": "信通电子",
+          "pct_change_ratio": 0.100043
+        },
+        {
+          "ts_code": "002112.SZ",
+          "name": "三变科技",
+          "pct_change_ratio": 0.100062
+        },
+        {
+          "ts_code": "002298.SZ",
+          "name": "中电鑫龙",
+          "pct_change_ratio": 0.100118
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "元器件",
+      "limit_up_count": 6,
+      "sample_stocks": [
+        {
+          "ts_code": "002141.SZ",
+          "name": "贤丰控股",
+          "pct_change_ratio": 0.099836
+        },
+        {
+          "ts_code": "002289.SZ",
+          "name": "宇顺电子",
+          "pct_change_ratio": 0.100029
+        },
+        {
+          "ts_code": "002388.SZ",
+          "name": "新亚制程",
+          "pct_change_ratio": 0.099617
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化学制药",
+      "limit_up_count": 6,
+      "sample_stocks": [
+        {
+          "ts_code": "002370.SZ",
+          "name": "亚太药业",
+          "pct_change_ratio": 0.100379
+        },
+        {
+          "ts_code": "002399.SZ",
+          "name": "海普瑞",
+          "pct_change_ratio": 0.100402
+        },
+        {
+          "ts_code": "002437.SZ",
+          "name": "誉衡药业",
+          "pct_change_ratio": 0.099359
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "医疗保健",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "000710.SZ",
+          "name": "贝瑞基因",
+          "pct_change_ratio": 0.10022
+        },
+        {
+          "ts_code": "002044.SZ",
+          "name": "美年健康",
+          "pct_change_ratio": 0.099585
+        },
+        {
+          "ts_code": "002622.SZ",
+          "name": "皓宸医疗",
+          "pct_change_ratio": 0.10084
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化工原料",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "002748.SZ",
+          "name": "世龙实业",
+          "pct_change_ratio": 0.099908
+        },
+        {
+          "ts_code": "002783.SZ",
+          "name": "凯龙股份",
+          "pct_change_ratio": 0.100536
+        },
+        {
+          "ts_code": "002827.SZ",
+          "name": "高争民爆",
+          "pct_change_ratio": 0.100074
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "塑料",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "000859.SZ",
+          "name": "国风新材",
+          "pct_change_ratio": 0.100462
+        },
+        {
+          "ts_code": "000973.SZ",
+          "name": "佛塑科技",
+          "pct_change_ratio": 0.099678
+        },
+        {
+          "ts_code": "603580.SH",
+          "name": "艾艾精工",
+          "pct_change_ratio": 0.099944
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "汽车配件",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "600698.SH",
+          "name": "湖南天雁",
+          "pct_change_ratio": 0.10061
+        },
+        {
+          "ts_code": "603161.SH",
+          "name": "科华控股",
+          "pct_change_ratio": 0.100142
+        },
+        {
+          "ts_code": "603758.SH",
+          "name": "秦安股份",
+          "pct_change_ratio": 0.100191
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "软件服务",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002153.SZ",
+          "name": "石基信息",
+          "pct_change_ratio": 0.099757
+        },
+        {
+          "ts_code": "002474.SZ",
+          "name": "榕基软件",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "600936.SH",
+          "name": "北投科技",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "医药商业",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002589.SZ",
+          "name": "瑞康医药",
+          "pct_change_ratio": 0.098684
+        },
+        {
+          "ts_code": "600272.SH",
+          "name": "开开实业",
+          "pct_change_ratio": 0.100231
+        },
+        {
+          "ts_code": "600833.SH",
+          "name": "第一医药",
+          "pct_change_ratio": 0.0999
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "家居用品",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "600337.SH",
+          "name": "ST美克",
+          "pct_change_ratio": 0.098859
+        },
+        {
+          "ts_code": "603038.SH",
+          "name": "华立股份",
+          "pct_change_ratio": 0.100073
+        },
+        {
+          "ts_code": "603221.SH",
+          "name": "爱丽家居",
+          "pct_change_ratio": 0.099919
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

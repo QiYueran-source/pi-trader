@@ -1,0 +1,236 @@
+{
+  "date": "2026-08-12",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-08-12T10:14:22.204168+00:00",
+  "source_trade_date": "20260812",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 100,
+    "sector_count": 42,
+    "technology_stock_count": 6,
+    "technology_stock_ratio": 0.06
+  },
+  "top_sectors": [
+    {
+      "industry": "专用机械",
+      "limit_up_count": 8,
+      "sample_stocks": [
+        {
+          "ts_code": "002483.SZ",
+          "name": "润邦股份",
+          "pct_change_ratio": 0.099426
+        },
+        {
+          "ts_code": "600397.SH",
+          "name": "江钨装备",
+          "pct_change_ratio": 0.099765
+        },
+        {
+          "ts_code": "603076.SH",
+          "name": "乐惠国际",
+          "pct_change_ratio": 0.100191
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "软件服务",
+      "limit_up_count": 7,
+      "sample_stocks": [
+        {
+          "ts_code": "002178.SZ",
+          "name": "延华智能",
+          "pct_change_ratio": 0.099352
+        },
+        {
+          "ts_code": "002421.SZ",
+          "name": "达实智能",
+          "pct_change_ratio": 0.09915
+        },
+        {
+          "ts_code": "301315.SZ",
+          "name": "威士顿",
+          "pct_change_ratio": 0.199896
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "区域地产",
+      "limit_up_count": 6,
+      "sample_stocks": [
+        {
+          "ts_code": "000838.SZ",
+          "name": "*ST发展",
+          "pct_change_ratio": 0.099237
+        },
+        {
+          "ts_code": "002244.SZ",
+          "name": "滨江集团",
+          "pct_change_ratio": 0.100462
+        },
+        {
+          "ts_code": "600266.SH",
+          "name": "城建发展",
+          "pct_change_ratio": 0.100478
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "汽车配件",
+      "limit_up_count": 6,
+      "sample_stocks": [
+        {
+          "ts_code": "000887.SZ",
+          "name": "中鼎股份",
+          "pct_change_ratio": 0.100102
+        },
+        {
+          "ts_code": "001260.SZ",
+          "name": "坤泰股份",
+          "pct_change_ratio": 0.100115
+        },
+        {
+          "ts_code": "002031.SZ",
+          "name": "巨轮智能",
+          "pct_change_ratio": 0.099315
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "000720.SZ",
+          "name": "新能泰山",
+          "pct_change_ratio": 0.100817
+        },
+        {
+          "ts_code": "600379.SH",
+          "name": "宝光股份",
+          "pct_change_ratio": 0.100372
+        },
+        {
+          "ts_code": "601700.SH",
+          "name": "风范股份",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "装修装饰",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "002047.SZ",
+          "name": "宝鹰股份",
+          "pct_change_ratio": 0.101124
+        },
+        {
+          "ts_code": "002081.SZ",
+          "name": "金螳螂",
+          "pct_change_ratio": 0.100756
+        },
+        {
+          "ts_code": "600234.SH",
+          "name": "科新发展",
+          "pct_change_ratio": 0.100188
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化学制药",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "002437.SZ",
+          "name": "誉衡药业",
+          "pct_change_ratio": 0.099715
+        },
+        {
+          "ts_code": "002562.SZ",
+          "name": "兄弟科技",
+          "pct_change_ratio": 0.100218
+        },
+        {
+          "ts_code": "600216.SH",
+          "name": "浙江医药",
+          "pct_change_ratio": 0.09984
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "通信设备",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "002491.SZ",
+          "name": "通鼎互联",
+          "pct_change_ratio": 0.099825
+        },
+        {
+          "ts_code": "002792.SZ",
+          "name": "通宇通讯",
+          "pct_change_ratio": 0.099881
+        },
+        {
+          "ts_code": "600105.SH",
+          "name": "永鼎股份",
+          "pct_change_ratio": 0.100107
+        }
+      ],
+      "is_technology": true
+    },
+    {
+      "industry": "元器件",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "002552.SZ",
+          "name": "宝鼎科技",
+          "pct_change_ratio": 0.099982
+        },
+        {
+          "ts_code": "603052.SH",
+          "name": "可川科技",
+          "pct_change_ratio": 0.100094
+        },
+        {
+          "ts_code": "603228.SH",
+          "name": "景旺电子",
+          "pct_change_ratio": 0.100022
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "食品",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "002582.SZ",
+          "name": "好想你",
+          "pct_change_ratio": 0.099606
+        },
+        {
+          "ts_code": "603696.SH",
+          "name": "安记食品",
+          "pct_change_ratio": 0.099929
+        },
+        {
+          "ts_code": "920273.BJ",
+          "name": "一致魔芋",
+          "pct_change_ratio": 0.101229
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

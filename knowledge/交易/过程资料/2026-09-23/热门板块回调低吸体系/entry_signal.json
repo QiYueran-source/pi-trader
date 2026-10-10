@@ -1,0 +1,238 @@
+{
+  "date": "20260923",
+  "source": "knowledge/交易/过程资料/2026-09-23/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 28,
+    "with_daily_data": 5569,
+    "signals": 13
+  },
+  "signals": [
+    {
+      "code": "605218.SH",
+      "name": "伟时电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "pullback_pct": -6.52,
+      "signal_date": "20260923",
+      "close": 14.9,
+      "breakout_ma": 14.72,
+      "breakout_above_pct": 1.22,
+      "volume": 231187,
+      "volume_ma": 49651,
+      "volume_ratio": 4.66
+    },
+    {
+      "code": "001266.SZ",
+      "name": "宏英智能",
+      "industry": "电器仪表",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "pullback_pct": -0.34,
+      "signal_date": "20260923",
+      "close": 37.62,
+      "breakout_ma": 35.426,
+      "breakout_above_pct": 6.19,
+      "volume": 100402,
+      "volume_ma": 27546,
+      "volume_ratio": 3.64
+    },
+    {
+      "code": "002426.SZ",
+      "name": "胜利精密",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260923",
+      "close": 2.96,
+      "breakout_ma": 2.7,
+      "breakout_above_pct": 9.63,
+      "volume": 2357247,
+      "volume_ma": 704853,
+      "volume_ratio": 3.34
+    },
+    {
+      "code": "002937.SZ",
+      "name": "兴瑞科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260923",
+      "close": 30.13,
+      "breakout_ma": 27.86,
+      "breakout_above_pct": 8.15,
+      "volume": 287477,
+      "volume_ma": 93202,
+      "volume_ratio": 3.08
+    },
+    {
+      "code": "688781.SH",
+      "name": "视涯科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "pullback_pct": -0.75,
+      "signal_date": "20260923",
+      "close": 51.56,
+      "breakout_ma": 45.084,
+      "breakout_above_pct": 14.36,
+      "volume": 99204,
+      "volume_ma": 32484,
+      "volume_ratio": 3.05
+    },
+    {
+      "code": "001373.SZ",
+      "name": "翔腾新材",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260921"
+      ],
+      "pullback_pct": -3.24,
+      "signal_date": "20260923",
+      "close": 31.39,
+      "breakout_ma": 30.512,
+      "breakout_above_pct": 2.88,
+      "volume": 52014,
+      "volume_ma": 19889,
+      "volume_ratio": 2.62
+    },
+    {
+      "code": "002819.SZ",
+      "name": "东方中科",
+      "industry": "电器仪表",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260923",
+      "close": 24.24,
+      "breakout_ma": 22.136,
+      "breakout_above_pct": 9.5,
+      "volume": 94263,
+      "volume_ma": 36837,
+      "volume_ratio": 2.56
+    },
+    {
+      "code": "688628.SH",
+      "name": "优利德",
+      "industry": "电器仪表",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260923",
+      "close": 114.44,
+      "breakout_ma": 90.802,
+      "breakout_above_pct": 26.03,
+      "volume": 132526,
+      "volume_ma": 51798,
+      "volume_ratio": 2.56
+    },
+    {
+      "code": "001389.SZ",
+      "name": "广合科技",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260907",
+        "20260921"
+      ],
+      "pullback_pct": 3.4,
+      "signal_date": "20260923",
+      "close": 192.25,
+      "breakout_ma": 182.782,
+      "breakout_above_pct": 5.18,
+      "volume": 203552,
+      "volume_ma": 83690,
+      "volume_ratio": 2.43
+    },
+    {
+      "code": "002635.SZ",
+      "name": "安洁科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260923",
+      "close": 16.79,
+      "breakout_ma": 15.402,
+      "breakout_above_pct": 9.01,
+      "volume": 323161,
+      "volume_ma": 138065,
+      "volume_ratio": 2.34
+    },
+    {
+      "code": "000509.SZ",
+      "name": "华塑控股",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "pullback_pct": -0.27,
+      "signal_date": "20260923",
+      "close": 3.76,
+      "breakout_ma": 3.748,
+      "breakout_above_pct": 0.32,
+      "volume": 695012,
+      "volume_ma": 328245,
+      "volume_ratio": 2.12
+    },
+    {
+      "code": "002916.SZ",
+      "name": "深南电路",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "pullback_pct": 13.64,
+      "signal_date": "20260923",
+      "close": 414.77,
+      "breakout_ma": 395.594,
+      "breakout_above_pct": 4.85,
+      "volume": 108665,
+      "volume_ma": 81665,
+      "volume_ratio": 1.33
+    },
+    {
+      "code": "002463.SZ",
+      "name": "沪电股份",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "pullback_pct": 4.44,
+      "signal_date": "20260923",
+      "close": 128.1,
+      "breakout_ma": 125.244,
+      "breakout_above_pct": 2.28,
+      "volume": 619438,
+      "volume_ma": 488540,
+      "volume_ratio": 1.27
+    }
+  ]
+}

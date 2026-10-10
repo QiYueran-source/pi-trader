@@ -1,0 +1,236 @@
+{
+  "date": "2026-09-01",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-09-01T10:08:04.856721+00:00",
+  "source_trade_date": "20260901",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 99,
+    "sector_count": 48,
+    "technology_stock_count": 5,
+    "technology_stock_ratio": 0.05050505
+  },
+  "top_sectors": [
+    {
+      "industry": "种植业",
+      "limit_up_count": 10,
+      "sample_stocks": [
+        {
+          "ts_code": "000713.SZ",
+          "name": "国投丰乐",
+          "pct_change_ratio": 0.100154
+        },
+        {
+          "ts_code": "000998.SZ",
+          "name": "隆平高科",
+          "pct_change_ratio": 0.100442
+        },
+        {
+          "ts_code": "002041.SZ",
+          "name": "登海种业",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "百货",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "000564.SZ",
+          "name": "供销大集",
+          "pct_change_ratio": 0.099338
+        },
+        {
+          "ts_code": "600693.SH",
+          "name": "东百集团",
+          "pct_change_ratio": 0.099893
+        },
+        {
+          "ts_code": "600785.SH",
+          "name": "新华百货",
+          "pct_change_ratio": 0.099913
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "化工原料",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "000635.SZ",
+          "name": "英力特",
+          "pct_change_ratio": 0.10061
+        },
+        {
+          "ts_code": "002909.SZ",
+          "name": "集泰股份",
+          "pct_change_ratio": 0.099668
+        },
+        {
+          "ts_code": "300927.SZ",
+          "name": "江天化学",
+          "pct_change_ratio": 0.2
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "汽车配件",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "002703.SZ",
+          "name": "浙江世宝",
+          "pct_change_ratio": 0.100121
+        },
+        {
+          "ts_code": "603293.SH",
+          "name": "埃泰克",
+          "pct_change_ratio": 0.100112
+        },
+        {
+          "ts_code": "603376.SH",
+          "name": "大明电子",
+          "pct_change_ratio": 0.100039
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "软件服务",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "000158.SZ",
+          "name": "常山北明",
+          "pct_change_ratio": 0.099842
+        },
+        {
+          "ts_code": "003005.SZ",
+          "name": "竞业达",
+          "pct_change_ratio": 0.099819
+        },
+        {
+          "ts_code": "600410.SH",
+          "name": "华胜天成",
+          "pct_change_ratio": 0.099711
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "元器件",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "000536.SZ",
+          "name": "华映科技",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "002855.SZ",
+          "name": "捷荣技术",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "600130.SH",
+          "name": "波导股份",
+          "pct_change_ratio": 0.100446
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "影视音像",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "000892.SZ",
+          "name": "欢瑞世纪",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "001330.SZ",
+          "name": "博纳影业",
+          "pct_change_ratio": 0.099822
+        },
+        {
+          "ts_code": "300413.SZ",
+          "name": "芒果超媒",
+          "pct_change_ratio": 0.200236
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "食品",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000505.SZ",
+          "name": "京粮控股",
+          "pct_change_ratio": 0.099432
+        },
+        {
+          "ts_code": "920273.BJ",
+          "name": "一致魔芋",
+          "pct_change_ratio": 0.145977
+        },
+        {
+          "ts_code": "920826.BJ",
+          "name": "盖世食品",
+          "pct_change_ratio": 0.111364
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "家居用品",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002084.SZ",
+          "name": "海鸥住工",
+          "pct_change_ratio": 0.100313
+        },
+        {
+          "ts_code": "603021.SH",
+          "name": "*ST华鹏",
+          "pct_change_ratio": 0.099631
+        },
+        {
+          "ts_code": "603221.SH",
+          "name": "爱丽家居",
+          "pct_change_ratio": 0.100108
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "中成药",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002107.SZ",
+          "name": "沃华医药",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "002349.SZ",
+          "name": "精华制药",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "600479.SH",
+          "name": "千金药业",
+          "pct_change_ratio": 0.100412
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

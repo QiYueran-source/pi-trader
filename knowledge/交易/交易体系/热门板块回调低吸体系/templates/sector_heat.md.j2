@@ -1,0 +1,20 @@
+---
+uuid: {{ report_uuid }}
+title: 热门板块回调低吸体系 - 板块热度 {{ data.date }}
+tags:
+  - 交易体系
+  - 过程资料
+  - 板块热度
+updated: {{ updated_at }}
+links: []
+system-id: hot_sector_pullback_system
+---
+
+# 板块热度 | {{ data.date }}
+
+共 {{ data.stats.candidate_sectors }} 个候选板块，全市场最高连板 {{ data.stats.max_board_count }} 板。
+
+| 板块 | 涨停数 | MA{{ data.params.trend_ma_periods[0] }} | MA{{ data.params.trend_ma_periods[1] }} | 量比 |
+|---|---:|---:|---:|---:|
+{% for item in data.dimensions.technical_pattern %}| {{ item.sector }} | {{ item.limit_up_count }} | {{ item.short_ma_pct | default('-') }} | {{ item.long_ma_pct | default('-') }} | {{ item.volume_ratio | default('-') }} |
+{% endfor %}

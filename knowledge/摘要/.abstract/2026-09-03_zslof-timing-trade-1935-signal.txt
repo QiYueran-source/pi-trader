@@ -1,0 +1,15 @@
+招商双债LOF择时体系 · gen_plan 简报（2026-09-03 收盘）
+
+【交易日】2026-09-03（周四），下一交易日 2026-09-04（周五）
+【收盘信号】161716.SZ 收盘 1.6580；无新信号（signal=null）
+【理论状态】空仓（flat）；no_high_days=0、no_low_days=2；状态锚点 peak=1.659、trough=1.658、last_sell_peak=1.659
+【信号判断】
+  - 买入未触发：no_low_days=2 已达确认天数，但收盘 1.658 未 > trough(1.658)（等值只累计、不触发）
+  - 追回买入未触发：收盘 1.658 未 > last_sell_peak(1.659)
+【下一交易日动作】无操作（next_trading_action=no_action），保持理论空仓
+【信号→动作时间差】9/3 收盘确认、9/4 开盘执行（本次无动作，不影响）
+【产物路径】
+  - 报告：knowledge/交易/过程资料/2026-09-03/招商双债LOF择时体系/signal_report.md
+  - 计划：knowledge/交易/交易计划/2026-09-04/招商双债LOF择时体系.md
+  - 过程数据：signal_facts.json / strategy_state.json（同日目录）
+【执行说明】实际执行由用户手动完成

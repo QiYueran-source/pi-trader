@@ -1,0 +1,236 @@
+{
+  "date": "2026-08-28",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-08-28T10:09:35.471859+00:00",
+  "source_trade_date": "20260828",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 88,
+    "sector_count": 47,
+    "technology_stock_count": 4,
+    "technology_stock_ratio": 0.04545455
+  },
+  "top_sectors": [
+    {
+      "industry": "化工原料",
+      "limit_up_count": 7,
+      "sample_stocks": [
+        {
+          "ts_code": "002165.SZ",
+          "name": "红宝丽",
+          "pct_change_ratio": 0.099869
+        },
+        {
+          "ts_code": "002915.SZ",
+          "name": "中欣氟材",
+          "pct_change_ratio": 0.100292
+        },
+        {
+          "ts_code": "002971.SZ",
+          "name": "和远气体",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "软件服务",
+      "limit_up_count": 7,
+      "sample_stocks": [
+        {
+          "ts_code": "002212.SZ",
+          "name": "天融信",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "002279.SZ",
+          "name": "久其软件",
+          "pct_change_ratio": 0.099844
+        },
+        {
+          "ts_code": "003005.SZ",
+          "name": "竞业达",
+          "pct_change_ratio": 0.100293
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "农药化肥",
+      "limit_up_count": 5,
+      "sample_stocks": [
+        {
+          "ts_code": "000912.SZ",
+          "name": "泸天化",
+          "pct_change_ratio": 0.10101
+        },
+        {
+          "ts_code": "002942.SZ",
+          "name": "新农股份",
+          "pct_change_ratio": 0.099947
+        },
+        {
+          "ts_code": "600227.SH",
+          "name": "赤天化",
+          "pct_change_ratio": 0.100962
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "服饰",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "000017.SZ",
+          "name": "深中华A",
+          "pct_change_ratio": 0.099904
+        },
+        {
+          "ts_code": "002486.SZ",
+          "name": "嘉麟杰",
+          "pct_change_ratio": 0.100746
+        },
+        {
+          "ts_code": "603608.SH",
+          "name": "天创时尚",
+          "pct_change_ratio": 0.099944
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "元器件",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000062.SZ",
+          "name": "深圳华强",
+          "pct_change_ratio": 0.100044
+        },
+        {
+          "ts_code": "002855.SZ",
+          "name": "捷荣技术",
+          "pct_change_ratio": 0.099925
+        },
+        {
+          "ts_code": "002952.SZ",
+          "name": "亚世光电",
+          "pct_change_ratio": 0.09995
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "食品",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "000716.SZ",
+          "name": "黑芝麻",
+          "pct_change_ratio": 0.100971
+        },
+        {
+          "ts_code": "003030.SZ",
+          "name": "祖名股份",
+          "pct_change_ratio": 0.099909
+        },
+        {
+          "ts_code": "600929.SH",
+          "name": "雪天盐业",
+          "pct_change_ratio": 0.100182
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "专用机械",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "001288.SZ",
+          "name": "运机集团",
+          "pct_change_ratio": 0.100116
+        },
+        {
+          "ts_code": "603011.SH",
+          "name": "合锻智能",
+          "pct_change_ratio": 0.099841
+        },
+        {
+          "ts_code": "603396.SH",
+          "name": "金辰股份",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "中成药",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "002107.SZ",
+          "name": "沃华医药",
+          "pct_change_ratio": 0.100457
+        },
+        {
+          "ts_code": "002349.SZ",
+          "name": "精华制药",
+          "pct_change_ratio": 0.100418
+        },
+        {
+          "ts_code": "600479.SH",
+          "name": "千金药业",
+          "pct_change_ratio": 0.099835
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "种植业",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "600354.SH",
+          "name": "敦煌种业",
+          "pct_change_ratio": 0.100536
+        },
+        {
+          "ts_code": "600371.SH",
+          "name": "万向德农",
+          "pct_change_ratio": 0.100095
+        },
+        {
+          "ts_code": "600540.SH",
+          "name": "新赛股份",
+          "pct_change_ratio": 0.100218
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "601700.SH",
+          "name": "风范股份",
+          "pct_change_ratio": 0.099738
+        },
+        {
+          "ts_code": "603016.SH",
+          "name": "新宏泰",
+          "pct_change_ratio": 0.099965
+        },
+        {
+          "ts_code": "603778.SH",
+          "name": "国晟科技",
+          "pct_change_ratio": 0.099788
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

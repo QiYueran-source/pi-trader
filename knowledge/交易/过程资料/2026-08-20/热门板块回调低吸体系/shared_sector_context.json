@@ -1,0 +1,242 @@
+{
+  "date": "2026-08-20",
+  "artifact": "shared_sector_context",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-08-20T10:40:12.129619+00:00",
+  "source": {
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "path": "/hermes-trader/knowledge/交易/过程资料/2026-08-20/红利ETF网格/sector_facts.json"
+  },
+  "context": {
+    "date": "2026-08-20",
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "generated_at": "2026-08-20T10:07:42.158594+00:00",
+    "source_trade_date": "20260820",
+    "classification_parameter_version": 1,
+    "limit_up": {
+      "stock_count": 89,
+      "sector_count": 33,
+      "technology_stock_count": 6,
+      "technology_stock_ratio": 0.06741573
+    },
+    "top_sectors": [
+      {
+        "industry": "生物制药",
+        "limit_up_count": 18,
+        "sample_stocks": [
+          {
+            "ts_code": "002038.SZ",
+            "name": "双鹭药业",
+            "pct_change_ratio": 0.100855
+          },
+          {
+            "ts_code": "002581.SZ",
+            "name": "*ST未名",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "002880.SZ",
+            "name": "卫光生物",
+            "pct_change_ratio": 0.1
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "化学制药",
+        "limit_up_count": 11,
+        "sample_stocks": [
+          {
+            "ts_code": "000931.SZ",
+            "name": "中关村",
+            "pct_change_ratio": 0.099762
+          },
+          {
+            "ts_code": "002365.SZ",
+            "name": "永安药业",
+            "pct_change_ratio": 0.099791
+          },
+          {
+            "ts_code": "002399.SZ",
+            "name": "海普瑞",
+            "pct_change_ratio": 0.100488
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "医疗保健",
+        "limit_up_count": 7,
+        "sample_stocks": [
+          {
+            "ts_code": "000710.SZ",
+            "name": "贝瑞基因",
+            "pct_change_ratio": 0.099765
+          },
+          {
+            "ts_code": "002030.SZ",
+            "name": "达安基因",
+            "pct_change_ratio": 0.099448
+          },
+          {
+            "ts_code": "002172.SZ",
+            "name": "澳洋健康",
+            "pct_change_ratio": 0.09901
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "专用机械",
+        "limit_up_count": 4,
+        "sample_stocks": [
+          {
+            "ts_code": "001277.SZ",
+            "name": "速达股份",
+            "pct_change_ratio": 0.100091
+          },
+          {
+            "ts_code": "603036.SH",
+            "name": "如通股份",
+            "pct_change_ratio": 0.100142
+          },
+          {
+            "ts_code": "603666.SH",
+            "name": "亿嘉和",
+            "pct_change_ratio": 0.1
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "通信设备",
+        "limit_up_count": 4,
+        "sample_stocks": [
+          {
+            "ts_code": "002313.SZ",
+            "name": "日海智能",
+            "pct_change_ratio": 0.100251
+          },
+          {
+            "ts_code": "002491.SZ",
+            "name": "通鼎互联",
+            "pct_change_ratio": 0.099886
+          },
+          {
+            "ts_code": "300710.SZ",
+            "name": "万隆光电",
+            "pct_change_ratio": 0.200074
+          }
+        ],
+        "is_technology": true
+      },
+      {
+        "industry": "电气设备",
+        "limit_up_count": 4,
+        "sample_stocks": [
+          {
+            "ts_code": "601700.SH",
+            "name": "风范股份",
+            "pct_change_ratio": 0.099707
+          },
+          {
+            "ts_code": "601877.SH",
+            "name": "正泰电器",
+            "pct_change_ratio": 0.100042
+          },
+          {
+            "ts_code": "603016.SH",
+            "name": "新宏泰",
+            "pct_change_ratio": 0.100036
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "中成药",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "000590.SZ",
+            "name": "古汉医药",
+            "pct_change_ratio": 0.099886
+          },
+          {
+            "ts_code": "002412.SZ",
+            "name": "汉森制药",
+            "pct_change_ratio": 0.099762
+          },
+          {
+            "ts_code": "600613.SH",
+            "name": "神奇制药",
+            "pct_change_ratio": 0.100257
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "化工原料",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "001333.SZ",
+            "name": "光华股份",
+            "pct_change_ratio": 0.100149
+          },
+          {
+            "ts_code": "300109.SZ",
+            "name": "新开源",
+            "pct_change_ratio": 0.1997
+          },
+          {
+            "ts_code": "603285.SH",
+            "name": "键邦股份",
+            "pct_change_ratio": 0.1
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "元器件",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "002552.SZ",
+            "name": "宝鼎科技",
+            "pct_change_ratio": 0.100096
+          },
+          {
+            "ts_code": "002579.SZ",
+            "name": "中京电子",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "603626.SH",
+            "name": "科森科技",
+            "pct_change_ratio": 0.099935
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "服饰",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "000017.SZ",
+            "name": "深中华A",
+            "pct_change_ratio": 0.100511
+          },
+          {
+            "ts_code": "603958.SH",
+            "name": "哈森股份",
+            "pct_change_ratio": 0.100118
+          }
+        ],
+        "is_technology": false
+      }
+    ]
+  }
+}

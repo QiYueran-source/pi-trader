@@ -1,0 +1,387 @@
+{
+  "date": "20260923",
+  "params": {
+    "limit_up_window_days": 22,
+    "min_limit_up_count": 1,
+    "max_limit_up_count": 2,
+    "pullback_ma_period": 10,
+    "rebound_window_days": 5
+  },
+  "stats": {
+    "total_limit_up_stocks": 719,
+    "final_candidates": 28
+  },
+  "candidates": [
+    {
+      "code": "920212.BJ",
+      "name": "智新电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260902"
+      ],
+      "current_close": 10.59,
+      "pullback_ma": 10.567,
+      "pullback_pct": -24.89,
+      "bounceback_days": 1
+    },
+    {
+      "code": "000536.SZ",
+      "name": "华映科技",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260826",
+        "20260901"
+      ],
+      "current_close": 3.51,
+      "pullback_ma": 3.483,
+      "pullback_pct": -11.36,
+      "bounceback_days": 4
+    },
+    {
+      "code": "002952.SZ",
+      "name": "亚世光电",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260828"
+      ],
+      "current_close": 19.63,
+      "pullback_ma": 18.937,
+      "pullback_pct": -9.91,
+      "bounceback_days": 3
+    },
+    {
+      "code": "002724.SZ",
+      "name": "海洋王",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260916",
+        "20260921"
+      ],
+      "current_close": 7.17,
+      "pullback_ma": 7.086,
+      "pullback_pct": -8.55,
+      "bounceback_days": 4
+    },
+    {
+      "code": "301489.SZ",
+      "name": "思泉新材",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260903"
+      ],
+      "current_close": 129.09,
+      "pullback_ma": 125.925,
+      "pullback_pct": -8.06,
+      "bounceback_days": 4
+    },
+    {
+      "code": "605218.SH",
+      "name": "伟时电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "current_close": 14.9,
+      "pullback_ma": 14.229,
+      "pullback_pct": -6.52,
+      "bounceback_days": 5
+    },
+    {
+      "code": "600130.SH",
+      "name": "波导股份",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260901"
+      ],
+      "current_close": 4.61,
+      "pullback_ma": 4.474,
+      "pullback_pct": -6.49,
+      "bounceback_days": 3
+    },
+    {
+      "code": "000062.SZ",
+      "name": "深圳华强",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260828"
+      ],
+      "current_close": 23.29,
+      "pullback_ma": 22.965,
+      "pullback_pct": -6.28,
+      "bounceback_days": 4
+    },
+    {
+      "code": "000020.SZ",
+      "name": "深华发A",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260908",
+        "20260921"
+      ],
+      "current_close": 13.59,
+      "pullback_ma": 13.192,
+      "pullback_pct": -4.7,
+      "bounceback_days": 3
+    },
+    {
+      "code": "920821.BJ",
+      "name": "则成电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "current_close": 22.65,
+      "pullback_ma": 22.23,
+      "pullback_pct": -3.98,
+      "bounceback_days": 1
+    },
+    {
+      "code": "001373.SZ",
+      "name": "翔腾新材",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260921"
+      ],
+      "current_close": 31.39,
+      "pullback_ma": 29.199,
+      "pullback_pct": -3.24,
+      "bounceback_days": 4
+    },
+    {
+      "code": "003021.SZ",
+      "name": "兆威机电",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260825"
+      ],
+      "current_close": 70.75,
+      "pullback_ma": 68.846,
+      "pullback_pct": -2.79,
+      "bounceback_days": 3
+    },
+    {
+      "code": "688781.SH",
+      "name": "视涯科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "current_close": 51.56,
+      "pullback_ma": 40.443,
+      "pullback_pct": -0.75,
+      "bounceback_days": 5
+    },
+    {
+      "code": "001266.SZ",
+      "name": "宏英智能",
+      "industry": "电器仪表",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "current_close": 37.62,
+      "pullback_ma": 33.839,
+      "pullback_pct": -0.34,
+      "bounceback_days": 5
+    },
+    {
+      "code": "000509.SZ",
+      "name": "华塑控股",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260918"
+      ],
+      "current_close": 3.76,
+      "pullback_ma": 3.614,
+      "pullback_pct": -0.27,
+      "bounceback_days": 4
+    },
+    {
+      "code": "002426.SZ",
+      "name": "胜利精密",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "current_close": 2.96,
+      "pullback_ma": 2.675,
+      "pullback_pct": 0.0,
+      "bounceback_days": 2
+    },
+    {
+      "code": "002635.SZ",
+      "name": "安洁科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "current_close": 16.79,
+      "pullback_ma": 15.032,
+      "pullback_pct": 0.0,
+      "bounceback_days": 5
+    },
+    {
+      "code": "002819.SZ",
+      "name": "东方中科",
+      "industry": "电器仪表",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "current_close": 24.24,
+      "pullback_ma": 21.893,
+      "pullback_pct": 0.0,
+      "bounceback_days": 3
+    },
+    {
+      "code": "002937.SZ",
+      "name": "兴瑞科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "current_close": 30.13,
+      "pullback_ma": 27.64,
+      "pullback_pct": 0.0,
+      "bounceback_days": 1
+    },
+    {
+      "code": "688628.SH",
+      "name": "优利德",
+      "industry": "电器仪表",
+      "board_count": 1,
+      "board_dates": [
+        "20260923"
+      ],
+      "current_close": 114.44,
+      "pullback_ma": 83.627,
+      "pullback_pct": 0.0,
+      "bounceback_days": 4
+    },
+    {
+      "code": "002881.SZ",
+      "name": "美格智能",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260831",
+        "20260907"
+      ],
+      "current_close": 46.25,
+      "pullback_ma": 43.35,
+      "pullback_pct": 0.28,
+      "bounceback_days": 5
+    },
+    {
+      "code": "605118.SH",
+      "name": "力鼎光电",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260831",
+        "20260902"
+      ],
+      "current_close": 34.54,
+      "pullback_ma": 33.418,
+      "pullback_pct": 0.29,
+      "bounceback_days": 3
+    },
+    {
+      "code": "603228.SH",
+      "name": "景旺电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "current_close": 107.45,
+      "pullback_ma": 107.339,
+      "pullback_pct": 1.4,
+      "bounceback_days": 1
+    },
+    {
+      "code": "001389.SZ",
+      "name": "广合科技",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260907",
+        "20260921"
+      ],
+      "current_close": 192.25,
+      "pullback_ma": 177.762,
+      "pullback_pct": 3.4,
+      "bounceback_days": 3
+    },
+    {
+      "code": "002463.SZ",
+      "name": "沪电股份",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "current_close": 128.1,
+      "pullback_ma": 126.171,
+      "pullback_pct": 4.44,
+      "bounceback_days": 1
+    },
+    {
+      "code": "002947.SZ",
+      "name": "恒铭达",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260825"
+      ],
+      "current_close": 65.77,
+      "pullback_ma": 64.2,
+      "pullback_pct": 10.33,
+      "bounceback_days": 5
+    },
+    {
+      "code": "301689.SZ",
+      "name": "电科思仪",
+      "industry": "电器仪表",
+      "board_count": 2,
+      "board_dates": [
+        "20260910",
+        "20260918"
+      ],
+      "current_close": 69.9,
+      "pullback_ma": 55.849,
+      "pullback_pct": 10.95,
+      "bounceback_days": null
+    },
+    {
+      "code": "002916.SZ",
+      "name": "深南电路",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "current_close": 414.77,
+      "pullback_ma": 393.831,
+      "pullback_pct": 13.64,
+      "bounceback_days": 3
+    }
+  ]
+}

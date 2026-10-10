@@ -1,0 +1,222 @@
+{
+  "date": "2026-09-23",
+  "artifact": "shared_sector_context",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-09-23T11:25:58.431151+00:00",
+  "source": {
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "path": "/hermes-trader/knowledge/交易/过程资料/2026-09-23/红利ETF网格/sector_facts.json"
+  },
+  "context": {
+    "date": "2026-09-23",
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "generated_at": "2026-09-23T10:13:08.948760+00:00",
+    "source_trade_date": "20260923",
+    "classification_parameter_version": 1,
+    "limit_up": {
+      "stock_count": 57,
+      "sector_count": 34,
+      "technology_stock_count": 4,
+      "technology_stock_ratio": 0.07017544
+    },
+    "top_sectors": [
+      {
+        "industry": "元器件",
+        "limit_up_count": 7,
+        "sample_stocks": [
+          {
+            "ts_code": "002426.SZ",
+            "name": "胜利精密",
+            "pct_change_ratio": 0.100372
+          },
+          {
+            "ts_code": "002635.SZ",
+            "name": "安洁科技",
+            "pct_change_ratio": 0.100262
+          },
+          {
+            "ts_code": "002937.SZ",
+            "name": "兴瑞科技",
+            "pct_change_ratio": 0.100037
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "电器仪表",
+        "limit_up_count": 6,
+        "sample_stocks": [
+          {
+            "ts_code": "002819.SZ",
+            "name": "东方中科",
+            "pct_change_ratio": 0.099819
+          },
+          {
+            "ts_code": "002849.SZ",
+            "name": "威星智能",
+            "pct_change_ratio": 0.099952
+          },
+          {
+            "ts_code": "688056.SH",
+            "name": "莱伯泰科",
+            "pct_change_ratio": 0.2
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "化工原料",
+        "limit_up_count": 4,
+        "sample_stocks": [
+          {
+            "ts_code": "002909.SZ",
+            "name": "集泰股份",
+            "pct_change_ratio": 0.10073
+          },
+          {
+            "ts_code": "600230.SH",
+            "name": "沧州大化",
+            "pct_change_ratio": 0.100223
+          },
+          {
+            "ts_code": "603067.SH",
+            "name": "振华股份",
+            "pct_change_ratio": 0.09989
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "半导体",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "002119.SZ",
+            "name": "康强电子",
+            "pct_change_ratio": 0.100123
+          },
+          {
+            "ts_code": "603991.SH",
+            "name": "领先股份",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "688512.SH",
+            "name": "慧智微",
+            "pct_change_ratio": 0.200277
+          }
+        ],
+        "is_technology": true
+      },
+      {
+        "industry": "医疗保健",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "603222.SH",
+            "name": "济民健康",
+            "pct_change_ratio": 0.099631
+          },
+          {
+            "ts_code": "688656.SH",
+            "name": "浩欧博",
+            "pct_change_ratio": 0.200034
+          },
+          {
+            "ts_code": "920268.BJ",
+            "name": "百迈科",
+            "pct_change_ratio": 0.115942
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "房产服务",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "000560.SZ",
+            "name": "我爱我家",
+            "pct_change_ratio": 0.099715
+          },
+          {
+            "ts_code": "600605.SH",
+            "name": "汇通能源",
+            "pct_change_ratio": 0.099861
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "家用电器",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "002614.SZ",
+            "name": "奥佳华",
+            "pct_change_ratio": 0.100291
+          },
+          {
+            "ts_code": "002638.SZ",
+            "name": "勤上股份",
+            "pct_change_ratio": 0.099768
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "区域地产",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "600503.SH",
+            "name": "华丽家族",
+            "pct_change_ratio": 0.101124
+          },
+          {
+            "ts_code": "600743.SH",
+            "name": "华远控股",
+            "pct_change_ratio": 0.101563
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "出版业",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "600825.SH",
+            "name": "新华传媒",
+            "pct_change_ratio": 0.099688
+          },
+          {
+            "ts_code": "601811.SH",
+            "name": "新华文轩",
+            "pct_change_ratio": 0.099881
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "专用机械",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "603396.SH",
+            "name": "金辰股份",
+            "pct_change_ratio": 0.10017
+          },
+          {
+            "ts_code": "920025.BJ",
+            "name": "N凯达",
+            "pct_change_ratio": 5.807512
+          }
+        ],
+        "is_technology": false
+      }
+    ]
+  }
+}

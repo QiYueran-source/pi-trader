@@ -1,0 +1,240 @@
+{
+  "date": "20260914",
+  "source": "knowledge/交易/过程资料/2026-09-14/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 18,
+    "with_daily_data": 5564,
+    "signals": 13
+  },
+  "signals": [
+    {
+      "code": "600237.SH",
+      "name": "铜峰电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260911"
+      ],
+      "pullback_pct": 6.72,
+      "signal_date": "20260914",
+      "close": 9.84,
+      "breakout_ma": 8.796,
+      "breakout_above_pct": 11.87,
+      "volume": 1254282,
+      "volume_ma": 320954,
+      "volume_ratio": 3.91
+    },
+    {
+      "code": "002134.SZ",
+      "name": "天津普林",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260827"
+      ],
+      "pullback_pct": 9.19,
+      "signal_date": "20260914",
+      "close": 24.71,
+      "breakout_ma": 22.866,
+      "breakout_above_pct": 8.06,
+      "volume": 331733,
+      "volume_ma": 109898,
+      "volume_ratio": 3.02
+    },
+    {
+      "code": "001232.SZ",
+      "name": "嘉立创",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260827",
+        "20260911"
+      ],
+      "pullback_pct": 8.33,
+      "signal_date": "20260914",
+      "close": 197.68,
+      "breakout_ma": 174.106,
+      "breakout_above_pct": 13.54,
+      "volume": 119710,
+      "volume_ma": 58403,
+      "volume_ratio": 2.05
+    },
+    {
+      "code": "000636.SZ",
+      "name": "风华高科",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260911"
+      ],
+      "pullback_pct": 5.2,
+      "signal_date": "20260914",
+      "close": 58.9,
+      "breakout_ma": 53.064,
+      "breakout_above_pct": 11.0,
+      "volume": 2196932,
+      "volume_ma": 1206196,
+      "volume_ratio": 1.82
+    },
+    {
+      "code": "002552.SZ",
+      "name": "宝鼎科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260820"
+      ],
+      "pullback_pct": -5.33,
+      "signal_date": "20260914",
+      "close": 54.0,
+      "breakout_ma": 49.868,
+      "breakout_above_pct": 8.29,
+      "volume": 550510,
+      "volume_ma": 346094,
+      "volume_ratio": 1.59
+    },
+    {
+      "code": "002138.SZ",
+      "name": "顺络电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "pullback_pct": 1.74,
+      "signal_date": "20260914",
+      "close": 49.79,
+      "breakout_ma": 48.154,
+      "breakout_above_pct": 3.4,
+      "volume": 416842,
+      "volume_ma": 284228,
+      "volume_ratio": 1.47
+    },
+    {
+      "code": "002636.SZ",
+      "name": "金安国纪",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260827",
+        "20260910"
+      ],
+      "pullback_pct": 7.91,
+      "signal_date": "20260914",
+      "close": 82.5,
+      "breakout_ma": 75.91,
+      "breakout_above_pct": 8.68,
+      "volume": 843038,
+      "volume_ma": 580583,
+      "volume_ratio": 1.45
+    },
+    {
+      "code": "605277.SH",
+      "name": "新亚电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260826"
+      ],
+      "pullback_pct": 7.61,
+      "signal_date": "20260914",
+      "close": 17.96,
+      "breakout_ma": 17.43,
+      "breakout_above_pct": 3.04,
+      "volume": 244896,
+      "volume_ma": 174169,
+      "volume_ratio": 1.41
+    },
+    {
+      "code": "002141.SZ",
+      "name": "贤丰控股",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260831",
+        "20260914"
+      ],
+      "pullback_pct": -1.83,
+      "signal_date": "20260914",
+      "close": 6.97,
+      "breakout_ma": 6.564,
+      "breakout_above_pct": 6.19,
+      "volume": 2115784,
+      "volume_ma": 1512548,
+      "volume_ratio": 1.4
+    },
+    {
+      "code": "000670.SZ",
+      "name": "盈方微",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260817"
+      ],
+      "pullback_pct": 0.53,
+      "signal_date": "20260914",
+      "close": 7.58,
+      "breakout_ma": 7.294,
+      "breakout_above_pct": 3.92,
+      "volume": 732935,
+      "volume_ma": 526356,
+      "volume_ratio": 1.39
+    },
+    {
+      "code": "300903.SZ",
+      "name": "科翔股份",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260914"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20260914",
+      "close": 108.3,
+      "breakout_ma": 92.28,
+      "breakout_above_pct": 17.36,
+      "volume": 349030,
+      "volume_ma": 260773,
+      "volume_ratio": 1.34
+    },
+    {
+      "code": "688662.SH",
+      "name": "富信科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260814"
+      ],
+      "pullback_pct": -11.38,
+      "signal_date": "20260914",
+      "close": 87.2,
+      "breakout_ma": 84.642,
+      "breakout_above_pct": 3.02,
+      "volume": 120723,
+      "volume_ma": 98478,
+      "volume_ratio": 1.23
+    },
+    {
+      "code": "002289.SZ",
+      "name": "宇顺电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260817"
+      ],
+      "pullback_pct": -9.43,
+      "signal_date": "20260914",
+      "close": 36.99,
+      "breakout_ma": 36.242,
+      "breakout_above_pct": 2.06,
+      "volume": 57461,
+      "volume_ma": 46810,
+      "volume_ratio": 1.23
+    }
+  ]
+}
