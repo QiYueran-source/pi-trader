@@ -1,6 +1,6 @@
 ---
 name: tushare
-description: 通过 tushare-data MCP 获取股票、ETF、指数、交易日历和分钟行情；用于财经分析、交易体系事实采集和市场数据核验。
+description: 通过 tushare-data MCP 获取股票、ETF、指数、宏观、交易日历和分钟行情；用于财经分析、交易体系事实采集和市场数据核验。
 author: pi-trader
 version: 2.0.0
 ---
@@ -20,12 +20,19 @@ version: 2.0.0
 | 指数日线 | `get_index_daily` |
 | 股票基础资料 | `get_stock_basic` |
 | 股票分钟线 | `get_stock_minutes` |
+| ETF 分钟线 | `get_fund_minutes` |
+| ETF/基金基础资料 | `get_fund_basic` |
+| 海外指数 | `get_index_global` |
+| CPI | `get_cpi` |
+| PMI | `get_pmi` |
+| Shibor 利率 | `get_shibor` |
+| 美国国债收益率曲线 | `get_us_treasury_curve` |
 
 ## 数据口径
 
 - 股票代码必须带交易所后缀：`.SH`、`.SZ` 或 `.BJ`。
-- ETF 和基金使用 `get_fund_daily`，不要用股票日线工具代替。
-- 指数使用 `get_index_daily`，不要根据股票代码段推断指数交易所。
+- ETF 和基金使用 `get_fund_daily`，不要用股票日线工具代替；基础资料使用 `get_fund_basic`。
+- 海外指数使用 `get_index_global`；CPI、PMI、Shibor 和美债收益率分别使用对应宏观工具。
 - 全市场涨停筛选使用 `get_market_daily`，传入交易日，不传股票代码。
 - 日期使用 `YYYYMMDD` 或 `YYYY-MM-DD`；分钟线使用完整时间。
 - 每次取数后检查 `ok`、`row_count`、请求日期和 `warnings`。
@@ -47,7 +54,9 @@ version: 2.0.0
 - 大盘环境：`get_index_daily`；
 - 个股均线和成交量：`get_stock_daily`；
 - 开盘段风控：`get_stock_minutes`；
-- 交易日顺延：`get_trade_calendar`。
+- 交易日顺延：`get_trade_calendar`；
+- ETF 轮动：`get_fund_daily`、`get_fund_minutes`、`get_fund_basic`；
+- 海外与宏观环境：`get_index_global`、`get_cpi`、`get_pmi`、`get_shibor`、`get_us_treasury_curve`；
 
 体系脚本可以使用项目内共享数据客户端完成批量计算；Agent 的交互式取数统一使用 MCP。过程资料必须记录日期、接口、实际来源和异常信息。
 

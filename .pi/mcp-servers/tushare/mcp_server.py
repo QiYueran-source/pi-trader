@@ -78,6 +78,23 @@ def normalize_date(value: str, name: str) -> str:
     raise ValueError(f"{name} 必须是 YYYYMMDD 或 YYYY-MM-DD")
 
 
+def normalize_month(value: str, name: str) -> str:
+    for fmt in ("%Y%m", "%Y-%m"):
+        try:
+            return datetime.strptime(value, fmt).strftime("%Y%m")
+        except ValueError:
+            continue
+    raise ValueError(f"{name} 必须是 YYYYMM 或 YYYY-MM")
+
+
+def request_months(start_month: str, end_month: str) -> tuple[str, str]:
+    start = normalize_month(start_month, "start_month")
+    end = normalize_month(end_month, "end_month")
+    if start > end:
+        raise ValueError("start_month 不能晚于 end_month")
+    return start, end
+
+
 def normalize_code(value: str) -> str:
     code = value.strip().upper()
     if not STOCK_CODE_RE.fullmatch(code):
@@ -210,6 +227,41 @@ def tool_stock_minutes(arguments: dict[str, Any]) -> dict[str, Any]:
     return query_minutes({"ts_code": code, "freq": arguments.get("freq", "5min"), "start_date": start_date, "end_date": end_date})
 
 
+def tool_fund_basic(arguments: dict[str, Any]) -> dict[str, Any]:
+    params: dict[str, Any] = {"market": arguments.get("market", "E")}
+    if arguments.get("ts_code"):
+        params["ts_code"] = ",".join(normalize_code(item) for item in arguments["ts_code"].split(","))
+    return query_regular("fund_basic", params)
+
+
+def tool_index_global(arguments: dict[str, Any]) -> dict[str, Any]:
+    start, end = request_dates(arguments["start_date"], arguments["end_date"])
+    params: dict[str, Any] = {"start_date": start, "end_date": end}
+    if arguments.get("ts_code"):
+        params["ts_code"] = arguments["ts_code"].strip().upper()
+    return query_regular("index_global", params)
+
+
+def tool_cpi(arguments: dict[str, Any]) -> dict[str, Any]:
+    start, end = request_months(arguments["start_month"], arguments["end_month"])
+    return query_regular("cn_cpi", {"start_m": start, "end_m": end})
+
+
+def tool_pmi(arguments: dict[str, Any]) -> dict[str, Any]:
+    start, end = request_months(arguments["start_month"], arguments["end_month"])
+    return query_regular("cn_pmi", {"start_m": start, "end_m": end})
+
+
+def tool_shibor(arguments: dict[str, Any]) -> dict[str, Any]:
+    start, end = request_dates(arguments["start_date"], arguments["end_date"])
+    return query_regular("shibor", {"start_date": start, "end_date": end})
+
+
+def tool_us_treasury_curve(arguments: dict[str, Any]) -> dict[str, Any]:
+    start, end = request_dates(arguments["start_date"], arguments["end_date"])
+    return query_regular("us_tycr", {"start_date": start, "end_date": end})
+
+
 _STRING_DATE = {"type": "string", "description": "YYYYMMDD 或 YYYY-MM-DD"}
 _CODE = {"type": "string", "description": "带交易所后缀，如 600519.SH、000001.SZ、920002.BJ"}
 _DATE_RANGE = {"type": "object", "properties": {"start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["start_date", "end_date"]}
@@ -221,7 +273,14 @@ _TOOLS = [
     Tool(name="get_fund_daily", description="查询 ETF 或基金日线，使用 fund_daily 而不是股票 daily。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["ts_code", "start_date", "end_date"]}),
     Tool(name="get_index_daily", description="查询指数日线，如 399006.SZ、000001.SH、000688.SH。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["ts_code", "start_date", "end_date"]}),
     Tool(name="get_stock_basic", description="查询股票名称、行业、市场和上市日期。", inputSchema={"type": "object", "properties": {"ts_code": {"type": "string", "description": "可选，逗号分隔的完整股票代码"}}}),
-    Tool(name="get_stock_minutes", description="查询股票分钟线；官方失败后自动降级到代理，并返回实际来源。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "freq": {"type": "string", "enum": ["1min", "5min", "15min", "30min", "60min"], "default": "5min"}, "start_date": {"type": "string", "description": "YYYY-MM-DD HH:MM:SS"}, "end_date": {"type": "string", "description": "YYYY-MM-DD HH:MM:SS"}}, "required": ["ts_code", "start_date", "end_date"]}),
+    Tool(name="get_stock_minutes", description="查询股票或 ETF 分钟线；官方失败后自动降级到代理，并返回实际来源。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "freq": {"type": "string", "enum": ["1min", "5min", "15min", "30min", "60min"], "default": "5min"}, "start_date": {"type": "string", "description": "YYYY-MM-DD HH:MM:SS"}, "end_date": {"type": "string", "description": "YYYY-MM-DD HH:MM:SS"}}, "required": ["ts_code", "start_date", "end_date"]}),
+    Tool(name="get_fund_minutes", description="查询 ETF 分钟线；官方失败后自动降级到代理，并返回实际来源。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "freq": {"type": "string", "enum": ["1min", "5min", "15min", "30min", "60min"], "default": "1min"}, "start_date": {"type": "string", "description": "YYYY-MM-DD HH:MM:SS"}, "end_date": {"type": "string", "description": "YYYY-MM-DD HH:MM:SS"}}, "required": ["ts_code", "start_date", "end_date"]}),
+    Tool(name="get_fund_basic", description="查询 ETF 或基金基础信息、费率、上市状态和跟踪标的。", inputSchema={"type": "object", "properties": {"market": {"type": "string", "default": "E", "description": "基金市场，E 表示交易所基金"}, "ts_code": {"type": "string", "description": "可选，逗号分隔的完整基金代码"}}}),
+    Tool(name="get_index_global", description="查询海外指数日线，例如 SPX。", inputSchema={"type": "object", "properties": {"ts_code": {"type": "string", "description": "可选，海外指数代码，如 SPX"}, "start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["start_date", "end_date"]}),
+    Tool(name="get_cpi", description="查询中国居民消费价格指数月度数据。", inputSchema={"type": "object", "properties": {"start_month": {"type": "string", "description": "YYYYMM 或 YYYY-MM"}, "end_month": {"type": "string", "description": "YYYYMM 或 YYYY-MM"}}, "required": ["start_month", "end_month"]}),
+    Tool(name="get_pmi", description="查询中国制造业 PMI 月度数据。", inputSchema={"type": "object", "properties": {"start_month": {"type": "string", "description": "YYYYMM 或 YYYY-MM"}, "end_month": {"type": "string", "description": "YYYYMM 或 YYYY-MM"}}, "required": ["start_month", "end_month"]}),
+    Tool(name="get_shibor", description="查询 Shibor 利率数据，用于流动性和利率环境判断。", inputSchema={"type": "object", "properties": {"start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["start_date", "end_date"]}),
+    Tool(name="get_us_treasury_curve", description="查询美国国债收益率曲线数据。", inputSchema={"type": "object", "properties": {"start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["start_date", "end_date"]}),
 ]
 
 server = Server("tushare-data")
@@ -242,6 +301,13 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         "get_index_daily": tool_index_daily,
         "get_stock_basic": tool_stock_basic,
         "get_stock_minutes": tool_stock_minutes,
+        "get_fund_minutes": tool_stock_minutes,
+        "get_fund_basic": tool_fund_basic,
+        "get_index_global": tool_index_global,
+        "get_cpi": tool_cpi,
+        "get_pmi": tool_pmi,
+        "get_shibor": tool_shibor,
+        "get_us_treasury_curve": tool_us_treasury_curve,
     }
     try:
         if name not in handlers:
