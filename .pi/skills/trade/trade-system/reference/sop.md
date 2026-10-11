@@ -25,6 +25,25 @@
 - 实际成交、持仓和资金变化交给 `trade_management` 技能登记。
 - 完成一个完整工作后，调用 `summary` 技能在 `knowledge/摘要/.abstract/` 写入简报。
 
+## 落盘路径与命名
+
+路径模板以 `knowledge-management` 技能的 `reference/routes.md` 为准；写入前先检查目标目录、相邻日期和同体系文件，优先沿用已有结构和命名。
+
+- 过程资料：`knowledge/交易/过程资料/<YYYY-MM-DD>/<体系名称>/<产物名称>.<扩展名>`
+  - 产物名称应准确反映内容，例如 `strategy_state.json`、`signal_facts.json`、`signal_report.md`。
+- 交易计划：`knowledge/交易/交易计划/<YYYY-MM-DD>/<体系名称>_交易计划.md`
+- 交易复盘：`knowledge/交易/交易复盘/<YYYY-MM-DD>/<体系名称>_复盘.md`
+- 体系简报：`knowledge/摘要/.abstract/YYYY-MM-DD_<简短主题>.txt`
+
+命名要求：
+
+- 日期统一使用 `YYYY-MM-DD`。
+- 体系名称和 `system-id` 以 `system.yml` 为准，不自行改写。
+- 过程产物文件名使用稳定、简短、能表达内容的英文 `snake_case`。
+- 交易计划和复盘文件名应包含体系名称及 `_交易计划` 或 `_复盘` 后缀。
+- 新建文件前先检查是否已有同日、同体系、同类型文件，避免重复创建。
+- 具体体系已有稳定命名时，兼容历史结构，不为统一格式强行批量改名。
+
 ## 禁止事项
 
 - 不用旧日期、未来日期或其他体系的结果替代当前缺失结果。
