@@ -1,29 +1,14 @@
-# 基于Agent的ETF轮动体系 · 每日复盘
+# ETF轮动 · 每日复盘
 
-## 目标
+交易日 18:35 复盘当日计划、模拟执行和市场事实，为下一交易日计划提供输入。
 
-在交易日 18:35 复盘当日计划、模拟执行和过程事实，为下一交易日决策留下正式复盘。业务顺序以本体系 `体系运作流程.md` 为准。
+## 权威来源
+- `体系运作流程.md`、当日正式计划、当日执行事实和复盘模板。
+- 市场数据使用 `tushare-data` MCP；账户、交易、现金和持仓使用 `trade-management` MCP。
 
-## 执行前必读
+## 执行
+1. 确认交易日，读取计划与 `portfolio_snapshot`。
+2. 对照计划和执行，记录偏差、价格来源及账户快照。
+3. 写入 `knowledge/交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系_复盘.md`。
 
-1. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/system.yml`
-2. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/体系运作流程.md`
-3. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/规则库/`
-4. `knowledge/交易/交易计划/{今天日期}/基于Agent的ETF轮动体系_交易计划.md`
-5. 当日过程资料
-6. MNZH 模拟账户的交易记录、持仓、现金和盈亏
-7. `trade-management`、`tushare`、`knowledge-management` 和 `summary` 技能
-
-## 执行边界
-
-- 通过交易管理 MCP 查询账户事实，不使用旧交易 CLI。
-- 完成执行复盘和体系复盘；无成交时也要说明是否按计划维持。
-- 可通过 Tushare MCP 补充当日 ETF、指数和宏观事实。
-- 复盘写入：`knowledge/交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系_复盘.md`。
-- 不生成下一交易日计划，不修改静态规则，不处理历史文件。
-
-## 输出
-
-- 最终消息给出执行结论、持仓表现、体系问题和下一交易日参考。
-- 写入简报：`knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-review.txt`。
-- 完成后调用 `summary` 技能。
+无成交时仍输出维持结论；输入无效时输出链路异常且停止依赖步骤。写入简报 `knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-review.txt`，最终仅报告复盘结论和待处理风险。

@@ -1,33 +1,14 @@
-# 基于Agent的ETF轮动体系 · 生成下一交易日计划
+# ETF轮动 · 生成下一交易日计划
 
-## 目标
+交易日 18:50 基于当日复盘、账户快照和体系规则生成下一交易日唯一模拟计划。
 
-在交易日 18:50 根据正式复盘、过程资料、MNZH 模拟持仓和规则库，生成下一交易日唯一模拟计划。业务顺序以本体系 `体系运作流程.md` 为准。
+## 权威来源
+- `system.yml`、`体系运作流程.md`、`评估框架.md`、`调仓逻辑.md`、`风控逻辑.md`、当日正式复盘。
+- 市场数据仅使用 `tushare-data` MCP；仓位与现金仅使用 `trade-management.portfolio_snapshot`。
 
-## 执行前必读
+## 执行
+1. 确认交易日和输入日期一致。
+2. 获取 ETF、指数、宏观与账户事实，按规则形成唯一动作。
+3. 写入过程资料及 `knowledge/交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`。
 
-1. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/system.yml`
-2. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/体系运作流程.md`
-3. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/规则库/`
-4. `knowledge/交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系_复盘.md`
-5. 当日过程资料和 MNZH 模拟账户当前持仓
-6. `tushare`、`trade-management`、`knowledge-management` 和 `summary` 技能
-
-## 执行边界
-
-- 先确认交易日，再读取正式复盘和当前持仓。
-- 使用 Tushare MCP 获取 ETF 日线、ETF 基础资料、A 股指数、海外指数和可用宏观证据。
-- 按评估框架、调仓逻辑和风控逻辑形成唯一动作：继续持有、切换至另一只 ETF 或切换至 `511990.SH`。
-- 将环境评估、候选比较和风控依据写入：`knowledge/交易/过程资料/{今天日期}/基于Agent的ETF轮动体系/`。
-- 计划写入：`knowledge/交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`。
-- 不执行交易，不修改静态规则，不处理历史文件。
-
-## 计划最低内容
-
-必须包含当前持仓、市场环境、候选排序、风控状态、唯一动作、目标标的、执行时点、执行价格规则、核心理由和失效条件。
-
-## 输出
-
-- 最终消息只给下一交易日、唯一动作、核心理由、风险和失效条件。
-- 写入简报：`knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`。
-- 完成后调用 `summary` 技能。
+输入无效时输出链路异常且不生成计划。写入简报 `knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`，最终仅报告下一交易日动作、理由、风险和计划路径。

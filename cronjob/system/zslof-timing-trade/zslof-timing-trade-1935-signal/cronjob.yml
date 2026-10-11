@@ -2,7 +2,7 @@
 name: zslof-timing-trade-1935-signal
 job_id: 8c5309d7f2bd
 schedule: "35 19 * * *"        # 每天 19:35（交易日判断由脚本内处理；顺延避开 18:00-19:25 其他体系 cron）
-workdir: /hermes-trader
+workdir: /pi-trader
 mode: agent
 model: deepseek-v4-flash-0731 # Provider: custom
 deliver: origin             # 投递到飞书

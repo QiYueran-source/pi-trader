@@ -6,6 +6,7 @@ system-name: 基于Agent的ETF轮动体系
 system-overview: "在固定6只ETF与现金替代之间，由Agent基于统一评估框架、调仓逻辑和风控逻辑做日频轮动判断，形成计划、模拟执行、复盘和进化闭环。"
 updated_at: 2026-10-11T12:00:00Z
 maturity: 观察体系
+cronjob-directory: agent-etf-rotation
 directory:
   - "体系介绍.md: 体系总览和文件索引"
   - "体系运作流程.md: 业务闭环和阶段输入输出"

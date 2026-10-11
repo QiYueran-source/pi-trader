@@ -6,6 +6,7 @@ tags:
   - 交易体系
   - ETF轮动
   - ETF池
+system-id: agent_etf_rotation_system
 ---
 
 # 基于Agent的ETF轮动体系 - ETF池

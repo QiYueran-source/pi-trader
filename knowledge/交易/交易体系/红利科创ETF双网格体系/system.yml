@@ -6,6 +6,11 @@ system-name: 红利科创ETF双网格体系
 system-overview: "以红利 ETF 与科创 50 ETF 为固定标的，在 normal、bull、bear 三态之间运行双网格与趋势持有模式。脚本生成日期化过程事实，Agent 形成状态提案，状态脚本负责校验和审计写入。"
 updated_at: 2026-10-11T00:00:00Z
 maturity: 候选体系
+directory:
+  params: 可审阅的网格与风控参数。
+  scripts: 历史计算实现；运行任务以 MCP 和体系规则为准。
+  references: 稳定模板、方法与证据。
+  更新日志: 体系演进记录。
 process-output:
   root: "knowledge/交易/过程资料/{date}/红利科创ETF双网格体系"
   files:

@@ -1,4 +1,5 @@
 ---
+system-id: agent_etf_rotation_system
 title: 基于Agent的ETF轮动体系 - 货币ETF档案
 summary: 记录货币ETF作为现金替代时的定位、用途、风险和使用条件。
 date: 2026-10-11
