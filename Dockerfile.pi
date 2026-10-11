@@ -12,7 +12,12 @@ RUN sed -i \
     openssh-client \
     ripgrep \
     jq \
+    tzdata \
+  && ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+  && echo Asia/Shanghai > /etc/timezone \
   && rm -rf /var/lib/apt/lists/*
+
+ENV TZ=Asia/Shanghai
 
 ARG NPM_REGISTRY=https://registry.npmmirror.com
 ARG PI_UID=1000
