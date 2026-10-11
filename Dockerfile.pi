@@ -9,6 +9,7 @@ RUN sed -i \
     bash \
     ca-certificates \
     git \
+    openssh-client \
     ripgrep \
     jq \
   && rm -rf /var/lib/apt/lists/*
