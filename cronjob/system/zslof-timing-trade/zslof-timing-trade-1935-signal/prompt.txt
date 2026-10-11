@@ -3,7 +3,7 @@
 交易日 19:35 按体系规则计算收盘信号，生成下一交易日唯一正式计划。
 
 ## 权威来源
-- `system.yml`、`体系运作流程.md`、`择时参数.md` 和 `交易计划/RULES.md`。
+- `system.yml`、`体系运作流程.md`、`择时参数.md` 和 `.pi/skills/trade/trade-system/SKILL.md`。
 - 交易日和行情仅使用 `tushare-data` MCP。
 
 ## 执行

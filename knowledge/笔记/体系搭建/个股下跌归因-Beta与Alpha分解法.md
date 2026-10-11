@@ -8,10 +8,6 @@ tags:
   - 归因
 updated: 2026-10-08 23:51:19
 links:
-  - uuid: 87ab5dee2cda481e9847296122e3998d
-    path: 笔记/RULES.md
-    relations:
-      - 引用
   - uuid: 130ad2ae8064459fbb0d5d42dbb4b0c0
     path: 笔记/体系搭建/2026-06-17/如何搭建自己的交易系统.md
     relations:

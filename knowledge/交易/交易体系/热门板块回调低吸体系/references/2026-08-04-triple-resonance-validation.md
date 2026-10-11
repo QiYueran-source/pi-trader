@@ -6,7 +6,7 @@ tags:
   - 回测验证
   - 三重共振
 updated: 2026-08-05 07:38:55
-links: []
+
 system-id: hot_sector_pullback_system
 ---
 

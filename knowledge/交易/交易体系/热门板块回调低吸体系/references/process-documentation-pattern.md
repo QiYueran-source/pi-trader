@@ -5,7 +5,7 @@ tags:
   - 交易体系
   - 参考
 updated: 2026-08-05 07:38:33
-links: []
+
 system-id: hot_sector_pullback_system
 ---
 
@@ -94,7 +94,6 @@ Risk review without signal changes can output "normal, no change" — but the wh
 
 ```
 交易/过程资料/
-├── RULES.md                    ← Top-level rules
 ├── {date}/                     ← By-date first-level directory
 │   └── 热门板块回调低吸体系/
 │       ├── 板块热度研判.md       ← Hot sector pullback (mandatory)

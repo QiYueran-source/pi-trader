@@ -1,67 +1,11 @@
 # 23:55 每日摘要聚合
 
-你是 Hermes Agent，运行在 /hermes-trader 仓库内。每天 23:55 执行一次本任务，将当天所有工作简报聚合为正式摘要文档并同步。
+每天 23:55 聚合当天工作简报，生成正式摘要并汇报结果。
 
-## 执行步骤
+1. 读取 `knowledge/摘要/.abstract/` 中以 `{今天日期}_` 开头的简报文件。没有简报则静默结束。
+2. 按 `.pi/skills` 中摘要/知识管理相关技能的规范整理内容，生成 `knowledge/摘要/摘要_{今天日期}.md`。必须包含有效 frontmatter（`uuid`、`title`、`date`、`tags`、`links`），正文按主题归并，不简单拼接原文。历史文档里的规则引用保持原样；新摘要不得引用已移除的 `RULES.md`。
+3. 检查摘要文件完整可读后，删除本次已处理的简报文件。若摘要写入失败，保留简报；若清理失败，说明剩余文件。
+4. 当前项目未配置知识图谱同步 MCP，不调用旧知识图谱 CLI；不执行 Git 分支切换、提交或推送命令。
+5. 向用户报告摘要生成状态、文件路径、知识图谱同步状态（标明未配置）及 1–5 条摘要要点。
 
-### 第1步：读取当天简报
-
-运行以下命令，读取当天所有简报：
-
-```bash
-cd /hermes-trader/cronjob/global/global-2355-summary-aggregation && /opt/hermes/.venv/bin/python3 brief_reader.py
-```
-
-- 输出为空（今日无简报）→ 直接结束，无需任何操作，无需通知用户
-- 输出有内容 → 继续下一步
-
-### 第2步：生成正式摘要文档
-
-将读取到的所有简报内容整理为 `knowledge/摘要/摘要_YYYY-MM-DD.md`。
-
-要求：
-- 包含完整 frontmatter（`uuid`、`title`、`date`、`tags`、`links`）
-- 正文按简报内容分类整理，不要简单罗列，要重新组织
-- 参考 `knowledge/摘要/RULES.md` 的结构要求
-
-### 第3步：同步
-
-1. **同步知识图谱（KG）：**
-
-```bash
-cd /hermes-trader && /opt/hermes/.venv/bin/python3 /opt/data/skills/knowledge/knowledge-graph/scripts/kg_cli.py sync --path 摘要/摘要_YYYY-MM-DD.md
-```
-
-2. **Git 提交推送：**
-
-```bash
-cd /hermes-trader && git switch hermes-trader
-GIT_SSH_COMMAND="ssh -i /home/hermes/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new" git add knowledge
-GIT_SSH_COMMAND="ssh -i /home/hermes/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new" git commit -m "docs: daily summary for YYYY-MM-DD"
-GIT_SSH_COMMAND="ssh -i /home/hermes/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new" git push personal hermes-trader
-```
-
-> ⚠️ **Git 边界（PROGRAM.md）**：只允许 `git add knowledge cronjob`，禁止 `git add -A` / `git add .`；只允许推私有远程 `personal`，禁止任何 origin 操作。
-
-### 第4步：清理已处理的简报
-
-运行以下命令，删除当天已处理的简报文件：
-
-```bash
-cd /hermes-trader/cronjob/global/global-2355-summary-aggregation && /opt/hermes/.venv/bin/python3 brief_reader.py --clean
-```
-
-### 第5步：通知用户
-
-向用户推送聚合结果，内容包含：
-- ✅ 是否成功
-- 摘要文件路径
-- 同步状态（KG / Git）
-- **摘要要点**：列出当天完成的关键事项（1-5 个 bullet），让用户不看文件也知道今天干了什么
-
-## 重要规则
-
-1. **不要贴整篇摘要正文给用户**，只汇报要点和状态。
-2. **每一步都要确认执行成功**，如果某步失败，将错误信息包含在推送中告知用户。
-3. **清理简报这一步不能漏**，否则简报文件会持续堆积。
-4. **非交易日也会执行**（摘要聚合跟交易日无关），有简报就聚合，没有就静默。
+不得使用旧 Hermes 路径、旧 Python 环境、旧辅助脚本或旧远程仓库配置。任何步骤失败时，说明阶段和原因，不清理未成功处理的简报。

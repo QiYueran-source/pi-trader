@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """
 扫描所有交易体系。
 
@@ -13,7 +13,7 @@ import json
 import sys
 from pathlib import Path
 
-SYSTEMS_DIR = Path("/hermes-trader/knowledge/交易/交易体系")
+SYSTEMS_DIR = Path("/pi-trader/knowledge/交易/交易体系")
 
 
 def scan_systems():

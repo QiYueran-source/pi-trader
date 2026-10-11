@@ -6,7 +6,7 @@ tags:
   - 参考
 updated: 2026-08-05 07:38:33
 system-id: div_etf_grid_trade
-links: []
+
 ---
 
 # v3 双态混合体系设计记录
