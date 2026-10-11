@@ -30,7 +30,7 @@ job_id:
 schedule: "50 18 * * *"
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731
+model: deepseek-v4-flash
 deliver: origin
 prompt: prompt.txt
 created_at: YYYY-MM-DD
