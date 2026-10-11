@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """
 扫描指定日期下的交易计划文件。
 
@@ -16,7 +16,7 @@ import sys
 from datetime import date, datetime
 from pathlib import Path
 
-TRADE_PLAN_DIR = Path("/hermes-trader/knowledge/交易/交易计划")
+TRADE_PLAN_DIR = Path("/pi-trader/knowledge/交易/交易计划")
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
     files = sorted(plan_dir.glob("*.md"))
     for f in files:
         # 输出 knowledge 相对路径
-        print(f.relative_to(Path("/hermes-trader/knowledge")))
+        print(f.relative_to(Path("/pi-trader/knowledge")))
 
 
 if __name__ == "__main__":

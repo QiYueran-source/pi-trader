@@ -1,27 +1,12 @@
 ---
-uuid: 8f4c18ef3da14cc2a5ab88d4ddfc737d
 title: 基于Agent的ETF轮动体系 - 货币ETF档案
+summary: 记录货币ETF作为现金替代时的定位、用途、风险和使用条件。
+date: 2026-10-11
 tags:
   - 交易体系
   - ETF轮动
-  - Agent
   - ETF档案
-  - 货币ETF
-updated: 2026-06-09 00:00:00
-links:
-  - uuid: 28773d130e8c4deea2075b8729d8faea
-    path: 交易/交易体系/RULES.md
-    relations:
-      - 遵循
-  - uuid: b8c23188c7a2440a8c5800b616401467
-    path: 交易/交易体系/基于Agent的ETF轮动体系/规则库/评估框架.md
-    relations:
-      - 关联
-  - uuid: 178984bac04e49fea2d263fb61af1ace
-    path: 交易/交易体系/基于Agent的ETF轮动体系/规则库/ETF池.md
-    relations:
-      - 参考
-system-id: agent_etf_rotation_system
+  - 现金替代
 ---
 
 # 基于Agent的ETF轮动体系 - 货币ETF档案

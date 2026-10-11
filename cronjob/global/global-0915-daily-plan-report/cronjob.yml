@@ -2,14 +2,14 @@
 name: global-0915-daily-plan-report
 job_id: ba83fb2e1dfe
 schedule: "15 9 * * *"        # 每天 9:15（交易日判断由脚本内处理）
-workdir: /hermes-trader
+workdir: /pi-trader
 mode: agent
 model: deepseek-v4-flash-0731 # Provider: custom
 deliver: origin             # 投递到飞书
 prompt: prompt.txt          # 任务指令文件
 utils:
-  - /hermes-trader/cronjob/utils/is_trading_day.py
+  - /pi-trader/cronjob/utils/is_trading_day.py
 scripts:
-  - /hermes-trader/cronjob/global/global-0915-daily-plan-report/list_today_plans.py
+  - /pi-trader/cronjob/global/global-0915-daily-plan-report/list_today_plans.py
 created_at: 2026-06-12
 description: 每工作日 9:15 判断交易日、扫描当日交易计划，agent 汇总为执行简报推送飞书

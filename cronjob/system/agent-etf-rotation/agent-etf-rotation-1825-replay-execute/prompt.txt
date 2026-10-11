@@ -1,23 +1,29 @@
-# ETF轮动体系 · 回放执行
+# 基于Agent的ETF轮动体系 · 回放执行
 
 ## 目标
 
-在交易日盘后，严格回放并模拟执行当日正式计划；不重新做市场判断。
+在交易日 18:25 严格回放当日正式计划，不重新判断市场，不调整计划。业务顺序以本体系 `体系运作流程.md` 为准。
 
 ## 执行前必读
 
 1. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/system.yml`
 2. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/体系运作流程.md`
-3. `knowledge/交易/交易计划/{今天日期}/基于Agent的ETF轮动体系.md`
+3. `knowledge/交易/交易体系/基于Agent的ETF轮动体系/规则库/`
+4. `knowledge/交易/交易计划/{今天日期}/基于Agent的ETF轮动体系_交易计划.md`
+5. `trade-management` 技能和交易管理 MCP
+6. `tushare` 技能和 Tushare MCP
 
 ## 执行边界
 
-- 按体系流程完成交易日判断、计划校验、价格回放和模拟记账。
-- 仅处理 `agent_etf_rotation_system`，使用 `hermes-trade` 的 `mnzh` 模拟账户。
-- 无正式计划时静默退出；计划不完整、价格数据缺失或条件未触发时，按体系流程记录结果，不得推断、补造或替代执行。
-- 不生成新计划、不修改静态规则、不处理历史文件。
+- 仅处理 `agent_etf_rotation_system` 的 MNZH 模拟账户。
+- 读取正式计划中的唯一动作、目标标的、执行时点和价格规则。
+- 使用 `get_fund_minutes` 获取 ETF 指定时点价格；官方失败且代理可用时记录实际来源。
+- 通过交易管理 MCP 登记模拟成交和更新持仓；不执行真实交易。
+- 无正式计划、计划缺字段、分钟数据缺失或条件未触发时如实记录，不补造价格，不替代执行。
+- 不生成新计划，不修改静态规则，不处理历史文件。
 
 ## 输出
 
-- 按体系流程输出执行结果并写入简报：`knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-1825-replay-execute.txt`。
-- 最终消息只说明计划动作、执行结果和持仓变化。
+- 输出执行动作、成交价格、成交数量、持仓变化和异常。
+- 写入简报：`knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-replay-execute.txt`。
+- 完成后调用 `summary` 技能。

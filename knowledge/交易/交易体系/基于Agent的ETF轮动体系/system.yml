@@ -3,20 +3,17 @@ system-id: agent_etf_rotation_system
 account-id:
   - MNZH
 system-name: 基于Agent的ETF轮动体系
-system-overview: "在固定 6 只 ETF 与现金替代之间，由 Agent 基于统一评估框架、调仓逻辑和风控逻辑做日频轮动判断，强调计划→执行→复盘→进化闭环，允许引入量化证据但不退化为纯量化机械模型。"
-updated_at: 2026-08-10T00:00:00Z
+system-overview: "在固定6只ETF与现金替代之间，由Agent基于统一评估框架、调仓逻辑和风控逻辑做日频轮动判断，形成计划、模拟执行、复盘和进化闭环。"
+updated_at: 2026-10-11T12:00:00Z
 maturity: 观察体系
 directory:
-  - "体系介绍.md: 总纲、边界、文件职责与进化方向"
-  - "体系运作流程.md: 每日计划→推送→执行→复盘SOP"
-  - "常用代码速查.md: Tushare接口、字段与最小可运行示例"
-  - "更新日志/: 体系结构、规则与流程变更记录"
-  - "规则库/"
-  - "  ETF池.md: 固定6只候选ETF与现金替代的边界定义"
-  - "  评估框架.md: 环境判断、候选比较与排序逻辑"
-  - "  调仓逻辑.md: 继续持有、切换与转现金规则"
-  - "  风控逻辑.md: 置信度、情景失效、回撤与事件风险约束"
-  - "  ETF档案/: 各ETF的专项驱动、风险与检查提示"
+  - "体系介绍.md: 体系总览和文件索引"
+  - "体系运作流程.md: 业务闭环和阶段输入输出"
+  - "常用代码速查.md: Tushare MCP和交易管理MCP入口"
+  - "规则库/: ETF池、评估、调仓、风控和资产档案"
+  - "更新日志/: 体系结构、规则和流程变更"
 process-output:
-  root: "交易/过程资料/{date}/基于Agent的ETF轮动体系"
-  content: "Agent日频评估、候选比较、调仓判断与风控依据 Markdown"
+  root: "knowledge/交易/过程资料/{date}/基于Agent的ETF轮动体系"
+  content: "当日环境评估、候选比较、调仓判断和风控依据"
+plan-output: "knowledge/交易/交易计划/{date}/基于Agent的ETF轮动体系_交易计划.md"
+review-output: "knowledge/交易/交易复盘/{date}/基于Agent的ETF轮动体系_复盘.md"
