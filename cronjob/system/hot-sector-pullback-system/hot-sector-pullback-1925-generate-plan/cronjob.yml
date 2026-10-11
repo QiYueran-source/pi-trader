@@ -1,9 +1,0 @@
-# 热门板块回调低吸体系 · 生成下一交易日交易计划 - Cronjob 配置
-name: hot-sector-pullback-1925-generate-plan
-schedule: "25 19 * * *"        # 每天 19:25（交易日判断由脚本内处理）
-workdir: /hermes-trader
-mode: agent
-model: deepseek-v4-flash-0731    # Provider: custom
-deliver: origin                 # 投递到飞书
-prompt: prompt.txt              # 任务指令文件
-description: 交易日 19:25 依据正式复盘、过程事实和体系规则生成下一交易日唯一模拟计划
