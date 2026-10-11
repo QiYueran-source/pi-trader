@@ -83,7 +83,7 @@ prompt.txt
 - `cronjob.yml` 的 `name` 与任务目录名完全一致。
 - `schedule` 是合法 cron 表达式，且与名称中的 `HHMM` 一致。
 - `prompt` 指向实际存在的 `prompt.txt`。
-- `workdir`、`scripts`、`utils` 中的路径实际存在或能在运行环境中使用。
+- `workdir`、`scripts` 等路径实际存在或能在运行环境中使用。
 - 体系型任务的目录、`system-id` 和所属体系一致。
 - `prompt.txt` 自包含，明确输入、动作、输出和异常汇报方式。
 - 修改 prompt 后，同时更新仓库文件和 Pi 注册任务中的 prompt 内容。
