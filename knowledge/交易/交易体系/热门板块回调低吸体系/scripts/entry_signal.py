@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """基于候选股、均线突破和放量条件生成建仓信号。"""
 
 from __future__ import annotations

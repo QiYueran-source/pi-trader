@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """评估持仓的开盘信号、审慎标签与日线退出风险。"""
 
 from __future__ import annotations
@@ -153,7 +153,12 @@ def classify_opening_signal(bars: pd.DataFrame, config: dict, reference_open: fl
     }
 
 
-TUSHARE_PROXY_SCRIPTS = Path("/opt/data/skills/data/tushare-proxy/scripts")
+TUSHARE_PROXY_SCRIPTS = Path(
+    os.environ.get(
+        "TUSHARE_PROXY_SCRIPTS",
+        "/pi-trader/.pi/skills/source/tushare/tushare-proxy/scripts",
+    )
+)
 
 
 def fetch_official_bars(client, code: str, opening: dict, directory_date: str):

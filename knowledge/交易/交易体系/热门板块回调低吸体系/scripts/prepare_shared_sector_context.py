@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """复用同日红利 ETF 网格的全市场板块环境事实。"""
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ from pathlib import Path
 from runtime_support import REPO_ROOT, normalize_date, process_dir
 
 SOURCE_SYSTEM_ID = "div_etf_grid_trade"
-SOURCE_SYSTEM_NAME = "红利ETF网格"
+SOURCE_SYSTEM_NAME = "红利科创ETF双网格体系"
 SOURCE_ARTIFACT = "sector_facts"
 TARGET_ARTIFACT = "shared_sector_context"
 

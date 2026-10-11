@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """将指定日期的过程资料 JSON 严格渲染为 Markdown。"""
 
 from __future__ import annotations
@@ -130,7 +130,7 @@ def main() -> None:
         target["template_filename"],
         document,
         input_path,
-        uuid.uuid5(uuid.NAMESPACE_URL, f"hermes:{SYSTEM_ID}:{document['date']}:{args.template}").hex,
+        uuid.uuid5(uuid.NAMESPACE_URL, f"pi-trader:{SYSTEM_ID}:{document['date']}:{args.template}").hex,
     )
     write_atomically(output_path, markdown)
     print(output_path)

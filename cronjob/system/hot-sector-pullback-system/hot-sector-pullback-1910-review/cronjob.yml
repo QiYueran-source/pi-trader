@@ -1,9 +1,9 @@
-# 热门板块回调低吸体系 · 每日复盘 - Cronjob 配置
+# 热门板块回调低吸体系 · 每日复盘
 name: hot-sector-pullback-1910-review
-schedule: "10 19 * * *"        # 每天 19:10（交易日判断由脚本内处理）
-workdir: /hermes-trader
+schedule: "10 19 * * *"        # 每天 19:10；交易日判断由任务执行
+workdir: /pi-trader
 mode: agent
 model: deepseek-v4-flash-0731   # Provider: custom
-deliver: origin                 # 投递到飞书
-prompt: prompt.txt              # 任务指令文件
-description: 交易日 19:10 复盘正式计划、模拟执行和过程事实，并生成可追溯复盘
+deliver: origin
+prompt: prompt.txt
+description: 交易日 19:10 复盘正式计划、模拟执行和过程事实，并生成可追溯复盘。

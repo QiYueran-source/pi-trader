@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """按涨停、回调均线和反弹窗口筛选候选股。"""
 
 from __future__ import annotations

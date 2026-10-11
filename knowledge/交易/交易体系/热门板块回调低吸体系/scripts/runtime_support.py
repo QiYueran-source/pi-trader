@@ -7,9 +7,9 @@ import os
 from datetime import date, datetime
 from pathlib import Path
 
-REPO_ROOT = Path(os.environ.get("HERMES_REPO_ROOT", "/hermes-trader")).expanduser()
-if not REPO_ROOT.exists():
-    REPO_ROOT = Path(__file__).resolve().parents[5]
+REPO_ROOT = Path(
+    os.environ.get("PI_PROJECT_DIR", Path(__file__).resolve().parents[5])
+).expanduser()
 
 SYSTEM_DIR = REPO_ROOT / "knowledge/交易/交易体系/热门板块回调低吸体系"
 PARAMS_DIR = SYSTEM_DIR / "params"

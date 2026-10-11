@@ -1,4 +1,4 @@
-#!/opt/hermes/.venv/bin/python3
+#!/usr/bin/env python3
 """计算候选行业的涨停、连板和技术热度事实。"""
 
 from __future__ import annotations
