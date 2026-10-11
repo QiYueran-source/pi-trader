@@ -4,7 +4,7 @@ job_id: 847a5fb78d1c
 schedule: "30 21 * * *"
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731
+model: deepseek-v4-flash
 deliver: origin
 prompt: prompt.txt
 created_at: 2026-06-29

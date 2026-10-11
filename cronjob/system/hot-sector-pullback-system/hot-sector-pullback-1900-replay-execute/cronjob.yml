@@ -3,7 +3,7 @@ name: hot-sector-pullback-1900-replay-execute
 schedule: "0 19 * * *"        # 每天 19:00；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731   # Provider: custom
+model: deepseek-v4-flash   # Provider: custom
 deliver: origin
 prompt: prompt.txt
 description: 交易日 19:00 严格回放当日正式计划，并在 MNZH 模拟账户记账。

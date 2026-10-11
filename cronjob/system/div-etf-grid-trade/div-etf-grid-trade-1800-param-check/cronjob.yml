@@ -4,7 +4,7 @@ job_id:
 schedule: "0 18 * * *"    # 每天 18:00
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731 # Provider: custom
+model: deepseek-v4-flash # Provider: custom
 deliver: origin             # 投递到飞书
 prompt: prompt.txt          # 任务指令文件
 created_at: 2026-06-12

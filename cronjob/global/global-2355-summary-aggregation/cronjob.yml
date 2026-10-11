@@ -3,7 +3,7 @@ name: global-2355-summary-aggregation
 schedule: "55 23 * * *"
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731
+model: deepseek-v4-flash
 deliver: origin
 prompt: prompt.txt
 created_at: 2026-06-12

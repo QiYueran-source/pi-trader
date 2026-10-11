@@ -3,7 +3,7 @@ name: global-2230-manual-review
 schedule: "30 22 * * *"
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731
+model: deepseek-v4-flash
 deliver: origin
 prompt: prompt.txt
 created_at: 2026-09-28

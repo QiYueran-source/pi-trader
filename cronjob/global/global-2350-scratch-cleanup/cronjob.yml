@@ -2,7 +2,7 @@ name: global-2350-scratch-cleanup
 schedule: "50 23 * * *"
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731
+model: deepseek-v4-flash
 deliver: origin
 prompt: prompt.txt
 created_at: 2026-10-11

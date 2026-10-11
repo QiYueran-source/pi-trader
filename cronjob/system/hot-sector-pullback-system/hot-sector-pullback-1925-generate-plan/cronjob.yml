@@ -3,7 +3,7 @@ name: hot-sector-pullback-1925-generate-plan
 schedule: "25 19 * * *"        # 每天 19:25；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731   # Provider: custom
+model: deepseek-v4-flash   # Provider: custom
 deliver: origin
 prompt: prompt.txt
 description: 交易日 19:25 依据正式复盘、过程事实和体系规则生成下一交易日唯一模拟计划。

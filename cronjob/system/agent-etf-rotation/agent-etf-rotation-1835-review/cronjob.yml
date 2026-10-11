@@ -4,7 +4,7 @@ job_id: f690f86badf7
 schedule: "35 18 * * *"        # 每天 18:35；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent
-model: deepseek-v4-flash-0731
+model: deepseek-v4-flash
 deliver: origin
 prompt: prompt.txt
 created_at: 2026-06-14
