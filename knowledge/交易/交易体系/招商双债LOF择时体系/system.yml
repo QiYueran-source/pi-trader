@@ -3,26 +3,11 @@ system-id: zslof_timing_trade
 account-id:
   - YHZQ
 system-name: 招商双债LOF择时体系
-system-overview: "基于招商双债增强债券 LOF（161716.SZ）的机械波段回归择时体系。收盘后按静态规则计算信号，生成下一交易日唯一交易计划；实际下单、记账和账户管理由用户手动完成，不接入交易查询和自动执行。"
-updated_at: 2026-08-10T00:00:00Z
+system-overview: "基于招商双债增强债券 LOF（161716.SZ）的机械波段择时体系。收盘后计算信号，生成下一交易日唯一交易计划；实际下单和账户管理由用户完成。"
+updated_at: 2026-10-11T00:00:00Z
 maturity: 执行体系
-directory:
-  - "体系介绍.md: 目标、四规则和职责边界"
-  - "体系运作流程.md: 收盘信号到下一交易日计划的 SOP"
-  - "择时参数.md: 静态参数、计数语义和调参边界"
-  - "params/"
-  - "  instrument.json: 标的、账户与费率静态信息"
-  - "  timing.json: 确认天数、止损、追回和计划金额"
-  - "  runtime.json: 日期、过程产物和策略状态读取规则"
-  - "scripts/"
-  - "  runtime_support.py: 参数校验与过程资料路径"
-  - "  timing_signal.py: 收盘行情信号与理论策略状态计算"
-  - "  render.py: Jinja 信号报告渲染"
-  - "templates/"
-  - "  signal_report.md.j2: 信号报告模板"
-  - "更新日志/"
 process-output:
-  root: "交易/过程资料/{date}/招商双债LOF择时体系"
+  root: "knowledge/交易/过程资料/{date}/招商双债LOF择时体系"
   files:
     - strategy_state.json
     - signal_facts.json
