@@ -193,7 +193,7 @@ links:
 1. **frontmatter 中跳过 `derived_from` 链接**（计划文件不存在）
 2. **执行摘要从 1825 输出中提取**（持有不动/买入/卖出等信息）
 3. **信号数据从 `交易/过程资料/{今天日期}/热门板块回调低吸体系/entry_signal.json` 直接读取**
-4. **资产数据从 ``trade_management` 技能和交易管理 MCP` + tushare 真实行情获取**
+4. **资产数据从 ``trade-management` 技能和交易管理 MCP` + tushare 真实行情获取**
 5. **精简版照常输出**，确保 下一阶段 generate-plan 任务 有数据可读
 
 关键差异：复盘不依赖"有计划文件才运行"，而是依赖"有 context_from 输入或体系有持仓/信号"。
