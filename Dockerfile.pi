@@ -27,12 +27,20 @@ COPY .rely/uvx /usr/local/bin/uvx
 RUN chmod +x /usr/local/bin/uv /usr/local/bin/uvx
 
 # 虚拟环境
+ENV UV_PYTHON_INSTALL_DIR=/opt/uv/python
+ENV UV_CACHE_DIR=/opt/uv/cache
+
 COPY requirements.txt /tmp/requirements.txt
-RUN uv venv /opt/venv --python 3.12 \
+RUN mkdir -p /opt/uv/python /opt/uv/cache /opt/venv \
+  && uv venv /opt/venv --python 3.12 \
   && uv pip install \
        --python /opt/venv/bin/python \
        -r /tmp/requirements.txt \
-       -i https://pypi.tuna.tsinghua.edu.cn/simple
+       -i https://pypi.tuna.tsinghua.edu.cn/simple \
+  && chmod -R a+rX /opt/uv /opt/venv \
+  && echo "Python interpreter: $(readlink -f /opt/venv/bin/python)" \
+  && /opt/venv/bin/python --version \
+  && test -x /opt/venv/bin/python
 ENV VIRTUAL_ENV=/opt/venv
 ENV PATH="/opt/venv/bin:${PATH}"
 
