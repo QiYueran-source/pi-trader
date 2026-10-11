@@ -1,4 +1,4 @@
-# 红利ETF网格 · 网格校准事实
+# 红利科创ETF双网格体系 · 网格校准事实
 
 ## 目标
 
@@ -6,9 +6,9 @@
 
 ## 执行前必读
 
-1. `knowledge/交易/交易体系/红利ETF网格/system.yml`
-2. `knowledge/交易/交易体系/红利ETF网格/体系运作流程.md`
-3. `knowledge/交易/交易体系/红利ETF网格/网格参数.md`
+1. `knowledge/交易/交易体系/红利科创ETF双网格体系/system.yml`
+2. `knowledge/交易/交易体系/红利科创ETF双网格体系/体系运作流程.md`
+3. `knowledge/交易/交易体系/红利科创ETF双网格体系/网格参数.md`
 
 ## 执行边界
 

@@ -1,4 +1,4 @@
-# 红利ETF网格 · 收盘事实、状态与计划
+# 红利科创ETF双网格体系 · 收盘事实、状态与计划
 
 ## 目标
 
@@ -6,11 +6,10 @@
 
 ## 执行前必读
 
-1. `knowledge/交易/交易体系/红利ETF网格/system.yml`
-2. `knowledge/交易/交易体系/红利ETF网格/体系运作流程.md`
-3. `knowledge/交易/交易体系/红利ETF网格/风控.md`
-4. `knowledge/交易/交易体系/红利ETF网格/状态机管理.md`
-5. `knowledge/交易/交易计划/RULES.md`
+1. `knowledge/交易/交易体系/红利科创ETF双网格体系/system.yml`
+2. `knowledge/交易/交易体系/红利科创ETF双网格体系/体系运作流程.md`
+3. `knowledge/交易/交易体系/红利科创ETF双网格体系/风控.md`
+4. `knowledge/交易/交易体系/红利科创ETF双网格体系/状态机管理.md`
 6. 当日过程资料、最近有效状态和 YHZQ 实际持仓。
 
 ## 执行边界

@@ -1,0 +1,37 @@
+---
+uuid: {{ report_uuid }}
+title: 红利科创ETF双网格体系 - 状态切换执行指令 {{ data.date }}
+tags:
+  - 交易体系
+  - 过程资料
+  - 执行指令
+updated: {{ updated_at }}
+links: []
+system-id: div_etf_grid_trade
+---
+
+# 状态切换执行指令 | {{ data.date }}
+
+> 来源：`{{ source_path }}`。本文件不直接下单；成交价格、时点和结果应以交易计划与执行记录为准。
+
+- 状态迁移：`{{ data.transition.from_state }} → {{ data.transition.to_state }}`
+
+## 订单动作
+
+{% if data.order_instructions %}
+| 标的 | 动作 | 份数 | 原因 |
+|---|---|---:|---|
+{% for instruction in data.order_instructions -%}
+| {{ instruction.instrument_id }} | {{ instruction.action }} | {{ instruction.shares if instruction.shares is not none else '需人工确认' }} | {{ instruction.reason }} |
+{% endfor %}
+{% else %}
+- 本次保持状态，无切换订单。
+{% endif %}
+
+## 条件单模式
+
+| 标的 | 允许买入 | 允许卖出 |
+|---|---|---|
+{% for instrument_id, mode in data.condition_order_modes.items() -%}
+| {{ instrument_id }} | {{ '是' if mode.buy_enabled else '否' }} | {{ '是' if mode.sell_enabled else '否' }} |
+{% endfor %}

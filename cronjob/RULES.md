@@ -45,7 +45,7 @@ cronjob/
 
 **示例**：
 - `global-0915-daily-plan-report` — 全局，9:15 每日计划通报
-- `div-etf-grid-trade-1800-param-check` — 红利ETF网格，18:00 月度参数检查
+- `div-etf-grid-trade-1800-param-check` — 红利科创ETF双网格体系，18:00 月度参数检查
 
 ### 任务名（name）
 
