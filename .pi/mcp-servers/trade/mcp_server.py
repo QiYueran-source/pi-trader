@@ -180,6 +180,27 @@ def trade_pnl(account_id: str, code: str, system_id: str | None = None, current_
     return result
 
 
+def position_list(account_id: str, system_id: str) -> dict[str, Any]:
+    """按账户和体系返回全部非零持仓，供计划与复盘使用。"""
+    trades = trade_list(account_id=account_id, system_id=system_id)["trades"]
+    codes = sorted({item["code"] for item in trades})
+    positions: list[dict[str, Any]] = []
+    for code in codes:
+        pnl = trade_pnl(account_id, code, system_id)
+        if pnl.get("remaining_quantity", 0) <= 0:
+            continue
+        name = next(item["name"] for item in reversed(trades) if item["code"] == code)
+        positions.append({"code": code, "name": name, "quantity": pnl["remaining_quantity"], "average_cost": pnl["average_cost"], "closed_pnl": pnl["closed_pnl"]})
+    return {"account_id": account_id, "system_id": system_id, "positions": positions, "as_of": trades[-1]["occurred_at"] if trades else None}
+
+
+def portfolio_snapshot(account_id: str, system_id: str) -> dict[str, Any]:
+    """返回同一账户体系下可追溯的现金、持仓和交易截止时间快照。"""
+    positions = position_list(account_id, system_id)
+    cash = cash_balance(account_id, system_id)
+    return {"account_id": account_id, "system_id": system_id, "cash": cash["balance"], "positions": positions["positions"], "trade_as_of": positions["as_of"]}
+
+
 def trade_record(account_id: str, system_id: str, code: str, name: str, side: str, quantity: float, price: float, occurred_at: str, note: str = "") -> dict[str, Any]:
     if side not in VALID_SIDE:
         raise ValueError("side 必须是 buy 或 sell")
@@ -261,6 +282,8 @@ TOOLS = [
     Tool(name="trade_get", description="查看单笔交易。", inputSchema={"type":"object","properties":{"trade_id":{"type":"integer"}},"required":["trade_id"]}),
     Tool(name="trade_record", description="记录已经发生的成交，并在同一事务中写入对应现金流水。不是券商下单工具。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"},"code":{"type":"string"},"name":{"type":"string"},"side":{"type":"string","enum":["buy","sell"]},"quantity":{"type":"number"},"price":{"type":"number"},"occurred_at":{"type":"string"},"note":{"type":"string"}},"required":["account_id","system_id","code","name","side","quantity","price","occurred_at"]}),
     Tool(name="trade_pnl", description="按 FIFO 计算单只证券的已实现和未实现盈亏。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"code":{"type":"string"},"system_id":{"type":"string"},"current_price":{"type":"number"}},"required":["account_id","code"]}),
+    Tool(name="position_list", description="查询账户在指定体系下的全部非零持仓与成本。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"}},"required":["account_id","system_id"]}),
+    Tool(name="portfolio_snapshot", description="查询账户在指定体系下的现金、持仓和交易截止时间。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"}},"required":["account_id","system_id"]}),
     Tool(name="cash_balance", description="查询账户某交易体系的现金余额。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"}},"required":["account_id","system_id"]}),
     Tool(name="cash_list", description="查询现金流水。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"},"limit":{"type":"integer","default":20}},"required":["account_id","system_id"]}),
     Tool(name="watchlist_list", description="查询自选股，可按状态筛选。", inputSchema={"type":"object","properties":{"status":{"type":"string","enum":sorted(VALID_STATUS)}}}),
@@ -277,7 +300,7 @@ async def list_tools() -> list[Tool]: return TOOLS
 async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
     a = arguments or {}
     try:
-        dispatch = {"account_list": lambda: account_list(), "account_get": lambda: account_get(a["account_id"]), "account_create": lambda: account_create(a["account_id"], a["name"], a["fee"], a.get("note", "")), "trade_list": lambda: trade_list(a.get("account_id"), a.get("system_id"), a.get("code")), "trade_get": lambda: trade_get(int(a["trade_id"])), "trade_record": lambda: trade_record(**a), "trade_pnl": lambda: trade_pnl(a["account_id"], a["code"], a.get("system_id"), a.get("current_price")), "cash_balance": lambda: cash_balance(a["account_id"], a["system_id"]), "cash_list": lambda: cash_list(a["account_id"], a["system_id"], a.get("limit", 20)), "watchlist_list": lambda: watchlist_list(a.get("status")), "watchlist_get": lambda: watchlist_get(a["code"]), "watchlist_upsert": lambda: watchlist_upsert(a["code"], a["name"], a["status"], a["systems"], a.get("reason", ""))}
+        dispatch = {"account_list": lambda: account_list(), "account_get": lambda: account_get(a["account_id"]), "account_create": lambda: account_create(a["account_id"], a["name"], a["fee"], a.get("note", "")), "trade_list": lambda: trade_list(a.get("account_id"), a.get("system_id"), a.get("code")), "trade_get": lambda: trade_get(int(a["trade_id"])), "trade_record": lambda: trade_record(**a), "trade_pnl": lambda: trade_pnl(a["account_id"], a["code"], a.get("system_id"), a.get("current_price")), "position_list": lambda: position_list(a["account_id"], a["system_id"]), "portfolio_snapshot": lambda: portfolio_snapshot(a["account_id"], a["system_id"]), "cash_balance": lambda: cash_balance(a["account_id"], a["system_id"]), "cash_list": lambda: cash_list(a["account_id"], a["system_id"], a.get("limit", 20)), "watchlist_list": lambda: watchlist_list(a.get("status")), "watchlist_get": lambda: watchlist_get(a["code"]), "watchlist_upsert": lambda: watchlist_upsert(a["code"], a["name"], a["status"], a["systems"], a.get("reason", ""))}
         if name not in dispatch: return [TextContent(type="text", text=_json({"error": f"未知工具：{name}"}))]
         return [TextContent(type="text", text=_json(dispatch[name]()))]
     except Exception as exc:

@@ -52,7 +52,9 @@ def result_ok(api: str, source: str, request: dict[str, Any], data: list[dict[st
         "source": source,
         "fallback_used": source == "proxy",
         "request": request,
+        "retrieved_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "row_count": len(data),
+        "data_status": "ok" if data else "source_empty",
         "warnings": warnings_ or [],
         "data": data,
     }
@@ -141,7 +143,6 @@ def proxy_call(api: str, **params: Any) -> list[dict[str, Any]]:
         f"{url.rstrip('/')}/{api}",
         params=params,
         headers={"X-API-Key": key},
-        verify=False,
         timeout=30,
     )
     response.raise_for_status()
@@ -166,6 +167,8 @@ def query_regular(api: str, params: dict[str, Any]) -> dict[str, Any]:
 def query_minutes(params: dict[str, Any]) -> dict[str, Any]:
     try:
         data = official_call("stk_mins", **params)
+        if not data:
+            return result_error("stk_mins", params, "source_empty", "官方接口未返回目标时段分钟数据", "official")
         return result_ok("stk_mins", "official", params, data)
     except Exception as official_error:  # noqa: BLE001
         try:
@@ -174,6 +177,8 @@ def query_minutes(params: dict[str, Any]) -> dict[str, Any]:
             target = params["start_date"][:8]
             if dates and dates != {target}:
                 return result_error("stk_mins", params, "date_mismatch", f"代理返回日期 {sorted(dates)}，目标日期为 {target}", "proxy")
+            if not data:
+                return result_error("stk_mins", params, "source_empty", "代理未返回目标时段分钟数据", "proxy")
             return result_ok("stk_mins", "proxy", params, data, [f"官方接口失败，已切换代理：{official_error}"])
         except Exception as proxy_error:  # noqa: BLE001
             return result_error("stk_mins", params, "all_sources_failed", f"official={official_error}; proxy={proxy_error}")
@@ -200,6 +205,13 @@ def tool_fund_daily(arguments: dict[str, Any]) -> dict[str, Any]:
     code = normalize_code(arguments["ts_code"])
     start, end = request_dates(arguments["start_date"], arguments["end_date"])
     return query_regular("fund_daily", {"ts_code": code, "start_date": start, "end_date": end})
+
+
+def tool_fund_adj(arguments: dict[str, Any]) -> dict[str, Any]:
+    """查询基金复权因子，供 ETF 回放和收益口径核验使用。"""
+    code = normalize_code(arguments["ts_code"])
+    start, end = request_dates(arguments["start_date"], arguments["end_date"])
+    return query_regular("fund_adj", {"ts_code": code, "start_date": start, "end_date": end})
 
 
 def tool_index_daily(arguments: dict[str, Any]) -> dict[str, Any]:
@@ -271,6 +283,7 @@ _TOOLS = [
     Tool(name="get_stock_daily", description="查询单只股票的日线数据。股票代码必须带交易所后缀。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["ts_code", "start_date", "end_date"]}),
     Tool(name="get_market_daily", description="查询指定交易日的全市场股票日线，适合涨停筛选。", inputSchema={"type": "object", "properties": {"trade_date": _STRING_DATE}, "required": ["trade_date"]}),
     Tool(name="get_fund_daily", description="查询 ETF 或基金日线，使用 fund_daily 而不是股票 daily。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["ts_code", "start_date", "end_date"]}),
+    Tool(name="get_fund_adj", description="查询 ETF 或基金复权因子，用于收益与除权口径核验。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["ts_code", "start_date", "end_date"]}),
     Tool(name="get_index_daily", description="查询指数日线，如 399006.SZ、000001.SH、000688.SH。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "start_date": _STRING_DATE, "end_date": _STRING_DATE}, "required": ["ts_code", "start_date", "end_date"]}),
     Tool(name="get_stock_basic", description="查询股票名称、行业、市场和上市日期。", inputSchema={"type": "object", "properties": {"ts_code": {"type": "string", "description": "可选，逗号分隔的完整股票代码"}}}),
     Tool(name="get_stock_minutes", description="查询股票或 ETF 分钟线；官方失败后自动降级到代理，并返回实际来源。", inputSchema={"type": "object", "properties": {"ts_code": _CODE, "freq": {"type": "string", "enum": ["1min", "5min", "15min", "30min", "60min"], "default": "5min"}, "start_date": {"type": "string", "description": "YYYY-MM-DD HH:MM:SS"}, "end_date": {"type": "string", "description": "YYYY-MM-DD HH:MM:SS"}}, "required": ["ts_code", "start_date", "end_date"]}),
@@ -298,6 +311,7 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         "get_stock_daily": tool_stock_daily,
         "get_market_daily": tool_market_daily,
         "get_fund_daily": tool_fund_daily,
+        "get_fund_adj": tool_fund_adj,
         "get_index_daily": tool_index_daily,
         "get_stock_basic": tool_stock_basic,
         "get_stock_minutes": tool_stock_minutes,
