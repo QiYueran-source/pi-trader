@@ -1,5 +1,0 @@
-2026-06-25 热门板块回调低吸体系升级
-- 板块热度分析脚本（sector_heat.py）模板化重构（R2）
-- 新增 templates/sector_heat.txt 模板，render_sector_heat.py 改为模板驱动
-- 同步更新：选股.md（行业筛选改为 sector_heat 量化判断）、体系运作流程.md（Step 1 更新）、体系介绍.md
-- 同时抽象出"体系三件套架构"技能：参数JSON → 渲染脚本(Python) → 模板TXT
