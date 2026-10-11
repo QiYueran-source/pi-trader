@@ -1,6 +1,6 @@
 # 招商双债LOF择时 · 每日信号与计划（19:35）
 name: zslof-timing-trade-1935-signal
-job_id: 8c5309d7f2bd
+job_id: qSlFvd0vvC
 schedule: "35 19 * * *"        # 每天 19:35（交易日判断由脚本内处理；顺延避开 18:00-19:25 其他体系 cron）
 workdir: /pi-trader
 mode: agent

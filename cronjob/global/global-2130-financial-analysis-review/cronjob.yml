@@ -1,6 +1,6 @@
 # 21:30 财经分析复盘 - Cronjob 配置
 name: global-2130-financial-analysis-review
-job_id: 847a5fb78d1c
+job_id: Bis2WSVK8N
 schedule: "30 21 * * *"
 workdir: /pi-trader
 mode: agent

@@ -1,6 +1,6 @@
 # 9:15 全体系交易计划通报 - Cronjob 配置
 name: global-0915-daily-plan-report
-job_id: ba83fb2e1dfe
+job_id: O-PhSkBvML
 schedule: "15 9 * * *"
 workdir: /pi-trader
 mode: agent

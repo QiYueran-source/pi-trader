@@ -1,4 +1,5 @@
 name: global-2340-knowledge-archive
+job_id: 0Y_0gJpkha
 schedule: "40 23 * * *"
 workdir: /pi-trader
 mode: agent

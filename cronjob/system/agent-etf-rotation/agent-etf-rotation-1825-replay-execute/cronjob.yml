@@ -1,6 +1,6 @@
 # 基于Agent的ETF轮动体系 · 回放执行
 name: agent-etf-rotation-1825-replay-execute
-job_id: 27cc798b20e9
+job_id: Y_N6zhi6Xy
 schedule: "25 18 * * *"        # 每天 18:25；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent

@@ -1,5 +1,6 @@
 # 23:55 每日摘要聚合配置
 name: global-2355-summary-aggregation
+job_id: Ak-KB6a85e
 schedule: "55 23 * * *"
 workdir: /pi-trader
 mode: agent

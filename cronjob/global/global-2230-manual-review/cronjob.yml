@@ -1,5 +1,6 @@
 # 22:30 主观复盘追问配置
 name: global-2230-manual-review
+job_id: gMwGltIIdh
 schedule: "30 22 * * *"
 workdir: /pi-trader
 mode: agent

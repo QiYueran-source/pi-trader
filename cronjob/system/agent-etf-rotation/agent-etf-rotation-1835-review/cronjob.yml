@@ -1,6 +1,6 @@
 # 基于Agent的ETF轮动体系 · 每日复盘
 name: agent-etf-rotation-1835-review
-job_id: f690f86badf7
+job_id: aBG22ACHRX
 schedule: "35 18 * * *"        # 每天 18:35；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent

@@ -1,6 +1,6 @@
 # 15:00 全体系收盘提醒 - Cronjob 配置
 name: global-1500-trade-remind
-job_id: 39e514c2f37d
+job_id: mRk9UrGLnD
 schedule: "0 15 * * *"
 workdir: /pi-trader
 mode: agent

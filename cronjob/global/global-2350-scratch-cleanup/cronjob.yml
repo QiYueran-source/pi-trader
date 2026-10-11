@@ -1,4 +1,5 @@
 name: global-2350-scratch-cleanup
+job_id: Tzi-njAT-6
 schedule: "50 23 * * *"
 workdir: /pi-trader
 mode: agent

@@ -1,5 +1,6 @@
 # 热门板块回调低吸体系 · 回放执行
 name: hot-sector-pullback-1900-replay-execute
+job_id: L6EgdFwqlM
 schedule: "0 19 * * *"        # 每天 19:00；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent

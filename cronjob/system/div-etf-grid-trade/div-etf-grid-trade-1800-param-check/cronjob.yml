@@ -1,6 +1,6 @@
 # 红利科创ETF双网格体系 · 网格校准事实 - Cronjob 配置
 name: div-etf-grid-trade-1800-param-check
-job_id: 
+job_id: 2gOAC26Nxl
 schedule: "0 18 * * *"    # 每天 18:00
 workdir: /pi-trader
 mode: agent

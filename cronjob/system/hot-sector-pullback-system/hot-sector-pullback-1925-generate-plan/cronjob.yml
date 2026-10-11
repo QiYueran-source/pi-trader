@@ -1,5 +1,6 @@
 # 热门板块回调低吸体系 · 生成下一交易日交易计划
 name: hot-sector-pullback-1925-generate-plan
+job_id: YhZQf43paU
 schedule: "25 19 * * *"        # 每天 19:25；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent

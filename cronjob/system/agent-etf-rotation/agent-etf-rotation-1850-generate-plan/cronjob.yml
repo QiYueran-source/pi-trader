@@ -1,6 +1,6 @@
 # 基于Agent的ETF轮动体系 · 生成下一交易日计划
 name: agent-etf-rotation-1850-generate-plan
-job_id: b358bc669582
+job_id: U1G_PSDfZG
 schedule: "50 18 * * *"        # 每天 18:50；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent

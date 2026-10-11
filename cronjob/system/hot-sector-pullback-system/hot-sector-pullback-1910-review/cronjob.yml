@@ -1,5 +1,6 @@
 # 热门板块回调低吸体系 · 每日复盘
 name: hot-sector-pullback-1910-review
+job_id: A8HzuAImvj
 schedule: "10 19 * * *"        # 每天 19:10；交易日判断由任务执行
 workdir: /pi-trader
 mode: agent
