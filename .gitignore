@@ -17,4 +17,4 @@ database
 __pycache__
 
 # 归档
-archive/
+# archive/ 由归档技能管理并纳入版本控制。
