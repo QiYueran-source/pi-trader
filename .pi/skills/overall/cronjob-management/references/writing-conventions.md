@@ -18,7 +18,7 @@ cronjob/system/agent-etf-rotation/agent-etf-rotation-1850-generate-plan/
 └── prompt.txt
 ```
 
-辅助脚本可以放在任务目录中，多个任务共享的脚本放在 `cronjob/utils/`。
+辅助脚本放在对应任务目录中；任务之间共享逻辑时，优先通过 MCP 或 Skill 提供，不建立公共脚本目录。
 
 ## `cronjob.yml`
 
@@ -44,7 +44,7 @@ description: 任务职责说明
 - `schedule` 使用合法 cron 表达式，并与名称中的时间一致。
 - `prompt` 指向任务目录中的实际 prompt 文件。
 - `workdir` 使用运行环境中的真实路径。
-- `scripts`、`utils` 等附加路径必须可用。
+- `scripts` 等附加路径必须可用。
 - `created_at` 使用 `YYYY-MM-DD`。
 - 不要把密钥、密码或 token 写入 YAML。
 

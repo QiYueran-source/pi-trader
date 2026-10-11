@@ -26,6 +26,6 @@
 
 ## Frontmatter
 
-分析文件至少包含：`uuid`、`title`、`tags`、`updated`、`links`。没有关联文件时使用 `links: []`。每个 link 必须包含目标文件的 `uuid`、`path` 和 `relations`。
+分析文件至少包含：`uuid`、`title`、`tags`、`updated`、`links`。没有关联文件时使用 ``。每个 link 必须包含目标文件的 `uuid`、`path` 和 `relations`。
 
 事实文件还需包含 `source` 和 `date`。
