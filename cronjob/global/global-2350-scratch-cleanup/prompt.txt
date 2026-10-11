@@ -1,0 +1,10 @@
+# 草稿箱清理
+
+每天 23:50 执行。调用 `scratch-space-management` MCP。
+
+1. 使用 `scratch_preview_cleanup` 查询超过 7 天的草稿。
+2. 没有过期文件时静默结束。
+3. 有过期文件时调用 `scratch_cleanup` 删除。
+4. 汇报清理数量和失败文件。
+
+只允许处理仓库根目录 `.scratch-space/`，保留 `.gitignore`，不执行任意 shell，不处理目录外文件。

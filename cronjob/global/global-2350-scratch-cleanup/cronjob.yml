@@ -1,0 +1,9 @@
+name: global-2350-scratch-cleanup
+schedule: "50 23 * * *"
+workdir: /pi-trader
+mode: agent
+model: deepseek-v4-flash-0731
+deliver: origin
+prompt: prompt.txt
+created_at: 2026-10-11
+description: 每天清理保存超过7天的草稿箱文件
