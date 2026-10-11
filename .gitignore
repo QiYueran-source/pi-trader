@@ -1,10 +1,11 @@
 # ide
 .cursor
-.vscode  
+.vscode
 
 # env
 .env
-.secrets.env  
+.secrets.env
+.pi/mcp-servers/tushare/.env
 
 # 依赖
 .rely
@@ -16,4 +17,4 @@ database
 __pycache__
 
 # 归档
-archive/ 
+archive/

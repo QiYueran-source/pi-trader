@@ -1,5 +1,11 @@
 {
   "mcpServers": {
+    "tushare-data": {
+      "command": "/opt/venv/bin/python",
+      "args": [
+        "/pi-trader/.pi/mcp-servers/tushare/mcp_server.py"
+      ]
+    },
     "knowledge-graph": {
       "command": "/opt/venv/bin/python",
       "args": [
