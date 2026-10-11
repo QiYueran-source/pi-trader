@@ -21,6 +21,13 @@ if [[ ! -s "$PROJECT_SETTINGS" ]] || ! grep -q "pi-feishu" "$PROJECT_SETTINGS"; 
   pi install --local --approve "$FEISHU_PACKAGE"
 fi
 
+# 首次启动时自动安装项目级定时任务扩展；之后只要 settings.json 中已有声明就跳过。
+SCHEDULE_PACKAGE="${PI_SCHEDULE_PACKAGE:-npm:pi-schedule-prompt}"
+if ! grep -q "pi-schedule-prompt" "$PROJECT_SETTINGS"; then
+  echo "安装项目级定时任务扩展：$SCHEDULE_PACKAGE" >&2
+  pi install --local --approve "$SCHEDULE_PACKAGE"
+fi
+
 # Pi 的全局配置目录由 Compose 的命名卷提供，models.json 由宿主机只读挂载。
 MODEL_CONFIG="${PI_MODEL_CONFIG:-/home/node/.pi/agent/models.json}"
 
