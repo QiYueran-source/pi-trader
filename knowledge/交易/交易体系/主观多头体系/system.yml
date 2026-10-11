@@ -1,0 +1,14 @@
+uuid: 6b7c8d9e0f1a2b3c4d5e6f708192a3b4
+system-id: subjective_long
+account-id:
+  - YHZQ
+  - KYZQ
+system-name: 主观多头体系
+system-overview: "人工主观执行的实盘资产组合：YHZQ 名义本金 25,000 ＋ KYZQ 25,311.49（体系独立记账，不与券商账户逐分对账）。无机械规则、无脚本、无模板；计划由用户依据投顾盘前分析在 09:15 后会话互动提出，正文只写动作，并承担其他体系不包含操作的人维度抓手。规则（止盈止损档位等）待拍板。"
+updated_at: 2026-10-11T12:30:00Z
+maturity: 候选体系
+directory:
+  - "体系介绍.md: 定位、账户与记账口径、交易计划与复盘格式约定、待拍板清单"
+  - "更新日志/: 体系口径、命名与结构变更记录"
+plan-output: "knowledge/交易/交易计划/{date}/主观多头体系_交易计划.md"
+review-output: "knowledge/交易/交易复盘/{date}/主观多头体系_复盘.md"

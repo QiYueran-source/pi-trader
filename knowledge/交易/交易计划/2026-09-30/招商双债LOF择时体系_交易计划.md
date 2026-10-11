@@ -29,7 +29,7 @@ links:
     relations:
       - 依据
   - uuid: 3a4845064fe14d7f9e1c8e4cdbec62cf
-    path: 交易/交易计划/2026-09-29/招商双债LOF择时体系.md
+    path: 交易/交易计划/2026-09-29/招商双债LOF择时体系_交易计划.md
     relations:
       - 引用
 ---

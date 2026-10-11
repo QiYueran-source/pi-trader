@@ -4,7 +4,7 @@ account-id:
   - YHZQ
 system-name: 招商双债LOF择时体系
 system-overview: "基于招商双债增强债券 LOF（161716.SZ）的机械波段择时体系。收盘后计算信号，生成下一交易日唯一交易计划；实际下单和账户管理由用户完成。"
-updated_at: 2026-10-11T00:00:00Z
+updated_at: 2026-10-11T12:30:00Z
 maturity: 执行体系
 directory:
   params: 可审阅的择时参数。
@@ -16,3 +16,4 @@ process-output:
     - strategy_state.json
     - signal_facts.json
     - signal_report.md
+plan-output: "knowledge/交易/交易计划/{date}/招商双债LOF择时体系_交易计划.md"
