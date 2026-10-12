@@ -22,11 +22,15 @@ Pi 的定时任务有两种运行模式，能力差别很大，注册前必须�
 ## 投递（飞书）
 
 - Pi 侧**没有**投递/`deliver` 参数；`cronjob.yml` 里历史遗留的 `deliver: origin` 不生效。
-- 飞书推送由 `pi-feishu` 扩展在 `turn_end` 时把**该会话**中助手的回复发出：
-  - `inline`：任务本身产生一轮回复 → 自动推送。prompt 用「推送/汇报」描述意图即可。
-  - `subagent`：子会话以 `noExtensions` 创建，不加载 `pi-feishu` → 不会推送；要通知用户需 `notify: true`（唤醒主会话转述）或改为 `inline`。
-- 静默型任务（如"没有过期文件时静默结束"）在 `inline` 下同样只在有结果时输出。
-- prompt 中不要写「调用 `send_to_feishu`」这类工具名来保证投递，除非确认该模式下该工具存在；按模式描述意图即可。
+- 飞书推送由 `pi-feishu` 扩展在 `turn_end` 时把**该会话**中助手的回复发到 `findActiveState()` 解析出的 `chatId`。
+- ⚠️ **关键限制**：`pi-feishu` 在 `agent_end` 时执行 `chatStates.delete(chatId)`，**会话空闲时没有活跃聊天状态**；定时任务绝大多数在空闲时触发 → `turn_end` 自动推送与 `send_to_feishu`（不传 `chat_id`）都会**拿不到目标聊天**：
+  - 自动推送：`findActiveState()` 为 null → 直接不发送（**不会报错**）。
+  - `send_to_feishu` 不传 `chat_id`：返回「没有活跃的飞书聊天」。
+- **可靠做法（本项目采用）**：需要推送的任务在 prompt 里**显式传 `chat_id`**，例如
+  `用 send_to_feishu 把简报发送到 chat_id "oc_..."`。显式 `chat_id` 会绕过上述状态检查。
+  推送型任务：`global-0915`、`global-1500`、`global-2130`、`global-2230`；其余任务写简报由摘要聚合，不单独推送。
+- `subagent` 模式仍不加载 `pi-feishu`（`noExtensions`），无法推送；且 `notify: true` 也依赖主会话有活跃状态，同样不可靠。
+- 静默型任务（如“没有过期文件时静默结束”）只在有结果时输出；其输出不一定推送，属预期。
 
 ## 已知坑
 
@@ -59,7 +63,7 @@ Pi 的定时任务有两种运行模式，能力差别很大，注册前必须�
 | 症状 | 先查 | 处置 |
 |:---|:---|:---|
 | 到点没跑 | `list` 中是否有 `Next`；记录是否带 `session` | 无 `Next` → `update` 重挂；带 `session` → 清除后重挂 |
-| 跑了但没收到飞书 | 任务是否设了 `model`（subagent） | 改 `inline`，或加 `notify: true` |
+| 跑了但没收到飞书 | 任务是否显式传了 `chat_id`；是否设了 `model`（subagent） | 在 prompt 中显式传 `chat_id`；去掉 `model` |
 | 任务里用不了 MCP | 是否 subagent | 改 `inline`，或按「坑 3」打补丁 |
 | 触发时间不对 | 进程 `TZ`、cron 字段顺序 | 修正后重启并复核 `Next` |
 | 注册报同名冲突 | 是否已存在同名任务 | 先 `list` 再 `add`；已存在改用 `update` |
