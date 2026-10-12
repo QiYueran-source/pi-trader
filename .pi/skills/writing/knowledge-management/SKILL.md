@@ -1,6 +1,6 @@
 ---
 name: knowledge-management
-description: 整理交易研究知识并保存到 knowledge，负责内容分类、路径路由、Frontmatter 和正文整理。
+description: 管理 knowledge 目录文档的分类、路径、Frontmatter 和正文。创建、修改、移动、归档或整理 knowledge/ 中的正式文档时必须使用。
 ---
 
 # 知识库管理

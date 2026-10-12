@@ -1,6 +1,6 @@
 ---
 name: git-standard
-description: 约束项目中的 Git 分支、远程仓库、提交和 SSH 推送行为。涉及 Git 操作时使用。
+description: 约束项目的 Git 分支、远程仓库、提交和 SSH 推送行为。执行任何 Git 写操作、提交、推送、拉取或切换分支时必须使用。
 ---
 
 # Git 规范
