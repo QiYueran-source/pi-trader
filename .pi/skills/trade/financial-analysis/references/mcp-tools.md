@@ -24,4 +24,9 @@
 
 ## 约束
 
-先读后写；批量写入后检查返回数量。数据库写入只使用业务工具，不执行任意 SQL。行情来源和日期必须与复盘对象一致。
+- 先读后写：写入前先 `financial_analysis_list_mentions` 查重，按「日期 + 来源文件」判断用 record 还是 replace。
+- **先列清单再入库**：用户要求整理财经分析时，默认先把待入库清单列给用户，确认后才写库（字段与校验见 `mentions.md`）。
+- 覆盖来源文件用 `financial_analysis_replace_mentions`，不要手动删除旧记录。
+- 批量写入后核对返回的 `inserted` / `skipped` / `deleted`，再 `list_mentions` 复核条数。
+- 数据库写入只使用业务工具，不执行任意 SQL。行情来源和日期必须与复盘对象一致。
+- MCP 只校验必填与枚举；名称、代码、窗口、路径等口径由 `mentions.md` 的「入库校验」清单强制。

@@ -19,3 +19,6 @@ __pycache__
 # 归档
 archive/
 !.pi/skills/writing/archive/
+
+# 同步脚本
+*.git

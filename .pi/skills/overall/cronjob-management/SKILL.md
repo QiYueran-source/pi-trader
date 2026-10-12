@@ -83,16 +83,18 @@ prompt.txt
 - `cronjob.yml` 的 `name` 与任务目录名完全一致。
 - `schedule` 是合法 cron 表达式，且与名称中的 `HHMM` 一致。
 - `prompt` 指向实际存在的 `prompt.txt`。
-- `workdir`、`scripts` 等路径实际存在或能在运行环境中使用。
+- `mode`、`scope`、`schedule` 与 Pi 运行时的实际注册参数一致。
 - 体系型任务的目录、`system-id` 和所属体系一致。
 - `prompt.txt` 自包含，明确输入、动作、输出和异常汇报方式。
 - 修改 prompt 后，同时更新仓库文件和 Pi 注册任务中的 prompt 内容。
+- 每个任务的 `prompt.txt` 含统一的「投递与输出」段：投递读 `cronjob/delivery.json` 的 `feishuChatId` 并显式传给 `send_to_feishu`，输出首行给一行式状态，无动作也回执。
+- 注册或变更后，把运行时的 `job_id` 回填到 `cronjob.yml`。
 
 完整字段和 prompt 写作规则见 [writing-conventions.md](references/writing-conventions.md)。
 
 ## Pi cronjob 工具
 
-使用 Pi 的 `@cronjob` 工具管理运行时任务。标准流程：
+使用 Pi 的 `schedule_prompt` 工具（交互命令 `/schedule-prompt`）管理运行时任务。标准流程：
 
 1. 设计任务。
 2. 创建或修改仓库中的 `cronjob.yml` 和 `prompt.txt`。
@@ -100,10 +102,16 @@ prompt.txt
 4. 查询当前已注册任务。
 5. 判断是新增、更新、已存在还是注册缺失。
 6. 对重要变更先获得用户确认。
-7. 调用 `@cronjob` 创建或更新。
-8. 再次查询，确认注册结果。
+7. 调用 `schedule_prompt` 创建或更新。
+8. 再次查询，确认注册结果并回填 `job_id`。
 
-工具操作和注册同步规则见 [pi-cronjob-tool.md](references/pi-cronjob-tool.md)。
+注册完成后必须自检三件事：
+
+1. `list` 中该任务有 `Next:`（有存活定时器；没有说明只是磁盘上有记录）。
+2. 运行时记录不带 `session` 字段（带则为会话绑定，重启后静默失效）。
+3. 运行时 `prompt` 与仓库 `prompt.txt` 逐字一致。
+
+工具操作和注册同步规则见 [pi-cronjob-tool.md](references/pi-cronjob-tool.md)；运行模式能力与投递机制见 [runtime-and-delivery.md](references/runtime-and-delivery.md)。
 
 ## 必须先确认的操作
 
@@ -114,6 +122,7 @@ prompt.txt
 - 删除任务
 - 暂停或恢复任务
 - 改变任务类型或所属体系
+- 切换运行模式（`inline` ↔ `subagent`）；该变更必须 remove + add，`job_id` 会改变
 - 修改通知渠道
 - 修改核心执行逻辑，尤其是可能产生交易动作的逻辑
 - 补做可能覆盖已有业务产物的任务
@@ -129,10 +138,16 @@ Pi 重启、进程重启或调度器状态重置后，运行时注册可能丢�
 ```text
 读取 cronjob 定义
 → 查询 Pi 当前注册任务
-→ 按 name 对比
+→ 按 name 对比，并检查每项是否有 Next
 → 汇报缺失或配置不一致
-→ 获得确认后重新注册
+→ 获得确认后重新注册或重挂
 ```
+
+判据与处置：
+
+- **磁盘上有记录、但 `list` 中该任务没有 `Next`**：调度器里没有存活定时器，任务不会触发。用 `update`（原 `schedule`/`description` 即可）逐条重挂，`job_id` 不变。
+- **任务完全不在 `list` 中**：按仓库定义重新注册，并回填 `job_id`。
+- **注册后发现任务带 `session` 字段**：属会话绑定，重启后会失效，需清除该字段并 `update` 重挂。
 
 不要因为查询不到任务就直接重复创建：先按 `name` 检查是否已有同名任务，避免重复注册。交易体系任务缺失时，默认先汇报并等待确认。
 
@@ -152,3 +167,4 @@ Pi 重启、进程重启或调度器状态重置后，运行时注册可能丢�
 - [cronjob-design.md](references/cronjob-design.md)：两类任务的设计差异。
 - [writing-conventions.md](references/writing-conventions.md)：目录、YAML 和 prompt 规范。
 - [pi-cronjob-tool.md](references/pi-cronjob-tool.md)：注册、查询、更新和重启检查。
+- [runtime-and-delivery.md](references/runtime-and-delivery.md)：运行模式能力、飞书投递机制、已知坑与诊断手册。
