@@ -103,10 +103,70 @@ def move(relative: str) -> dict[str, Any]:
     return {"ok": True, "source": relative, "target": target.relative_to(ARCHIVE_ROOT).as_posix()}
 
 
+def dir_date(relative_parts: tuple[str, ...]) -> str | None:
+    """目录自身或其父级中的 YYYY-MM-DD 部分。"""
+    for part in relative_parts:
+        if DATE_RE.fullmatch(part):
+            try:
+                date.fromisoformat(part)
+                return part
+            except ValueError:
+                return None
+    return None
+
+
+def cleanup_empty_dirs(dry_run: bool = True) -> dict[str, Any]:
+    """删除归档后遗留的空日期目录。
+
+    只删除同时满足以下条件的目录，任一不满足则跳过：
+    1. 位于 knowledge 内、自身或父级为合法 YYYY-MM-DD 目录；
+    2. 完全为空（不含文件、子目录或隐藏文件）；
+    3. 在 archive 下存在同相对路径的目录（证明确实是归档后的空壳）；
+    4. 日期早于今天（避免与当天正在写入的任务竞争）；
+    5. 不涉及「归档」目录与 .abstract。
+    """
+    removed: list[str] = []
+    skipped: list[dict[str, str]] = []
+    if not KNOWLEDGE_ROOT.is_dir():
+        return {"ok": True, "dry_run": dry_run, "count": 0, "removed": [], "skipped": []}
+    today = date.today().isoformat()
+    dirs = [p for p in KNOWLEDGE_ROOT.rglob("*") if p.is_dir()]
+    # 自底向上：先清掉深层空目录，父目录可能在随后一轮变为空
+    for path in sorted(dirs, key=lambda p: len(p.relative_to(KNOWLEDGE_ROOT).parts), reverse=True):
+        rel = path.relative_to(KNOWLEDGE_ROOT)
+        parts = rel.parts
+        if "归档" in parts or ".abstract" in parts:
+            continue
+        doc_date = dir_date(parts)
+        if not doc_date:
+            continue
+        try:
+            if any(path.iterdir()):
+                continue
+        except OSError:
+            continue
+        if not (ARCHIVE_ROOT / rel).is_dir():
+            skipped.append({"path": rel.as_posix(), "reason": "no_archive_counterpart"})
+            continue
+        if doc_date >= today:
+            skipped.append({"path": rel.as_posix(), "reason": "not_older_than_today"})
+            continue
+        if dry_run:
+            removed.append(rel.as_posix())
+            continue
+        try:
+            path.rmdir()
+            removed.append(rel.as_posix())
+        except OSError as exc:
+            skipped.append({"path": rel.as_posix(), "reason": f"rmdir_failed: {exc}"})
+    return {"ok": True, "dry_run": dry_run, "count": len(removed), "removed": removed, "skipped": skipped}
+
+
 TOOLS = [
     Tool(name="archive_list_candidates", description="列出超过指定日期的日期型知识文档。默认 30 天前。", inputSchema={"type":"object","properties":{"before_date":{"type":"string","description":"YYYY-MM-DD"}}}),
     Tool(name="archive_preview", description="预览归档路径、目标冲突和引用关系。", inputSchema={"type":"object","properties":{"path":{"type":"string","description":"相对 knowledge 的路径"}},"required":["path"]}),
     Tool(name="archive_move", description="移动一个无引用冲突的日期型文档到根目录 archive。", inputSchema={"type":"object","properties":{"path":{"type":"string","description":"相对 knowledge 的路径"}},"required":["path"]}),
+    Tool(name="archive_cleanup_empty_dirs", description="删除归档后遗留的空日期目录；仅删除空目录且须有 archive 对应目录，默认只预览。这一步只清理空壳，不需要用户确认。", inputSchema={"type":"object","properties":{"dry_run":{"type":"boolean","description":"默认 true 只返回待删清单；设为 false 才真正删除"}}}),
 ]
 server = Server("archive-management")
 
@@ -127,6 +187,8 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
             result = preview(args["path"])
         elif name == "archive_move":
             result = move(args["path"])
+        elif name == "archive_cleanup_empty_dirs":
+            result = cleanup_empty_dirs(bool(args.get("dry_run", True)))
         else:
             raise ValueError(f"未知工具：{name}")
     except (KeyError, ValueError, OSError) as exc:
