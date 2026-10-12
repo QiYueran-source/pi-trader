@@ -1,0 +1,56 @@
+{
+  "date": "20261012",
+  "source": "knowledge/交易/过程资料/2026-10-12/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "note": "MCP 复算版（breakout_ma / volume_ma 均为含当日的最近 N 日口径，同 entry_signal.py）",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 4,
+    "with_daily_data": 4,
+    "signals": 3
+  },
+  "signals": [
+    {
+      "code": "600831.SH",
+      "name": "广电网络",
+      "industry": "影视音像",
+      "board_count": 1,
+      "board_dates": ["20261012"],
+      "pullback_pct": 0.0,
+      "signal_date": "20261012",
+      "close": 3.91,
+      "breakout_ma": 3.526,
+      "breakout_above_pct": 10.89,
+      "volume_ratio": 1.88
+    },
+    {
+      "code": "601929.SH",
+      "name": "吉视传媒",
+      "industry": "影视音像",
+      "board_count": 2,
+      "board_dates": ["20261009", "20261012"],
+      "pullback_pct": 0.0,
+      "signal_date": "20261012",
+      "close": 2.75,
+      "breakout_ma": 2.44,
+      "breakout_above_pct": 12.7,
+      "volume_ratio": 3.39
+    },
+    {
+      "code": "600715.SH",
+      "name": "文投控股",
+      "industry": "影视音像",
+      "board_count": 1,
+      "board_dates": ["20261009"],
+      "pullback_pct": 4.55,
+      "signal_date": "20261012",
+      "close": 1.84,
+      "breakout_ma": 1.698,
+      "breakout_above_pct": 8.36,
+      "volume_ratio": 4.34
+    }
+  ]
+}
