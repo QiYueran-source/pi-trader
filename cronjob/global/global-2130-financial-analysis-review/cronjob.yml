@@ -1,11 +1,11 @@
 # 21:30 财经分析复盘 - Cronjob 配置
 name: global-2130-financial-analysis-review
-job_id: Bis2WSVK8N
-schedule: "30 21 * * *"
-workdir: /pi-trader
-mode: agent
-model: deepseek-v4-flash
-deliver: origin
+job_id: TqQr_TE9Ni
+type: cron
+schedule: "0 30 21 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行，输出自动回传飞书
 prompt: prompt.txt
 created_at: 2026-06-29
 description: 每天 21:30 通过 MCP 复盘当日财经分析判断并生成复盘笔记

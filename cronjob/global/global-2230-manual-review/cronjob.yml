@@ -1,11 +1,11 @@
 # 22:30 主观复盘追问配置
 name: global-2230-manual-review
-job_id: gMwGltIIdh
-schedule: "30 22 * * *"
-workdir: /pi-trader
-mode: agent
-model: deepseek-v4-flash
-deliver: origin
+job_id: WIisY3gTb8
+type: cron
+schedule: "0 30 22 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行，输出自动回传飞书
 prompt: prompt.txt
 created_at: 2026-09-28
 description: 每交易日 22:30 通过 MCP 核对当日事实并推送固定复盘清单，不写复盘结论

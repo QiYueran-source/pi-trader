@@ -1,11 +1,11 @@
 # 23:55 每日摘要聚合配置
 name: global-2355-summary-aggregation
-job_id: Ak-KB6a85e
-schedule: "55 23 * * *"
-workdir: /pi-trader
-mode: agent
-model: deepseek-v4-flash
-deliver: origin
+job_id: YqvEQSQHRd
+type: cron
+schedule: "0 55 23 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行，输出自动回传飞书
 prompt: prompt.txt
 created_at: 2026-06-12
 description: 每天 23:55 聚合简报并生成正式摘要；当前未配置知识图谱同步 MCP，不执行 Git 提交推送

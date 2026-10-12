@@ -1,10 +1,11 @@
 # 热门板块回调低吸体系 · 每日复盘
 name: hot-sector-pullback-1910-review
-job_id: A8HzuAImvj
-schedule: "10 19 * * *"        # 每天 19:10；交易日判断由任务执行
-workdir: /pi-trader
-mode: agent
-model: deepseek-v4-flash   # Provider: custom
-deliver: origin
+job_id: vmVgFNAk2s
+type: cron
+schedule: "0 10 19 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行，输出自动回传飞书
 prompt: prompt.txt
+created_at: 2026-10-11
 description: 交易日 19:10 复盘正式计划、模拟执行和过程事实，并生成可追溯复盘。

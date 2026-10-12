@@ -1,10 +1,11 @@
+# global-2340-knowledge-archive
 name: global-2340-knowledge-archive
-job_id: 0Y_0gJpkha
-schedule: "40 23 * * *"
-workdir: /pi-trader
-mode: agent
-model: deepseek-v4-flash
-deliver: origin
+job_id: R3uHz5qogU
+type: cron
+schedule: "0 40 23 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行，输出自动回传飞书
 prompt: prompt.txt
 created_at: 2026-10-11
 description: 每天扫描超过30天的日期型知识文档，检查引用后安全归档

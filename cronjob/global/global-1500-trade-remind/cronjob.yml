@@ -1,13 +1,11 @@
 # 15:00 全体系收盘提醒 - Cronjob 配置
 name: global-1500-trade-remind
-job_id: mRk9UrGLnD
-schedule: "0 15 * * *"
-workdir: /pi-trader
-mode: agent
-model: deepseek-v4-flash
-deliver: origin
+job_id: WQll2C1BTe
+type: cron
+schedule: "0 0 15 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行，输出自动回传飞书
 prompt: prompt.txt
-scripts:
-  - /pi-trader/cronjob/global/global-1500-trade-remind/scan_systems.py
 created_at: 2026-06-12
 description: 每天 15:00 使用 MCP 判断交易日、扫描所有交易体系并推送收盘提醒

@@ -1,13 +1,11 @@
 # 9:15 全体系交易计划通报 - Cronjob 配置
 name: global-0915-daily-plan-report
-job_id: O-PhSkBvML
-schedule: "15 9 * * *"
-workdir: /pi-trader
-mode: agent
-model: deepseek-v4-flash
-deliver: origin
+job_id: -Gw3RIT9rr
+type: cron
+schedule: "0 15 9 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行，输出自动回传飞书
 prompt: prompt.txt
-scripts:
-  - /pi-trader/cronjob/global/global-0915-daily-plan-report/list_today_plans.py
 created_at: 2026-06-12
 description: 每天 9:15 使用 MCP 判断交易日、扫描当日交易计划并推送执行简报

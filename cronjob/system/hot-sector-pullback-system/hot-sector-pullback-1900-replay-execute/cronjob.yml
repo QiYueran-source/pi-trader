@@ -1,10 +1,11 @@
 # 热门板块回调低吸体系 · 回放执行
 name: hot-sector-pullback-1900-replay-execute
-job_id: L6EgdFwqlM
-schedule: "0 19 * * *"        # 每天 19:00；交易日判断由任务执行
-workdir: /pi-trader
-mode: agent
-model: deepseek-v4-flash   # Provider: custom
-deliver: origin
+job_id: wJFM6ILvZC
+type: cron
+schedule: "0 0 19 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行，输出自动回传飞书
 prompt: prompt.txt
+created_at: 2026-10-11
 description: 交易日 19:00 严格回放当日正式计划，并在 MNZH 模拟账户记账。
