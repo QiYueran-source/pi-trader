@@ -5,7 +5,8 @@ type: cron
 schedule: "0 0 18 * * *"   # Pi 6 字段：秒 分 时 日 月 周
 enabled: true
 scope: workdir
-mode: inline   # 在主会话执行，输出自动回传飞书
+mode: inline   # 在主会话执行
+deliver: feishu   # 投递渠道；chat_id 见 cronjob/delivery.json
 prompt: prompt.txt
 created_at: 2026-06-12
 description: 交易日 18:00 生成网格校准过程事实；仅在触发时计算日期化网格参数

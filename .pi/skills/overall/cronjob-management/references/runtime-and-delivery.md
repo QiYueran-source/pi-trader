@@ -21,16 +21,16 @@ Pi 的定时任务有两种运行模式，能力差别很大，注册前必须�
 
 ## 投递（飞书）
 
-- Pi 侧**没有**投递/`deliver` 参数；`cronjob.yml` 里历史遗留的 `deliver: origin` 不生效。
+- Pi 侧**没有**投递/`deliver` 参数；`cronjob.yml` 的 `deliver: feishu` 只作声明，实际投递靠任务自己调用工具。
 - 飞书推送由 `pi-feishu` 扩展在 `turn_end` 时把**该会话**中助手的回复发到 `findActiveState()` 解析出的 `chatId`。
-- ⚠️ **关键限制**：`pi-feishu` 在 `agent_end` 时执行 `chatStates.delete(chatId)`，**会话空闲时没有活跃聊天状态**；定时任务绝大多数在空闲时触发 → `turn_end` 自动推送与 `send_to_feishu`（不传 `chat_id`）都会**拿不到目标聊天**：
+- ⚠️ **关键限制**：`pi-feishu` 在 `agent_end` 时执行 `chatStates.delete(chatId)`，**会话空闲时没有活跃聊天状态**；定时任务绝大多数在空闲时触发 → `turn_end` 自动推送与 `send_to_feishu`（不传 `chat_id`）都**拿不到目标聊天**：
   - 自动推送：`findActiveState()` 为 null → 直接不发送（**不会报错**）。
   - `send_to_feishu` 不传 `chat_id`：返回「没有活跃的飞书聊天」。
-- **可靠做法（本项目采用）**：需要推送的任务在 prompt 里**显式传 `chat_id`**，例如
-  `用 send_to_feishu 把简报发送到 chat_id "oc_..."`。显式 `chat_id` 会绕过上述状态检查。
-  推送型任务：`global-0915`、`global-1500`、`global-2130`、`global-2230`；其余任务写简报由摘要聚合，不单独推送。
-- `subagent` 模式仍不加载 `pi-feishu`（`noExtensions`），无法推送；且 `notify: true` 也依赖主会话有活跃状态，同样不可靠。
-- 静默型任务（如“没有过期文件时静默结束”）只在有结果时输出；其输出不一定推送，属预期。
+- **本项目采用的做法**：**所有任务都投递**，且必须在 prompt 里**显式传 `chat_id`**（显式值会绕过上述状态检查）。
+  - chat_id 的**单一来源**是仓库根 `cronjob/delivery.json` 的 `feishuChatId`；prompt 统一写「读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` 显式传入」。换群只改这一个文件，无需改 prompt 或重注册。
+  - 不把 id 写进 16 份 prompt（避免多处硬编码）；不写进 `.pi/schedule-prompts-settings.json`（该文件被扩展 UI 重写时会丢弃自定义键）。
+- **回执口径**：非交易日、无候选、无过期文件等“无动作”情形也发一行状态，用于确认任务确实执行；失败时把内容留在回复中并说明原因。
+- `subagent` 模式仍不加载 `pi-feishu`（`noExtensions`），无法投递；`notify: true` 也依赖主会话有活跃状态，同样不可靠。
 
 ## 已知坑
 

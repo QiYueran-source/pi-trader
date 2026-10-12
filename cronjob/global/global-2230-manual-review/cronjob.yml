@@ -5,7 +5,8 @@ type: cron
 schedule: "0 30 22 * * *"   # Pi 6 字段：秒 分 时 日 月 周
 enabled: true
 scope: workdir
-mode: inline   # 在主会话执行，输出自动回传飞书
+mode: inline   # 在主会话执行
+deliver: feishu   # 投递渠道；chat_id 见 cronjob/delivery.json
 prompt: prompt.txt
 created_at: 2026-09-28
 description: 每交易日 22:30 通过 MCP 核对当日事实并推送固定复盘清单，不写复盘结论

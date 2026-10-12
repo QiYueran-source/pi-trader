@@ -87,6 +87,7 @@ prompt.txt
 - 体系型任务的目录、`system-id` 和所属体系一致。
 - `prompt.txt` 自包含，明确输入、动作、输出和异常汇报方式。
 - 修改 prompt 后，同时更新仓库文件和 Pi 注册任务中的 prompt 内容。
+- 每个任务的 `prompt.txt` 含统一的「投递与输出」段：投递读 `cronjob/delivery.json` 的 `feishuChatId` 并显式传给 `send_to_feishu`，输出首行给一行式状态，无动作也回执。
 - 注册或变更后，把运行时的 `job_id` 回填到 `cronjob.yml`。
 
 完整字段和 prompt 写作规则见 [writing-conventions.md](references/writing-conventions.md)。
