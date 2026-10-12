@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-12",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "calibration_check",
+  "generated_at": "2026-10-12T12:25:00+00:00",
+  "schedule": "weekly_last_trading_day_or_manual",
+  "today_is_trading_day": true,
+  "next_calendar_day_is_trading_day": true,
+  "latest_prior_grid_parameters": "knowledge/交易/过程资料/2026-10-09/红利ETF网格/grid_parameters.json",
+  "should_calibrate": false,
+  "reason": "schedule_not_triggered",
+  "note": "2026-10-12 为周一，次日（2026-10-13）仍为交易日，未满足 weekly_last_trading_day（本周最后交易日）+ 无人工触发 → 本日不执行网格校准，沿用最近有效校准（10-09）。参数文件 grid.json 的确认比例已于 2026-10-12 人工置 0（停用），按体系口径该变更在下次实际校准时生效，本日不重算 grid_parameters.json。"
+}

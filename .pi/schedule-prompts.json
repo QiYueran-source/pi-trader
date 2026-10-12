@@ -110,7 +110,7 @@
       "name": "agent-etf-rotation-1850-generate-plan",
       "schedule": "0 50 18 * * *",
       "prompt": "# ETF轮动 · 生成下一交易日计划\n\n交易日 18:50 基于当日复盘、账户快照和体系规则生成下一交易日唯一模拟计划。\n\n## 权威来源\n- `system.yml`、`体系运作流程.md`、`评估框架.md`、`调仓逻辑.md`、`风控逻辑.md`、当日正式复盘。\n- 市场数据仅使用 `tushare-data` MCP；仓位与现金仅使用 `trade-management.portfolio_snapshot`。\n\n## 执行\n1. 确认交易日和输入日期一致。\n2. 获取 ETF、指数、宏观与账户事实，按规则形成唯一动作。\n3. 写入过程资料及 `knowledge/交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`。\n\n输入无效时输出链路异常且不生成计划。写入简报 `knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`，最终仅报告下一交易日动作、理由、风险和计划路径。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
-      "enabled": false,
+      "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.916Z",
       "runCount": 0,
@@ -146,8 +146,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.148Z",
-      "runCount": 0,
-      "description": "交易日 19:00 严格回放当日正式计划，并在 MNZH 模拟账户记账。"
+      "runCount": 1,
+      "description": "交易日 19:00 严格回放当日正式计划，并在 MNZH 模拟账户记账。",
+      "lastStatus": "success",
+      "lastRun": "2026-10-12T11:00:00.007Z",
+      "nextRun": "2026-10-13T11:00:00.000Z"
     },
     {
       "id": "vmVgFNAk2s",
@@ -157,8 +160,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.186Z",
-      "runCount": 0,
-      "description": "交易日 19:10 复盘正式计划、模拟执行和过程事实，并生成可追溯复盘。"
+      "runCount": 1,
+      "description": "交易日 19:10 复盘正式计划、模拟执行和过程事实，并生成可追溯复盘。",
+      "lastStatus": "success",
+      "lastRun": "2026-10-12T11:10:00.006Z",
+      "nextRun": "2026-10-13T11:10:00.000Z"
     },
     {
       "id": "MolP85Dprx",
@@ -168,8 +174,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.223Z",
-      "runCount": 0,
-      "description": "交易日 19:25 依据正式复盘、过程事实和体系规则生成下一交易日唯一模拟计划。"
+      "runCount": 1,
+      "description": "交易日 19:25 依据正式复盘、过程事实和体系规则生成下一交易日唯一模拟计划。",
+      "lastStatus": "success",
+      "lastRun": "2026-10-12T11:25:00.010Z",
+      "nextRun": "2026-10-13T11:25:00.000Z"
     },
     {
       "id": "baRE-HFfIi",
@@ -179,19 +188,24 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.262Z",
-      "runCount": 0,
-      "description": "交易日 19:35 计算收盘机械信号并生成下一交易日唯一正式计划"
+      "runCount": 1,
+      "description": "交易日 19:35 计算收盘机械信号并生成下一交易日唯一正式计划",
+      "lastStatus": "success",
+      "lastRun": "2026-10-12T11:35:00.012Z",
+      "nextRun": "2026-10-13T11:35:00.000Z"
     },
     {
       "id": "B5_io8UPlp",
       "name": "global-2000-catchup-system-tasks",
       "schedule": "2026-10-12T12:00:00.000Z",
       "prompt": "# 20:00 补做：18:00 后错过的体系任务（一次性，2026-10-12）\n\n## 任务目标\n\n2026-10-12 盘后调度器未运行，以下体系任务错过或无法按原时序执行。本任务在 20:00 串行补做，产出与原任务一致，日期口径仍为 2026-10-12。\n\n补做范围（5 步）：\n\n- 双网格：`div-etf-grid-trade-1800-param-check`、`div-etf-grid-trade-1810-risk-monitor`（原时点错过）。\n- ETF轮动链：`agent-etf-rotation-1825-replay-execute`（原时点错过）→ `agent-etf-rotation-1835-review`（18:35 已注入但未执行）→ `agent-etf-rotation-1850-generate-plan`（18:50 已临时禁用，避免在复盘缺失时抢跑）。\n\n范围外：19:00 之后的体系任务（热门板块回调低吸 1900/1910/1925、招商双债LOF 1935）当晚按原排程自行执行，本任务不重复运行。\n\n## 输入\n\n- 目标交易日：2026-10-12（交易日，已确认）。\n- 五个原任务的流程定义（逐字按其中步骤执行）：\n  1. `cronjob/system/div-etf-grid-trade/div-etf-grid-trade-1800-param-check/prompt.txt`\n  2. `cronjob/system/div-etf-grid-trade/div-etf-grid-trade-1810-risk-monitor/prompt.txt`\n  3. `cronjob/system/agent-etf-rotation/agent-etf-rotation-1825-replay-execute/prompt.txt`\n  4. `cronjob/system/agent-etf-rotation/agent-etf-rotation-1835-review/prompt.txt`\n  5. `cronjob/system/agent-etf-rotation/agent-etf-rotation-1850-generate-plan/prompt.txt`\n- 各体系规则、参数与流程：读取对应体系目录下 `system.yml`、`体系运作流程.md` 及相关规则文档。\n- 数据访问：交易日与行情只用 `tushare-data` MCP；账户、成交、持仓只用 `trade-management` MCP。\n\n## 执行步骤\n\n严格按序串行执行，前一步完成后才进入下一步：\n\n1. **双网格校准事实**：按第 1 份 prompt 执行，目标日期 2026-10-12，写入其定义的过程资料与简报。\n2. **双网格事实/状态/计划**：按第 2 份 prompt 执行，基于 2026-10-12 收盘事实与真实持仓生成状态与下一交易日（2026-10-13）唯一正式计划。\n3. **ETF轮动回放执行**：按第 3 份 prompt 执行，按 2026-10-12 正式计划在 MNZH 模拟账户回放，登记模拟成交前先核对当日无重复记录。\n4. **ETF轮动复盘**：按第 4 份 prompt 执行，复盘当日计划、第 3 步的实际回放执行和市场事实，写入 `knowledge/交易/交易复盘/2026-10-12/基于Agent的ETF轮动体系_复盘.md`。\n5. **ETF轮动下一交易日计划**：按第 5 份 prompt 执行，基于第 4 步复盘、账户快照和体系规则生成 2026-10-13 唯一模拟计划。\n\n每一步沿用其原任务的输出路径、简报路径和投递要求，各自发送一行式状态回执。\n\n## 收尾：恢复被临时禁用的任务\n\n无论补做成功或失败，结束后都必须恢复第 5 步对应的任务：\n\n- 用 `schedule_prompt` 的 `enable` 动作恢复 `agent-etf-rotation-1850-generate-plan`（jobId `TqRLPsSoQK`），并用 `list` 核对该任务 `enabled` 已恢复、`Next` 指向 2026-10-13 18:50。\n- 恢复失败时在汇总中明确说明，不要静默跳过。\n\n## 异常处理\n\n- 某一步失败：记录步骤、阶段、原因和是否产生部分输出，不重试；若后续步骤依赖该步输入，则跳过并说明。\n- 输入缺失或日期不一致：如实记录链路异常，不编造结果。\n- 不修改体系静态规则，不生成额外计划，不补做范围外的任务。\n\n## 汇总\n\n五步结束后发送一条汇总：\n\n```text\n【2000 补做】完成 x/5 ｜ 失败：...\n```\n\n正文列出每步的结论、产物路径、待办和被禁用任务的恢复结果；失败步骤说明失败阶段与原因。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。",
-      "enabled": true,
+      "enabled": false,
       "type": "once",
       "createdAt": "2026-10-12T10:31:00.314Z",
-      "runCount": 0,
-      "description": "一次性补做 2026-10-12 错过的体系任务（双网格 1800/1810、ETF轮动 1825/1835/1850）"
+      "runCount": 1,
+      "description": "一次性补做 2026-10-12 错过的体系任务（双网格 1800/1810、ETF轮动 1825/1835/1850）",
+      "lastStatus": "success",
+      "lastRun": "2026-10-12T12:00:00.007Z"
     }
   ],
   "version": 1

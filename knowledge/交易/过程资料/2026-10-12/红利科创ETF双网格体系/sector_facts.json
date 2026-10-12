@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-12",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-10-12T12:25:00+00:00",
+  "source_trade_date": "20261012",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 48,
+    "sector_count": 22,
+    "technology_stock_count": 3,
+    "technology_stock_ratio": 0.0625
+  },
+  "top_sectors": [
+    {"industry": "电气设备", "limit_up_count": 9, "sample_stocks": [{"ts_code": "002441.SZ", "name": "众业达", "pct_change_ratio": 0.100358}, {"ts_code": "002531.SZ", "name": "天顺风能", "pct_change_ratio": 0.099734}, {"ts_code": "002576.SZ", "name": "通达动力", "pct_change_ratio": 0.099932}], "is_technology": false},
+    {"industry": "影视音像", "limit_up_count": 6, "sample_stocks": [{"ts_code": "000892.SZ", "name": "欢瑞世纪", "pct_change_ratio": 0.101031}, {"ts_code": "001330.SZ", "name": "博纳影业", "pct_change_ratio": 0.10043}, {"ts_code": "002343.SZ", "name": "慈文传媒", "pct_change_ratio": 0.100329}], "is_technology": false},
+    {"industry": "出版业", "limit_up_count": 6, "sample_stocks": [{"ts_code": "301052.SZ", "name": "果麦文化", "pct_change_ratio": 0.200079}, {"ts_code": "600825.SH", "name": "新华传媒", "pct_change_ratio": 0.099761}, {"ts_code": "601811.SH", "name": "新华文轩", "pct_change_ratio": 0.099952}], "is_technology": false},
+    {"industry": "软件服务", "limit_up_count": 5, "sample_stocks": [{"ts_code": "002908.SZ", "name": "德生科技", "pct_change_ratio": 0.100137}, {"ts_code": "002990.SZ", "name": "盛视科技", "pct_change_ratio": 0.100079}, {"ts_code": "603232.SH", "name": "格尔软件", "pct_change_ratio": 0.100118}], "is_technology": false},
+    {"industry": "化学制药", "limit_up_count": 3, "sample_stocks": [{"ts_code": "300006.SZ", "name": "莱美药业", "pct_change_ratio": 0.199269}, {"ts_code": "600812.SH", "name": "华北制药", "pct_change_ratio": 0.099502}, {"ts_code": "600851.SH", "name": "海欣股份", "pct_change_ratio": 0.099744}], "is_technology": false},
+    {"industry": "互联网", "limit_up_count": 2, "sample_stocks": [{"ts_code": "002264.SZ", "name": "新华都", "pct_change_ratio": 0.1}, {"ts_code": "603533.SH", "name": "掌阅科技", "pct_change_ratio": 0.099843}], "is_technology": true},
+    {"industry": "环境保护", "limit_up_count": 2, "sample_stocks": [{"ts_code": "002591.SZ", "name": "恒大高新", "pct_change_ratio": 0.099846}, {"ts_code": "301030.SZ", "name": "*ST仕净", "pct_change_ratio": 0.2}], "is_technology": false},
+    {"industry": "农药化肥", "limit_up_count": 1, "sample_stocks": [{"ts_code": "001231.SZ", "name": "农心科技", "pct_change_ratio": 0.100086}], "is_technology": false}
+  ],
+  "technology_limit_up_stocks": [
+    {"ts_code": "002264.SZ", "name": "新华都", "industry": "互联网"},
+    {"ts_code": "301419.SZ", "name": "阿莱德", "industry": "通信设备"},
+    {"ts_code": "603533.SH", "name": "掌阅科技", "industry": "互联网"}
+  ],
+  "note": "口径同 collect_sector_facts.py：涨停 = 当日涨幅 ≥ 板块阈值（主板 9.8% / 双创 19.5% / 北交所 29.5%），已剔除 N/C 首日与次新；科技类按 params/sector_classification.json 的 technology_industry_keywords 匹配行业名。因脚本未在本任务链路中运行，本文件为 MCP 独立复算（tushare-data.get_market_daily + get_stock_basic）。"
+}
