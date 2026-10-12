@@ -1,0 +1,12 @@
+# global-2000-catchup-system-tasks（一次性临时任务，仅 2026-10-12 有效）
+name: global-2000-catchup-system-tasks
+job_id: B5_io8UPlp   # 2026-10-12 注册
+type: once
+schedule: "2026-10-12T20:00:00+08:00"   # 一次性触发时间（本地时区 Asia/Shanghai）
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行
+deliver: feishu   # 投递渠道；chat_id 见 cronjob/delivery.json
+prompt: prompt.txt
+created_at: 2026-10-12
+description: 一次性补做 2026-10-12 错过的体系任务（双网格 1800/1810、ETF轮动 1825）
