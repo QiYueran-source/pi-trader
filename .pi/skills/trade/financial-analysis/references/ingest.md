@@ -22,7 +22,9 @@
 2. 已有同名文件时，确认是补充还是覆盖。
 3. 代码或名称不完整时先核实，不能确定就询问。
 4. 按 `references/style.md` 整理 Markdown。
-5. 分析类内容写入后，调用 `financial_analysis_record_mentions`；覆盖时调用 `financial_analysis_replace_mentions`。
+5. **入库前自检**：按 `references/mentions.md` 的「入库校验」逐条核对，并确认文件名 / 来源类型 / `mention_date` 三者自洽。
+6. **先列出待入库清单**（一行一条）给用户确认。
+7. 确认后写入：新记录用 `financial_analysis_record_mentions`，覆盖旧文件用 `financial_analysis_replace_mentions`；写后核对 `inserted/skipped/deleted` 并复核条数。
 
 ## Frontmatter
 
