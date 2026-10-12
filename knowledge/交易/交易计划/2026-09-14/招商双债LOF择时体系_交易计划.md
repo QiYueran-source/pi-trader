@@ -25,11 +25,11 @@ links:
     relations:
       - 引用
   - uuid: 19b0fb27a853566b97461b74a4458354
-    path: 交易/过程资料/2026-09-11/招商双债LOF择时体系/signal_report.md
+    path: archive/交易/过程资料/2026-09-11/招商双债LOF择时体系/signal_report.md
     relations:
       - 依据
   - uuid: 0f55c625f5c74d04afbfcb7bba76126c
-    path: 交易/交易计划/2026-09-11/招商双债LOF择时体系_交易计划.md
+    path: archive/交易/交易计划/2026-09-11/招商双债LOF择时体系_交易计划.md
     relations:
       - 引用
 ---
@@ -47,7 +47,7 @@ links:
 - 信号原因：9/11 收盘 1.657 **等于空仓期谷值 `trough` 1.657**，不创新低但收盘未高于谷值，`close > trough` 不成立 → 不触发买入；计数 `no_low_days` 由 1 累计至 2
 - 状态锚点：空仓期谷值 `trough` = 1.657（未下移）；追回锚 `last_sell_peak` = 1.659；持仓期峰值 `peak` = 1.659
 - 参数：N=2，止损=启用，追回=启用；费率 万0.5 免5
-- 信号详情：[[交易/过程资料/2026-09-11/招商双债LOF择时体系/signal_report.md|signal_report 2026-09-11]]
+- 信号详情：[[archive/交易/过程资料/2026-09-11/招商双债LOF择时体系/signal_report.md|signal_report 2026-09-11]]
 
 > 等值边界说明：空仓侧 `close == trough` 只累计 `no_low_days`、不触发买入（需收盘**严格高于**谷值才满足买入条件）。9/11 为 9/9 止损设谷后的**连续第三个等值日**（9/10、9/11 收盘均为 1.657）。当前 `no_low_days = 2` 已达确认天数 N=2，但收盘未高于谷值，故仍不触发买入——**计数满 ≠ 触发**，属正常机器语义。
 

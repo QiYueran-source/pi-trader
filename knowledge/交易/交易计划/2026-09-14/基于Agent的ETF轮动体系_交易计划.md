@@ -18,15 +18,15 @@ links:
     relations:
       - belongs_to_system
   - uuid: review-agent_etf_rotation-2026-09-11
-    path: 交易/交易复盘/2026-09-11/基于Agent的ETF轮动体系.md
+    path: archive/交易/交易复盘/2026-09-11/基于Agent的ETF轮动体系.md
     relations:
       - derived_from
   - uuid: process-etf-rotation-2026-09-11
-    path: 交易/过程资料/2026-09-11/ETF轮动-选股分析.md
+    path: archive/交易/过程资料/2026-09-11/ETF轮动-选股分析.md
     relations:
       - 分析过程
   - uuid: plan-agent_etf_rotation-2026-09-11
-    path: 交易/交易计划/2026-09-11/基于Agent的ETF轮动体系_交易计划.md
+    path: archive/交易/交易计划/2026-09-11/基于Agent的ETF轮动体系_交易计划.md
     relations:
       - 引用
 ---

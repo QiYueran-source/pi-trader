@@ -5,7 +5,7 @@
   "generated_at": "2026-09-16T10:16:18.866403+00:00",
   "parameter_schema_version": 1,
   "positions_source": "not_provided",
-  "calibration_source": "/hermes-trader/knowledge/交易/过程资料/2026-09-11/红利ETF网格/grid_parameters.json",
+  "calibration_source": "/hermes-trader/knowledge/archive/交易/过程资料/2026-09-11/红利ETF网格/grid_parameters.json",
   "facts": {
     "dividend": {
       "market": {

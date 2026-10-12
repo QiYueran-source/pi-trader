@@ -3,7 +3,7 @@
   "system_id": "zslof_timing_trade",
   "artifact": "strategy_state",
   "generated_at": "2026-09-14T11:37:39.317467+00:00",
-  "source_state": "/hermes-trader/knowledge/交易/过程资料/2026-09-11/招商双债LOF择时体系/strategy_state.json",
+  "source_state": "/hermes-trader/knowledge/archive/交易/过程资料/2026-09-11/招商双债LOF择时体系/strategy_state.json",
   "state": {
     "strategy_position": "flat",
     "peak": 1.659,
