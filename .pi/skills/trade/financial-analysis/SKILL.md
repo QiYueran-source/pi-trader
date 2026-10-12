@@ -17,8 +17,8 @@ tags:
 
 ### 整理新内容
 
-1. 先扫描 `knowledge/笔记/财经分析/{date}/`，优先使用本地文件，不主动搜索原文。
-2. 判断类型：收评/午评放入 `knowledge/事实/{date}/`；含未来判断的内容放入 `knowledge/笔记/财经分析/{date}/`。
+1. 先扫描 `knowledge/交易/财经分析/{date}/`，优先使用本地文件，不主动搜索原文。
+2. 判断类型：收评/午评放入 `knowledge/事实/{date}/`；含未来判断的内容放入 `knowledge/交易/财经分析/{date}/`。
 3. 按 `references/ingest.md` 命名和写入 Markdown，按 `references/style.md` 排版。
 4. 从正文提取个股、板块、情绪、判断窗口。
 5. 调用 `financial_analysis_record_mentions` 录入判断；覆盖旧文件时调用 `financial_analysis_replace_mentions`。
@@ -29,7 +29,7 @@ tags:
 2. 用 `tushare-data` 获取个股或指数行情。
 3. 调用 `financial_analysis_record_performance` 保存行情。
 4. 调用 `financial_analysis_review_date` 获取复盘数据。
-5. 将结果写入 `knowledge/笔记/财经分析/{date}/财经分析复盘.md`。
+5. 将结果写入 `knowledge/交易/财经分析/{date}/财经分析复盘.md`。
 
 ## 时间规则
 
