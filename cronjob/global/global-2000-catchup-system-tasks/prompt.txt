@@ -2,17 +2,24 @@
 
 ## 任务目标
 
-2026-10-12 盘后调度器未运行，以下三个体系任务错过原触发时点。本任务在 20:00 串行补做，产出与原任务一致，日期口径仍为 2026-10-12。
+2026-10-12 盘后调度器未运行，以下体系任务错过或无法按原时序执行。本任务在 20:00 串行补做，产出与原任务一致，日期口径仍为 2026-10-12。
 
-范围仅限这三个任务；19:00 之后的体系任务（热门板块回调低吸 1900/1910/1925、招商双债LOF 1935）当晚按原排程自行执行，本任务不重复运行。
+补做范围（5 步）：
+
+- 双网格：`div-etf-grid-trade-1800-param-check`、`div-etf-grid-trade-1810-risk-monitor`（原时点错过）。
+- ETF轮动链：`agent-etf-rotation-1825-replay-execute`（原时点错过）→ `agent-etf-rotation-1835-review`（18:35 已注入但未执行）→ `agent-etf-rotation-1850-generate-plan`（18:50 已临时禁用，避免在复盘缺失时抢跑）。
+
+范围外：19:00 之后的体系任务（热门板块回调低吸 1900/1910/1925、招商双债LOF 1935）当晚按原排程自行执行，本任务不重复运行。
 
 ## 输入
 
 - 目标交易日：2026-10-12（交易日，已确认）。
-- 三个原任务的流程定义（逐字按其中步骤执行）：
+- 五个原任务的流程定义（逐字按其中步骤执行）：
   1. `cronjob/system/div-etf-grid-trade/div-etf-grid-trade-1800-param-check/prompt.txt`
   2. `cronjob/system/div-etf-grid-trade/div-etf-grid-trade-1810-risk-monitor/prompt.txt`
   3. `cronjob/system/agent-etf-rotation/agent-etf-rotation-1825-replay-execute/prompt.txt`
+  4. `cronjob/system/agent-etf-rotation/agent-etf-rotation-1835-review/prompt.txt`
+  5. `cronjob/system/agent-etf-rotation/agent-etf-rotation-1850-generate-plan/prompt.txt`
 - 各体系规则、参数与流程：读取对应体系目录下 `system.yml`、`体系运作流程.md` 及相关规则文档。
 - 数据访问：交易日与行情只用 `tushare-data` MCP；账户、成交、持仓只用 `trade-management` MCP。
 
@@ -23,8 +30,17 @@
 1. **双网格校准事实**：按第 1 份 prompt 执行，目标日期 2026-10-12，写入其定义的过程资料与简报。
 2. **双网格事实/状态/计划**：按第 2 份 prompt 执行，基于 2026-10-12 收盘事实与真实持仓生成状态与下一交易日（2026-10-13）唯一正式计划。
 3. **ETF轮动回放执行**：按第 3 份 prompt 执行，按 2026-10-12 正式计划在 MNZH 模拟账户回放，登记模拟成交前先核对当日无重复记录。
+4. **ETF轮动复盘**：按第 4 份 prompt 执行，复盘当日计划、第 3 步的实际回放执行和市场事实，写入 `knowledge/交易/交易复盘/2026-10-12/基于Agent的ETF轮动体系_复盘.md`。
+5. **ETF轮动下一交易日计划**：按第 5 份 prompt 执行，基于第 4 步复盘、账户快照和体系规则生成 2026-10-13 唯一模拟计划。
 
 每一步沿用其原任务的输出路径、简报路径和投递要求，各自发送一行式状态回执。
+
+## 收尾：恢复被临时禁用的任务
+
+无论补做成功或失败，结束后都必须恢复第 5 步对应的任务：
+
+- 用 `schedule_prompt` 的 `enable` 动作恢复 `agent-etf-rotation-1850-generate-plan`（jobId `TqRLPsSoQK`），并用 `list` 核对该任务 `enabled` 已恢复、`Next` 指向 2026-10-13 18:50。
+- 恢复失败时在汇总中明确说明，不要静默跳过。
 
 ## 异常处理
 
@@ -34,13 +50,13 @@
 
 ## 汇总
 
-三步结束后发送一条汇总：
+五步结束后发送一条汇总：
 
 ```text
-【2000 补做】完成 x/3 ｜ 失败：...
+【2000 补做】完成 x/5 ｜ 失败：...
 ```
 
-正文列出每步的结论、产物路径和待办；失败步骤说明失败阶段与原因。
+正文列出每步的结论、产物路径、待办和被禁用任务的恢复结果；失败步骤说明失败阶段与原因。
 
 ## 投递与输出
 
