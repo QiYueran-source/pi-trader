@@ -174,9 +174,10 @@ def move(relative: str, rewrite: bool = False) -> dict[str, Any]:
     return result
 
 
-def run_batch(before_date: str, rewrite: bool = False, dry_run: bool = True,
+def run_batch(before_date: str | None = None, rewrite: bool = False, dry_run: bool = True,
               include_paths: bool = False) -> dict[str, Any]:
     """批量归档：候选 → 预览 →（可选改写引用）→ 移动 → 清理空目录。"""
+    before_date = before_date or (date.today() - timedelta(days=30)).isoformat()
     items = candidates(before_date)
     planned: list[str] = []
     skipped: Counter[str] = Counter()
@@ -289,7 +290,7 @@ TOOLS = [
     Tool(name="archive_preview", description="预览归档路径、目标冲突和引用关系。", inputSchema={"type":"object","properties":{"path":{"type":"string","description":"相对 knowledge 的路径"}},"required":["path"]}),
     Tool(name="archive_move", description="移动一个日期型文档到根目录 archive。默认拒绝被引用的文件；将 rewrite_references 设为 true 时先改写引用再移动。", inputSchema={"type":"object","properties":{"path":{"type":"string","description":"相对 knowledge 的路径"},"rewrite_references":{"type":"boolean","description":"默认 false；true 则先把引用改写为 archive/<path> 再移动"}},"required":["path"]}),
     Tool(name="archive_rewrite_references", description="把 knowledge 文档中对某个已知档路径的引用改写为 archive/<path>。只做精确路径替换，默认只预览。", inputSchema={"type":"object","properties":{"path":{"type":"string","description":"相对 knowledge 的路径"},"apply":{"type":"boolean","description":"默认 false 只预览；true 才写入"}},"required":["path"]}),
-    Tool(name="archive_run", description="批量归档：候选→预览→（可选改写引用）→移动→清理空目录。默认只干跑预览，返回汇总统计。", inputSchema={"type":"object","properties":{"before_date":{"type":"string","description":"YYYY-MM-DD，归档此日期及更早的日期型文档"},"rewrite_references":{"type":"boolean","description":"默认 false：被引用的文件跳过；true：先改写引用再归档"},"dry_run":{"type":"boolean","description":"默认 true 只预览，不移动不修改"},"include_paths":{"type":"boolean","description":"默认 false 只返回样例；true 返回完整待处理清单"}},"required":["before_date"]}),
+    Tool(name="archive_run", description="批量归档：候选→预览→（可选改写引用）→移动→清理空目录。默认只干跑预览，返回汇总统计。", inputSchema={"type":"object","properties":{"before_date":{"type":"string","description":"YYYY-MM-DD；不传则为 30 天前"},"rewrite_references":{"type":"boolean","description":"默认 false：被引用的文件跳过；true：先改写引用再归档"},"dry_run":{"type":"boolean","description":"默认 true 只预览，不移动不修改"},"include_paths":{"type":"boolean","description":"默认 false 只返回样例；true 返回完整待处理清单"}}}),
     Tool(name="archive_cleanup_empty_dirs", description="删除归档后遗留的空日期目录；仅删除空目录且须有 archive 对应目录，默认只预览。这一步只清理空壳，不需要用户确认。", inputSchema={"type":"object","properties":{"dry_run":{"type":"boolean","description":"默认 true 只返回待删清单；设为 false 才真正删除"}}}),
 ]
 server = Server("archive-management")
@@ -314,7 +315,7 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         elif name == "archive_rewrite_references":
             result = rewrite_references(args["path"], bool(args.get("apply", False)))
         elif name == "archive_run":
-            result = run_batch(args["before_date"], bool(args.get("rewrite_references", False)),
+            result = run_batch(args.get("before_date"), bool(args.get("rewrite_references", False)),
                                bool(args.get("dry_run", True)), bool(args.get("include_paths", False)))
         elif name == "archive_cleanup_empty_dirs":
             result = cleanup_empty_dirs(bool(args.get("dry_run", True)))
