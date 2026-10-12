@@ -1,6 +1,6 @@
 ---
 name: tushare
-description: 通过 tushare-data MCP 获取股票、ETF、指数、宏观、交易日历和分钟行情；用于财经分析、交易体系事实采集和市场数据核验。
+description: 通过 tushare-data MCP 获取股票、ETF、指数、宏观、交易日历和分钟行情。需要查询或核验上述实际市场数据、交易日或分钟行情时必须使用。
 author: pi-trader
 version: 2.0.0
 ---

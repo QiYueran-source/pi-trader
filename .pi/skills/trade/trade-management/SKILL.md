@@ -1,6 +1,6 @@
 ---
 name: trade-management
-description: 管理账户、交易流水、现金流水、自选股和盈亏统计。只通过 trade-management MCP 访问数据库；不直接执行 SQL 或 CLI。
+description: 管理账户、交易流水、现金流水、自选股和盈亏统计。查询或写入这些数据时必须使用，并且只能通过 trade-management MCP 访问数据库；不直接执行 SQL 或 CLI。
 ---
 
 # 交易管理技能
