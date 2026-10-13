@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-13",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-10-13T10:12:19+00:00",
+  "source_trade_date": "20261013",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 70,
+    "sector_count": 40,
+    "technology_stock_count": 3,
+    "technology_stock_ratio": 0.0429
+  },
+  "top_sectors": [
+    {"industry": "元器件", "limit_up_count": 10, "sample_stocks": [{"ts_code": "000823.SZ", "name": "超声电子", "pct_change_ratio": 0.100049}, {"ts_code": "002579.SZ", "name": "中京电子", "pct_change_ratio": 0.099732}, {"ts_code": "002587.SZ", "name": "奥拓电子", "pct_change_ratio": 0.099237}], "is_technology": false},
+    {"industry": "化工原料", "limit_up_count": 5, "sample_stocks": [{"ts_code": "002748.SZ", "name": "世龙实业", "pct_change_ratio": 0.099916}, {"ts_code": "002917.SZ", "name": "金奥博", "pct_change_ratio": 0.1}, {"ts_code": "300107.SZ", "name": "建新股份", "pct_change_ratio": 0.200278}], "is_technology": false},
+    {"industry": "专用机械", "limit_up_count": 3, "sample_stocks": [{"ts_code": "002639.SZ", "name": "雪人集团", "pct_change_ratio": 0.100302}, {"ts_code": "600202.SH", "name": "哈空调", "pct_change_ratio": 0.100394}, {"ts_code": "603956.SH", "name": "威派格", "pct_change_ratio": 0.099865}], "is_technology": false},
+    {"industry": "旅游景点", "limit_up_count": 3, "sample_stocks": [{"ts_code": "000558.SZ", "name": "天府文旅", "pct_change_ratio": 0.100287}, {"ts_code": "600593.SH", "name": "大连圣亚", "pct_change_ratio": 0.1}, {"ts_code": "603099.SH", "name": "长白山", "pct_change_ratio": 0.100048}], "is_technology": false},
+    {"industry": "百货", "limit_up_count": 3, "sample_stocks": [{"ts_code": "000715.SZ", "name": "中兴商业", "pct_change_ratio": 0.100952}, {"ts_code": "600693.SH", "name": "东百集团", "pct_change_ratio": 0.100179}, {"ts_code": "600712.SH", "name": "南宁百货", "pct_change_ratio": 0.100559}], "is_technology": false},
+    {"industry": "互联网", "limit_up_count": 2, "sample_stocks": [{"ts_code": "002640.SZ", "name": "跨境通", "pct_change_ratio": 0.09887}, {"ts_code": "600228.SH", "name": "返利科技", "pct_change_ratio": 0.099783}], "is_technology": true},
+    {"industry": "出版业", "limit_up_count": 2, "sample_stocks": [{"ts_code": "603096.SH", "name": "新经典", "pct_change_ratio": 0.10021}, {"ts_code": "605577.SH", "name": "龙版传媒", "pct_change_ratio": 0.099888}], "is_technology": false},
+    {"industry": "影视音像", "limit_up_count": 2, "sample_stocks": [{"ts_code": "002343.SZ", "name": "慈文传媒", "pct_change_ratio": 0.100149}, {"ts_code": "600831.SH", "name": "广电网络", "pct_change_ratio": 0.099744}], "is_technology": false}
+  ],
+  "technology_limit_up_stocks": [
+    {"ts_code": "002640.SZ", "name": "跨境通", "industry": "互联网"},
+    {"ts_code": "600228.SH", "name": "返利科技", "industry": "互联网"},
+    {"ts_code": "603042.SH", "name": "华脉科技", "industry": "通信设备"}
+  ],
+  "note": "口径同 collect_sector_facts.py：涨停 = 当日涨幅 ≥ 板块阈值（主板 9.8% / 双创 19.5% / 北交所 29.5%），阈值法命中 71 只，剔除 N/C 前缀首日上市 1 只（N粤芯半导体 301660.SZ，20261013 上市、+223.06%）后为 70 只；科技类按 params/sector_classification.json 的 technology_industry_keywords 匹配行业名（子串匹配）。因脚本未在本任务链路中运行，本文件为 MCP 独立复算（tushare-data.get_market_daily + get_stock_basic，官方源）。口径提示：Tushare 行业名「元器件」不在关键词表中，因而 10 只元器件涨停股未计入科技类；若按科技电子口径纳入，科技涨停为 13/70 ≈ 18.6%。该口径差异是否调整由人工决定，本文件仍按现行关键词表输出。"
+}

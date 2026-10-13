@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-13",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "switch_instruction",
+  "generated_at": "2026-10-13T10:12:19+00:00",
+  "transition": {
+    "decision": "keep",
+    "from_state": "normal",
+    "to_state": "normal"
+  },
+  "order_instructions": [],
+  "condition_order_modes": {
+    "dividend": {
+      "buy_enabled": true,
+      "sell_enabled": true
+    },
+    "growth": {
+      "buy_enabled": true,
+      "sell_enabled": true
+    }
+  },
+  "notice": "本文件是人工券商执行指令，不直接下单；价格、时点与成交结果必须在交易计划和执行记录中确认。本日 decision=keep，无切换订单，normal 态下双网格买卖开关均启。提示：红利 515180 当前净持 0 份，买档未触及（10-13 最低 1.442 高于下一买档 1.4286），卖出腿无可用份额。"
+}

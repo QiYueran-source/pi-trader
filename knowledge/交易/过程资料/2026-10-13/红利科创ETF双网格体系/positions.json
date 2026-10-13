@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-13",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "positions",
+  "generated_at": "2026-10-13T10:12:19+00:00",
+  "source": "trade_management_mcp",
+  "positions_source": "portfolio_snapshot(YHZQ, div_etf_grid_trade)",
+  "trade_as_of": "2026-10-13 13:09:34",
+  "cash": 14207.6,
+  "positions": {
+    "dividend": { "shares": 0, "market_value_amount": 0 },
+    "growth": { "shares": 6000, "market_value_amount": 5472.0 }
+  },
+  "note": "来源：trade-management MCP 的 portfolio_snapshot（同一 YHZQ 账户下按体系独立记账；非券商查询，但为本体系运行指定的账户事实来源）。红利 515180 净持 0 份；双创 159781 净持 6,000 份（均价 0.9247，已实现 −250），市值按 2026-10-13 收盘 0.912 计 = 5,472.00。当日成交：trade #88（10-13 09:30:07 买入 159781 1,000 份 @0.893）、trade #89（10-13 13:09:34 卖出 159781 1,000 份 @0.918），均为用户报告实盘成交·网格体系，买卖数量相抵。体系合计（现金 + 双创市值）= 19,679.60。同一账户下 159781 与主观多头体系共仓（该体系净持 7,000 份），网格卖出腿须先核对实际可用份额。"
+}
