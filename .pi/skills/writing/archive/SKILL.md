@@ -70,10 +70,11 @@ archive/{原相对路径}
 1. 用 `aliases` 替换历史前缀（如 `笔记/财经分析/` → `交易/财经分析/`）得到候选；
 2. `knowledge/<候选>` 存在 → 保留候选；
 3. 否则 `archive/<候选>` 存在 → 改为 `archive/<候选>`；
-4. 否则 `knowledge/<原值>` 存在 → 保留原值；
+4. 否则 `knowledge/<原值>` 存在，或原值本身（已写成 `archive/<路径>` 形态）在仓库根下存在 → 保留原值；
 5. 否则记为 `unresolved`，不动并上报。
 
 - 默认只预览；重复调用幂等（第二次 `changed=0`）。
+- `unresolved` 只统计真正找不到目标的死引用（目录重构、改名遗留）；已归档且文件存在的记录记 `unchanged`，不进入该计数。
 - **与候选数无关**：`archive_run` 没有候选时也应调用一次 `apply=true`。手工归档与历史遗留造成的路径变化只有这样才能被收敛；只在「有候选的那天」同步会永久漏掉。
 - 只改 `mentions.source_file`，不动其他表；不执行任意 SQL。
 - DB 路径由 `FINANCIAL_ANALYSIS_DB_PATH` 注入（见 `.pi/mcp.json`）；库不存在时返回错误而不报成功。

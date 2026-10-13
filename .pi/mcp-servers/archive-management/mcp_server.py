@@ -309,7 +309,7 @@ def sync_financial_paths(apply: bool = False, aliases: dict[str, str] | None = N
     1. 用 aliases 替换前缀（历史目录改名）得到候选 c1；
     2. knowledge/<c1> 存在（文件或目录）→ 取 c1；
     3. 否则 archive/<c1> 存在 → 取 archive/<c1>；
-    4. 否则 knowledge/<p> 存在 → 保留 p；
+    4. 否则 knowledge/<p> 存在，或 p 本身（已写成 archive/<路径> 形态）在仓库根下存在 → 保留 p；
     5. 否则记为 unresolved，不动。
     默认只预览（apply=False），重复调用幂等。只改 mentions.source_file。
     """
@@ -333,7 +333,7 @@ def sync_financial_paths(apply: bool = False, aliases: dict[str, str] | None = N
                 new = cand
             elif (ARCHIVE_ROOT / cand).exists():
                 new = f"{ARCHIVE_PREFIX}/{cand}"
-            elif (KNOWLEDGE_ROOT / old).exists():
+            elif (KNOWLEDGE_ROOT / old).exists() or (ARCHIVE_ROOT.parent / old).exists():
                 new = old
             else:
                 new = None
