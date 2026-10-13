@@ -14,11 +14,12 @@ services:
       - .env
       - .secrets.env
     volumes:
-      - .:/pi-trader
-      # 容器内的 Pi 配置/会话持久化，不挂宿主机 ~/.pi/agent
+      # 宿主机挂载
+      - ${PI_WORK_PATH_ON_HOST:?请设置 PI_WORK_PATH_ON_HOST}:/pi-trader
+      - ${SSH_HOST_PATH:?请设置 SSH_HOST_PATH}:/home/node/.ssh:ro
+      # 卷挂载
       - pi-agent-home:/home/node/.pi/agent
       - ./.pi/models.json:/home/node/.pi/agent/models.json:ro
-      - ${SSH_HOST_PATH}:/home/node/.ssh:ro
-
+      
 volumes:
   pi-agent-home:
