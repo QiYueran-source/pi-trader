@@ -1,0 +1,100 @@
+{
+  "date": "20261013",
+  "artifact": "hottest_industry_candidate",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-13T11:30:00+00:00",
+  "note": "MCP 复算版；行业过滤 = 元器件（当日涨停最多行业、PCB 主线；不满足板块双确认的均线腿 → 仅观察，见 板块热度研判.md）",
+  "params": {
+    "limit_up_window_days": 22,
+    "min_limit_up_count": 1,
+    "max_limit_up_count": 2,
+    "pullback_ma_period": 10,
+    "rebound_window_days": 5
+  },
+  "stats": {
+    "total_limit_up_stocks": 170,
+    "final_candidates": 6
+  },
+  "candidates": [
+    {
+      "code": "002587.SZ",
+      "name": "奥拓电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261013"
+      ],
+      "current_close": 5.76,
+      "pullback_ma": 5.311,
+      "pullback_pct": 0,
+      "bounceback_days": 1
+    },
+    {
+      "code": "002724.SZ",
+      "name": "海洋王",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260916",
+        "20260921"
+      ],
+      "current_close": 7.08,
+      "pullback_ma": 7.058,
+      "pullback_pct": -9.69,
+      "bounceback_days": 1
+    },
+    {
+      "code": "301041.SZ",
+      "name": "金百泽",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261013"
+      ],
+      "current_close": 40.14,
+      "pullback_ma": 37.058,
+      "pullback_pct": 0,
+      "bounceback_days": 1
+    },
+    {
+      "code": "301486.SZ",
+      "name": "致尚科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "current_close": 221,
+      "pullback_ma": 206.975,
+      "pullback_pct": 3.11,
+      "bounceback_days": 4
+    },
+    {
+      "code": "600237.SH",
+      "name": "铜峰电子",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260911",
+        "20261013"
+      ],
+      "current_close": 9.03,
+      "pullback_ma": 9.021,
+      "pullback_pct": -2.06,
+      "bounceback_days": 1
+    },
+    {
+      "code": "920821.BJ",
+      "name": "则成电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "current_close": 21.27,
+      "pullback_ma": 20.207,
+      "pullback_pct": -9.83,
+      "bounceback_days": 1
+    }
+  ]
+}

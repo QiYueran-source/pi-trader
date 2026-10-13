@@ -1,0 +1,24 @@
+{
+  "date": "20261013",
+  "artifact": "risk_signal",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-13T11:30:00+00:00",
+  "note": "空仓契约：无持仓 → 三层风控（审慎标签/MA5 减半/MA10 清仓）无对象，risk_actions 为空",
+  "params": {
+    "position_state": {
+      "state_file": "state.json"
+    },
+    "prudent_tag": {
+      "state_file": "prudent_tags.json",
+      "valid_trading_days": 3
+    }
+  },
+  "stats": {
+    "positions": 0,
+    "evaluated": 0,
+    "actions": 0,
+    "hold": 0
+  },
+  "risk_actions": [],
+  "holdings": []
+}

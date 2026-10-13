@@ -1,0 +1,85 @@
+{
+  "date": "20261013",
+  "source": "knowledge/交易/过程资料/2026-10-13/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "artifact": "entry_signal",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-13T11:30:00+00:00",
+  "note": "MCP 复算版（breakout_ma / volume_ma 均为含当日的最近 N 日口径，同 entry_signal.py）；空仓期仅作记录，不产生授权",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 6,
+    "with_daily_data": 6,
+    "signals": 4
+  },
+  "signals": [
+    {
+      "code": "002587.SZ",
+      "name": "奥拓电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261013"
+      ],
+      "pullback_pct": 0,
+      "signal_date": "20261013",
+      "close": 5.76,
+      "breakout_ma": 5.362,
+      "breakout_above_pct": 7.42,
+      "volume_ratio": 5.7,
+      "pass": true
+    },
+    {
+      "code": "002724.SZ",
+      "name": "海洋王",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260916",
+        "20260921"
+      ],
+      "pullback_pct": -9.69,
+      "signal_date": "20261013",
+      "close": 7.08,
+      "breakout_ma": 6.896,
+      "breakout_above_pct": 2.67,
+      "volume_ratio": 1.67,
+      "pass": true
+    },
+    {
+      "code": "301486.SZ",
+      "name": "致尚科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "pullback_pct": 3.11,
+      "signal_date": "20261013",
+      "close": 221,
+      "breakout_ma": 210.936,
+      "breakout_above_pct": 4.77,
+      "volume_ratio": 1.34,
+      "pass": true
+    },
+    {
+      "code": "920821.BJ",
+      "name": "则成电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260907"
+      ],
+      "pullback_pct": -9.83,
+      "signal_date": "20261013",
+      "close": 21.27,
+      "breakout_ma": 19.414,
+      "breakout_above_pct": 9.56,
+      "volume_ratio": 1.25,
+      "pass": true
+    }
+  ]
+}
