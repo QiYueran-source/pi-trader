@@ -25,12 +25,12 @@
 6. 只有找不到相近样例时，才使用上面的默认模板。
 7. 交易体系内部的 `params`、`scripts`、`templates`、`references`、`更新日志` 等目录由交易体系专用技能处理。
 
-当前结构示例：
+当前结构示例（用 `<yyyy-mm-dd>` 占位，避免示例路径随归档失效）：
 
 ```text
 knowledge/笔记/交易心法/从看红绿到看结构-看盘心法.md
-knowledge/交易/财经分析/2026-10-09/开源证券-盘前分析.md
-knowledge/交易/交易复盘/2026-10-09/基于Agent的ETF轮动体系.md
-knowledge/交易/过程资料/2026-10-09/红利ETF网格/grid_parameters.json
-knowledge/摘要/摘要_2026-10-09.md
+knowledge/交易/财经分析/<yyyy-mm-dd>/开源证券-盘前分析.md
+knowledge/交易/交易复盘/<yyyy-mm-dd>/基于Agent的ETF轮动体系_复盘.md
+knowledge/交易/过程资料/<yyyy-mm-dd>/<体系名称>/grid_parameters.json
+knowledge/摘要/摘要_<yyyy-mm-dd>.md
 ```
