@@ -1,11 +1,10 @@
 ---
-uuid: 9b4b00a5416f498caab708d201cda563
 title: 2026-08-03-rebound-falsified-review-case
+summary: "复盘案例（2026-08-03，7/31 强反弹被证伪的后继验证日）：三大指数全线收跌（创业板 −1.24%）；关键学习含退出监控的单日判定敏感性、领涨股次日缩量回调确认兑现、无板块确认时涨停个股的诱惑。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

@@ -1,11 +1,10 @@
 ---
-uuid: 89e107ba89d64647bef699f0c2babb9d
 title: 2026-08-04-backtest-evidence
+summary: "优化回测依据（286 交易日，2025-06-03~2026-08-03）：结论为个股认证窗口 10→22 天获支持、「持续几天满足部分条件」不被支持、投顾方向预测力只有排除价值；含落地的三层仓位分级与复现方法。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

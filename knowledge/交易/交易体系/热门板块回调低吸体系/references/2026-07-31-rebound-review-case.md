@@ -1,11 +1,10 @@
 ---
-uuid: 050929297ec941ceb5d6168db8230281
 title: 2026-07-31-rebound-review-case
+summary: "复盘案例（2026-07-31 暴跌后强反弹日的无交易复盘）：计划动作为不操作、执行一致；复盘要点含企稳信号须逐条对照计划定义、监控标的全线上涨时的处理、连续空仓天数更新，以及数据纪律与 limit_list_d 无权限的坑位。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

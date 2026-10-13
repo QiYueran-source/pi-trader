@@ -1,11 +1,10 @@
 ---
-uuid: 2d4eb8e3d9b441b29a9c4263e43f0e50
 title: process-documentation-examples
+summary: "过程资料落盘实践参考：以 ETF 轮动体系与热门板块回调低吸体系为例，给出过程资料文件清单、prompt 关键约束与实际输出示例。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

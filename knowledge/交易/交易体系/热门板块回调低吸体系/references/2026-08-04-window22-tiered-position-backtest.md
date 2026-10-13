@@ -1,11 +1,10 @@
 ---
-uuid: 7048cca3b17b447085de34f3922f5a01
 title: 2026-08-04-window22-tiered-position-backtest
+summary: "「窗口 22 天 ＋ 三层仓位分级」回测依据（2026-08-04，286 交易日）：验证个股窗口 10→22 天、板块热度窗口对比、三层仓位分级与前置探索，确认后才落盘，全程零脚本代码变更。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

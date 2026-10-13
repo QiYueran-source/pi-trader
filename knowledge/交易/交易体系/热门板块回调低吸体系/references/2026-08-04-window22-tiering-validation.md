@@ -1,11 +1,10 @@
 ---
-uuid: e675cfd581ba4325b8d82d6e1b9731cf
 title: 2026-08-04-window22-tiering-validation
+summary: "体系升级「窗口 22 天 ＋ 三层仓位分级」的回测依据速查：核心结论是体系瓶颈不在「条件太严」而在市场环境，两处有效放松只动参与时机与参与仓位；含投顾方向只能作排除项、落地改动清单与验证方法论备忘。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

@@ -1,11 +1,10 @@
 ---
-uuid: 53dcfb8717144962b3eb2bffce9cf329
 title: 2026-07-21-replay-execute-case-study
+summary: "回放执行案例（2026-07-21，连续空仓第 14 天）：当日计划动作为不操作、继续空仓；关键验证是上证虽收涨 +1.79% 但盘中低点逼近前日新低，恢复开仓条件①（连续 2 日不创新低）不满足。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

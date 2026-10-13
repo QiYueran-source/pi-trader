@@ -1,11 +1,10 @@
 ---
-uuid: b7e80e50ba034a388cffeef186fc1c53
 title: 2026-08-04-parameter-relaxation-validation
+summary: "参数放松验证（2026-08-04，286 交易日长样本）：结论①窗口 10→22 天获支持、②板块热度窗口不宜拉长（保持当日）、③试仓逻辑成立但条件须精确；含未落盘的三层架构建议、配套实证与坑位。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

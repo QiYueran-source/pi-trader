@@ -1,11 +1,10 @@
 ---
-uuid: 7e2ea6166b1b4c98bcd788608daf61f6
 title: 2026-08-04-sector-heat-persistence-validation
+summary: "板块热度「持续属性」验证（2026-08-04，286 交易日）：核心结论是数据不支持放宽板块确认（持续满足条件反而越久越差）；记录首轮只测单日被用户抓包的短样本陷阱教训与复现脚本。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

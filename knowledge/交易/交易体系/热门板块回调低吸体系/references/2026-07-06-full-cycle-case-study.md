@@ -1,11 +1,10 @@
 ---
-uuid: d81161fc9fb445b1951c284d14655d16
 title: 2026-07-06-full-cycle-case-study
+summary: "全周期复盘案例（2026-06-17 开仓 6 只 → 07-06 完全清仓，19 天/14 个交易日）：记录选股轮次、交易全记录、盈亏明细、卖出决策的 post-sell 验证、体系关键指标，以及「选股胜率偏低（16.7%）」等结构性发现。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

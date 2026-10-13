@@ -1,11 +1,10 @@
 ---
-uuid: 119d4d8e153d4ee1a649e6a5c755a5e6
 title: 2026-08-04-signal-validation-study
+summary: "三重共振信号分层验证（2026-08-04）：针对连续空仓 21 个交易日的背景，检验能否放宽为「板块持续几天满足 2 个甚至 1 个条件」；给出板块信号单独统计、个股回调买点×过滤层、大盘环境过滤交叉及替代优化方向。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

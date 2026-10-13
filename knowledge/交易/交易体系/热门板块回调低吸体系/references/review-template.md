@@ -1,11 +1,10 @@
 ---
-uuid: a578d814b9fc462f89ea89104995eb33
 title: review-template
+summary: "复盘文档模板：用于 19:10 review cron 落盘，含 frontmatter 与五段式结构（执行复盘、资产表现复盘、落选信号复盘、体系运行评估、下一交易日预判）及推送用精简版。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

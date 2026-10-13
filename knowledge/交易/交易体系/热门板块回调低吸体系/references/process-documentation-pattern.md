@@ -1,11 +1,10 @@
 ---
-uuid: ea480081b43448acb500b242d9533f46
 title: process-documentation-pattern
+summary: "交易体系过程资料落盘设计模式：定义把 AI 推理过程写入 `交易/过程资料/` 的标准模式——触发条件、两类落盘时机（必做/可选）、7 步流程清单与不可省略的四维风险复核。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

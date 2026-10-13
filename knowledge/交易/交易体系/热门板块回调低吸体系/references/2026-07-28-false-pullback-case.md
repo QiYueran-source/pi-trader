@@ -1,11 +1,10 @@
 ---
-uuid: f7187c7bc8144c8b82102d6afa22d8a9
 title: 2026-07-28-false-pullback-case
+summary: "「假回调」案例（东晶电子 002199.SZ，2026-07-28）：07-27 放量普涨日从板高回落 −6.27%、放量 4.04 倍被列入监控清单，次日涨停反包 +10.04%；含分析与对体系的启示。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 

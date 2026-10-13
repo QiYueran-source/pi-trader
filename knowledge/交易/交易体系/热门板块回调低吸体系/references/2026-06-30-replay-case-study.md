@@ -1,11 +1,10 @@
 ---
-uuid: 965192d49a1047888c48cc50cafddbe0
 title: 2026-06-30-replay-case-study
+summary: "案例记录（2026-06-30，运行第 14 个交易日、第 5 次闭环后复盘）：关键结论是严重依赖单票（剔除士兰微后 P&L −57,934）、选股 6 只 5 亏、胜率 16.7%；含卖出决策准确率与南芯科技 whipsaw 时序归因。"
+date: 2026-10-10
 tags:
   - 交易体系
   - 参考
-updated: 2026-08-05 07:38:33
-
 system-id: hot_sector_pullback_system
 ---
 
