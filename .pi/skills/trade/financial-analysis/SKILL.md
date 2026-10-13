@@ -22,6 +22,7 @@ tags:
 3. 按 `references/ingest.md` 命名和写入 Markdown，按 `references/style.md` 排版。
 4. 从正文提取个股、板块、情绪、判断窗口，按 `references/mentions.md` 的「入库校验」逐条核对（名称、代码、窗口、路径都要过）。
 5. **先列出待入库清单给用户确认**，确认后再入库：新内容用 `financial_analysis_record_mentions`；覆盖旧文件用 `financial_analysis_replace_mentions`。
+6. 落盘与入库完成后，按 `summary` 技能写一条简报到 `knowledge/摘要/.abstract/`。
 
 ### 复盘
 
@@ -30,6 +31,7 @@ tags:
 3. 调用 `financial_analysis_record_performance` 保存行情。
 4. 调用 `financial_analysis_review_date` 获取复盘数据。
 5. 将结果写入 `knowledge/交易/财经分析/{date}/财经分析复盘.md`。
+6. 按 `summary` 技能写一条简报到 `knowledge/摘要/.abstract/`。
 
 ## 时间规则
 
@@ -52,6 +54,7 @@ tags:
 
 数据库写入必须使用业务工具，不执行任意 SQL，不直接运行旧脚本。详细字段和窗口规则见 `references/mentions.md`，复盘规则见 `references/review.md`。
 
-## 不负责
+## 边界
 
-本技能不负责交易下单、密钥管理、自动重试、自动回滚或复杂任务调度。
+- 目录类型与 Frontmatter 以 `knowledge-management` 为准；本技能只负责分析与判断入库。
+- 本技能不负责交易下单、密钥管理、自动重试、自动回滚或复杂任务调度。

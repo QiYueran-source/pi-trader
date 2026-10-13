@@ -20,13 +20,13 @@ MCP 只校验：必填字段（`name`/`type`/`mention_date`/`source_type`/`sourc
 
 | 项 | 规则 |
 |:---|:---|
-| `name` | 去首尾空白；板块 ≤10 字且不含标点与功能词；个股必须能在 `tushare stock_basic` 核到名称 |
+| `name` | 去首尾空白；板块 ≤10 字且不含标点与功能词；个股用**代码**在 `tushare stock_basic` 反查名称核对——**按名称反查代码不可行**（`get_stock_basic` 只接受 `ts_code`，`get_market_daily` 不返回名称），名称有疑问时人工确认或请用户裁决 |
 | `code` | `type=stock` 时**必填**，匹配 `^\d{6}\.(SH\|SZ\|BJ)$`，且与 `name` 一致 |
 | `type` | 个股=`stock`；板块/指数/题材=`sector`；判断不了就不录 |
 | `mention_date` | = 内容发布日期，不是整理日、不是验证日 |
-| `window_end_date` | **必填**，按「窗口」计算 |
+| `window_end_date` | **必填**，按「窗口」计算。MCP 本身不强制（缺失写 NULL），但 `active_items` 靠 `window_end_date >= as_of` 过滤，**漏填＝该条永不进入跟踪窗口** |
 | `source_type` | 与来源文件一一对应（如 `开源证券-盘前分析.md` → 盘前分析） |
-| `source_file` | `knowledge/` 下**实际存在**的相对路径 |
+| `source_file` | `knowledge/` 下**实际存在**的相对路径。历史记录中大量路径仍指向 `笔记/财经分析/...`（目录重构与归档遗留，详见 P0 待办），新写入一律用现有路径 |
 | `context` | 用原文片段（≤100 字），不改写、不编造、不跨句拼接 |
 
 ## 名称与反例
