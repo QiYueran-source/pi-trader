@@ -35,7 +35,7 @@ archive/{原相对路径}
 
 **批量（常规做法）**
 
-1. 先干跑：`archive_run(before_date, rewrite_references, dry_run=true)`，看候选数、将归档数、跳过原因、将改写的文件数与替换数。
+1. 先干跑：`archive_run(before_date, rewrite_references, dry_run=true)`，看候选数、将归档数、跳过原因、将改写的文件数与替换数；同时用 `archive_sync_financial_paths(apply=false)` 预览将变更的库侧条数。
 2. 需要完整清单时加 `include_paths=true`。
 3. 确认后用 `dry_run=false` 执行；工具内部按「预览 → 改写 → 复查引用归零 → 移动 → 清理空目录」顺序处理，失败会记入 `skipped`。
 4. 实跑后调 `archive_sync_financial_paths(apply=true)`，把本次归档造成的路径变化同步到财经分析库；干跑阶段可先用 `apply=false` 看将变更条数。这一步幂等，漏跑也可由次日归档补上。
@@ -52,6 +52,7 @@ archive/{原相对路径}
 - 不要用「把所有 `knowledge/` 前缀替换成 `archive/`」的做法：大量引用指向的文件**仍在 knowledge**，无差别替换会把有效引用改坏。改写的最小单位是**本次被移动的路径**。
 - 改写会修改摘要、长期笔记等文档的正文（只动路径字符串）。执行前先用 `archive_rewrite_references(apply=false)` 或 `archive_run(dry_run=true)` 预览改写清单。
 - 由于 `archive/` 不入库，改写后的引用在他人克隆的仓库里打不开；当前仓库已有 **82 个被跟踪文档**引用 `archive/…`，属该设计的固有代价。如需保留可移植的引用，改用「跳过」而不是改写。
+- **已知限制（扫描范围）**：只扫 `knowledge/`，**`archive/` 内的文档不参与改写**。若 A 先归档、它引用的 B 之后才归档，A 里的引用会停在旧的 `knowledge/…` 写法（实测 **34 个 `archive/**/*.md`** 处于该状态）。需要可读引用时人工处理，或接受该取舍。
 
 ## 空目录清理
 
@@ -73,6 +74,7 @@ archive/{原相对路径}
 5. 否则记为 `unresolved`，不动并上报。
 
 - 默认只预览；重复调用幂等（第二次 `changed=0`）。
+- **与候选数无关**：`archive_run` 没有候选时也应调用一次 `apply=true`。手工归档与历史遗留造成的路径变化只有这样才能被收敛；只在「有候选的那天」同步会永久漏掉。
 - 只改 `mentions.source_file`，不动其他表；不执行任意 SQL。
 - DB 路径由 `FINANCIAL_ANALYSIS_DB_PATH` 注入（见 `.pi/mcp.json`）；库不存在时返回错误而不报成功。
 - 历史的目录重构（`笔记/财经分析/` → `交易/财经分析/`）用 `aliases` 一次性修正。
