@@ -1,13 +1,12 @@
 ---
-uuid: b21cb1c9f3b65b99b3dff01fe1ff0be0
 title: 招商双债LOF择时体系 - 信号报告 2026-09-28
+summary: "（占位）招商双债LOF择时体系 2026-09-28 过程产物：《招商双债LOF择时体系 - 信号报告 2026-09-28》。内容为脚本/分析输出，详见正文。"
+date: 2026-09-28
 tags:
   - 交易体系
   - 择时
   - LOF
   - 过程资料
-updated: 2026-09-28 19:36:07
-
 system-id: zslof_timing_trade
 ---
 

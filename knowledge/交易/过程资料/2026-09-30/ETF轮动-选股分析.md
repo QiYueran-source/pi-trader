@@ -1,38 +1,13 @@
 ---
-uuid: process-etf-rotation-2026-09-30
 title: ETF轮动-选股分析 | 2026-09-30（生成 10/8 计划）
+summary: "（占位）ETF轮动体系 2026-09-30 过程产物：《ETF轮动-选股分析 | 2026-09-30（生成 10/8 计划）》。内容为脚本/分析输出，详见正文。"
+date: 2026-09-30
 system-id: agent_etf_rotation_system
 system-name: 基于Agent的ETF轮动体系
-updated: 2026-09-30 18:50:00
 tags:
   - 过程资料
   - ETF轮动
   - 选股分析
-links:
-  - uuid: c6c8f7c4d0a34a8e8c8b4d48c635f9b1
-    path: 交易/交易体系/基于Agent的ETF轮动体系/体系介绍.md
-    relations:
-      - belongs_to_system
-  - uuid: 380046ea2d8d462fa1dc6328010ba554
-    path: 交易/交易体系/基于Agent的ETF轮动体系/规则库/调仓逻辑.md
-    relations:
-      - 引用
-  - uuid: 85a5e238b6d041819476dbdfd019a21a
-    path: 交易/交易体系/基于Agent的ETF轮动体系/规则库/风控逻辑.md
-    relations:
-      - 引用
-  - uuid: 178984bac04e49fea2d263fb61af1ace
-    path: 交易/交易体系/基于Agent的ETF轮动体系/规则库/ETF池.md
-    relations:
-      - 参考
-  - uuid: review-agent_etf_rotation-2026-09-30
-    path: 交易/交易复盘/2026-09-30/基于Agent的ETF轮动体系.md
-    relations:
-      - derived_from
-  - uuid: plan-agent_etf_rotation-2026-09-30
-    path: 交易/交易计划/2026-09-30/基于Agent的ETF轮动体系_交易计划.md
-    relations:
-      - 引用
 ---
 
 # ETF轮动-选股分析 | 2026-09-30（生成 10/8 计划）
