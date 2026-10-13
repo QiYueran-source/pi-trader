@@ -1,18 +1,12 @@
 ---
-uuid: 79264932241b427aa009b1a561d292e4
 title: "02-SkillOpt：面向自进化 Agent Skills 的策略优化"
+summary: "阅读笔记：SkillOpt——面向自进化 Agent Skills 的策略优化。先说明 Skill 是外置提示词及其传统构建方式与局限，再用反向传播类比解释 SkillOpt 机制与关键概念对应关系。"
 tags:
   - 阅读笔记
   - AI
   - Agent
   - 技能优化
 date: 2026-08-08
-updated: 2026-08-17 23:50:00
-links:
-  - uuid: 25b00f941a8c41a79505dfbb9934a022
-    path: 笔记/阅读笔记/2026-08-03/炒股和赌博的区别.md
-    relations:
-      - 相关
 ---
 
 # SkillOpt：面向自进化 Agent Skills 的策略优化

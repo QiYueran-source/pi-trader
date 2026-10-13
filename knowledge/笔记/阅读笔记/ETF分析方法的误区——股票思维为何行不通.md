@@ -1,15 +1,13 @@
 ---
-uuid: 43a1f7b2d8c94e5f9a0b3c6d7e8f1a2b
 source: 小红书
 source_url: http://xhslink.com/o/2VPfbfZx7HB
 title: ETF分析方法的误区——股票思维为何行不通
+summary: "阅读笔记：用股票思维分析 ETF 的六个误区——用量能、资金流向、主力成本判断 ETF 走势均无效，认为 ETF 有主力庄家是错的，高位当妖股操作、低位恐慌卖出易吃亏；根源在 ETF 围绕净值波动的产品特性。"
 date: 2026-06-18
 tags:
   - 阅读笔记
   - ETF
   - 认知科普
-updated: 2026-06-18 18:00:00
-
 ---
 
 # ETF分析方法的误区——股票思维为何行不通

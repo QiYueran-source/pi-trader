@@ -1,21 +1,12 @@
 ---
-uuid: ebfb6f91df7b4bbcb45f0060f25d5f40
 title: 个股下跌归因：Beta 与 Alpha 分解法
+summary: "个股下跌归因的四步 Beta/Alpha 分解法：定大盘 β → 用同题材子集定行业 β → 算 α → 给 α 找原因；含判读表，强调技术结构与产业逻辑必须分开。"
+date: 2026-10-10
 tags:
   - 体系搭建
   - 方法论
   - 复盘
   - 归因
-updated: 2026-10-08 23:51:19
-links:
-  - uuid: 130ad2ae8064459fbb0d5d42dbb4b0c0
-    path: 笔记/体系搭建/2026-06-17/如何搭建自己的交易系统.md
-    relations:
-      - 支撑
-  - uuid: review-overall-20261008
-    path: 交易/交易复盘/2026-10-08/整体复盘.md
-    relations:
-      - 来源
 ---
 
 # 个股下跌归因：Beta 与 Alpha 分解法
