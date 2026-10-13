@@ -1,6 +1,6 @@
 ---
-uuid: 520692de0ab84dc4ad53f9c93ea58d70
 title: 红利ETF网格体系交易计划
+summary: "2026-09-29 红利ETF网格盘中补录计划（实际·YHZQ）：状态机 normal，动作为非网格信号触发的**人工主动降仓**——双创50ETF 159781 开盘减 2,000 份、10:00 减 3,000 份，合计 5,000 份；红利 515180 维持条件单、无新增动作。依据当日盘前「降低仓位」判断。"
 system-id: div_etf_grid_trade
 system-name: 红利ETF网格
 trade_type: 实际交易
@@ -10,32 +10,6 @@ tags:
   - hermes
   - 交易体系
   - 交易计划
-updated: 2026-09-29 13:02:43
-links:
-  - uuid: e4f8a9b2c3d1e5f6a7b8c9d0e1f2a3b4
-    path: 交易/交易体系/红利ETF网格/体系介绍.md
-    relations:
-      - belongs_to_system
-  - uuid: state-machine-div-etf-grid-v1
-    path: 交易/交易体系/红利ETF网格/状态机管理.md
-    relations:
-      - 引用
-  - uuid: a1b2c3d4e5f6789012345678abcdef02_v2
-    path: 交易/交易体系/红利ETF网格/网格参数.md
-    relations:
-      - 引用
-  - uuid: a1b2c3d4e5f6789012345678abcdef03_v2
-    path: 交易/交易体系/红利ETF网格/风控.md
-    relations:
-      - 引用
-  - uuid: 0021d02ca1854dcabbd75082d02d5455
-    path: 交易/交易计划/2026-09-28/红利ETF网格体系_交易计划.md
-    relations:
-      - 引用
-  - uuid: 61a7c383244c4fc28ddce1b5072de093
-    path: 笔记/财经分析/2026-09-29/开源证券-盘前分析.md
-    relations:
-      - 基于
 ---
 
 # 红利ETF网格 日计划 | 2026-09-29（周二）

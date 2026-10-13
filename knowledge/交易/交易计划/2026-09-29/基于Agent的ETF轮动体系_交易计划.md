@@ -1,34 +1,16 @@
 ---
-uuid: plan-agent_etf_rotation-2026-09-29
 title: 基于Agent的ETF轮动体系 - 交易计划 | 2026-09-29
+summary: "2026-09-29 ETF轮动计划（模拟·MNZH）：空仓态第 9 个计划日，且为新窗口有效期届满日。唯一动作＝继续持有现金等价（≈100%）；预置届满重估取价口径（以 9/29 收盘价重估新锚、确认线＝新锚×1.001），并重算强证据量能门槛 35.59 万手、黄金第一腿 529.92 万手；四条条件分支均不授权当日动作。"
 system-id: agent_etf_rotation_system
 system-name: 基于Agent的ETF轮动体系
 trade_type: 模拟交易
 maturity: 观察
 date: 2026-09-29
 account_id: MNZH
-updated: 2026-09-28 18:50:00
 tags:
   - 交易计划
   - ETF轮动
   - 模拟交易
-links:
-  - uuid: c6c8f7c4d0a34a8e8c8b4d48c635f9b1
-    path: 交易/交易体系/基于Agent的ETF轮动体系/体系介绍.md
-    relations:
-      - belongs_to_system
-  - uuid: review-agent_etf_rotation-2026-09-28
-    path: 交易/交易复盘/2026-09-28/基于Agent的ETF轮动体系.md
-    relations:
-      - derived_from
-  - uuid: process-etf-rotation-2026-09-28
-    path: 交易/过程资料/2026-09-28/ETF轮动-选股分析.md
-    relations:
-      - 分析过程
-  - uuid: plan-agent_etf_rotation-2026-09-28
-    path: 交易/交易计划/2026-09-28/基于Agent的ETF轮动体系_交易计划.md
-    relations:
-      - 引用
 ---
 
 # 基于Agent的ETF轮动体系 交易计划 | 2026-09-29（周二）

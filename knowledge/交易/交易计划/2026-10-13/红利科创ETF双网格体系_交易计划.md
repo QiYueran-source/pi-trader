@@ -1,6 +1,6 @@
 ---
-uuid: 7c3e5b1a9d2f4e6b8a0c1d2e3f4a5b6c
 title: 红利科创ETF双网格体系交易计划
+summary: "2026-10-13 红利科创ETF双网格计划（实际·YHZQ）：状态机 normal（10-12 固化 keep/medium），未触发调参（沿用 2026-10-09 参数）；动作＝维持双网格条件单、不新增指令、不执行切换。关键提示：params/grid.json 的买入确认反弹/卖出确认回落比例已于 2026-10-12 人工置 0（触档即成交），该变更待下次实际校准才反映到计划。"
 system-id: div_etf_grid_trade
 system-name: 红利科创ETF双网格体系
 trade_type: 实际交易
@@ -9,24 +9,6 @@ account_id: YHZQ
 tags:
   - 交易体系
   - 交易计划
-updated: 2026-10-12 20:40:00
-links:
-  - uuid: e4f8a9b2c3d1e5f6a7b8c9d0e1f2a3b4
-    path: 交易/交易体系/红利科创ETF双网格体系/体系介绍.md
-    relations:
-      - belongs_to_system
-  - uuid: state-machine-div-etf-grid-v1
-    path: 交易/交易体系/红利科创ETF双网格体系/状态机管理.md
-    relations:
-      - 引用
-  - uuid: a1b2c3d4e5f6789012345678abcdef02_v2
-    path: 交易/交易体系/红利科创ETF双网格体系/网格参数.md
-    relations:
-      - 引用
-  - uuid: a1b2c3d4e5f6789012345678abcdef03_v2
-    path: 交易/交易体系/红利科创ETF双网格体系/风控.md
-    relations:
-      - 引用
 ---
 
 # 红利科创ETF双网格体系 日计划 | 2026-10-13（周二）

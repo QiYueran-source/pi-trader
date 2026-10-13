@@ -1,6 +1,6 @@
 ---
-uuid: ef57a3dd6327467fb153d151107c1cfc
 title: 红利ETF网格体系交易计划
+summary: "2026-09-29 红利ETF网格盘后计划（实际·YHZQ）：面向 9/30（节前最后交易日）执行。状态机 normal，本日未触发调参（9/30 盘后检查将命中周度调参）；动作＝维持双网格条件单、不新增指令、不执行切换。提示节前跳空与流动性风险上升，实际持仓事实连续多日缺失，且当日人工减仓 5,000 份未见成交回执。"
 system-id: div_etf_grid_trade
 system-name: 红利ETF网格
 trade_type: 实际交易
@@ -10,56 +10,6 @@ tags:
   - hermes
   - 交易体系
   - 交易计划
-updated: 2026-09-29 18:10:00
-links:
-  - uuid: e4f8a9b2c3d1e5f6a7b8c9d0e1f2a3b4
-    path: 交易/交易体系/红利ETF网格/体系介绍.md
-    relations:
-      - belongs_to_system
-  - uuid: state-machine-div-etf-grid-v1
-    path: 交易/交易体系/红利ETF网格/状态机管理.md
-    relations:
-      - 引用
-  - uuid: a1b2c3d4e5f6789012345678abcdef02_v2
-    path: 交易/交易体系/红利ETF网格/网格参数.md
-    relations:
-      - 引用
-  - uuid: a1b2c3d4e5f6789012345678abcdef03_v2
-    path: 交易/交易体系/红利ETF网格/风控.md
-    relations:
-      - 引用
-  - uuid: 35925964935f5b05a2d0edd04de67eab
-    path: 交易/过程资料/2026-09-24/红利ETF网格/grid_parameters.md
-    relations:
-      - 引用
-  - uuid: 20429b2d0ebe59089041feb01dc7dd68
-    path: 交易/过程资料/2026-09-29/红利ETF网格/risk_facts.md
-    relations:
-      - 引用
-  - uuid: 62b5413688765b69b9046f2839a433b0
-    path: 交易/过程资料/2026-09-29/红利ETF网格/sector_facts.md
-    relations:
-      - 引用
-  - uuid: feb2534a0ad75753b2bcdc9c3c174e47
-    path: 交易/过程资料/2026-09-29/红利ETF网格/state_transition.md
-    relations:
-      - 引用
-  - uuid: 3b4a73e15306505c8775a8e51b71cd05
-    path: 交易/过程资料/2026-09-29/红利ETF网格/switch_instruction.md
-    relations:
-      - 引用
-  - uuid: 0021d02ca1854dcabbd75082d02d5455
-    path: 交易/交易计划/2026-09-28/红利ETF网格体系_交易计划.md
-    relations:
-      - 引用
-  - uuid: 520692de0ab84dc4ad53f9c93ea58d70
-    path: 交易/交易计划/2026-09-29/红利ETF网格体系.md
-    relations:
-      - 引用
-  - uuid: 61a7c383244c4fc28ddce1b5072de093
-    path: 笔记/财经分析/2026-09-29/开源证券-盘前分析.md
-    relations:
-      - 基于
 ---
 
 # 红利ETF网格 日计划 | 2026-09-29（周二）

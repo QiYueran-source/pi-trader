@@ -1,6 +1,6 @@
 ---
-uuid: 734074ba469242ddb8fa2771a2357472
 title: 招商双债LOF择时体系
+summary: "2026-10-08 招商双债 LOF 计划（实际·YHZQ）：9/30 收盘 1.6560 高于空仓期谷值 1.654，no_low_days 由 0 递增至 1、未达 N=2，无新信号 → 当日无动作；未触发追回（1.656 低于 1.658）。"
 system-id: zslof_timing_trade
 system-name: 招商双债LOF择时体系
 trade_type: 实际交易
@@ -10,28 +10,6 @@ tags:
   - hermes
   - 交易体系
   - 交易计划
-updated: 2026-09-30 19:40:00
-links:
-  - uuid: c4a3f630bf524cfd8d5d2eabf250be8e
-    path: 交易/交易体系/招商双债LOF择时体系/体系介绍.md
-    relations:
-      - 归属
-  - uuid: d1d10073ff094866a145a769c9ebd549
-    path: 交易/交易体系/招商双债LOF择时体系/体系运作流程.md
-    relations:
-      - 引用
-  - uuid: 4a7ca82637854e3c9775a5519ef40096
-    path: 交易/交易体系/招商双债LOF择时体系/择时参数.md
-    relations:
-      - 引用
-  - uuid: 49e2e87e94465357803f66b5fd14068d
-    path: 交易/过程资料/2026-09-30/招商双债LOF择时体系/signal_report.md
-    relations:
-      - 依据
-  - uuid: bf5efb5877af4589a10d000fc915555e
-    path: 交易/交易计划/2026-09-30/招商双债LOF择时体系_交易计划.md
-    relations:
-      - 引用
 ---
 
 # 招商双债LOF择时体系 | 2026-10-08
