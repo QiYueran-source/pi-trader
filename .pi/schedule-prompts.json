@@ -196,6 +196,17 @@
       "lastStatus": "success",
       "lastRun": "2026-10-12T11:35:00.012Z",
       "nextRun": "2026-10-13T11:35:00.000Z"
+    },
+    {
+      "id": "0-tx86-WS-",
+      "name": "global-mon0030-weekly-landing-check",
+      "schedule": "0 30 0 * * 1",
+      "prompt": "# 每周落盘体检\n\n每周一 00:30 核查上一自然周新落盘的 knowledge 正式文档是否合乎现行规范、其中的路径引用是否存在。只读并只报告，不修改任何文件。\n\n## 输入范围\n\n- 窗口：上一自然周（上周一 00:00 至本周一 00:00，Asia/Shanghai）。运行日按 Asia/Shanghai 判定，任务跨零点完成仍按触发日处理。\n- 对象：`knowledge/` 下窗口内**新增**的文件。\n- 排除：`archive/`（本地记录区，优先级低）、`knowledge/摘要/.abstract/`（简报临时产物）。\n- 规则来源：加载 `knowledge-management` 技能，按其 `reference/frontmatter.md`、`reference/routes.md` 判定；本 prompt 不复制字段清单与路径模板的完整规则。\n\n## 执行步骤\n\n1. 确定窗口起止时间，列出窗口内新增文件：\n   - 已提交新增：`git -c core.quotepath=false log --since=<起> --until=<止> --diff-filter=A --name-only --pretty=format: -- knowledge`\n   - 未提交新增：`git ls-files --others --exclude-standard knowledge/`，按文件 mtime 落在窗口内过滤。\n   - 两条结果合并去重，再排除上述两类。\n   - git 不可用或命令报错时，说明失败阶段和原因并结束，不猜测文件列表。\n2. Frontmatter：按技能 reference 检查必需字段齐全、`summary` 非空、不含 `uuid`/`updated`/`links`。\n3. 路径与命名：目录归属、日期格式与文件名是否符合 reference/routes.md，并与同目录最近同类文件一致。\n4. 引用存在性：抽取正文中的路径引用（行内代码与 Markdown 链接），按下面口径解析，目标必须真实存在（`knowledge/` 或 `archive/` 均可）：\n   - 三种写法都算命中：文件相对路径、仓库根相对路径（`knowledge/…`、`archive/…`）、裸文件名（在同目录及逐级上层目录中查找）。\n   - 裸文件名或位置写法不精确但能定位到实际文件的不记为问题。\n   - 排除：URL、`{…}`/`<…>` 占位符、含 `*` 的通配、绝对系统路径（如 `/opt/…`）。\n   - `archive/` 目录缺失或为空时，相关引用标为「环境缺失」，不计为引用失效。\n5. 汇总分级：\n   - 必须修：引用目标确实不存在、Frontmatter 缺失或不完整、路径与命名违规。\n   - 建议修：仅在影响理解或后续检索时列出，合并为一行概述。\n   - 历史遗留（旧路径、旧 Frontmatter、指向已归档内容的既有引用）不列为待办，仅在问题来自本周新增文件自身时报告。\n6. 不修改任何文件，不自动修复。\n\n## 输出\n\n- 简报写入 `knowledge/摘要/.abstract/{运行日}_global-mon0030-weekly-landing-check.txt`：窗口起止、检查文件数、各项问题数、必须修清单、环境缺失说明。该简报由当天 23:55 的摘要聚合任务消费。\n- 不新增 knowledge 正式文档或目录。\n- 状态正常时同样写简报并发送一行状态。\n\n## 异常处理\n\n- git 命令失败：保留原始输出，说明失败步骤，不编造文件列表。\n- 单文件读取失败：跳过该文件并在结果中列出。\n- 窗口内无新增文件：写简报并发送一行状态（`【周体检】无新增落盘 ｜ 0 文件`）。\n- `archive/` 整体缺失：按「环境缺失」单列，不计为引用失效。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点，必须修清单逐条列出（预期个位数），其余合并计数，异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
+      "enabled": true,
+      "type": "cron",
+      "createdAt": "2026-10-13T09:41:44.766Z",
+      "runCount": 0,
+      "description": "每周一 00:30 核查上一自然周新落盘文档的规范与引用，只报告不修改"
     }
   ],
   "version": 1
