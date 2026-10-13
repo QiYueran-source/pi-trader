@@ -7,6 +7,7 @@ import json
 import os
 import re
 import shutil
+import sqlite3
 from collections import Counter
 from datetime import date, timedelta
 from pathlib import Path
@@ -18,10 +19,14 @@ from mcp.types import TextContent, Tool
 
 KNOWLEDGE_ROOT = Path(os.getenv("KNOWLEDGE_ROOT", "/pi-trader/knowledge")).resolve()
 ARCHIVE_ROOT = Path(os.getenv("ARCHIVE_ROOT", "/pi-trader/archive")).resolve()
+FINANCIAL_DB = Path(os.getenv("FINANCIAL_ANALYSIS_DB_PATH", "/pi-trader/database/financial_analysis.db"))
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 DOC_SUFFIXES = {".md", ".yaml", ".yml", ".json"}
 ARCHIVE_PREFIX = "archive"
-REWRITE_GUARD = "\u0000archive-rewrite\u0000"
+# 引用路径的已知写法前缀；改写时统一归一为 archive/<相对路径>
+REF_PREFIXES = ("./", "knowledge/", "/pi-trader/knowledge/", "/hermes-trader/knowledge/")
+# 路径字符集：匹配前后不得紧邻这些字符，避免子串误伤
+_PATH_CHARS = r"A-Za-z0-9_\u4e00-\u9fff.\-/%"
 
 
 def dump(value: Any) -> str:
@@ -73,7 +78,25 @@ def docs() -> list[Path]:
     return [p for p in KNOWLEDGE_ROOT.rglob("*") if p.is_file() and p.suffix.lower() in DOC_SUFFIXES]
 
 
+def ref_pattern(relative: str) -> re.Pattern[str]:
+    """引用匹配：可选前缀 + 精确相对路径，且前后不紧邻路径字符。
+
+    这样可以一次性覆盖 `path`、`./path`、`knowledge/path`、
+    `/pi-trader/knowledge/path`、`/hermes-trader/knowledge/path` 五种写法，
+    同时天然排除已是 `archive/path`、`../../archive/path` 的写法（前一字符为路径字符）。
+    """
+    prefix = "(?:" + "|".join(re.escape(p) for p in REF_PREFIXES) + ")?"
+    return re.compile(
+        r"(?<![" + _PATH_CHARS + r"])" + prefix + re.escape(relative) + r"(?![" + _PATH_CHARS + r"])"
+    )
+
+
+def ref_target(relative: str) -> str:
+    return f"{ARCHIVE_PREFIX}/{relative}"
+
+
 def references(relative: str) -> list[str]:
+    pattern = ref_pattern(relative)
     result = []
     for path in docs():
         rel = path.relative_to(KNOWLEDGE_ROOT).as_posix()
@@ -83,10 +106,7 @@ def references(relative: str) -> list[str]:
             text = path.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError):
             continue
-        if relative not in text:
-            continue
-        # 已改写为 archive/<relative> 的提及不再算引用（与 rewrite_references 同一口径）
-        if relative in text.replace(f"{ARCHIVE_PREFIX}/{relative}", REWRITE_GUARD):
+        if pattern.search(text):
             result.append(rel)
     return result
 
@@ -94,11 +114,12 @@ def references(relative: str) -> list[str]:
 def rewrite_references(relative: str, apply: bool = False) -> dict[str, Any]:
     """把 knowledge 文档中对 relative 的引用改写为 archive/<relative>。
 
-    只做精确路径字符串替换：跳过被引用文件自身，跳过已带 archive/ 前缀的写法，
-    默认只预览（apply=False），不修改正文。
+    按路径边界匹配（见 ref_pattern），跳过被引用文件自身与已归档写法，
+    匹配到的各种前缀写法统一归一为 archive/<relative>；默认只预览。
     """
     source_path(relative)
-    token = f"{ARCHIVE_PREFIX}/{relative}"
+    pattern = ref_pattern(relative)
+    target = ref_target(relative)
     files: list[dict[str, Any]] = []
     total = 0
     for path in docs():
@@ -109,27 +130,23 @@ def rewrite_references(relative: str, apply: bool = False) -> dict[str, Any]:
             text = path.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError):
             continue
-        if relative not in text:
+        matches = list(pattern.finditer(text))
+        if not matches:
             continue
-        guarded = text.replace(token, REWRITE_GUARD)
-        count = guarded.count(relative)
-        if count == 0:
-            continue
-        sample_before = sample_after = ""
-        for line in guarded.splitlines():
-            if relative in line:
-                sample_before = line.strip()[:200]
-                sample_after = line.replace(relative, token).strip()[:200]
-                break
+        first = matches[0]
+        line_start = text.rfind("\n", 0, first.start()) + 1
+        line_end = text.find("\n", first.end())
+        sample_before = text[line_start:line_end if line_end >= 0 else len(text)].strip()[:200]
+        new_text = pattern.sub(target, text)
         if apply:
-            new_text = guarded.replace(relative, token).replace(REWRITE_GUARD, token)
             tmp = path.with_name(path.name + ".rewrite-tmp")
             tmp.write_text(new_text, encoding="utf-8")
             os.replace(tmp, path)
-        files.append({"path": rel, "occurrences": count,
-                      "sample_before": sample_before, "sample_after": sample_after})
-        total += count
-    return {"ok": True, "path": relative, "replacement": token, "applied": apply,
+        files.append({"path": rel, "occurrences": len(matches),
+                      "sample_before": sample_before,
+                      "sample_after": sample_before.replace(relative, target).strip()[:200]})
+        total += len(matches)
+    return {"ok": True, "path": relative, "replacement": target, "applied": apply,
             "files": files, "files_changed": len(files), "replacements": total}
 
 
@@ -285,6 +302,62 @@ def cleanup_empty_dirs(dry_run: bool = True) -> dict[str, Any]:
     return {"ok": True, "dry_run": dry_run, "count": len(removed), "removed": removed, "skipped": skipped}
 
 
+def sync_financial_paths(apply: bool = False, aliases: dict[str, str] | None = None) -> dict[str, Any]:
+    """把财经分析库的 source_file 收敛到文件当前所在位置。
+
+    对每个 distinct source_file p：
+    1. 用 aliases 替换前缀（历史目录改名）得到候选 c1；
+    2. knowledge/<c1> 存在（文件或目录）→ 取 c1；
+    3. 否则 archive/<c1> 存在 → 取 archive/<c1>；
+    4. 否则 knowledge/<p> 存在 → 保留 p；
+    5. 否则记为 unresolved，不动。
+    默认只预览（apply=False），重复调用幂等。只改 mentions.source_file。
+    """
+    if not FINANCIAL_DB.is_file():
+        return {"ok": False, "error": f"finance db not found: {FINANCIAL_DB}"}
+    aliases = aliases or {}
+    conn = sqlite3.connect(str(FINANCIAL_DB))
+    try:
+        rows = conn.execute(
+            "SELECT source_file, COUNT(*) FROM mentions GROUP BY source_file").fetchall()
+        changes: list[dict[str, Any]] = []
+        unchanged: list[dict[str, Any]] = []
+        unresolved: list[dict[str, Any]] = []
+        for old, count in rows:
+            cand = old
+            for src, dst in aliases.items():
+                if cand.startswith(src):
+                    cand = dst + cand[len(src):]
+                    break
+            if (KNOWLEDGE_ROOT / cand).exists():
+                new = cand
+            elif (ARCHIVE_ROOT / cand).exists():
+                new = f"{ARCHIVE_PREFIX}/{cand}"
+            elif (KNOWLEDGE_ROOT / old).exists():
+                new = old
+            else:
+                new = None
+            entry = {"old": old, "count": count}
+            if new is None:
+                unresolved.append(entry)
+            elif new == old:
+                unchanged.append(entry)
+            else:
+                changes.append({**entry, "new": new})
+        if apply and changes:
+            for item in changes:
+                conn.execute("UPDATE mentions SET source_file=? WHERE source_file=?",
+                             (item["new"], item["old"]))
+            conn.commit()
+    finally:
+        conn.close()
+    return {"ok": True, "applied": apply, "aliases": aliases, "db": str(FINANCIAL_DB),
+            "total_distinct": len(rows),
+            "changed": len(changes), "changed_records": sum(i["count"] for i in changes),
+            "unchanged": len(unchanged), "unresolved": len(unresolved),
+            "changes": changes, "unresolved_items": unresolved}
+
+
 TOOLS = [
     Tool(name="archive_list_candidates", description="列出超过指定日期的日期型知识文档。默认 30 天前。", inputSchema={"type":"object","properties":{"before_date":{"type":"string","description":"YYYY-MM-DD"}}}),
     Tool(name="archive_preview", description="预览归档路径、目标冲突和引用关系。", inputSchema={"type":"object","properties":{"path":{"type":"string","description":"相对 knowledge 的路径"}},"required":["path"]}),
@@ -292,6 +365,7 @@ TOOLS = [
     Tool(name="archive_rewrite_references", description="把 knowledge 文档中对某个已知档路径的引用改写为 archive/<path>。只做精确路径替换，默认只预览。", inputSchema={"type":"object","properties":{"path":{"type":"string","description":"相对 knowledge 的路径"},"apply":{"type":"boolean","description":"默认 false 只预览；true 才写入"}},"required":["path"]}),
     Tool(name="archive_run", description="批量归档：候选→预览→（可选改写引用）→移动→清理空目录。默认只干跑预览，返回汇总统计。", inputSchema={"type":"object","properties":{"before_date":{"type":"string","description":"YYYY-MM-DD；不传则为 30 天前"},"rewrite_references":{"type":"boolean","description":"默认 false：被引用的文件跳过；true：先改写引用再归档"},"dry_run":{"type":"boolean","description":"默认 true 只预览，不移动不修改"},"include_paths":{"type":"boolean","description":"默认 false 只返回样例；true 返回完整待处理清单"}}}),
     Tool(name="archive_cleanup_empty_dirs", description="删除归档后遗留的空日期目录；仅删除空目录且须有 archive 对应目录，默认只预览。这一步只清理空壳，不需要用户确认。", inputSchema={"type":"object","properties":{"dry_run":{"type":"boolean","description":"默认 true 只返回待删清单；设为 false 才真正删除"}}}),
+    Tool(name="archive_sync_financial_paths", description="把财经分析库 mentions.source_file 收敛到文件当前所在位置：仍在 knowledge 则保留（可按 aliases 改写历史目录前缀），已归档则改为 archive/<路径>。默认只预览，重复调用幂等。", inputSchema={"type":"object","properties":{"apply":{"type":"boolean","description":"默认 false 只预览；true 才写入"},"aliases":{"type":"object","description":"可选的历史前缀映射，如 {\"笔记/财经分析/\": \"交易/财经分析/\"}","additionalProperties":{"type":"string"}}}}),
 ]
 server = Server("archive-management")
 
@@ -319,6 +393,8 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
                                bool(args.get("dry_run", True)), bool(args.get("include_paths", False)))
         elif name == "archive_cleanup_empty_dirs":
             result = cleanup_empty_dirs(bool(args.get("dry_run", True)))
+        elif name == "archive_sync_financial_paths":
+            result = sync_financial_paths(bool(args.get("apply", False)), args.get("aliases") or {})
         else:
             raise ValueError(f"未知工具：{name}")
     except (KeyError, ValueError, OSError) as exc:

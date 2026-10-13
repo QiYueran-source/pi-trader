@@ -26,7 +26,7 @@ MCP 只校验：必填字段（`name`/`type`/`mention_date`/`source_type`/`sourc
 | `mention_date` | = 内容发布日期，不是整理日、不是验证日 |
 | `window_end_date` | **必填**，按「窗口」计算。MCP 本身不强制（缺失写 NULL），但 `active_items` 靠 `window_end_date >= as_of` 过滤，**漏填＝该条永不进入跟踪窗口** |
 | `source_type` | 与来源文件一一对应（如 `开源证券-盘前分析.md` → 盘前分析） |
-| `source_file` | `knowledge/` 下**实际存在**的相对路径。历史记录中大量路径仍指向 `笔记/财经分析/...`（目录重构与归档遗留，详见 P0 待办），新写入一律用现有路径 |
+| `source_file` | `knowledge/` 下**实际存在**的相对路径，新写入一律用现有路径。历史记录可由归档流程的 `archive_sync_financial_paths` 收敛：仍活跃的保留，已归档的改写为 `archive/<路径>`（本地归档，不入 git） |
 | `context` | 用原文片段（≤100 字），不改写、不编造、不跨句拼接 |
 
 ## 名称与反例

@@ -31,7 +31,8 @@
       ],
       "env": {
         "KNOWLEDGE_ROOT": "/pi-trader/knowledge",
-        "ARCHIVE_ROOT": "/pi-trader/archive"
+        "ARCHIVE_ROOT": "/pi-trader/archive",
+        "FINANCIAL_ANALYSIS_DB_PATH": "/pi-trader/database/financial_analysis.db"
       }
     },
     "scratch-space-management": {
