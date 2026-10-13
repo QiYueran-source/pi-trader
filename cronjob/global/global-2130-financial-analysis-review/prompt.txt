@@ -4,7 +4,7 @@
 
 1. 使用 `tushare-data.get_trade_calendar` 查询今天是否为 A 股交易日。
 2. 非交易日：推送「非交易日跳过，下一交易日：{日期}」，写入一条简报后结束。
-3. 交易日：按技能流程查询有效跟踪项、获取行情、记录表现并复盘；将结果写入 `knowledge/笔记/财经分析/{今天日期}/财经分析复盘.md`，并在 `knowledge/摘要/.abstract/{今天日期}_global-2130-financial-analysis-review.txt` 写入简报。
+3. 交易日：按技能流程查询有效跟踪项、获取行情、记录表现并复盘；将结果写入 `knowledge/交易/财经分析/{今天日期}/财经分析复盘.md`，并在 `knowledge/摘要/.abstract/{今天日期}_global-2130-financial-analysis-review.txt` 写入简报。
 4. 周一复盘覆盖前一周末的周末要闻与盘后荐股。
 5. 最终推送今日总命中率、各来源表现、最准确判断和最大出入。
 
