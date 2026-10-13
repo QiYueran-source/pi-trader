@@ -1,30 +1,16 @@
 ---
-uuid: review-agent_etf_rotation-2026-10-08
 title: 基于Agent的ETF轮动体系 交易复盘 | 2026-10-08
+summary: "2026-10-08 ETF轮动复盘（模拟·MNZH）：当日零成交，与计划一致；关键变化为 2/2 连续性中断、重置 0/2——511260 收 134.730 ≤ 新锚 134.743（−0.013 元），重启口径由「路径 A」转「路径 B」，完成「9/29 贴线达成 → 9/30 回退 → 10/8 重置」三段式链条。"
 system-id: agent_etf_rotation_system
 system-name: 基于Agent的ETF轮动体系
 trade_type: 模拟交易
 maturity: 观察
 date: 2026-10-08
 account_id: MNZH
-updated: 2026-10-08 18:35:00
 tags:
   - 交易复盘
   - ETF轮动
   - 模拟交易
-links:
-  - uuid: c6c8f7c4d0a34a8e8c8b4d48c635f9b1
-    path: 交易/交易体系/基于Agent的ETF轮动体系/体系介绍.md
-    relations:
-      - belongs_to_system
-  - uuid: review-agent_etf_rotation-2026-09-30
-    path: 交易/交易复盘/2026-09-30/基于Agent的ETF轮动体系.md
-    relations:
-      - derived_from
-  - uuid: plan-agent_etf_rotation-2026-10-08
-    path: 交易/交易计划/2026-10-08/基于Agent的ETF轮动体系_交易计划.md
-    relations:
-      - evaluated_execution
 ---
 
 # 基于Agent的ETF轮动体系 交易复盘 | 2026-10-08（周四）
