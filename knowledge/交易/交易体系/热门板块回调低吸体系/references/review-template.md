@@ -10,7 +10,7 @@ system-id: hot_sector_pullback_system
 
 # 热门板块回调低吸 · 复盘文档模板
 
-用于 19:10 review cron 的落盘文档结构。每日复盘写入 `knowledge/交易/交易复盘/{date}/热门板块回调低吸体系_复盘.md`，并将精简结论输出给下一阶段任务。
+用于 19:10 review cron 的落盘文档结构。每日复盘写入 `交易/交易复盘/{date}/热门板块回调低吸体系_复盘.md`，并将精简结论输出给下一阶段任务。
 
 ## Frontmatter
 

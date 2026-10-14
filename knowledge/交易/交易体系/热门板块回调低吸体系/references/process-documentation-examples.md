@@ -14,7 +14,7 @@ system-id: hot_sector_pullback_system
 
 ## ETF 轮动体系
 
-**System path:** `knowledge/交易/交易体系/基于Agent的ETF轮动体系/`
+**System path:** `交易/交易体系/基于Agent的ETF轮动体系/`
 **System ID:** `agent_etf_rotation_system`
 
 ### Process doc files
@@ -38,7 +38,7 @@ system-id: hot_sector_pullback_system
 
 ## 热门板块回调低吸体系
 
-**System path:** `knowledge/交易/交易体系/热门板块回调低吸体系/`
+**System path:** `交易/交易体系/热门板块回调低吸体系/`
 **System ID:** `hot_sector_pullback_system`
 **cronjob path:** `cronjob/system/hot-sector-pullback-system/`
 
