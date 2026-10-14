@@ -53,6 +53,17 @@
       "env": {
         "SCRATCH_ROOT": "/pi-trader/.scratch-space"
       }
+    },
+    "todo-management": {
+      "command": "/opt/venv/bin/python",
+      "args": [
+        "/pi-trader/.pi/mcp-servers/todo-management/mcp_server.py"
+      ],
+      "env": {
+        "KNOWLEDGE_ROOT": "/pi-trader/knowledge",
+        "ARCHIVE_ROOT": "/pi-trader/archive",
+        "TODO_DB_PATH": "/pi-trader/database/todo_index.db"
+      }
     }
   }
 }
