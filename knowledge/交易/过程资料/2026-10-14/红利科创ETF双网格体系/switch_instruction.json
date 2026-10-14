@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-14",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "switch_instruction",
+  "generated_at": "2026-10-14T10:13:28+00:00",
+  "transition": {
+    "decision": "keep",
+    "from_state": "normal",
+    "to_state": "normal"
+  },
+  "order_instructions": [],
+  "condition_order_modes": {
+    "dividend": {
+      "buy_enabled": true,
+      "sell_enabled": true
+    },
+    "growth": {
+      "buy_enabled": true,
+      "sell_enabled": true
+    }
+  },
+  "notice": "本文件是人工券商执行指令，不直接下单；价格、时点与成交结果必须在交易计划和执行记录中确认。本日 decision=keep，无切换订单，normal 态下双网格买卖开关均启。提示：① 红利 515180 当前净持 0 份，参考卖档 1.4576 已被触及（当日最高 1.470），卖出腿无可用份额；② 双创 159781 保证金全部在 10-13 计划买档 0.8739 之上（当日最低 0.876），无新增买入成交；③ 成长端处于极端弱档，normal 态下条件单将继续逐档买入，单笔上限 2,000 元 / 25%、仓位熔断 80% 为唯一防线。"
+}

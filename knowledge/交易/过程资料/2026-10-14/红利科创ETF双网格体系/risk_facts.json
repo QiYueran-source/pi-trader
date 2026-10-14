@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-14",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "risk_facts",
+  "generated_at": "2026-10-14T10:13:28+00:00",
+  "parameter_schema_version": 1,
+  "positions_source": "knowledge/交易/过程资料/2026-10-14/红利科创ETF双网格体系/positions.json",
+  "calibration_source": "knowledge/交易/过程资料/2026-10-09/红利ETF网格/grid_parameters.json",
+  "facts": {
+    "dividend": {
+      "market": {
+        "trade_date": "20261014",
+        "close": 1.464,
+        "daily_change_ratio": 0.0089593,
+        "volume_ratio": 1.183532,
+        "average_range_ratio": 0.011975,
+        "consecutive_down_trading_days": 0,
+        "consecutive_down_loss_ratio": 0.0
+      },
+      "calibration_reference": {
+        "latest_close": 1.443,
+        "lower_boundary": 1.08225,
+        "upper_boundary": 1.8759
+      },
+      "position": {
+        "shares": 0,
+        "market_value_amount": 0.0,
+        "position_ratio": 0.0
+      },
+      "threshold_hits": {
+        "below_price_boundary": false,
+        "above_price_boundary": false,
+        "position_fuse": false,
+        "consecutive_down": false,
+        "sharp_drop_with_volume": false,
+        "sharp_rise_notice": false,
+        "sharp_rise_take_profit_notice": false
+      }
+    }
+  },
+  "note": "口径同 collect_risk_facts.py：volume_ratio = 当日量 / 最近 22 个交易日均量（含当日）；average_range_ratio = 最近 22 个交易日 (最高−最低)/前收 的均值；价格边界基准 = 最近有效校准（10-09 grid_parameters.json，10-14 未触发调参）的 latest_close 1.443 × (1∓25%/30%)。采集范围仅 dividend（params/risk.json 的 scope）。因脚本未在本任务链路中运行，本文件为 MCP 独立复算（tushare-data.get_fund_daily，官方源）。红利 2026-10-14 收 1.464（+0.896%），为连续第五个交易日收涨，盘中最高 1.470 创阶段新高，全部风控阈值未命中。"
+}
