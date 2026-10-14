@@ -1,0 +1,46 @@
+{
+  "date": "20261014",
+  "artifact": "hottest_industry_candidate",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-14T11:31:00+00:00",
+  "note": "MCP 复算版；行业过滤 = 互联网（当日 clean 涨停最多行业，4 只）；不满足板块双确认的涨停腿（<5）→ 仅观察，见 板块热度研判.md",
+  "params": {
+    "limit_up_window_days": 22,
+    "min_limit_up_count": 1,
+    "max_limit_up_count": 2,
+    "pullback_ma_period": 10,
+    "rebound_window_days": 5
+  },
+  "stats": {
+    "total_limit_up_stocks": 122,
+    "final_candidates": 2
+  },
+  "candidates": [
+    {
+      "code": "000676.SZ",
+      "name": "智度股份",
+      "industry": "互联网",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "current_close": 6.9,
+      "pullback_ma": 6.749,
+      "pullback_pct": -7.38,
+      "bounceback_days": 3
+    },
+    {
+      "code": "300299.SZ",
+      "name": "富春股份",
+      "industry": "互联网",
+      "board_count": 1,
+      "board_dates": [
+        "20261014"
+      ],
+      "current_close": 6.88,
+      "pullback_ma": 5.565,
+      "pullback_pct": 0,
+      "bounceback_days": 4
+    }
+  ]
+}

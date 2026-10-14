@@ -1,0 +1,36 @@
+{
+  "date": "20261014",
+  "source": "knowledge/交易/过程资料/2026-10-14/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "artifact": "entry_signal",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-14T11:31:00+00:00",
+  "note": "MCP 复算版（breakout_ma / volume_ma 均为含当日的最近 N 日口径，同 entry_signal.py）；空仓期仅作记录，不产生授权",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5
+  },
+  "stats": {
+    "total_candidates": 2,
+    "with_daily_data": 2,
+    "signals": 1
+  },
+  "signals": [
+    {
+      "code": "300299.SZ",
+      "name": "富春股份",
+      "industry": "互联网",
+      "board_count": 1,
+      "board_dates": [
+        "20261014"
+      ],
+      "pullback_pct": 0,
+      "signal_date": "20261014",
+      "close": 6.88,
+      "breakout_ma": 5.768,
+      "breakout_above_pct": 19.28,
+      "volume_ratio": 10.83,
+      "pass": true
+    }
+  ]
+}

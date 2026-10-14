@@ -1,0 +1,167 @@
+{
+  "date": "20261014",
+  "artifact": "shared_sector_context",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-14T11:31:00+00:00",
+  "source": {
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "path": "knowledge/交易/过程资料/2026-10-14/红利科创ETF双网格体系/sector_facts.json"
+  },
+  "context": {
+    "date": "2026-10-14",
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "generated_at": "2026-10-14T10:13:28+00:00",
+    "source_trade_date": "20261014",
+    "classification_parameter_version": 1,
+    "limit_up": {
+      "stock_count": 38,
+      "sector_count": 27,
+      "technology_stock_count": 4,
+      "technology_stock_ratio": 0.1111
+    },
+    "top_sectors": [
+      {
+        "industry": "互联网",
+        "limit_up_count": 4,
+        "sample_stocks": [
+          {
+            "ts_code": "300299.SZ",
+            "name": "富春股份",
+            "pct_change_ratio": 0.200698
+          },
+          {
+            "ts_code": "603258.SH",
+            "name": "电魂网络",
+            "pct_change_ratio": 0.100136
+          },
+          {
+            "ts_code": "603533.SH",
+            "name": "掌阅科技",
+            "pct_change_ratio": 0.1
+          }
+        ],
+        "is_technology": true
+      },
+      {
+        "industry": "化工原料",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "002469.SZ",
+            "name": "三维化学",
+            "pct_change_ratio": 0.099359
+          },
+          {
+            "ts_code": "002917.SZ",
+            "name": "金奥博",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "603968.SH",
+            "name": "醋化股份",
+            "pct_change_ratio": 0.100279
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "出版业",
+        "limit_up_count": 3,
+        "sample_stocks": [
+          {
+            "ts_code": "601811.SH",
+            "name": "新华文轩",
+            "pct_change_ratio": 0.099811
+          },
+          {
+            "ts_code": "601858.SH",
+            "name": "中国科传",
+            "pct_change_ratio": 0.099832
+          },
+          {
+            "ts_code": "603096.SH",
+            "name": "新经典",
+            "pct_change_ratio": 0.100143
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "元器件",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "000823.SZ",
+            "name": "超声电子",
+            "pct_change_ratio": 0.09991
+          },
+          {
+            "ts_code": "002552.SZ",
+            "name": "宝鼎科技",
+            "pct_change_ratio": 0.099904
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "家居用品",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "001216.SZ",
+            "name": "华瓷股份",
+            "pct_change_ratio": 0.099954
+          },
+          {
+            "ts_code": "603992.SH",
+            "name": "松霖科技",
+            "pct_change_ratio": 0.100134
+          }
+        ],
+        "is_technology": false
+      },
+      {
+        "industry": "专用机械",
+        "limit_up_count": 2,
+        "sample_stocks": [
+          {
+            "ts_code": "600202.SH",
+            "name": "哈空调",
+            "pct_change_ratio": 0.100179
+          },
+          {
+            "ts_code": "603656.SH",
+            "name": "泰禾智能",
+            "pct_change_ratio": 0.099827
+          }
+        ],
+        "is_technology": false
+      }
+    ],
+    "technology_limit_up_stocks": [
+      {
+        "ts_code": "300299.SZ",
+        "name": "富春股份",
+        "industry": "互联网"
+      },
+      {
+        "ts_code": "603258.SH",
+        "name": "电魂网络",
+        "industry": "互联网"
+      },
+      {
+        "ts_code": "603533.SH",
+        "name": "掌阅科技",
+        "industry": "互联网"
+      },
+      {
+        "ts_code": "603598.SH",
+        "name": "引力传媒",
+        "industry": "互联网"
+      }
+    ],
+    "note": "口径同 collect_sector_facts.py：涨停 = 当日涨幅 ≥ 板块阈值（主板 9.8% / 双创 19.5% / 北交所 29.5%），剔除 N/C 开头与上市首日；双确认涨停腿剔 ST（本日 clean 36 / 含 ST 38）。科技类按 params/sector_classification.json 的 technology_industry_keywords 匹配行业名（子串匹配）。因脚本未在本任务链路中运行，本文件为 MCP 独立复算（tushare-data.get_market_daily + get_stock_basic，官方源）。最高连板 10 板为 600825.SH 新华传媒（出版业，10-13 与 10-14 均无行情＝停牌，连板记录保持）。当日全市场涨 979 / 跌 4,496，涨停 38 / 行业 27（10-13 为涨停 70 / 行业 40）→ 情绪显著转弱。"
+  }
+}
