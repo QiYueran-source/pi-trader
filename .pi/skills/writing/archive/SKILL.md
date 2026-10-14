@@ -1,85 +1,89 @@
 ---
 name: archive
-description: 归档知识库中的历史日期型文档。整理超过 30 天的日期型知识库内容、执行归档或清理归档遗留目录时必须使用。
+description: 归档知识库中的历史日期型文档和每日摘要。整理超过 30 天的日期型知识库内容、执行归档或清理归档遗留目录时必须使用。
 ---
 
 # 归档
 
 ## 范围
 
-只处理 `knowledge/` 下按 `YYYY-MM-DD` 目录归档的文档。没有日期目录的长期笔记、体系定义、规则和已归档内容不自动处理。
+只处理 `knowledge/` 下明确具有日期归档身份的文件：
 
-`摘要/摘要_*.md`、`笔记/**` 等长期文档本身不归档，但它们引用被归档文件时，其引用会被改写（见「引用处理」）。
+1. 路径中包含合法 `YYYY-MM-DD` 日期目录的文件；
+2. `摘要/摘要_YYYY-MM-DD.md` 格式的每日摘要。
 
-超过 30 天的日期型文件进入候选列表。归档目标是仓库根目录，保持原相对路径：
+归档目标是仓库根目录，保持原相对路径：
 
 ```text
 archive/{原相对路径}
 ```
 
-`archive/` **不在版本管理**（`.gitignore` 忽略）：归档在 git 层面等同于从当前树删除，内容只能从历史提交追回。改写后的引用指向的也是这个本地目录。
+`摘要/.abstract/` 是临时简报目录，不属于正式摘要，不纳入本技能的归档候选。没有日期目录的长期笔记、体系定义、规则和其他长期文件不自动处理。
+
+`archive/` 不在版本管理。归档是文件物理位置变化，不是动态知识身份变化；文档的逻辑路径保持不变。
 
 ## 工具
 
 | 工具 | 作用 | 默认 |
 |:---|:---|:---|
-| `archive_list_candidates(before_date)` | 列出日期 ≤ `before_date` 的日期型文档 | 不传则取 30 天前 |
-| `archive_preview(path)` | 预览目标路径、冲突与引用 | — |
-| `archive_move(path, rewrite_references)` | 移动单个文件；`rewrite_references=true` 时先改写引用再移动 | 有引用时拒绝移动 |
-| `archive_rewrite_references(path, apply)` | 把引用改写为 `archive/<path>` | `apply=false` 只预览 |
-| `archive_run(before_date, rewrite_references, dry_run, include_paths)` | 批量：候选 → 预览 →（改写）→ 移动 → 清理空目录 | `dry_run=true` 只干跑 |
+| `archive_list_candidates(before_date)` | 列出截止日期以前的日期型文档和每日摘要 | 不传则取 30 天前 |
+| `archive_preview(path)` | 预览目标路径和目标冲突 | — |
+| `archive_move(path)` | 移动单个日期型文档或每日摘要，不覆盖目标文件 | — |
+| `archive_run(before_date, dry_run, include_paths)` | 批量发现、移动文件，并在实跑后清理空日期目录 | `dry_run=true` 只干跑 |
 | `archive_cleanup_empty_dirs(dry_run)` | 清理归档遗留的空日期目录 | `dry_run=true` 只预览 |
-| `archive_sync_financial_paths(apply, aliases)` | 把财经分析库的 `source_file` 收敛到文件当前位置（仍在 knowledge → 保留；已归档 → `archive/<路径>`） | `apply=false` 只预览 |
 
 ## 流程
 
-**批量（常规做法）**
+**批量归档：**
 
-1. 先干跑：`archive_run(before_date, rewrite_references, dry_run=true)`，看候选数、将归档数、跳过原因、将改写的文件数与替换数；同时用 `archive_sync_financial_paths(apply=false)` 预览将变更的库侧条数。
-2. 需要完整清单时加 `include_paths=true`。
-3. 确认后用 `dry_run=false` 执行；工具内部按「预览 → 改写 → 复查引用归零 → 移动 → 清理空目录」顺序处理，失败会记入 `skipped`。
-4. 实跑后调 `archive_sync_financial_paths(apply=true)`，把本次归档造成的路径变化同步到财经分析库；干跑阶段可先用 `apply=false` 看将变更条数。这一步幂等，漏跑也可由次日归档补上。
+1. 先调用 `archive_run(dry_run=true)`，查看候选数、预计归档数和跳过原因；
+2. 干跑结果正常后，用相同的 `before_date` 调用 `archive_run(dry_run=false)`；
+3. 实跑会移动文件，并清理符合条件的归档遗留空日期目录；
+4. 汇报候选数、归档数、跳过原因、清理空目录数和异常明细。
 
-**单文件（精细操作）**：`archive_preview` → 需要时 `archive_rewrite_references(apply=true)` → `archive_move` → `archive_cleanup_empty_dirs`。
+**单文件归档：**
 
-归档不是删除，不覆盖已有文件；所有移动与改写默认只预览。**空目录清理是唯一无需用户确认、可自动执行的步骤**（见下）。
+```text
+archive_preview → archive_move → archive_cleanup_empty_dirs
+```
 
-## 引用处理
+归档不覆盖已有文件。目标已存在时跳过并报告。归档不因为文件被其他文档引用而阻止移动。
 
-- `rewrite_references=false`（默认）：被引用的文件**跳过**并在结果里记为 `references`，保持历史行为。
-- `rewrite_references=true`：先把引用改写为 `archive/<原相对路径>`，复查引用归零后再移动。这样历史引用仍可定位，只是指向归档目录。
-- 改写口径：**按路径边界匹配**（前缀可选、前后不紧邻路径字符），一次性覆盖 `path`、`./path`、`knowledge/path`、`/pi-trader/knowledge/path`、`/hermes-trader/knowledge/path` 五种写法，命中后统一归一为 `archive/<path>`；已写成 `archive/<path>` 或 `../../archive/<path>` 的不再重复改写（幂等）；跳过被引用文件自身。只改 `knowledge/` 下 `.md/.yaml/.yml/.json`。
-- 不要用「把所有 `knowledge/` 前缀替换成 `archive/`」的做法：大量引用指向的文件**仍在 knowledge**，无差别替换会把有效引用改坏。改写的最小单位是**本次被移动的路径**。
-- 改写会修改摘要、长期笔记等文档的正文（只动路径字符串）。执行前先用 `archive_rewrite_references(apply=false)` 或 `archive_run(dry_run=true)` 预览改写清单。
-- 由于 `archive/` 不入库，改写后的引用在他人克隆的仓库里打不开；当前仓库已有 **82 个被跟踪文档**引用 `archive/…`，属该设计的固有代价。如需保留可移植的引用，改用「跳过」而不是改写。
-- **已知限制（扫描范围）**：只扫 `knowledge/`，**`archive/` 内的文档不参与改写**。若 A 先归档、它引用的 B 之后才归档，A 里的引用会停在旧的 `knowledge/…` 写法（实测 **34 个 `archive/**/*.md`** 处于该状态）。需要可读引用时人工处理，或接受该取舍。`archive/` 内容优先级低，其中的路径与引用问题可忽略，不汇报。
+## 文件移动规则
+
+- 源文件必须位于 `knowledge/` 内；
+- 源文件必须属于有效日期目录，或符合 `摘要/摘要_YYYY-MM-DD.md`；
+- 目标为 `archive/` 下与源文件相同的相对路径；
+- 只移动文件，不移动目录；
+- 不修改文件正文；
+- 不改写引用路径；
+- 不修改数据库或任何数据库来源字段；
+- 不执行目录别名迁移或其他路径同步。
+
+动态知识使用逻辑路径。文件从 `knowledge/` 移到 `archive/` 后，逻辑路径保持不变；路径解析和引用检查由 `knowledge-management` 及 `logic-path` 负责，不由归档 MCP 承担。
 
 ## 空目录清理
 
-文件被移动后会在 `knowledge/` 留下空的日期目录，由 `archive_cleanup_empty_dirs` 负责清理。
+文件移动后，必须通过 `archive-management` MCP 的 `archive_cleanup_empty_dirs` 工具处理 `knowledge/` 中可能遗留的空目录。不得使用 Bash、`find`、`rm` 或其他直接文件系统命令清理目录。清理只涉及目录，不涉及任何文件。
 
-- **不需要用户确认**：该步骤只删除空壳目录，不涉及任何文件内容；不需要确认，以免阻塞每日归档任务。
-- 工具只删除**同时满足**以下条件的目录：位于 `YYYY-MM-DD` 日期目录内、完全为空（含隐藏文件）、`archive/` 下存在同相对路径目录（证明确实是归档遗留）、日期早于今天（避开当天任务）。
-- 任一条件不满足的目录会保留，并在结果中以 `reason` 标明（如 `no_archive_counterpart`）。**不要把被跳过的目录手工删掉**：先在 `archive/` 侧核对内容去向，确认后再处理。
-- 只读/只删 `knowledge/` 内的空目录；不动 `archive/`，不删除任何文件。
+单文件归档时：
 
-## 库侧同步（财经分析库）
+1. 先调用 `archive_cleanup_empty_dirs(dry_run=true)`，查看待清理清单和跳过原因；
+2. 确认清单正常后，再调用 `archive_cleanup_empty_dirs(dry_run=false)` 实际清理；
+3. 汇报实际清理数量，以及被保留目录和原因。
 
-归档只动文件，但 `financial_analysis.db` 的 `mentions.source_file` 存的是路径字符串，会随之过期。由 `archive_sync_financial_paths` 负责收敛，判定顺序：
+批量归档时，`archive_run(dry_run=false)` 已自动执行空目录清理，不需要再次调用 `archive_cleanup_empty_dirs`。
 
-1. 用 `aliases` 替换历史前缀（如 `笔记/财经分析/` → `交易/财经分析/`）得到候选；
-2. `knowledge/<候选>` 存在 → 保留候选；
-3. 否则 `archive/<候选>` 存在 → 改为 `archive/<候选>`；
-4. 否则 `knowledge/<原值>` 存在，或原值本身（已写成 `archive/<路径>` 形态）在仓库根下存在 → 保留原值；
-5. 否则记为 `unresolved`，不动并上报。
+清理工具只处理：
 
-- 默认只预览；重复调用幂等（第二次 `changed=0`）。
-- `unresolved` 只统计真正找不到目标的死引用（目录重构、改名遗留）；已归档且文件存在的记录记 `unchanged`，不进入该计数。
-- **与候选数无关**：`archive_run` 没有候选时也应调用一次 `apply=true`。手工归档与历史遗留造成的路径变化只有这样才能被收敛；只在「有候选的那天」同步会永久漏掉。
-- 只改 `mentions.source_file`，不动其他表；不执行任意 SQL。
-- DB 路径由 `FINANCIAL_ANALYSIS_DB_PATH` 注入（见 `.pi/mcp.json`）；库不存在时返回错误而不报成功。
-- 历史的目录重构（`笔记/财经分析/` → `交易/财经分析/`）用 `aliases` 一次性修正。
+- `knowledge/` 内的空目录；
+- 目录自身或父级必须包含合法 `YYYY-MM-DD` 日期目录；
+- `archive/` 下必须存在相同相对路径的对应目录，证明它是归档遗留目录；
+- 日期必须早于当天，避免与当天任务竞争；
+- 按目录深度自底向上处理嵌套目录。
 
-## 生效前提
+工具不会删除文件、非空目录或 `archive/` 内的任何内容。`dry_run=true` 只返回待清理清单，`dry_run=false` 才实际删除目录。如果目录不满足条件，保留目录并报告原因，例如 `no_archive_counterpart` 或 `not_older_than_today`。
 
-归档 MCP 的代码或工具变更后，需要**重启 Pi** 才会在会话与定时任务中生效（MCP 只在启动时加载）。重启前调用新工具会报「工具不存在」，任务应按降级路径跳过并说明。
+## 定时任务
+
+每天归档任务先干跑、后实跑。定时任务不再调用引用改写工具、财经分析数据库同步工具或其他路径迁移工具。MCP 代码或工具变更后，需要重启 Pi 才会在会话和定时任务中生效。
