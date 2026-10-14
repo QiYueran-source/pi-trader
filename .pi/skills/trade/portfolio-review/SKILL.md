@@ -45,7 +45,7 @@ description: 复盘跨账户、跨交易体系的整体持仓、计划执行和�
 4. 对每个账户和交易体系组合分别调用 `portfolio_snapshot`，获取现金、非零持仓和 `trade_as_of`。
 5. 使用 `trade_list` 查询复盘日期内的成交；需要单笔详情时使用 `trade_get`。
 6. 对需要当前估值的持仓，按账户、体系和证券调用 `trade_pnl` 并提供当前价格；不得用成本或交易金额代替市值和未实现盈亏。
-7. 读取当日各体系交易计划、体系复盘、市场事实和用户回复；缺失时如实标注，不用其他日期补充。
+7. 读取当日各体系交易计划、体系复盘、市场事实和用户回复；缺失时如实标注，不用其他日期补充。行情数据拉取的接口选择、代码后缀和单位口径遵循 [`trade-management` 的复盘行情数据参考](../trade-management/references/复盘行情数据拉取.md)。
 8. 对照计划与成交，逐笔标记计划内、计划外、遗漏执行或无法判断。
 
 ## 账户、体系与组合口径
@@ -83,7 +83,7 @@ description: 复盘跨账户、跨交易体系的整体持仓、计划执行和�
 
 22:30 追问任务的事实核验简报写入 `knowledge/摘要/.abstract/{日期}_global-2230-manual-review.txt`，与整体复盘简报分别保留，不相互覆盖。
 
-正式复盘使用 `knowledge-management` 技能规定的 Frontmatter 最小格式：`title`、`summary`、`date`、`tags`。可按需要补充 `account_id`、`trade_type`
+正式复盘使用 `knowledge-management` 技能规定的 Frontmatter 最小格式：`title`、`summary`、`date`、`tags`。可按需要补充 `account_id`、`trade_type`。
 
 已有同日整体复盘时先读取；除非用户明确要求修订，不重复创建或无痕覆盖。
 

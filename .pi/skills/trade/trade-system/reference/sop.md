@@ -27,6 +27,8 @@
 
 ## 落盘路径与命名
 
+本节中的路径模板表示落盘目的地，因此使用 `knowledge/...` 物理路径；文档正文中的链接、Frontmatter 路径字段和 MCP `logical_path` 则使用不含 `knowledge/` 或 `archive/` 前缀的逻辑路径。
+
 路径模板以 `knowledge-management` 技能的 `reference/routes.md` 为准；写入前先检查目标目录、相邻日期和同体系文件，优先沿用已有结构和命名。
 
 - 过程资料：`knowledge/交易/过程资料/<YYYY-MM-DD>/<体系名称>/<产物名称>.<扩展名>`
