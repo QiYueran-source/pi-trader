@@ -234,6 +234,17 @@
       "createdAt": "2026-10-13T09:41:44.766Z",
       "runCount": 0,
       "description": "每周一 00:30 核查上一自然周新落盘文档的规范与引用，只报告不修改"
+    },
+    {
+      "id": "GNrJh6B5nD",
+      "name": "global-2330-todo-audit",
+      "schedule": "0 30 23 * * *",
+      "prompt": "# 23:30 待办索引审计\n\n每天 23:30 执行。加载 `todo` 技能，调用 `todo-management` MCP。\n\n## 执行步骤\n\n1. 调用 `todo_scan`，使用默认根目录 `knowledge` 和 `archive`、`since_days=7`、`dry_run=false`。\n2. 扫描成功后调用 `todo_audit`，使用与扫描相同的范围。\n3. 调用 `todo_stats` 获取未结文件数、未结条目数和积压最老项。\n4. 汇总 `missing_in_db`、`count_mismatch`、`unrecognized_lines`、`both_exist`、`gone`、`read_errors`；这些差异只报告，不手工修改知识文档。\n5. 生成首行状态：`【2330 待办审计】未结 x ｜ 积压最老 y 天 ｜ 差异 z`。没有未结项或没有差异也发送一行回执。\n6. 明细写入 `knowledge/摘要/.abstract/{运行日}_global-2330-todo-audit.txt`；运行日按 Asia/Shanghai 判定。简报写入失败时保留回复中的明细并说明原因。\n\n## 路径口径\n\nMCP 返回的 `path_rel` 是逻辑路径，不含 `knowledge/` 或 `archive/` 前缀。归档只改变物理根目录，不改变逻辑路径；`both_exist` 和 `gone` 只报告，不改写为完成。\n\n## 边界与失败处理\n\n- `todo-management` MCP 不可用、工具不存在或调用失败时，跳过对应步骤并如实报告；不重试，不把失败解释成没有待办。\n- `todo_audit` 的历史排除范围与 `todo_scan` 保持一致；历史快照不因未进入索引而报告为漏项。\n- `both_exist` 和 `gone` 是异常状态，不改写为已完成。\n- 本任务只扫描、查询和写入当日简报，不创建、修改、移动或删除知识文档，不执行任意 shell，不执行 Git 操作。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：无未结项、无差异或工具不可用时同样发送一行状态，便于确认任务确实执行。\n",
+      "enabled": true,
+      "type": "cron",
+      "createdAt": "2026-10-14T15:11:08.956Z",
+      "runCount": 0,
+      "description": "每天 23:30 扫描并审计动态知识文档的待办索引，向飞书推送状态并写入当日简报"
     }
   ],
   "version": 1
