@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-14",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "calibration_check",
+  "generated_at": "2026-10-14T10:00:23+00:00",
+  "schedule": "weekly_last_trading_day_or_manual",
+  "today_is_trading_day": true,
+  "next_calendar_day_is_trading_day": true,
+  "latest_prior_grid_parameters": "knowledge/交易/过程资料/2026-10-09/红利ETF网格/grid_parameters.json",
+  "should_calibrate": false,
+  "reason": "schedule_not_triggered",
+  "note": "2026-10-14 为周三，本周（10-12~10-16）交易日为 10-12、10-13、10-14、10-15、10-16，本周最后一个交易日为 2026-10-16（周五），次日 2026-10-15 仍为交易日，且无人工触发 → 本日不执行网格校准，沿用最近有效校准（2026-10-09）。"
+}
