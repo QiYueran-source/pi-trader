@@ -69,13 +69,19 @@ def instrument_type(code: str) -> str:
 
 
 def calc_fee(fee: dict[str, Any], code: str, side: str, qty: float, price: float) -> float:
-    rules = fee.get("rules", {})
+    configured_rules = fee.get("rules", {})
     rule = dict(fee.get("defaults", {}))
-    rule.update(rules.get(instrument_type(code), {}))
+    instrument_rules = configured_rules.get(instrument_type(code))
+    if isinstance(instrument_rules, dict):
+        rule.update(instrument_rules)
+    else:
+        # 兼容现有账户使用的扁平 rules 结构。
+        rule.update(configured_rules)
     amount = qty * price
     minimum = rule.get("commission_min_fee", rule.get("min_commission", 0))
     commission = max(amount * rule.get("commission_rate", 0), minimum)
-    stamp = amount * rule.get("stamp_duty_rate", 0) if side == "sell" else 0
+    stamp_rate = rule.get("stamp_duty_rate", rule.get("stamp_tax_rate", 0))
+    stamp = amount * stamp_rate if side == "sell" else 0
     transfer = amount * rule.get("transfer_fee_rate", 0)
     other = amount * rule.get("other_fee_rate", 0)
     return round(commission + stamp + transfer + other, 2)

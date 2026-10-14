@@ -8,6 +8,8 @@
 - `account_get`：查询指定账户详情和费率配置。
 - `account_create`：创建交易账户。
 
+费率对象至少包含 `version` 和 `rules`。`rules` 支持两种形式：按品种配置的嵌套形式（`etf` / `stock`），或现有账户使用的扁平形式；扁平形式直接包含 `commission_rate`、`stamp_tax_rate`（卖出印花税）、`transfer_fee_rate` 等字段。可选的 `defaults` 提供通用默认费率，`commission_min_fee` 或 `min_commission` 表示佣金最低收费。代码同时兼容 `stamp_duty_rate` 这一字段名。
+
 ## 交易
 
 - `trade_list`：查询成交记录，可按账户、交易体系和证券代码筛选。

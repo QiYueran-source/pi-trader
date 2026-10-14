@@ -14,7 +14,7 @@ from typing import Any
 
 from mcp.server import Server
 from mcp.server.stdio import stdio_server
-from mcp.types import CallToolResult, ListToolsResult, TextContent, Tool
+from mcp.types import TextContent, Tool
 
 KNOWLEDGE_ROOT = Path(os.getenv("KNOWLEDGE_ROOT", "/pi-trader/knowledge")).resolve()
 ARCHIVE_ROOT = Path(os.getenv("ARCHIVE_ROOT", "/pi-trader/archive")).resolve()
@@ -160,34 +160,28 @@ TOOLS = [
 server = Server("logic-path")
 
 
-async def list_tools_handler(_ctx: Any, _params: Any) -> ListToolsResult:
-    return ListToolsResult(tools=TOOLS)
+@server.list_tools()
+async def list_tools() -> list[Tool]:
+    return TOOLS
 
 
-async def call_tool_handler(_ctx: Any, request: Any) -> CallToolResult:
-    args = request.arguments or {}
+@server.call_tool()
+async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
+    args = arguments or {}
     try:
-        if request.name == "logic_path_resolve":
+        if name == "logic_path_resolve":
             result = resolve_path(args["logical_path"])
-        elif request.name == "logic_path_validate":
+        elif name == "logic_path_validate":
             result = validate_path(args["logical_path"], bool(args.get("require_exists", True)))
-        elif request.name == "logic_path_audit":
+        elif name == "logic_path_audit":
             result = audit_paths(args["logical_paths"])
         else:
-            raise ValueError(f"未知工具：{request.name}")
+            raise ValueError(f"未知工具：{name}")
     except (KeyError, TypeError, ValueError) as exc:
         result = {"ok": False, "error": {"type": "invalid_request", "message": str(exc)}}
     except Exception as exc:  # noqa: BLE001
         result = {"ok": False, "error": {"type": "internal_error", "message": str(exc)}}
-    return CallToolResult(content=[TextContent(type="text", text=dump(result))])
-
-
-server = Server(
-    "logic-path",
-    version="1.0.0",
-    on_list_tools=list_tools_handler,
-    on_call_tool=call_tool_handler,
-)
+    return [TextContent(type="text", text=dump(result))]
 
 
 async def main() -> None:

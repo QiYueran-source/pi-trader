@@ -124,7 +124,7 @@ def logical_files(roots: dict[str, Path]) -> dict[str, set[str]]:
         if not root.is_dir():
             continue
         for path in root.rglob("*"):
-            if path.is_file():
+            if path.is_file() and path.suffix.lower() == ".md" and "__pycache__" not in path.parts and "附件" not in path.parts:
                 found[path.relative_to(root).as_posix()].add(state)
     return found
 

@@ -50,11 +50,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.586Z",
-      "runCount": 1,
+      "runCount": 2,
       "description": "每交易日 22:30 通过 MCP 核对当日事实并推送固定复盘清单，不写复盘结论",
       "lastStatus": "success",
-      "lastRun": "2026-10-13T14:30:00.005Z",
-      "nextRun": "2026-10-14T14:30:00.000Z"
+      "lastRun": "2026-10-14T14:30:00.004Z",
+      "nextRun": "2026-10-15T14:30:00.000Z"
     },
     {
       "id": "R3uHz5qogU",

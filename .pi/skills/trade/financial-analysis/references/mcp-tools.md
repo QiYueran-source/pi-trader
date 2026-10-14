@@ -35,9 +35,9 @@
 ## 约束
 
 - 先读后写：写入前先 `financial_analysis_list_mentions` 查重，按「日期 + 来源文件」判断用 record 还是 replace。
-- **先列清单再入库**：用户要求整理财经分析时，默认先把待入库清单列给用户，确认后才写库（字段与校验见 `mentions.md`）。
+- **先列清单再入库**：用户要求整理财经分析时，默认先把待入库清单列给用户，确认后才写库（字段与校验见 `common.md`）。
 - 覆盖来源文件用 `financial_analysis_replace_mentions`，不要手动删除旧记录。
 - 批量写入后核对返回的 `inserted` / `skipped` / `deleted`，再 `list_mentions` 复核条数。
 - 数据库写入只使用业务工具，不执行任意 SQL。行情来源和日期必须与复盘对象一致。
 - 失败时按返回的 `error.type` 与 `error.message` 定位：`invalid_request` 属参数或枚举问题，`internal_error` 属服务端问题；不要把失败当成空结果。
-- MCP 只校验必填与枚举；名称、代码、窗口、路径等口径由 `mentions.md` 的「入库校验」清单强制。
+- MCP 只校验必填与枚举；名称、代码、窗口、路径等口径由 `common.md` 的「入库校验」清单强制。
