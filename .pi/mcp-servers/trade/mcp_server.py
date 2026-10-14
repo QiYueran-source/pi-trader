@@ -69,12 +69,16 @@ def instrument_type(code: str) -> str:
 
 
 def calc_fee(fee: dict[str, Any], code: str, side: str, qty: float, price: float) -> float:
-    rule = fee.get("rules", {}).get(instrument_type(code), {})
+    rules = fee.get("rules", {})
+    rule = dict(fee.get("defaults", {}))
+    rule.update(rules.get(instrument_type(code), {}))
     amount = qty * price
-    commission = max(amount * rule.get("commission_rate", 0), rule.get("min_commission", 0))
+    minimum = rule.get("commission_min_fee", rule.get("min_commission", 0))
+    commission = max(amount * rule.get("commission_rate", 0), minimum)
     stamp = amount * rule.get("stamp_duty_rate", 0) if side == "sell" else 0
     transfer = amount * rule.get("transfer_fee_rate", 0)
-    return round(commission + stamp + transfer, 2)
+    other = amount * rule.get("other_fee_rate", 0)
+    return round(commission + stamp + transfer + other, 2)
 
 
 def account_list() -> dict[str, Any]:
