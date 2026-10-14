@@ -36,6 +36,11 @@ description: 管理动态知识文档的分类、路径、Frontmatter 和正文�
 
 本技能仅负责 `knowledge/`（以及 `archive/`）下文档的落盘和写作。
 
+- 新动态内容的物理落盘目标是 `knowledge/`；`archive/` 只能由归档流程作为历史物理目录使用。
+- 动态文档正文、Frontmatter 和数据库来源字段中的引用必须使用逻辑路径，不带 `knowledge/` 或 `archive/` 前缀。
+- 读取时由 `logic-path` MCP 将逻辑路径双头解析到 `knowledge/` 或 `archive/`。
+- 静态 Skill、cronjob、Extension 和 MCP 的自身路径属于静态基础设施路径，不适用“不能使用物理前缀”的动态引用规则；但它们描述动态产物时必须使用逻辑路径模板，并说明新内容写入 `knowledge/`。
+
 ## 历史遗留与新内容优先级
 
 - 历史文档可能存在旧 Frontmatter（`uuid`、`links`、`updated`）、旧物理路径（如 `knowledge/`、`archive/` 或旧工作区绝对路径）、失效引用或指向 archive 的旧引用。这些属遗留状态，不要求本轮批量修复，允许长期存在。

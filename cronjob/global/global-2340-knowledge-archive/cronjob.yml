@@ -9,4 +9,4 @@ mode: inline   # 在主会话执行
 deliver: feishu   # 投递渠道；chat_id 见 cronjob/delivery.json
 prompt: prompt.txt
 created_at: 2026-10-11
-description: 每天扫描超过30天的日期型知识文档，检查引用后安全归档，并同步财经分析库的 source_file 路径
+description: 每天扫描超过30天的日期型知识文档，移动到 archive 并清理遗留空目录；不改写引用或同步财经分析库路径

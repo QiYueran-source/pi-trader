@@ -2,15 +2,13 @@
 
 每天 23:40 执行。调用 `archive-management` MCP。
 
-1. 先干跑：调用 `archive_run(rewrite_references=true, dry_run=true)`（不传 `before_date` 即 30 天前），读取汇总：候选数、将归档数、将改写的文件数与替换数、跳过原因。
-2. 干跑正常时，以同一参数但 `dry_run=false` 执行：先改写引用、复查归零后移动，并清理归档遗留空目录。
-3. 归档完成后调用 `archive_sync_financial_paths(apply=true)`，把本次归档造成的路径变化同步到财经分析库；干跑阶段（第 1 步后）先调 `apply=false` 预览将变更条数，实跑后汇报 `changed / changed_records / unresolved`。该步幂等，失败时如实汇报、不重试。
-4. 汇报：候选数、归档数、跳过数（按原因）、引用改写文件数与替换数、清理空目录数、库侧同步条数（含 unresolved）；干跑与实跑不一致时说明差异；被跳过的目录（如 `no_archive_counterpart`）一并列出。
-5. 异常处理：出现 `move_failed:*`、候选数异常放大或工具报错时，保留明细、不重试、如实汇报；所需的归档工具（`archive_run`、`archive_sync_financial_paths` 等）不存在（运行环境尚未重载 MCP）时，跳过对应步骤并在汇报中说明。
+1. 先干跑：调用 `archive_run(dry_run=true)`（不传 `before_date` 即 30 天前），读取候选数、将归档数和跳过原因。候选包括 `knowledge/` 下路径中含有效 `YYYY-MM-DD` 目录的文件，以及 `knowledge/摘要/摘要_YYYY-MM-DD.md` 格式的每日摘要。
+2. 干跑正常时，以同一参数但 `dry_run=false` 执行：只移动符合条件的 `knowledge/` 文件到 `archive/`，并清理归档遗留的空日期目录。
+3. 归档只改变文件的物理位置，不修改动态文档正文、Frontmatter、逻辑路径或数据库来源字段；不调用引用改写流程，不调用财经分析数据库路径同步，不迁移或删除财经分析数据库记录，不修改历史 `source_type`。
+4. 汇报候选数、归档数、跳过数（按原因）和清理空目录数；被跳过的目录（如 `no_archive_counterpart`）一并列出。
+5. 出现 `move_failed:*`、候选数异常放大或工具报错时，保留明细、不重试、如实汇报；工具不存在时跳过对应步骤并说明。
 
-只处理 `knowledge/` 下包含有效 `YYYY-MM-DD` 目录的文件，归档目标为仓库根目录 `archive/`（不纳入版本管理）。不处理没有日期目录的长期笔记、体系定义、规则及已归档内容。不手工删除文件或目录，空目录只通过工具清理。
-
-引用改写的既定策略：被长期笔记、摘要等引用的历史文件会被改写为 `archive/<原相对路径>` 后归档；改写只动路径字符串。**没有候选时仍调用一次 `archive_sync_financial_paths(apply=true)`**（幂等、成本极低），以收敛手工归档与历史遗留造成的路径变化，然后发送一行状态（`【2340 归档】无候选 ｜ 库侧同步 x 条`，无变更时 x=0）。
+归档目标为仓库根目录 `archive/`（不纳入版本管理）。不处理没有日期目录的长期笔记、体系定义、规则、`摘要/.abstract/` 临时简报及已归档内容。不手工删除文件或目录，空目录只通过 `archive_cleanup_empty_dirs` 或 `archive_run` 实跑清理。
 
 ## 投递与输出
 

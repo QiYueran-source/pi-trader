@@ -70,7 +70,8 @@ description: 检查和维护 Pi 本地扩展及 npm 扩展依赖。查看、安�
 - 本地 Extension 位于 `.pi/extensions/<extension-name>/`，入口和依赖按 Pi Extension API 校验。
 - npm Extension 的声明和锁定依赖位于 `.pi/npm/package.json` 与 `.pi/npm/package-lock.json`。
 - Extension 中的固定路径应区分静态基础设施路径（入口、配置、数据库根目录）和动态知识路径；不得把某个具体动态知识文件写成永久固定依赖。
-- Extension 如果检查或处理动态知识落盘，必须遵守 `knowledge-management` 的文件类型、逻辑路径和归档协议，不得自行定义另一套路由。
+- Extension 如果检查或处理动态知识落盘，必须遵守 `knowledge-management` 的文件类型、逻辑路径和归档协议；新动态内容写入 `knowledge/`，`archive/` 仅由归档流程使用，不得自行定义另一套路由。
+- 动态文档正文、Frontmatter 和数据库来源字段中的引用必须使用逻辑路径；Extension 自身的静态基础设施路径可以保留物理前缀。
 - 运行时可以接收、生成和校验具体动态知识逻辑路径，但 Extension 的长期配置不应保存某个具体动态知识文件路径。
 
 修改 Extension 入口、加载配置或依赖后，需要按 Pi 的加载机制重新加载或重启，并验证扩展确实生效；不能只根据文件存在判断运行时已加载。

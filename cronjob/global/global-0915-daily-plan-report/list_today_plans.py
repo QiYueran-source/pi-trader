@@ -6,17 +6,16 @@
   list_today_plans.py                           # 扫今天
   list_today_plans.py --date 2026-06-15         # 扫指定日期
 
-输出：每行一个计划文件的 knowledge 相对路径
-  有计划 → 列出路径
-  无计划 / 目录不存在 → 无输出，exit 0
+输出：每行一个计划文件的逻辑路径，不带 knowledge/ 或 archive/ 前缀。
 """
 
 import argparse
-import sys
 from datetime import date, datetime
 from pathlib import Path
 
-TRADE_PLAN_DIR = Path("/pi-trader/knowledge/交易/交易计划")
+REPO_ROOT = Path(__file__).resolve().parents[3]
+KNOWLEDGE_ROOT = REPO_ROOT / "knowledge"
+TRADE_PLAN_DIR = KNOWLEDGE_ROOT / "交易" / "交易计划"
 
 
 def main():
@@ -32,12 +31,10 @@ def main():
 
     plan_dir = TRADE_PLAN_DIR / d.strftime("%Y-%m-%d")
     if not plan_dir.exists():
-        return  # 无声退出
+        return
 
-    files = sorted(plan_dir.glob("*.md"))
-    for f in files:
-        # 输出 knowledge 相对路径
-        print(f.relative_to(Path("/pi-trader/knowledge")))
+    for f in sorted(plan_dir.glob("*.md")):
+        print(f.relative_to(KNOWLEDGE_ROOT))
 
 
 if __name__ == "__main__":

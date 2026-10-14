@@ -9,7 +9,7 @@
 - `type`：`stock` 或 `sector`。
 - `mention_date`：内容发布日期。
 - `source_type`：与当前来源和历史记录兼容的类型值，包括盘前分析、盘前荐股、盘后荐股、盘后分析、周末要闻、调仓信息。已停止来源的类型值仅保留用于读取、复盘和统计，不用于新增记录。
-- `source_file`：相对 `knowledge/` 的 Markdown 路径。
+- `source_file`：动态知识的逻辑路径，即相对 `knowledge/` 或 `archive/` 物理根目录去掉前缀后的 Markdown 路径；新写入不得带物理前缀。文件归档只改变物理位置，不修改该字段；历史路径按兼容规则读取。
 - `sentiment`：积极、中性、消极、谨慎。
 - `context`：简短说明判断依据。
 - `window_end_date`：跟踪窗口结束日。

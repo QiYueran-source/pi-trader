@@ -5,19 +5,19 @@
 用法：
   scan_systems.py                     # 扫描所有体系
 
-输出：JSON 到 stdout
+输出：JSON 到 stdout；动态知识目录使用逻辑路径。
 """
 
-import argparse
 import json
-import sys
 from pathlib import Path
 
-SYSTEMS_DIR = Path("/pi-trader/knowledge/交易/交易体系")
+REPO_ROOT = Path(__file__).resolve().parents[3]
+KNOWLEDGE_ROOT = REPO_ROOT / "knowledge"
+SYSTEMS_DIR = KNOWLEDGE_ROOT / "交易" / "交易体系"
 
 
 def scan_systems():
-    """扫描所有交易体系，返回列表"""
+    """扫描所有交易体系，返回列表。"""
     systems = []
     if not SYSTEMS_DIR.exists():
         return systems
@@ -45,18 +45,14 @@ def scan_systems():
         systems.append({
             "name": name,
             "system_id": system_id,
-            "dir": str(d),
+            "logical_dir": str(d.relative_to(KNOWLEDGE_ROOT)),
         })
 
     return systems
 
 
 def main():
-    systems = scan_systems()
-    output = {
-        "systems": systems,
-    }
-    print(json.dumps(output, ensure_ascii=False, indent=2))
+    print(json.dumps({"systems": scan_systems()}, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

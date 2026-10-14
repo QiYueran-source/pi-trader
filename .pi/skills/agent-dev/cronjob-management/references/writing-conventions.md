@@ -5,10 +5,11 @@ cronjob 是静态运行资产，`cronjob.yml` 和 `prompt.txt` 负责描述任�
 
 任务需要读取或生成动态知识时：
 
-- 可以在 prompt 中使用目录模板、日期变量、体系标识和查询协议；
+- 可以在 prompt 中使用逻辑目录模板、日期变量、体系标识和查询协议，并明确新产物写入 `knowledge/`；`archive/` 仅作为归档流程的历史物理目录；
 - 运行时可以读取、生成和传递具体动态知识逻辑路径；
-- prompt.txt和cronjob.yml中不应写死某个具体动态知识文件路径；
+- prompt.txt 和 cronjob.yml 中不应写死某个具体动态知识文件路径；
 - 应加载 `knowledge-management`，遵守其文件类型、路由、逻辑路径和归档协议；
+- 动态文档正文、Frontmatter 和数据库来源字段中的引用不得带 `knowledge/` 或 `archive/` 前缀；这条限制不适用于 cronjob 自身的静态基础设施路径。
 
 
 cronjob 自身的 `cronjob.yml`、`prompt.txt`、`delivery.json` 和运行时注册记录属于静态资产，不能因为动态知识归档而移动或改写。
