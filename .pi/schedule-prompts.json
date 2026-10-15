@@ -8,11 +8,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:12.108Z",
-      "runCount": 2,
+      "runCount": 3,
       "description": "每天 15:00 使用 MCP 判断交易日、扫描所有交易体系并推送收盘提醒",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T07:00:00.004Z",
-      "nextRun": "2026-10-15T07:00:00.000Z"
+      "lastRun": "2026-10-15T07:00:00.005Z",
+      "nextRun": "2026-10-16T07:00:00.000Z"
     },
     {
       "id": "-Gw3RIT9rr",
@@ -22,11 +22,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.484Z",
-      "runCount": 2,
+      "runCount": 3,
       "description": "每天 9:15 使用 MCP 判断交易日、扫描当日交易计划并推送执行简报",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T01:15:00.007Z",
-      "nextRun": "2026-10-15T01:15:00.000Z"
+      "lastRun": "2026-10-15T01:15:00.006Z",
+      "nextRun": "2026-10-16T01:15:00.000Z"
     },
     {
       "id": "TqQr_TE9Ni",
@@ -36,11 +36,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.536Z",
-      "runCount": 2,
+      "runCount": 3,
       "description": "每天 21:30 通过 MCP 复盘当日财经分析判断并生成复盘笔记",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T13:30:00.008Z",
-      "nextRun": "2026-10-15T13:30:00.000Z"
+      "lastRun": "2026-10-15T13:30:00.005Z",
+      "nextRun": "2026-10-16T13:30:00.000Z"
     },
     {
       "id": "WIisY3gTb8",
@@ -64,11 +64,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.644Z",
-      "runCount": 1,
+      "runCount": 2,
       "description": "每天扫描超过30天的日期型知识文档和每日摘要，移动到 archive 并清理遗留空目录",
       "lastStatus": "success",
-      "lastRun": "2026-10-13T15:40:00.007Z",
-      "nextRun": "2026-10-14T15:40:00.000Z"
+      "lastRun": "2026-10-14T15:40:00.008Z",
+      "nextRun": "2026-10-15T15:40:00.000Z"
     },
     {
       "id": "5TG7ETOkjy",
@@ -78,11 +78,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.699Z",
-      "runCount": 1,
+      "runCount": 2,
       "description": "每天清理保存超过7天的草稿箱文件",
       "lastStatus": "success",
-      "lastRun": "2026-10-13T15:50:00.004Z",
-      "nextRun": "2026-10-14T15:50:00.000Z"
+      "lastRun": "2026-10-14T15:50:00.005Z",
+      "nextRun": "2026-10-15T15:50:00.000Z"
     },
     {
       "id": "YqvEQSQHRd",
@@ -92,11 +92,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.747Z",
-      "runCount": 1,
+      "runCount": 2,
       "description": "每天 23:55 聚合简报并生成正式摘要，成功后删除已消费简报（摘要为唯一留存记录）；不执行 Git 提交推送",
       "lastStatus": "success",
-      "lastRun": "2026-10-13T15:55:00.006Z",
-      "nextRun": "2026-10-14T15:55:00.000Z"
+      "lastRun": "2026-10-14T15:55:00.005Z",
+      "nextRun": "2026-10-15T15:55:00.000Z"
     },
     {
       "id": "eTMBYSzpSY",
@@ -106,11 +106,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.802Z",
-      "runCount": 2,
+      "runCount": 3,
       "description": "交易日 18:25 按正式计划回放并在 MNZH 模拟账户执行。",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T10:25:00.007Z",
-      "nextRun": "2026-10-15T10:25:00.000Z"
+      "lastRun": "2026-10-15T10:25:00.006Z",
+      "nextRun": "2026-10-16T10:25:00.000Z"
     },
     {
       "id": "jCccxkQ4bp",
@@ -120,11 +120,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.858Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "交易日 18:35 根据正式计划、执行结果和 MNZH 模拟账户生成复盘。",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T10:35:00.003Z",
-      "nextRun": "2026-10-15T10:35:00.000Z"
+      "lastRun": "2026-10-15T10:35:00.004Z",
+      "nextRun": "2026-10-16T10:35:00.000Z"
     },
     {
       "id": "TqRLPsSoQK",
@@ -134,11 +134,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.916Z",
-      "runCount": 2,
+      "runCount": 3,
       "description": "交易日 18:50 基于正式复盘、持仓、市场信息和规则库生成下一交易日模拟计划。",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T10:50:00.006Z",
-      "nextRun": "2026-10-15T10:50:00.000Z"
+      "lastRun": "2026-10-15T10:50:00.012Z",
+      "nextRun": "2026-10-16T10:50:00.000Z"
     },
     {
       "id": "hO6XAva9Kn",
@@ -148,11 +148,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.970Z",
-      "runCount": 2,
+      "runCount": 3,
       "description": "交易日 18:00 生成网格校准过程事实；仅在触发时计算日期化网格参数",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T10:00:00.004Z",
-      "nextRun": "2026-10-15T10:00:00.000Z"
+      "lastRun": "2026-10-15T10:00:00.008Z",
+      "nextRun": "2026-10-16T10:00:00.000Z"
     },
     {
       "id": "dDgn18iFtS",
@@ -162,11 +162,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.052Z",
-      "runCount": 2,
+      "runCount": 3,
       "description": "交易日 18:10 汇总真实持仓与日期化事实，固化状态并生成下一交易日唯一正式计划",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T10:10:00.005Z",
-      "nextRun": "2026-10-15T10:10:00.000Z"
+      "lastRun": "2026-10-15T10:10:00.009Z",
+      "nextRun": "2026-10-16T10:10:00.000Z"
     },
     {
       "id": "wJFM6ILvZC",
@@ -176,11 +176,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.148Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "交易日 19:00 严格回放当日正式计划，并在 MNZH 模拟账户记账。",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T11:00:00.005Z",
-      "nextRun": "2026-10-15T11:00:00.000Z"
+      "lastRun": "2026-10-15T11:00:00.013Z",
+      "nextRun": "2026-10-16T11:00:00.000Z"
     },
     {
       "id": "vmVgFNAk2s",
@@ -190,11 +190,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.186Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "交易日 19:10 复盘正式计划、模拟执行和过程事实，并生成可追溯复盘。",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T11:10:00.006Z",
-      "nextRun": "2026-10-15T11:10:00.000Z"
+      "lastRun": "2026-10-15T11:10:00.005Z",
+      "nextRun": "2026-10-16T11:10:00.000Z"
     },
     {
       "id": "MolP85Dprx",
@@ -204,11 +204,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.223Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "交易日 19:25 依据正式复盘、过程事实和体系规则生成下一交易日唯一模拟计划。",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T11:25:00.005Z",
-      "nextRun": "2026-10-15T11:25:00.000Z"
+      "lastRun": "2026-10-15T11:25:00.007Z",
+      "nextRun": "2026-10-16T11:25:00.000Z"
     },
     {
       "id": "baRE-HFfIi",
@@ -218,11 +218,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.262Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "交易日 19:35 计算收盘机械信号并生成下一交易日唯一正式计划",
       "lastStatus": "success",
-      "lastRun": "2026-10-14T11:35:00.008Z",
-      "nextRun": "2026-10-15T11:35:00.000Z"
+      "lastRun": "2026-10-15T11:35:00.006Z",
+      "nextRun": "2026-10-16T11:35:00.000Z"
     },
     {
       "id": "0-tx86-WS-",
@@ -243,8 +243,22 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-14T15:11:08.956Z",
+      "runCount": 1,
+      "description": "每天 23:30 扫描并审计动态知识文档的待办索引，向飞书推送状态并写入当日简报",
+      "lastStatus": "success",
+      "lastRun": "2026-10-14T15:30:00.011Z",
+      "nextRun": "2026-10-15T15:30:00.000Z"
+    },
+    {
+      "id": "WW5q4szCBc",
+      "name": "global-0845-broker-trade-reconcile",
+      "schedule": "0 45 8 * * *",
+      "prompt": "# 08:45 券商成交对账补录（一次性）\n\n2026-10-16 08:45 执行。**一次性任务，执行后由人工退役**。加载 `trade-management` 技能。\n\n## 背景\n\n2026-10-15 券商端处于清盘状态，实盘成交明细无法查看。10-15《整体复盘》已把对账事项留到本日早间（待办 A、B 两组）。\n\n## 执行\n\n1. 用 `trade-management.trade_list` 取 2026-10-15 与 2026-10-16 至执行时刻的全部成交，列出待对账清单：\n   - 10-15 网格三笔（#95 09:30:02 买 159781 1,000@0.856、#96 09:31:13 买 1,000@0.850、#97 10:34:37 买 515180 1,000@1.432）；\n   - 10-15 双债LOF 三笔（#92/#93/#94 卖 161716 合计 15,000@1.651）；\n   - 10-15 轮动模拟（#98 买 511260 400@135.213，无需券商对账）。\n2. 用 `portfolio_snapshot` 取各账户/体系现金与持仓，与账本口径对齐（YHZQ：双网格 10,172.56 / 双债LOF 24,861.19 / 主观多头 10,764.00；KYZQ 主观多头 15,867.49；MNZH：轮动 2,034.37、回调低吸 995,553.00）。\n3. 向用户推送一句话清单，请求补充：① 10-15 实盘成交明细（成交价 / 数量 / 时间）；② 券商端资金余额；③ 159781 网格 9,000 份处置决断（执行清仓 / 作废迁移 / 改为减速参数）；④ 网格条件单新参数是否已生效。\n4. 简报写入 `knowledge/摘要/.abstract/{运行日}_global-0845-broker-trade-reconcile.txt`（运行日按 Asia/Shanghai）。\n5. **不修改账本**（除非用户在回复中明确提供明细，届时按 `trade-management` 规则逐笔登记）；不生成交易计划；不执行交易；不修改知识文档。\n\n## 边界与失败处理\n\n- 只读 + 简报；`trade-management` MCP 不可用或调用失败时，如实说明失败阶段，不重试、不猜测成交。\n- 不把账本数据当作券商已确认数据；对账差异只报告，不回改历史记录。\n- 本任务不执行 Git 操作。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：无可对账成交或工具不可用时同样发送一行状态，便于确认任务确实执行。\n",
+      "enabled": true,
+      "type": "cron",
+      "createdAt": "2026-10-15T13:37:15.699Z",
       "runCount": 0,
-      "description": "每天 23:30 扫描并审计动态知识文档的待办索引，向飞书推送状态并写入当日简报"
+      "description": "临时（一次性使用）：2026-10-16 08:45 起提醒补充 10-15 券商成交明细并给出对账清单；执行后须退役"
     }
   ],
   "version": 1
