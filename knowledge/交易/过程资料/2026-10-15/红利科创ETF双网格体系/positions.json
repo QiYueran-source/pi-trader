@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-15",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "positions",
+  "generated_at": "2026-10-15T10:13:57.684127+00:00",
+  "source": "trade_management_mcp",
+  "positions_source": "portfolio_snapshot(YHZQ, div_etf_grid_trade)",
+  "trade_as_of": "2026-10-15 10:34:37",
+  "cash": 10172.56,
+  "positions": {
+    "dividend": {
+      "shares": 1000,
+      "market_value_amount": 1428.0
+    },
+    "growth": {
+      "shares": 9000,
+      "market_value_amount": 7695.0
+    }
+  },
+  "note": "来源：trade-management MCP 的 portfolio_snapshot（同一 YHZQ 账户下按体系独立记账；非券商查询）。10-15 当日登记三笔网格买入（#95 09:30:02 买 159781 1,000@0.856、#96 09:31:13 买 159781 1,000@0.850、#97 10:34:37 买 515180 1,000@1.432），故红利首次有底仓、双创增至 9,000 份。市值按 2026-10-15 收盘计：红利 1,000×1.428=1,428.00、双创 9,000×0.855=7,695.00；体系合计（现金＋持仓市值）= 19,295.56。同一账户下 159781 与主观多头体系共仓（该体系净持 7,000 份，合计 16,000 份），卖出腿须核对实际可用份额。"
+}

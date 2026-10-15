@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-15",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "switch_instruction",
+  "generated_at": "2026-10-15T10:14:20.696185+00:00",
+  "transition": {
+    "decision": "transition",
+    "from_state": "normal",
+    "to_state": "bear"
+  },
+  "order_instructions": [
+    {
+      "instrument_id": "growth",
+      "action": "sell_all",
+      "shares": 9000,
+      "reason": "进入 bear，按状态约束清空双创仓位（target_position=zero）",
+      "requires_manual_order_details": true
+    }
+  ],
+  "condition_order_modes": {
+    "dividend": {
+      "buy_enabled": true,
+      "sell_enabled": false
+    },
+    "growth": {
+      "buy_enabled": false,
+      "sell_enabled": true
+    }
+  },
+  "notice": "本文件是人工券商执行指令，不直接下单；价格、时点与成交结果必须在交易计划和执行记录中确认。本日 decision=transition（normal → bear）：① 双创 159781 停止买入并清仓 9,000 份（网格账本部分；同账户与主观多头共仓合计 16,000 份，勿误卖主观桶 7,000 份）；② 红利 515180 停止卖出（当前净持 1,000 份，转人工管理趋势仓位，买入腿仍启用）；③ 网格条件单按 bear 态关停/调整后需人工在券商端同步。如不认同本次迁移，可先不执行清仓，并在 10-16 计划与执行记录中写明未执行原因。"
+}
