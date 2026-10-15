@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-15",
+  "artifact": "hottest_industry_candidate",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-15T11:27:33.945Z",
+  "note": "行业筛选结果：仅「元器件」满足板块当日双确认（clean 涨停 5 且 ma5 −1.51% > ma10 −1.89%）；备选记录＝出版业（3 涨停、多头排列、量比 1.30）、仓储物流（3 涨停、空头）、影视音像（1 涨停、多头）。口径同 full_market_candidate.json。",
+  "industry": [
+    "元器件"
+  ],
+  "stats": {
+    "total_candidates": 9
+  },
+  "candidates": [
+    {
+      "code": "002134.SZ",
+      "name": "天津普林",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260918",
+        "20261015"
+      ],
+      "current_close": 24.34,
+      "pullback_ma": 23.344,
+      "pullback_pct": 4.27
+    },
+    {
+      "code": "002552.SZ",
+      "name": "宝鼎科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261014"
+      ],
+      "current_close": 46.73,
+      "pullback_ma": 44.703,
+      "pullback_pct": 4.53
+    },
+    {
+      "code": "002587.SZ",
+      "name": "奥拓电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261013"
+      ],
+      "current_close": 5.34,
+      "pullback_ma": 5.333,
+      "pullback_pct": 0.13
+    },
+    {
+      "code": "301041.SZ",
+      "name": "金百泽",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261013"
+      ],
+      "current_close": 41.06,
+      "pullback_ma": 37.507,
+      "pullback_pct": 9.47
+    },
+    {
+      "code": "301132.SZ",
+      "name": "满坤科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260914"
+      ],
+      "current_close": 75.18,
+      "pullback_ma": 66.943,
+      "pullback_pct": 12.3
+    },
+    {
+      "code": "301251.SZ",
+      "name": "威尔高",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260916"
+      ],
+      "current_close": 82.72,
+      "pullback_ma": 80.552,
+      "pullback_pct": 2.69
+    },
+    {
+      "code": "301282.SZ",
+      "name": "金禄电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261015"
+      ],
+      "current_close": 49.92,
+      "pullback_ma": 41.69,
+      "pullback_pct": 19.74
+    },
+    {
+      "code": "600237.SH",
+      "name": "铜峰电子",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260911",
+        "20261013"
+      ],
+      "current_close": 9.18,
+      "pullback_ma": 8.831,
+      "pullback_pct": 3.95
+    },
+    {
+      "code": "688781.SH",
+      "name": "视涯科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "current_close": 41.88,
+      "pullback_ma": 41.568,
+      "pullback_pct": 0.75
+    }
+  ]
+}

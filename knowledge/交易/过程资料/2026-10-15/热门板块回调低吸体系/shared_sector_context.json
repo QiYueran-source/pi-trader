@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-15",
+  "artifact": "shared_sector_context",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-15T11:27:33.945Z",
+  "source": {
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "path": "交易/过程资料/2026-10-15/红利科创ETF双网格体系/sector_facts.json"
+  },
+  "context": {
+    "date": "2026-10-15",
+    "system_id": "div_etf_grid_trade",
+    "artifact": "sector_facts",
+    "generated_at": "2026-10-15T10:13:57.684127+00:00",
+    "source_trade_date": "20261015",
+    "classification_parameter_version": 1,
+    "limit_up": {
+      "stock_count": 36,
+      "sector_count": 26,
+      "technology_stock_count": 1,
+      "technology_stock_ratio": 0.0278
+    },
+    "top_sectors": [
+      {
+        "industry": "元器件",
+        "limit_up_count": 5,
+        "is_technology": false,
+        "sample_stocks": [
+          {
+            "ts_code": "605058.SH",
+            "name": "澳弘电子",
+            "pct_change_ratio": 0.100031
+          },
+          {
+            "ts_code": "603386.SH",
+            "name": "骏亚科技",
+            "pct_change_ratio": 0.099946
+          },
+          {
+            "ts_code": "002815.SZ",
+            "name": "崇达技术",
+            "pct_change_ratio": 0.099811
+          }
+        ]
+      },
+      {
+        "industry": "仓储物流",
+        "limit_up_count": 3,
+        "is_technology": false,
+        "sample_stocks": [
+          {
+            "ts_code": "002889.SZ",
+            "name": "东方嘉盛",
+            "pct_change_ratio": 0.099746
+          },
+          {
+            "ts_code": "603329.SH",
+            "name": "上海雅仕",
+            "pct_change_ratio": 0.1
+          }
+        ]
+      },
+      {
+        "industry": "出版业",
+        "limit_up_count": 3,
+        "is_technology": false,
+        "sample_stocks": [
+          {
+            "ts_code": "601811.SH",
+            "name": "新华文轩",
+            "pct_change_ratio": 0.100215
+          },
+          {
+            "ts_code": "603230.SH",
+            "name": "内蒙新华",
+            "pct_change_ratio": 0.1
+          }
+        ]
+      },
+      {
+        "industry": "化学制药",
+        "limit_up_count": 2,
+        "is_technology": false,
+        "sample_stocks": [
+          {
+            "ts_code": "300111.SZ",
+            "name": "向日葵",
+            "pct_change_ratio": 0.200647
+          },
+          {
+            "ts_code": "600812.SH",
+            "name": "华北制药",
+            "pct_change_ratio": 0.100503
+          }
+        ]
+      },
+      {
+        "industry": "纺织",
+        "limit_up_count": 2,
+        "is_technology": false,
+        "sample_stocks": [
+          {
+            "ts_code": "605003.SH",
+            "name": "众望布艺",
+            "pct_change_ratio": 0.1
+          },
+          {
+            "ts_code": "605189.SH",
+            "name": "富春染织",
+            "pct_change_ratio": 0.099815
+          }
+        ]
+      }
+    ],
+    "technology_limit_up_stocks": [
+      {
+        "ts_code": "603690.SH",
+        "name": "至纯科技",
+        "industry": "半导体"
+      }
+    ],
+    "note": "口径同 collect_sector_facts.py：涨停 = 当日涨幅 ≥ 板块阈值（主板 9.8% / 双创 19.5% / 北交所 29.5%），剔除 N/C 开头与上市首日；本日无 ST 涨停（clean 36 = 含 ST 36，为交易日中少见的无 ST 涨停日）。科技类按 params/sector_classification.json 的 technology_industry_keywords 匹配行业名（子串匹配）：本日仅半导体 1 只（至纯科技）→ 占比 2.78%。**口径提示**：Tushare 行业名「元器件」不在关键词表内，故元器件 5 只未计入；若纳入则为 6/36 = 16.67%。最高连板为 002343.SZ 慈文传媒（影视音像）**5 连板**（10-09 起连续涨停）；此前最高连板 600825.SH 新华传媒（出版业）仍停牌（最后行情 2026-10-12），10 板记录保持。当日全市场涨 430 / 跌 5,108（平 27，样本 5,565）、成交 1.6457 万亿（10-14 为 1.4264 万亿，放量 2,193 亿）。因脚本未在本任务链路中运行，本文件为 MCP 独立复算（tushare-data.get_market_daily + get_stock_basic，官方源）。"
+  }
+}
