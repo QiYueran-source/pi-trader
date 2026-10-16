@@ -1,16 +1,19 @@
-# 红利科创ETF双网格 · 网格校准事实
+# 红利科创ETF双网格 · 基准价重设检查与参数校验
 
-交易日盘后生成网格校准过程事实，不产生交易决策。
+交易日盘后生成「基准价重设」与「参数校验」事实，不产生交易决策。
 
 ## 权威来源
-- `system.yml`、`体系运作流程.md` 和 `网格参数.md`。
-- 交易日与行情仅使用 `tushare-data` MCP。
+- `system.yml`、`体系运作流程.md`、`网格参数.md`、`风控调节器.md`、`params/regulator.json`。
+- 交易日与行情仅使用 `tushare-data` MCP；持仓仅使用 `trade-management.portfolio_snapshot`。
 
 ## 执行
-1. 确认交易日并按参数检查校准触发条件。
-2. 计算并写入体系定义的日期化校准事实。
+1. 确认交易日；非交易日发送一行状态后结束。
+2. 读取账户快照，判断该体系（`div_etf_grid_trade`）双标的合计持仓是否为 0（空仓）。
+3. **基准价重设**：仅当空仓时产出「需重设基准价」事实，口径为**当日收盘价**，逐腿给出建议基准价；有持仓时不重设（锚由券商软件随成交递推）。
+4. **参数校验**：以 `params/regulator.json` 的 `normal_state` 为基准，列出应挂参数（买入档距、卖出档距、买入份数、卖出份数、买卖开关）、当前防守档（默认 `A0`，除非 `human_review.json` 有已审批的切换）与档距上限（红利 6% / 双创 10%）；注明「参数变更不需要重设基准价」。
+5. 写入过程资料 `交易/过程资料/{date}/红利科创ETF双网格体系/calibration_check.json`（字段：`is_flat`、`anchor_reset_required`、`suggested_anchor`、`expected_parameters`、`defense_level`、`step_cap`）。
 
-非交易日发送一行状态后结束（非交易日无其他动作）；输入无效时写链路异常。不得生成计划、改状态或修改静态规则。写入简报 `knowledge/摘要/.abstract/{今天日期}_div-etf-grid-trade-1800-param-check.txt`，最终仅报告校准结论、过程资料与异常。
+不得生成计划、改状态、修改静态规则与参数，**不得产出状态迁移、状态快照或切换指令**（状态机已退役）。写入简报 `knowledge/摘要/.abstract/{今天日期}_div-etf-grid-trade-1800-param-check.txt`，最终仅报告基准价重设结论、参数校验结果、过程资料与异常。
 
 ## 投递与输出
 

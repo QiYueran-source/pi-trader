@@ -3,8 +3,8 @@ system-id: div_etf_grid_trade
 account-id:
   - YHZQ
 system-name: 红利科创ETF双网格体系
-system-overview: "以红利 ETF 与科创 50 ETF 为固定标的，在 normal、bull、bear 三态之间运行双网格与趋势持有模式。脚本生成日期化过程事实，Agent 形成状态提案，状态脚本负责校验和审计写入。"
-updated_at: 2026-10-11T00:00:00Z
+system-overview: "以红利 ETF 与双创 50 ETF 为固定标的的储蓄型双网格体系（v4，无状态机）。机械层只出参数与建议：固定档距与份数、资金使用率与单腿硬闸（停买不清仓）、信号评估与建议防守档；防守档升降均需人工审批后生成计划，档位价格与锚由券商软件维护。定时任务生成日期化事实、参数事实与参数版次日计划。"
+updated_at: 2026-10-16T00:00:00Z
 maturity: 候选体系
 directory:
   params: 可审阅的网格与风控参数。
@@ -14,12 +14,9 @@ directory:
 process-output:
   root: "knowledge/交易/过程资料/{date}/红利科创ETF双网格体系"
   files:
-    - calibration_check.json
-    - grid_parameters.json
+    - calibration_check.json   # v4：空仓时的基准价重设检查 + 参数校验
     - positions.json
-    - risk_facts.json
+    - risk_facts.json          # 双标的
     - sector_facts.json
-    - transition_proposal.json
-    - state_before.json
-    - state_after.json
-    - switch_instruction.json
+    - regulator_facts.json     # v4：硬闸占用、实际档距、信号评估与建议防守档
+    - human_review.json        # v4：防守档审批留痕（默认空）

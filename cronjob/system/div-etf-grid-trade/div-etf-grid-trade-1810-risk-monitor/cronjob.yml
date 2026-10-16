@@ -1,4 +1,4 @@
-# 红利科创ETF双网格体系 · 收盘事实、状态与计划 - Cronjob 配置
+# 红利科创ETF双网格体系 · 收盘事实、硬闸与参数版计划 - Cronjob 配置
 name: div-etf-grid-trade-1810-risk-monitor
 job_id: dDgn18iFtS
 type: cron
@@ -9,4 +9,4 @@ mode: inline   # 在主会话执行
 deliver: feishu   # 投递渠道；chat_id 见 cronjob/delivery.json
 prompt: prompt.txt
 created_at: 2026-06-13
-description: 交易日 18:10 汇总真实持仓与日期化事实，固化状态并生成下一交易日唯一正式计划
+description: 交易日 18:10 汇总真实持仓与事实，计算硬闸与信号，生成参数版次日计划（v4；不建议切换、不产出状态）
