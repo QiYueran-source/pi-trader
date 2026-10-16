@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-16",
+  "system_id": "zslof_timing_trade",
+  "artifact": "signal_facts",
+  "generated_at": "2026-10-16T19:35:00+08:00",
+  "instrument": {
+    "instrument_id": "zslof",
+    "ts_code": "161716.SZ",
+    "name": "招商双债增强债券(LOF)"
+  },
+  "market": {
+    "trade_date": "20261016",
+    "close": 1.652,
+    "pre_close": 1.652,
+    "daily_change_ratio": 0,
+    "volume": 107108.28,
+    "volume_change_ratio": 0.55362,
+    "source_data_start_date": "20260915"
+  },
+  "strategy_position": "flat",
+  "signal": null,
+  "next_trading_action": "no_action",
+  "state_anchors": {
+    "peak": 1.655,
+    "trough": 1.652,
+    "buy_trough": null,
+    "last_sell_peak": 1.655
+  },
+  "parameters": {
+    "confirmation_days": 2,
+    "stop_loss_enabled": true,
+    "chase_enabled": true,
+    "order_amount": 25000,
+    "execution_timing": "next_open"
+  },
+  "note": "close 1.652 等于空仓期谷值 1.652 → 非创新低，no_low_days 累计至 1；普通买入需 no_low_days >= 2 且 close > trough（等值只累计、不触发）→ 不成立；追回买入需严格高于 1.655 → 不成立；空仓期不检查止损 → signal = null。"
+}

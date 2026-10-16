@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-16",
+  "system_id": "zslof_timing_trade",
+  "artifact": "strategy_state",
+  "generated_at": "2026-10-16T19:35:00+08:00",
+  "source_state": "交易/过程资料/2026-10-15/招商双债LOF择时体系/strategy_state.json",
+  "state": {
+    "strategy_position": "flat",
+    "peak": 1.655,
+    "trough": 1.652,
+    "no_high_days": 0,
+    "no_low_days": 1,
+    "buy_trough": null,
+    "last_sell_peak": 1.655,
+    "last_processed_trade_date": "20261016",
+    "last_signal": "sell",
+    "last_signal_trade_date": "20261012"
+  },
+  "note": "收盘 1.652 等于谷值 → no_low_days 由 0 累计至 1（未创新低、谷值不变）；未触发普通买入（计数 1 < 2）、未触发追回（1.652 < 1.655）→ signal=null、10-19 不操作。账户侧持仓 0、现金 24,861.19（trade_as_of 2026-10-15 10:15:04）与理论空仓一致。"
+}
