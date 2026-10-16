@@ -31,5 +31,23 @@
       "sell_confirmation_pullback_ratio": 0,
       "step_window_trading_days": 22
     }
+  },
+  "manual_overrides": {
+    "effective_from": "2026-10-16",
+    "reason": "单边下跌中档距过密、连续吃档；体系改造落地前的临时人工调整",
+    "by": "用户指示（人工临时覆盖）",
+    "overrides": {
+      "dividend": {
+        "buy_step_ratio": 0.02,
+        "note": "卖出步长/份额/确认比例不变"
+      },
+      "growth": {
+        "buy_step_ratio": 0.04,
+        "note": "卖出步长/份额/确认比例不变"
+      }
+    },
+    "order_anchor": "last_fill",
+    "rollback": "删除本块并另写更新日志；回滚条件=改造落地或用户指示",
+    "record": "交易/交易体系/红利科创ETF双网格体系/更新日志/2026-10-16_人工裁定-暂缓bear切换并临时调宽买入步长.md"
   }
 }
