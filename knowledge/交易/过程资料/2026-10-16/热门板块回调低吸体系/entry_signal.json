@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-16",
+  "artifact": "entry_signal",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-16T19:25:00+08:00",
+  "source": "MCP 复算（tushare-data get_market_daily / get_stock_basic / get_index_daily）+ trade-management portfolio_snapshot",
+  "grid": {
+    "g1_sector_double_confirm": {
+      "threshold": "涨停家数 ≥5 且 ma5 > ma10（多头排列）",
+      "by_threshold_method": {
+        "industry": "航空",
+        "limit_up": 8,
+        "ma5_pct": 0.46,
+        "ma10_pct": -0.22,
+        "trend": "多头排列",
+        "result": true
+      },
+      "by_board_exact_method": {
+        "industry": "航空",
+        "limit_up": 4,
+        "non_sealed": [
+          "300719.SZ +10.62%",
+          "300900.SZ +13.43%",
+          "688070.SH +12.56%",
+          "920642.BJ +12.24%"
+        ],
+        "result": false
+      },
+      "verdict": "divergent_pending_ruling",
+      "note": "阈值法口径同 10-15（历史可比）；分板精确法按主板 10% / 创业板科创板 20% / 北交所 30% 判定封板。两口径下最终层级同为 ⚪ 观察（因 ④ 首日不追），结论不受影响。"
+    },
+    "g2_market_tier": {
+      "threshold": "企稳档=创业板 >0；极端弱档=≤−2%",
+      "cyb_close": 2772.3836,
+      "cyb_pct": -0.3877,
+      "tier": "中间档（非企稳、非极端弱）",
+      "note": "10-15 为极端弱档，本日转中间档"
+    },
+    "g3_stock_signal": {
+      "threshold": "收盘 > MA5 且 量 ≥1.2×20 日均量",
+      "full_market_candidates": 939,
+      "full_market_signals": 158,
+      "aviation_candidates": 13,
+      "aviation_signals": 9,
+      "note": "简化口径（20 日涨停窗口 + MCP 复算），与脚本口径存在差异；层级判定不依赖本格"
+    },
+    "g4_second_day_chain": {
+      "aviation_first_day": true,
+      "yuanqijian_chain": "broken（10-15 首日 → 10-16 仅 1 家涨停 002724.SZ）",
+      "result": false,
+      "note": "首日不追"
+    }
+  },
+  "tier": "⚪ 观察",
+  "action": "none（继续空仓）",
+  "other_industries": [
+    {
+      "industry": "汽车配件",
+      "limit_up": 16,
+      "ma5_pct": -0.95,
+      "ma10_pct": -0.61,
+      "trend": "空头"
+    },
+    {
+      "industry": "化工原料",
+      "limit_up": 6,
+      "ma5_pct": -1.41,
+      "ma10_pct": -0.9,
+      "trend": "空头"
+    },
+    {
+      "industry": "专用机械",
+      "limit_up": 5,
+      "ma5_pct": -1.36,
+      "ma10_pct": -1.16,
+      "trend": "空头"
+    },
+    {
+      "industry": "出版业",
+      "limit_up": 4,
+      "ma5_pct": 1.26,
+      "ma10_pct": 1.04,
+      "trend": "多头排列"
+    },
+    {
+      "industry": "电器仪表",
+      "limit_up": 2,
+      "ma5_pct": -1.3,
+      "ma10_pct": -1.32,
+      "trend": "多头排列"
+    },
+    {
+      "industry": "元器件",
+      "limit_up": 1,
+      "ma5_pct": null,
+      "ma10_pct": null,
+      "trend": "—"
+    }
+  ],
+  "market_background": {
+    "limit_up_threshold_method": 84,
+    "limit_down": 27,
+    "up": 3301,
+    "down": 2128,
+    "amount_yi": 15691,
+    "note": "阈值法涨停 84 家、34 个行业；成交较 10-15 缩量 636 亿"
+  }
+}

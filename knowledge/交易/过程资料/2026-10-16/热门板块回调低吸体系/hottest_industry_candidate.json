@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-16",
+  "artifact": "hottest_industry_candidate",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-16T19:25:00+08:00",
+  "note": "行业筛选：阈值法下仅「航空」满足板块当日双确认（涨停 8 且 ma5 +0.46% > ma10 −0.22%）；分板精确法下航空仅 4 家封板 → 不成立。两口径均不授权建仓（④ 首日为 10-16，按首日不追）。",
+  "industry": [
+    "航空（待裁口径）"
+  ],
+  "stats": {
+    "candidates": 13,
+    "signals": 9,
+    "limit_up_by_method": {
+      "threshold": 8,
+      "board_exact": 4
+    }
+  },
+  "limit_up_members_threshold_method": [
+    "002933.SZ +9.99%",
+    "300581.SZ +20.02%",
+    "300719.SZ +10.62%（非封板）",
+    "300900.SZ +13.43%（非封板）",
+    "301586.SZ +20.00%",
+    "688070.SH +12.56%（非封板）",
+    "920006.BJ +29.98%",
+    "920642.BJ +12.24%（非封板）"
+  ],
+  "decision": "no_action（层级 ⚪ 观察；不产生委托）"
+}
