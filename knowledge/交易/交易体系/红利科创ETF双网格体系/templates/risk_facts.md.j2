@@ -1,18 +1,16 @@
 ---
-uuid: {{ report_uuid }}
 title: 红利科创ETF双网格体系 - 风险事实 {{ data.date }}
 tags:
   - 交易体系
   - 过程资料
   - 风险事实
-updated: {{ updated_at }}
-
+date: {{ data.date }}
 system-id: div_etf_grid_trade
 ---
 
 # 风险事实 | {{ data.date }}
 
-> 来源：`{{ source_path }}`。本报告只陈述事实和阈值命中，不生成交易结论。
+> 来源：`{{ source_path }}`。本报告只陈述事实和阈值命中，不生成交易结论；v4 起采集双标的，资本约束见 `params/regulator.json#capital_guard`。
 
 {% for instrument_id, fact in data.facts.items() %}
 ## {{ instrument_id }}
@@ -23,11 +21,11 @@ system-id: div_etf_grid_trade
 | 日涨跌幅 | {{ '%.2f%%'|format(fact.market.daily_change_ratio * 100) }} |
 | 量比 | {{ '%.2f'|format(fact.market.volume_ratio) }} |
 | 平均振幅 | {{ '%.2f%%'|format(fact.market.average_range_ratio * 100) }} |
-| 连续下跌 | {{ fact.market.consecutive_down_trading_days }} 个交易日 |
-| 连续下跌累计幅度 | {{ '%.2f%%'|format(fact.market.consecutive_down_loss_ratio * 100) }} |
-| 持仓占比 | {{ '%.2f%%'|format(fact.position.position_ratio * 100) }} |
+| 连续下跌 | {{ fact.market.consecutive_down_trading_days }} 个交易日（累计 {{ '%.2f%%'|format(fact.market.consecutive_down_loss_ratio * 100) }}） |
+| 单腿权重（基数＝{{ fact.position.weight_base }}） | {{ '%.2f%%'|format(fact.position.leg_weight * 100) }} |
+| 价格边界（下/上） | {{ '%.4f'|format(fact.price_boundary_reference.lower_boundary) }} / {{ '%.4f'|format(fact.price_boundary_reference.upper_boundary) }} |
 
-## 阈值命中
+### 阈值命中
 
 {% for name, hit in fact.threshold_hits.items() -%}
 - `{{ name }}`：{{ '是' if hit else '否' }}

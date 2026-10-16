@@ -13,6 +13,8 @@
 4. **参数校验**：以 `params/regulator.json` 的 `normal_state` 为基准，列出应挂参数（买入档距、卖出档距、买入份数、卖出份数、买卖开关）、当前防守档（默认 `A0`，除非 `human_review.json` 有已审批的切换）与档距上限（红利 6% / 双创 10%）；注明「参数变更不需要重设基准价」。
 5. 写入过程资料 `交易/过程资料/{date}/红利科创ETF双网格体系/calibration_check.json`（字段：`is_flat`、`anchor_reset_required`、`suggested_anchor`、`expected_parameters`、`defense_level`、`step_cap`）。
 
+- **脚本可用**：需要确定性复算时，可调用体系脚本（`/opt/venv/bin/python knowledge/交易/交易体系/红利科创ETF双网格体系/scripts/<脚本名>.py`），命令与依赖口径见 `常用代码速查.md`；脚本输出与 MCP 复算必须同口径。
+
 不得生成计划、改状态、修改静态规则与参数，**不得产出状态迁移、状态快照或切换指令**（状态机已退役）。写入简报 `knowledge/摘要/.abstract/{今天日期}_div-etf-grid-trade-1800-param-check.txt`，最终仅报告基准价重设结论、参数校验结果、过程资料与异常。
 
 ## 投递与输出

@@ -11,16 +11,14 @@ import uuid
 from datetime import datetime
 from pathlib import Path
 
+from runtime_support import SYSTEM_DIR, artifact_path, normalize_date  # 先导入：负责把用户级依赖目录加入 sys.path
+
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, TemplateError, TemplateNotFound
 
-from runtime_support import SYSTEM_DIR, artifact_path, normalize_date
-
 RENDER_TARGETS = {
-    "grid_parameters": ("grid_parameters.json", "grid_parameters.md.j2", "grid_parameters.md"),
     "risk_facts": ("risk_facts.json", "risk_facts.md.j2", "risk_facts.md"),
     "sector_facts": ("sector_facts.json", "sector_facts.md.j2", "sector_facts.md"),
-    "state_transition": ("state_after.json", "state_transition.md.j2", "state_transition.md"),
-    "switch_instruction": ("switch_instruction.json", "switch_instruction.md.j2", "switch_instruction.md"),
+    "regulator_facts": ("regulator_facts.json", "regulator_facts.md.j2", "regulator_facts.md"),
 }
 
 

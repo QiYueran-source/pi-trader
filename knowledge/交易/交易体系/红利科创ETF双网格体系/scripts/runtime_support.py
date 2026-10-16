@@ -1,10 +1,18 @@
-"""红利科创 ETF 双网格体系的参数校验与日期化过程资料支持。"""
+"""红利科创 ETF 双网格体系的参数校验与日期化过程资料支持。
+
+依赖引导：/opt/venv 由 root 持有，脚本依赖如需额外安装，落在用户级 site-packages
+（`~/.local/lib/python3.12/site-packages`），此处显式加入 sys.path。
+"""
 
 from __future__ import annotations
 
 import json
 import os
+import site
+import sys
 import tempfile
+
+site.addsitedir(site.getusersitepackages())
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
@@ -25,8 +33,11 @@ PARAMETER_FILES = {
     "risk",
     "runtime",
     "sector_classification",
-    "state_machine",
+    "regulator",
 }
+
+# Tushare 密钥与本项目 MCP 服务共用同一个 .env，不在脚本内复制密钥
+TUSHARE_ENV_FILE = REPO_ROOT / ".pi/mcp-servers/tushare/.env"
 
 
 def fail(field: str, message: str) -> None:
@@ -100,9 +111,27 @@ def load_parameter(name: str) -> dict[str, Any]:
     if name not in PARAMETER_FILES:
         raise ValueError(f"不允许加载的参数文件: {name}")
     value = read_json(PARAMS_DIR / f"{name}.json")
-    if value.get("schema_version") != 1:
-        fail(f"{name}.schema_version", "当前仅支持版本 1")
+    version = value.get("schema_version")
+    if isinstance(version, bool) or not isinstance(version, int) or version < 1:
+        fail(f"{name}.schema_version", "必须为不小于 1 的整数")
     return value
+
+
+def tushare_client() -> Any:
+    """按项目 MCP 服务的同一 .env 取得 Tushare 客户端。"""
+    if TUSHARE_ENV_FILE.is_file():
+        for line in TUSHARE_ENV_FILE.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+    token = os.environ.get("TUSHARE_TOKEN", "").strip()
+    if not token:
+        raise RuntimeError("TUSHARE_TOKEN 未配置（检查 .pi/mcp-servers/tushare/.env）")
+    import tushare as ts_mod
+    ts_mod.set_token(token)
+    return ts_mod.pro_api()
 
 
 def load_parameters() -> dict[str, dict[str, Any]]:
@@ -141,30 +170,22 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> None:
         require_integer(instrument["lot_size_shares"], f"instruments.instruments.{instrument_id}.lot_size_shares", 1)
 
     grid = parameters["grid"]
-    require_fields(grid, {"schema_version", "calibration", "step_formula", "portfolio", "grids"}, "grid")
+    require_fields(grid, {"schema_version", "effective_from", "version", "note", "portfolio", "confirmation", "ladder", "calibration"}, "grid")
+    portfolio = require_object(grid["portfolio"], "grid.portfolio")
+    require_fields(portfolio, {"shared_capital_pool", "nominal_pool_amount"}, "grid.portfolio")
+    require_bool(portfolio["shared_capital_pool"], "grid.portfolio.shared_capital_pool")
+    require_integer(portfolio["nominal_pool_amount"], "grid.portfolio.nominal_pool_amount", 1)
+    confirmation = require_object(grid["confirmation"], "grid.confirmation")
+    require_fields(confirmation, {"buy_confirmation_rebound_ratio", "sell_confirmation_pullback_ratio"}, "grid.confirmation")
+    for field in ("buy_confirmation_rebound_ratio", "sell_confirmation_pullback_ratio"):
+        require_ratio(confirmation[field], f"grid.confirmation.{field}")
+    ladder = require_object(grid["ladder"], "grid.ladder")
+    require_fields(ladder, {"owner", "anchor", "note"}, "grid.ladder")
+    if ladder["owner"] != "broker_software":
+        fail("grid.ladder.owner", "v4 起档位价格由券商软件计算")
     calibration = require_object(grid["calibration"], "grid.calibration")
-    require_fields(calibration, {"schedule", "fetch_lookback_calendar_days", "step_window_trading_days", "minimum_step_ratio"}, "grid.calibration")
+    require_fields(calibration, {"schedule", "note"}, "grid.calibration")
     require_string(calibration["schedule"], "grid.calibration.schedule")
-    require_integer(calibration["fetch_lookback_calendar_days"], "grid.calibration.fetch_lookback_calendar_days", 1)
-    require_integer(calibration["step_window_trading_days"], "grid.calibration.step_window_trading_days", 1)
-    require_ratio(calibration["minimum_step_ratio"], "grid.calibration.minimum_step_ratio")
-    if calibration["step_window_trading_days"] > calibration["fetch_lookback_calendar_days"]:
-        fail("grid.calibration.step_window_trading_days", "不能大于 fetch_lookback_calendar_days")
-
-    grids = require_object(grid["grids"], "grid.grids")
-    if set(grids) != set(configured_instruments):
-        fail("grid.grids", "必须与 instruments.instruments 完全对应")
-    for instrument_id, spec in grids.items():
-        require_fields(require_object(spec, f"grid.grids.{instrument_id}"), {"drawdown_coefficient", "buy_shares", "sell_shares", "buy_confirmation_rebound_ratio", "sell_confirmation_pullback_ratio", "step_window_trading_days"}, f"grid.grids.{instrument_id}")
-        require_ratio(spec["drawdown_coefficient"], f"grid.grids.{instrument_id}.drawdown_coefficient")
-        require_integer(spec["buy_shares"], f"grid.grids.{instrument_id}.buy_shares", 1)
-        require_integer(spec["sell_shares"], f"grid.grids.{instrument_id}.sell_shares", 1)
-        require_ratio(spec["buy_confirmation_rebound_ratio"], f"grid.grids.{instrument_id}.buy_confirmation_rebound_ratio")
-        require_ratio(spec["sell_confirmation_pullback_ratio"], f"grid.grids.{instrument_id}.sell_confirmation_pullback_ratio")
-        if "step_window_trading_days" in spec:
-            require_integer(spec["step_window_trading_days"], f"grid.grids.{instrument_id}.step_window_trading_days", 1)
-            if spec["step_window_trading_days"] > calibration["fetch_lookback_calendar_days"]:
-                fail(f"grid.grids.{instrument_id}.step_window_trading_days", "不能大于 fetch_lookback_calendar_days")
 
     runtime = parameters["runtime"]
     require_fields(runtime, {"schema_version", "process_root", "directory_date_format", "trading_day_only", "state_snapshot"}, "runtime")
@@ -172,13 +193,11 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> None:
     if runtime["directory_date_format"] != "%Y-%m-%d":
         fail("runtime.directory_date_format", "必须为 %Y-%m-%d")
     require_bool(runtime["trading_day_only"], "runtime.trading_day_only")
-    snapshot = require_object(runtime["state_snapshot"], "runtime.state_snapshot")
-    require_fields(snapshot, {"file_name", "lookup", "allow_same_day_read", "allow_future_read"}, "runtime.state_snapshot")
-    if snapshot["file_name"] != "state_after.json" or snapshot["lookup"] != "latest_prior_trading_day":
-        fail("runtime.state_snapshot", "必须使用前序交易日 state_after.json")
-    require_bool(snapshot["allow_same_day_read"], "runtime.state_snapshot.allow_same_day_read")
-    if require_bool(snapshot["allow_future_read"], "runtime.state_snapshot.allow_future_read"):
-        fail("runtime.state_snapshot.allow_future_read", "必须为 false")
+    if runtime.get("state_snapshot") is not None:
+        snapshot = require_object(runtime["state_snapshot"], "runtime.state_snapshot")
+        require_bool(snapshot["allow_future_read"], "runtime.state_snapshot.allow_future_read")
+        if snapshot["allow_future_read"]:
+            fail("runtime.state_snapshot.allow_future_read", "必须为 false")
 
     sector_classification = parameters["sector_classification"]
     require_fields(sector_classification, {"schema_version", "technology_industry_keywords"}, "sector_classification")
@@ -186,19 +205,73 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> None:
     if not isinstance(keywords, list) or not keywords or any(not isinstance(keyword, str) or not keyword.strip() for keyword in keywords):
         fail("sector_classification.technology_industry_keywords", "必须是非空字符串数组")
 
-    state_machine = parameters["state_machine"]
-    require_fields(state_machine, {"schema_version", "initial_state", "states", "allowed_transitions", "transition_policy"}, "state_machine")
-    states = require_object(state_machine["states"], "state_machine.states")
-    if set(states) != {"normal", "bull", "bear"}:
-        fail("state_machine.states", "必须且只能包含 normal、bull、bear")
-    if state_machine["initial_state"] not in states:
-        fail("state_machine.initial_state", "必须是有效状态")
-    transitions = require_object(state_machine["allowed_transitions"], "state_machine.allowed_transitions")
-    if set(transitions) != set(states):
-        fail("state_machine.allowed_transitions", "必须覆盖所有状态")
-    for source, targets in transitions.items():
-        if not isinstance(targets, list) or any(target not in states for target in targets):
-            fail(f"state_machine.allowed_transitions.{source}", "必须是有效状态列表")
+    regulator = parameters["regulator"]
+    require_fields(
+        regulator,
+        {"schema_version", "version", "effective_from", "mode", "positioning", "normal_state", "execution", "capital_guard", "defense_levels", "signals", "approval", "reserve_shares", "policy"},
+        "regulator",
+    )
+    normal_state = require_object(regulator["normal_state"], "regulator.normal_state")
+    for instrument_id in configured_instruments:
+        spec = require_object(normal_state.get(instrument_id), f"regulator.normal_state.{instrument_id}")
+        require_fields(
+            spec,
+            {"name", "code", "buy_step_ratio", "sell_step_ratio", "buy_shares", "sell_shares", "buy_enabled", "sell_enabled"},
+            f"regulator.normal_state.{instrument_id}",
+        )
+        require_ratio(spec["buy_step_ratio"], f"regulator.normal_state.{instrument_id}.buy_step_ratio", 0.0, 0.5)
+        require_ratio(spec["sell_step_ratio"], f"regulator.normal_state.{instrument_id}.sell_step_ratio", 0.0, 0.5)
+        require_integer(spec["buy_shares"], f"regulator.normal_state.{instrument_id}.buy_shares", 1)
+        require_integer(spec["sell_shares"], f"regulator.normal_state.{instrument_id}.sell_shares", 1)
+        require_bool(spec["buy_enabled"], f"regulator.normal_state.{instrument_id}.buy_enabled")
+        require_bool(spec["sell_enabled"], f"regulator.normal_state.{instrument_id}.sell_enabled")
+
+    guard = require_object(regulator["capital_guard"], "regulator.capital_guard")
+    require_fields(guard, {"weight_base", "weight_base_note", "tiers", "stop_buy_u", "resume_u", "leg_max_weight", "stacking", "step_cap"}, "regulator.capital_guard")
+    if not isinstance(guard["tiers"], list) or not guard["tiers"]:
+        fail("regulator.capital_guard.tiers", "必须是非空数组")
+    previous_u = 0.0
+    for index, tier in enumerate(guard["tiers"]):
+        tier = require_object(tier, f"regulator.capital_guard.tiers[{index}]")
+        require_fields(tier, {"u", "step_multiplier"}, f"regulator.capital_guard.tiers[{index}]")
+        current_u = require_ratio(tier["u"], f"regulator.capital_guard.tiers[{index}].u")
+        if current_u <= previous_u:
+            fail("regulator.capital_guard.tiers", "u 必须严格递增")
+        previous_u = current_u
+        if float(tier["step_multiplier"]) < 1:
+            fail(f"regulator.capital_guard.tiers[{index}].step_multiplier", "必须不小于 1")
+    stop_u = require_ratio(guard["stop_buy_u"], "regulator.capital_guard.stop_buy_u")
+    resume_u = require_ratio(guard["resume_u"], "regulator.capital_guard.resume_u")
+    if resume_u >= stop_u:
+        fail("regulator.capital_guard.resume_u", "恢复线必须低于停买线")
+    if stop_u <= previous_u:
+        fail("regulator.capital_guard.stop_buy_u", "必须高于最高分档 u")
+    require_ratio(guard["leg_max_weight"], "regulator.capital_guard.leg_max_weight")
+    if guard["stacking"] != "multiply_then_cap":
+        fail("regulator.capital_guard.stacking", "v4 仅支持 multiply_then_cap")
+    step_cap = require_object(guard["step_cap"], "regulator.capital_guard.step_cap")
+    if set(step_cap) != set(configured_instruments):
+        fail("regulator.capital_guard.step_cap", "必须与标的完全对应")
+    for instrument_id, cap in step_cap.items():
+        require_ratio(cap, f"regulator.capital_guard.step_cap.{instrument_id}", 0.0, 0.5)
+
+    levels = require_object(regulator["defense_levels"], "regulator.defense_levels")
+    for level in ("A0", "A1", "A2", "A3"):
+        spec = require_object(levels.get(level), f"regulator.defense_levels.{level}")
+        require_fields(spec, {"step_multiplier", "shares_multiplier", "label"} if level != "A0" else {"step_multiplier", "shares_multiplier", "label"}, f"regulator.defense_levels.{level}")
+        if float(spec["step_multiplier"]) < 1 or float(spec["shares_multiplier"]) <= 0:
+            fail(f"regulator.defense_levels.{level}", "倍数不合法")
+
+    approval = require_object(regulator["approval"], "regulator.approval")
+    require_fields(approval, {"required_for", "default_effect", "channels", "plan_after_approval", "record_fields", "record_location"}, "regulator.approval")
+    if sorted(approval["required_for"]) != ["level_down", "level_up"]:
+        fail("regulator.approval.required_for", "升档与降档都必须人工审批")
+    require_bool(approval["plan_after_approval"], "regulator.approval.plan_after_approval")
+
+    policy = require_object(regulator["policy"], "regulator.policy")
+    for forbidden in ("liquidation", "reduce_position"):
+        if policy.get(forbidden) != "forbidden":
+            fail(f"regulator.policy.{forbidden}", "v4 必须为 forbidden")
 
 
 def normalize_date(value: str | None) -> tuple[str, str]:
@@ -213,6 +286,15 @@ def normalize_date(value: str | None) -> tuple[str, str]:
     else:
         raise ValueError("date 必须为 YYYY-MM-DD 或 YYYYMMDD")
     return parsed.strftime("%Y%m%d"), parsed.strftime("%Y-%m-%d")
+
+
+def logical_path(path: Path | str) -> str:
+    """转为逻辑路径：去掉仓库根与 knowledge/ 前缀（动态文档引用规范）。"""
+    text = str(path)
+    for prefix in (f"{REPO_ROOT}/knowledge/", f"{REPO_ROOT}/", "knowledge/",):
+        if text.startswith(prefix):
+            return text[len(prefix):]
+    return text
 
 
 def process_dir(value: str | None) -> Path:
@@ -245,17 +327,3 @@ def latest_prior_artifact(value: str, filename: str) -> Path | None:
     return None
 
 
-def load_prior_state(value: str) -> dict[str, Any]:
-    state_machine = load_parameter("state_machine")
-    path = latest_prior_artifact(value, "state_after.json")
-    if path is None:
-        return {
-            "date": None,
-            "state": state_machine["initial_state"],
-            "transition": None,
-            "source": "initial_state",
-        }
-    state = read_json(path)
-    if state.get("state") not in state_machine["states"]:
-        raise ValueError(f"前序状态无效: {path}")
-    return state

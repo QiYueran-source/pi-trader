@@ -1,0 +1,37 @@
+# 调节器事实 | {{ data.date }}
+
+> {{ data.version }} · 机械层只输出参数与建议；档位价格与锚由券商软件维护。
+
+## 硬闸占用
+
+| 项 | 数值 |
+|:--|--:|
+| 体系口径总资产 | {{ '%.2f' % data.nav_amount }} |
+| 现金 | {{ '%.2f' % data.cash_amount }} |
+| 资金使用率 | {{ '%.2f%%' % (data.capital_guard.usage_ratio * 100) }} |
+| 资金分档倍数 | ×{{ data.capital_guard.step_multiplier }} |
+| 停买（≥{{ '%.0f%%' % (data.capital_guard.stop_ratio * 100) }}） | {{ '是' if data.capital_guard.stop_buy else '否' }} |
+| 单腿上限（{{ '%.0f%%' % (data.capital_guard.leg_max_weight * 100) }}） | 触顶腿：{{ data.capital_guard.leg_cap_breach.values() | select | list | length }} 条 |
+
+## 双腿参数与信号
+
+| 腿 | 收盘 | 权重 | 实际买入档距 | 买入份数 | 买/卖 | 信号 |
+|:--|--:|--:|--:|--:|:--:|:--|
+{% for key, leg in data.legs.items() -%}
+| {{ key }}（{{ leg.ts_code }}） | {{ leg.close }} | {{ '%.2f%%' % (leg.weight * 100) }} | {{ '%.2f%%' % (leg.effective.buy_step_ratio * 100) }}{{ '（已触上限）' if leg.effective.capped else '' }} | {{ leg.effective.buy_shares }} | {{ '开' if leg.effective.buy_enabled else '停' }} / {{ '开' if leg.effective.sell_enabled else '关' }} | {{ leg.signals.state }} |
+{% endfor %}
+
+## 防守档
+
+- 当前档：**{{ data.defense.requested_level }}**（档距 ×{{ data.defense.level_spec.step_multiplier }}、份数 ×{{ data.defense.level_spec.shares_multiplier }}）
+- 建议档：**{{ data.defense.suggested_level }}**（{{ data.defense.suggested_reason }}）
+- 审批：{{ '需要人工审批，未审批不切换' if data.defense.approval_required else '不需要' }}；留痕 = {{ data.defense.approval_record }}
+
+{% if data.emotion is defined %}
+## 情绪面（量化，分板口径）
+
+- 涨停 {{ data.emotion.limit_up_board_aware }} / 跌停 {{ data.emotion.limit_down_board_aware }}；涨 {{ data.emotion.advance }} / 跌 {{ data.emotion.decline }}；量化分 {{ data.emotion.quant_score }}（0–4）
+- 文本性质：{{ data.emotion.narrative_label or '待任务侧填写' }}
+{% endif %}
+
+> {{ data.boundary_note }}

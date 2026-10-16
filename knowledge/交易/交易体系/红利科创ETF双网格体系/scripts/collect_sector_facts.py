@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""采集用于状态机分析的当日涨停行业分布事实。"""
+"""采集当日涨停行业分布事实（v4：供信号与情绪面使用，不用于状态机）。"""
 
 from __future__ import annotations
 

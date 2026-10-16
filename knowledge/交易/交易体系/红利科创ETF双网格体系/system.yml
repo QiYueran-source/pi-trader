@@ -8,7 +8,7 @@ updated_at: 2026-10-16T00:00:00Z
 maturity: 候选体系
 directory:
   params: 可审阅的网格与风控参数。
-  scripts: 历史计算实现；运行任务以 MCP 和体系规则为准。
+  scripts: v4 计算实现（风险事实、调节器事实、板块事实、渲染）；任务可调用，亦可用 MCP 按同一口径复算。
   references: 稳定模板、方法与证据。
   更新日志: 体系演进记录。
 process-output:
