@@ -1,29 +1,41 @@
 {
-  "schema_version": 1,
+  "schema_version": 3,
+  "effective_from": "2026-10-16",
+  "version": "v4",
+  "note": "v4：采集范围扩至双标的；资本约束（单笔/仓位）迁至 params/regulator.json 的 capital_guard；删除死参数 expansion_delta_ratio 与未实现的 single_trade_max_ratio。",
   "scope": {
-    "instrument_ids": ["dividend"],
+    "instrument_ids": [
+      "dividend",
+      "growth"
+    ],
     "evaluate_on_trading_days_only": true
   },
-  "capital_constraints": {
-    "single_trade_max_amount": 2000,
-    "single_trade_max_ratio": 0.25,
-    "position_fuse_ratio": 0.8
-  },
   "price_boundary": {
-    "reference": "latest_grid_calibration",
-    "lower_deviation_ratio": 0.25,
-    "upper_deviation_ratio": 0.3
+    "reference": "latest_anchor_or_calibration",
+    "by_instrument": {
+      "dividend": {
+        "reference_price": 1.443,
+        "lower_boundary": 1.08225,
+        "upper_boundary": 1.8759
+      },
+      "growth": {
+        "reference_price": 0.944,
+        "lower_boundary": 0.6608,
+        "upper_boundary": 1.2272
+      }
+    },
+    "note": "仅作越界提示，不参与档位递推"
   },
   "market_anomalies": {
     "consecutive_down_trading_days": 5,
     "consecutive_down_loss_ratio": 0.03,
     "sharp_drop_ratio": 0.02,
-    "sharp_drop_volume_ratio": 2.0,
+    "sharp_drop_volume_ratio": 2,
     "sharp_rise_notice_ratio": 0.02,
     "sharp_rise_take_profit_notice_ratio": 0.03
   },
   "volatility": {
-    "average_range_window_trading_days": 22,
-    "expansion_delta_ratio": 0.001
-  }
+    "average_range_window_trading_days": 22
+  },
+  "capital_guard_ref": "params/regulator.json#capital_guard"
 }
