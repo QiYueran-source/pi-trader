@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-16",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "state_before",
+  "generated_at": "2026-10-16T10:15:00+00:00",
+  "state": "normal",
+  "note": "10-15 曾固化 normal → bear（state_after.json，含清仓双创 9,000 份的切换指令）；该迁移经用户人工裁定**暂缓执行、清仓指令作废**，并按 `更新日志/2026-10-16_人工裁定-暂缓bear切换并临时调宽买入步长.md` 自 2026-10-16 起按 normal 运行。故本日状态起点记为 normal（历史 bear 记录保留、不回改）。",
+  "prior_state_artifact": "交易/过程资料/2026-10-15/红利科创ETF双网格体系/state_after.json（state=bear，已被人工裁定暂缓）"
+}

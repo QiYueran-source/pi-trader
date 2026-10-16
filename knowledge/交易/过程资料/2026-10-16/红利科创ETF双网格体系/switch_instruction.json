@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-16",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "switch_instruction",
+  "generated_at": "2026-10-16T10:15:00+00:00",
+  "actions": [],
+  "note": "无切换指令。10-15 固化的 bear 切换指令（清仓双创 9,000 份、红利停卖）经用户人工裁定作废；本日状态维持 normal，网格买卖腿照常运行。"
+}

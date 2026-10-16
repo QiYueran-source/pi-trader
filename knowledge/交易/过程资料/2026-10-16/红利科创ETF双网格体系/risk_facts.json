@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-16",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "risk_facts",
+  "generated_at": "2026-10-16T10:15:00+00:00",
+  "parameter_schema_version": 1,
+  "positions_source": "交易/过程资料/2026-10-16/红利科创ETF双网格体系/positions.json",
+  "calibration_source": "交易/过程资料/2026-10-16/红利科创ETF双网格体系/grid_parameters.json",
+  "facts": {
+    "dividend": {
+      "market": {
+        "trade_date": "20261016",
+        "close": 1.377,
+        "daily_change_ratio": -0.03571429,
+        "volume_ratio": 1.46935512,
+        "average_range_ratio": 0.01265585,
+        "day_range_ratio": 0.01540616,
+        "consecutive_down_trading_days": 2,
+        "consecutive_down_loss_ratio": -0.06030445
+      },
+      "calibration_reference": {
+        "latest_close": 1.377,
+        "lower_boundary": 1.03275,
+        "upper_boundary": 1.7901
+      },
+      "position": {
+        "shares": 1000,
+        "market_value_amount": 1377,
+        "position_ratio": 0.06885
+      },
+      "threshold_hits": {
+        "below_price_boundary": false,
+        "above_price_boundary": false,
+        "position_fuse": false,
+        "consecutive_down": false,
+        "sharp_drop_with_volume": false,
+        "sharp_rise_notice": false,
+        "sharp_rise_take_profit_notice": false
+      }
+    }
+  },
+  "note": "口径同 collect_risk_facts.py：volume_ratio = 当日量 / 最近 22 个交易日均量（含当日，3,820,971 / 2,600,570 = 1.4694）；average_range_ratio = 最近 22 个交易日 (最高−最低)/前收 的均值；position_ratio = 市值 / 名义资金池 20,000 = 1,377/20,000 = 0.06885；价格边界基准 = 最近有效校准（10-16 grid_parameters）latest_close 1.377 × (1∓25%/30%) → 1.03275 / 1.79010。**本日红利 −3.5714% 大幅下跌，但量比 1.4694 未达 2.0 → sharp_drop_with_volume 不命中**（10-15 为 −2.4590% 且量比 2.0411 → 命中）；连续下跌 2 日（累计 −6.0304%）未达 5 日阈值；其余阈值未命中。采集范围仍仅 dividend（params/risk.json 的 scope）；双创腿本日无风控事实（−0.2339%、五连跌累计 −9.9835%、量比 1.2853）——该缺口已列入体系改造讨论。因脚本未在本任务链路运行，本文件为 MCP 独立复算（tushare-data.get_fund_daily）。"
+}

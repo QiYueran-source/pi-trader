@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-16",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "grid_parameters",
+  "generated_at": "2026-10-16T10:00:00+00:00",
+  "parameter_schema_version": 1,
+  "formula": {
+    "buy_step": "max_drawdown_ratio * drawdown_coefficient",
+    "sell_step": "1 / (1 - buy_step_ratio) - 1"
+  },
+  "grids": {
+    "dividend": {
+      "instrument_id": "dividend",
+      "ts_code": "515180.SH",
+      "name": "红利ETF易方达",
+      "source_data": {
+        "start_trade_date": "20260928",
+        "end_trade_date": "20261016",
+        "trading_days": 10
+      },
+      "latest_close": 1.377,
+      "maximum_drawdown_ratio": 0.05942623,
+      "drawdown_coefficient": 0.15,
+      "buy_step_ratio": 0.01,
+      "sell_step_ratio": 0.01010101,
+      "buy_confirmation_rebound_ratio": 0,
+      "sell_confirmation_pullback_ratio": 0,
+      "buy_shares": 1000,
+      "sell_shares": 800
+    },
+    "growth": {
+      "instrument_id": "growth",
+      "ts_code": "159781.SZ",
+      "name": "双创50ETF易方达",
+      "source_data": {
+        "start_trade_date": "20260909",
+        "end_trade_date": "20261016",
+        "trading_days": 22
+      },
+      "latest_close": 0.853,
+      "maximum_drawdown_ratio": 0.2094532,
+      "drawdown_coefficient": 0.2,
+      "buy_step_ratio": 0.04189064,
+      "sell_step_ratio": 0.04372219,
+      "buy_confirmation_rebound_ratio": 0,
+      "sell_confirmation_pullback_ratio": 0,
+      "buy_shares": 1000,
+      "sell_shares": 1000
+    }
+  }
+}
