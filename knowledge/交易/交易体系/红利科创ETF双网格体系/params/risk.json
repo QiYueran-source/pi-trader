@@ -1,18 +1,24 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "scope": {
-    "instrument_ids": ["dividend"],
+    "instrument_ids": ["dividend", "growth"],
     "evaluate_on_trading_days_only": true
   },
   "capital_constraints": {
+    "weight_base": "system_nav",
+    "leg_max_weight": 0.4,
+    "total_max_weight": 0.85,
+    "cash_min_weight": 0.15,
     "single_trade_max_amount": 2000,
-    "single_trade_max_ratio": 0.25,
-    "position_fuse_ratio": 0.8
+    "on_breach": "stop_buy"
   },
   "price_boundary": {
     "reference": "latest_grid_calibration",
-    "lower_deviation_ratio": 0.25,
-    "upper_deviation_ratio": 0.3
+    "by_instrument": {
+      "dividend": { "reference_price": 1.443, "lower_boundary": 1.08225, "upper_boundary": 1.8759 },
+      "growth": { "reference_price": 0.944, "lower_boundary": 0.6608, "upper_boundary": 1.2272 }
+    },
+    "note": "价格边界不参与档位递推，仅用于越界提示与人工复核"
   },
   "market_anomalies": {
     "consecutive_down_trading_days": 5,
