@@ -393,7 +393,7 @@ def render_artifact(kind: str, document: dict[str, Any]) -> dict[str, Any]:
     if kind not in mapping:
         raise ValueError(f"不支持的渲染目标：{kind}")
     environment = Environment(loader=FileSystemLoader(str(TEMPLATES_ROOT)), undefined=StrictUndefined, autoescape=False, keep_trailing_newline=True)
-    markdown = environment.get_template(mapping[kind]).render(data=document, source_path=f"knowledge/交易/过程资料/{document['date']}/{SYSTEM_NAME}/{kind}.json", report_uuid=uuid.uuid5(uuid.NAMESPACE_URL, f"pi-trader:{SYSTEM_ID}:{document['date']}:{kind}").hex, updated_at=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    markdown = environment.get_template(mapping[kind]).render(data=document, source_path=f"交易/过程资料/{document['date']}/{SYSTEM_NAME}/{kind}.json", report_uuid=uuid.uuid5(uuid.NAMESPACE_URL, f"pi-trader:{SYSTEM_ID}:{document['date']}:{kind}").hex, updated_at=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     path = process_dir(document["date"]) / f"{kind}.md"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(markdown, encoding="utf-8")

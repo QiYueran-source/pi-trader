@@ -9,11 +9,12 @@
 ## 运行契约
 
 - 交易日判断与行情用 `tushare-data`；非交易日发送一行状态（`【1935 双债LOF】非交易日 ｜ 跳过`）后结束。
+- 体系计算用体系 MCP `zslof-timing-trade`：`calculate(operation="signal")` 推进状态并落盘过程资料，`render(artifact="signal_report")` 渲染报告；需要复核时用 `replay_check`。不得直接运行体系脚本。
 - 简报写入 `knowledge/摘要/.abstract/{今天日期}_zslof-timing-trade-1935-signal.txt`。
 
 ## 边界
 
-只生成信号与计划：不查询账户、不下单、不修改参数；状态或数据无效时记录链路异常并停止，不编造价格或信号；不把理论状态写成实际成交。
+只生成信号与计划：不查询账户、不下单、不修改参数（含运行定义 `params/timing.json`）、不手工改写 `strategy_state.json`；状态或数据无效时记录链路异常并停止，不编造价格或信号；不把理论状态写成实际成交。
 
 ## 投递与输出
 

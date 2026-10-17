@@ -1,0 +1,37 @@
+system-id: zslof_timing_trade
+system-name: 招商双债LOF择时体系
+version: v1
+maturity: 执行体系
+account-id:
+  - YHZQ
+service:
+  name: zslof-timing-trade        # .pi/mcp.json 注册键 = system-id 的连字符形式
+  entry: mcp_server.py            # 本目录内，一个体系一个 MCP 服务
+overview: "基于招商双债增强债券 LOF（161716.SZ）的机械波段择时；收盘确认信号、次日开盘人工执行，体系不查询账户、不下单。"
+operations:
+  - signal
+  - replay_check
+rules:
+  source: knowledge/交易/交易体系/招商双债LOF择时体系/择时参数.md
+parameters:
+  root: params
+templates:
+  root: templates
+process_output:
+  root: knowledge/交易/过程资料/{date}/招商双债LOF择时体系
+  artifacts:
+    - strategy_state.json
+    - signal_facts.json
+    - signal_report.md
+state:
+  strategy_state_file: strategy_state.json
+  lookup: latest_prior_process_date
+  content_roots:
+    - knowledge
+    - archive
+  anchor_date: 2026-08-10
+boundaries:
+  queries_account: false
+  real_order: forbidden
+  modifies_parameters: false
+  writes_plan: false

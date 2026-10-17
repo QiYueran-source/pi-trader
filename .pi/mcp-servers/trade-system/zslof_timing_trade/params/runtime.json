@@ -8,5 +8,7 @@
   "signal_facts_file": "signal_facts.json",
   "report_file": "signal_report.md",
   "state_lookup": "latest_prior_process_date",
-  "allow_future_state": false
+  "allow_future_state": false,
+  "state_anchor_date": "2026-08-10",
+  "state_anchor_note": "体系建立日；理论状态从该日起按收盘价重放。若某日人工重置状态，在此登记新锚并写更新日志。"
 }

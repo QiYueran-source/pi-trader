@@ -36,8 +36,8 @@
 | `list_systems` | — | 本服务实现的体系（含 `system_id`、名称、支持的操作） |
 | `get_manifest` | `system_id` | 运行定义路径（`system_root`/`parameter_root`/`template_root`）、操作清单、产物落盘位置 |
 | `validate_parameters` | `system_id` | `valid`、`files`、`parameter_version`、`parameter_hash`、`schema_versions` |
-| `calculate` | `system_id`、`operation`、`date`、`positions`（部分操作必填）、`human_review`（可选）、`dry_run`（可选） | 事实 JSON；`dry_run=false` 时写入过程资料 |
-| `render` | `system_id`、`artifact`、`date`、`document` | 同名 Markdown，返回落盘路径 |
+| `calculate` | `system_id`、`operation`、`date`、`positions`（按体系契约，部分操作必填）、`human_review`（按体系契约）、`dry_run`（可选） | 事实 JSON；`dry_run=false` 时写入过程资料 |
+| `render` | `system_id`、`artifact`、`date`、`document`（可选）、体系定制附加输入（可选） | 同名 Markdown，返回落盘路径 |
 
 约定：
 
@@ -45,7 +45,8 @@
 - `date` 支持 `YYYY-MM-DD` 或 `YYYYMMDD`；落盘目录统一用 `YYYY-MM-DD`。
 - `positions` 必须包含真实持仓与现金（`cash` 必填），由 `trade-management` MCP 生成，不用估算值。
 - 每次调用重新读取并校验 `params/`；参数改动后无需重启服务。
-- `render` 目前需要回传整份 `document`（`calculate` 的返回内容去掉 `output_path`）。
+- `render` 的 `document` 可省略：省略时按 `date` + `artifact` 读同日过程资料；需要附加输入（如关联状态）时按体系契约传入。渲染出的来源行使用逻辑路径。
+- 操作名与入参以体系 `system.yml` 的 `operations` 与工具 schema 为准；同一操作可以落盘多份产物（实现需在返回中给出各自路径）。
 
 ## 产物与落盘
 

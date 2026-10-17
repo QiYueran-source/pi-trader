@@ -6,6 +6,12 @@
         "/pi-trader/.pi/mcp-servers/trade-system/div_etf_grid_trade/mcp_server.py"
       ]
     },
+    "zslof-timing-trade": {
+      "command": "/opt/venv/bin/python",
+      "args": [
+        "/pi-trader/.pi/mcp-servers/trade-system/zslof_timing_trade/mcp_server.py"
+      ]
+    },
     "tushare-data": {
       "command": "/opt/venv/bin/python",
       "args": [
