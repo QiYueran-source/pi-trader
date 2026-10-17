@@ -12,7 +12,7 @@ description: 管理交易体系的运行、交易计划、复盘和过程资料�
 | 资产 | 位置 | 内容 |
 |:--|:--|:--|
 | 运行定义与 MCP 服务 | `.pi/mcp-servers/trade-system/<system-id>/` | 实现、`system.yml`、`params/`、`templates/`；一个体系一个服务，见 `reference/mcp.md` |
-| 知识库体系文档 | `knowledge/交易/交易体系/<体系名称>/` | 体系介绍、运作流程、规则、证据与更新日志；不放参数、模板或脚本 |
+| 知识库体系文档 | `knowledge/交易/交易体系/<体系名称>/` | 体系介绍、MCP 介绍、运作流程、规则说明与更新日志；不放参数、模板与脚本，也不放跨日期证据（证据、案例与设计记录写入 `knowledge/笔记/<题材>/`，引用用逻辑路径） |
 | 体系定时任务 | `cronjob/system/<system-id 连字符形式>/` | 见 `reference/cronjob.md` |
 
 ## 使用流程
