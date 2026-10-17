@@ -11,7 +11,7 @@ import uuid
 from datetime import datetime
 from pathlib import Path
 
-from runtime_support import SYSTEM_DIR, artifact_path, normalize_date  # 先导入：负责把用户级依赖目录加入 sys.path
+from runtime_support import SYSTEM_DIR, artifact_path, normalize_date
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, TemplateError, TemplateNotFound
 

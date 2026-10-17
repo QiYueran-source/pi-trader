@@ -1,18 +1,13 @@
 """红利科创 ETF 双网格体系的参数校验与日期化过程资料支持。
 
-依赖引导：/opt/venv 由 root 持有，脚本依赖如需额外安装，落在用户级 site-packages
-（`~/.local/lib/python3.12/site-packages`），此处显式加入 sys.path。
+脚本依赖统一由 `/opt/venv` 提供（含 `jinja2`），必须用 `/opt/venv/bin/python` 运行。
 """
 
 from __future__ import annotations
 
 import json
 import os
-import site
-import sys
 import tempfile
-
-site.addsitedir(site.getusersitepackages())
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
