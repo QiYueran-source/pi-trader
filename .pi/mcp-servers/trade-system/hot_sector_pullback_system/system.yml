@@ -26,6 +26,7 @@ process_output:
     - sector_heat.json
     - entry_signal.json
     - risk_signal.json
+    - positions.json
     - state.json
     - prudent_tags.json
     - candidates.md

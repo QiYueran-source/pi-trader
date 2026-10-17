@@ -1360,6 +1360,7 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
                         "sector_heat.json",
                         "entry_signal.json",
                         "risk_signal.json",
+                        "positions.json",
                         "state.json",
                         "prudent_tags.json",
                     ],

@@ -95,7 +95,7 @@ system-id: hot_sector_pullback_system
 
 - 服务由 `/opt/venv/bin/python` 启动（`.pi/mcp.json` 已配置），依赖含 `mcp`、`tushare`、`pandas`、`jinja2`。
 - Tushare token 读取项目 MCP 的 `.pi/mcp-servers/tushare/.env`，不写入仓库其它文件。
-- 官方 `stk_mins` 限频实测 1 次/小时，与 19:00／19:10／19:25 三个任务同处一小时，降级口径见 `风控.md`。
+- 官方 `stk_mins` 限频实测 1 次/小时，与 19:00／19:10／19:25 三个任务同处一小时，降级口径见 `交易/交易体系/热门板块回调低吸体系/风控.md`。
 - 行情与交易日历的取数接口见 `tushare` 技能；账户、成交、持仓与现金事实见 `trade-management` 技能。
 
 ## 已退役
