@@ -18,6 +18,12 @@
         "/pi-trader/.pi/mcp-servers/trade-system/agent_etf_rotation_system/mcp_server.py"
       ]
     },
+    "hot-sector-pullback-system": {
+      "command": "/opt/venv/bin/python",
+      "args": [
+        "/pi-trader/.pi/mcp-servers/trade-system/hot_sector_pullback_system/mcp_server.py"
+      ]
+    },
     "tushare-data": {
       "command": "/opt/venv/bin/python",
       "args": [

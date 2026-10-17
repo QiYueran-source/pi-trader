@@ -1,0 +1,22 @@
+---
+title: 热门板块回调低吸体系 - 板块热度 {{ data.date }}
+summary: "{{ data.date }} 板块热度：候选 {{ data.stats.total_candidates }} 只、涉及 {{ data.stats.candidate_sectors }} 个行业；含板块涨停（clean/含ST）、ma5/ma10 与量比。"
+date: {{ data.date }}
+tags:
+  - 交易体系
+  - 过程资料
+  - 板块热度
+system-id: hot_sector_pullback_system
+---
+
+# 板块热度 | {{ data.date }}
+
+> 口径：`short/long_ma_pct` = 板块成分股当日平均涨幅的 {{ data.params.trend_ma_periods[0] }}/{{ data.params.trend_ma_periods[1] }} 日均值；`volume_ratio` = 板块当日总成交量 ÷ 前 {{ data.params.volume_ratio_window_days }} 日均量；涨停为分板精确口径。数据来源：`{{ source_path }}`。
+
+候选 {{ data.stats.total_candidates }} 只、涉及行业 {{ data.stats.candidate_sectors }} 个。
+
+| 行业 | 候选 | 信号 | ma{{ data.params.trend_ma_periods[0] }} | ma{{ data.params.trend_ma_periods[1] }} | 趋势 | 量比 | 涨停 clean（含 ST） |
+|:--|--:|--:|--:|--:|:--|--:|--:|
+{% for item in data.sectors -%}
+| {{ item.industry }} | {{ item.candidates }} | {{ item.signals }} | {{ item.short_ma_pct if item.short_ma_pct is not none else '—' }}% | {{ item.long_ma_pct if item.long_ma_pct is not none else '—' }}% | {{ item.trend }} | {{ item.volume_ratio if item.volume_ratio is not none else '—' }} | {{ item.limit_up_clean }}（含 ST {{ item.limit_up_count }}） |
+{% endfor -%}

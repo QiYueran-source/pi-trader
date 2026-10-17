@@ -1,0 +1,20 @@
+---
+title: 热门板块回调低吸体系 - 建仓信号 {{ data.date }}
+summary: "{{ data.date }} 建仓信号：收盘>MA{{ data.params.breakout_ma_period }} 且 量≥{{ data.params.volume_multiplier }}×{{ data.params.volume_average_period }} 日均量；候选 {{ data.stats.total_candidates }} 只 → 信号 {{ data.stats.signals }} 只。"
+date: {{ data.date }}
+tags:
+  - 交易体系
+  - 过程资料
+  - 建仓信号
+system-id: hot_sector_pullback_system
+---
+
+# 建仓信号 | {{ data.date }}
+
+> 条件：收盘 > MA{{ data.params.breakout_ma_period }} **且** 量 ≥ {{ data.params.volume_multiplier }}×{{ data.params.volume_average_period }} 日均量（含当日）。候选 {{ data.stats.total_candidates }} 只 → 信号 **{{ data.stats.signals }}** 只。数据来源：`{{ source_path }}`。
+
+| 代码 | 名称 | 行业 | 板数 | 收盘 | MA{{ data.params.breakout_ma_period }} | 距 MA | 量比 |
+|:--|:--|:--|--:|--:|--:|--:|--:|
+{% for item in data.signals -%}
+| {{ item.code }} | {{ item.name }} | {{ item.industry }} | {{ item.board_count }} | {{ item.close }} | {{ item.breakout_ma }} | {{ item.breakout_above_pct }}% | {{ item.volume_ratio }} |
+{% endfor -%}

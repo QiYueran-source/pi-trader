@@ -1,0 +1,24 @@
+---
+title: 热门板块回调低吸体系 - 候选股 {{ data.date }}
+summary: "{{ data.date }} 候选筛选：窗口内涨停 {{ data.params.min_limit_up_count }}-{{ data.params.max_limit_up_count }} 板且 收盘≥MA{{ data.params.pullback_ma_period }}，共 {{ data.stats.total_candidates }} 只、覆盖 {{ data.stats.candidate_sectors }} 个行业。"
+date: {{ data.date }}
+tags:
+  - 交易体系
+  - 过程资料
+  - 候选筛选
+system-id: hot_sector_pullback_system
+---
+
+# 候选股 | {{ data.date }}
+
+共 {{ data.stats.total_candidates }} 只候选，覆盖 {{ data.stats.candidate_sectors }} 个行业。数据来源：`{{ source_path }}`。
+
+{% if data.note -%}
+> 口径：{{ data.note }}
+{% endif -%}
+
+| 代码 | 名称 | 行业 | 板数 | 涨停日 | 收盘 | MA{{ data.params.pullback_ma_period }} | 距峰值 |
+|:--|:--|:--|--:|:--|--:|--:|--:|
+{% for item in data.candidates -%}
+| {{ item.code }} | {{ item.name }} | {{ item.industry }} | {{ item.board_count }} | {{ item.board_dates | join('、') }} | {{ item.current_close }} | {{ item.pullback_ma }} | {{ item.pullback_pct }}% |
+{% endfor -%}

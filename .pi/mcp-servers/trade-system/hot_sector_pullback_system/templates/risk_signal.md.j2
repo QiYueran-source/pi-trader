@@ -1,0 +1,30 @@
+---
+title: 热门板块回调低吸体系 - 风控结果 {{ data.date }}
+summary: "{{ data.date }} 持仓风控：评估 {{ data.stats.evaluated }} 个持仓，需处理 {{ data.stats.actions }} 个、继续持有 {{ data.stats.hold }} 个。"
+date: {{ data.date }}
+tags:
+  - 交易体系
+  - 过程资料
+  - 风控结果
+system-id: hot_sector_pullback_system
+---
+
+# 风控结果 | {{ data.date }}
+
+> 三层风控（开盘信号、审慎标签、MA5 跌破观察/减半、MA10 跌破清仓）。数据来源：`{{ source_path }}`。
+
+| 代码 | 名称 | 成本价 | 收盘价 | 盈亏 | 开盘信号 | 审慎标签 | 动作 | 原因 | MA5 / MA10 |
+|:--|:--|--:|--:|--:|:--|:--|:--|:--|:--|
+{% for item in data.risk_actions -%}
+| {{ item.code }} | {{ item.name }} | {{ item.buy_price }} | {{ item.close }} | {{ item.pnl_pct }}% | {{ item.opening.signal }} | {{ (item.prudent_tag.signal ~ '（' ~ item.prudent_tag.expire_date ~ ' 到期）') if item.prudent_tag else '无' }} | {{ item.action }} | {{ item.reason }} | {{ item.daily.ma5 if item.daily.ma5 is not none else '—' }} / {{ item.daily.ma10 if item.daily.ma10 is not none else '—' }} |
+{% endfor -%}
+{% if data.holdings -%}
+
+继续持有：{{ data.holdings | length }} 个。
+
+| 代码 | 名称 | 成本价 | 收盘价 | 盈亏 | 原因 |
+|:--|:--|--:|--:|--:|:--|
+{% for item in data.holdings -%}
+| {{ item.code }} | {{ item.name }} | {{ item.buy_price }} | {{ item.close }} | {{ item.pnl_pct }}% | {{ item.reason }} |
+{% endfor -%}
+{% endif -%}
