@@ -136,9 +136,8 @@
     ],
     "default_effect": "none（未审批=不切换）",
     "channels": [
-      "0915通报",
-      "2230复盘",
-      "会话"
+      "复盘（2230 复盘追问 / 会话）",
+      "0915 通报（仅提醒待决策项）"
     ],
     "plan_after_approval": true,
     "record_fields": [

@@ -1,0 +1,12 @@
+# 红利科创ETF双网格体系 · 盘后风控检查与次日参数计划 - Cronjob 配置
+name: div-etf-grid-trade-1800-daily-check
+job_id: qMETfApkhR
+type: cron
+schedule: "0 0 18 * * *"   # Pi 6 字段：秒 分 时 日 月 周
+enabled: true
+scope: workdir
+mode: inline   # 在主会话执行
+deliver: feishu   # 投递渠道；chat_id 见 cronjob/delivery.json
+prompt: prompt.txt
+created_at: 2026-10-17
+description: 交易日 18:00 生成风险事实与参数事实、参数版次日计划与待决策项（v4 单任务；不切换防守档、不产生交易动作）
