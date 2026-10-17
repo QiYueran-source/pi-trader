@@ -66,6 +66,7 @@ cronjob/system/agent-etf-rotation/agent-etf-rotation-1850-generate-plan/
 - `schedule` 负责触发时间，交易日判断由任务内部处理。
 - prompt 必须自包含，不能依赖当前对话上下文。
 - 业务规则放知识库文档，prompt 只描述执行步骤和文档引用。
+- 体系型任务的执行口径按 `trade-system` 技能的 SOP 交接口径写：prompt 指向体系 SOP 的具体章节（编号 + 标题），不重写 SOP 的步骤与判定口径；SOP 章节结构变更时同步检查引用它的 prompt。
 - 任务输出必须说明产物日期，避免把执行日期、数据日期和产物日期混淆。
 - 不在 prompt 或配置文件中写入密钥。
 
