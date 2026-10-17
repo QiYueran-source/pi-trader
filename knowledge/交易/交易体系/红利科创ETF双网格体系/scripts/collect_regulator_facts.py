@@ -314,7 +314,7 @@ def main() -> None:
             "requested_level": level,
             "level_spec": level_spec,
             "suggested_level": suggested,
-            "suggested_reason": "按风控调节器.md 映射：强确认且情绪极弱（量化分≥3）→A3；强确认或确认→A2；弱确认/观察中→A1；否则 A0",
+            "suggested_reason": "按风控.md 映射：强确认且情绪极弱（量化分≥3）→A3；强确认或确认→A2；弱确认/观察中→A1；否则 A0",
             "approval_required": True,
             "approval_record": review_source,
             "approved": review.get("approved", []),
