@@ -9,9 +9,9 @@
 ## 执行
 1. 确认交易日和输入日期一致。
 2. 获取 ETF、指数、宏观与账户事实，按规则形成唯一动作。
-3. 写入过程资料及 `knowledge/交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`。
+3. 写入过程资料及 `交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`（落 `knowledge/`）。
 
-输入无效时输出链路异常且不生成计划。写入简报 `knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`，最终仅报告下一交易日动作、理由、风险和计划路径。
+输入无效时输出链路异常且不生成计划。写入简报 `摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`（落 `knowledge/`），最终仅报告下一交易日动作、理由、风险和计划路径。
 
 ## 投递与输出
 

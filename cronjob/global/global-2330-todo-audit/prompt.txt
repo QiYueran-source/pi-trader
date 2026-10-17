@@ -9,7 +9,7 @@
 3. 调用 `todo_stats` 获取未结文件数、未结条目数和积压最老项。
 4. 汇总 `missing_in_db`、`count_mismatch`、`unrecognized_lines`、`both_exist`、`gone`、`read_errors`；这些差异只报告，不手工修改知识文档。
 5. 生成首行状态：`【2330 待办审计】未结 x ｜ 积压最老 y 天 ｜ 差异 z`。没有未结项或没有差异也发送一行回执。
-6. 明细写入 `knowledge/摘要/.abstract/{运行日}_global-2330-todo-audit.txt`；运行日按 Asia/Shanghai 判定。简报写入失败时保留回复中的明细并说明原因。
+6. 明细写入 `摘要/.abstract/{运行日}_global-2330-todo-audit.txt`（落 `knowledge/`）；运行日按 Asia/Shanghai 判定。简报写入失败时保留回复中的明细并说明原因。
 
 ## 路径口径
 

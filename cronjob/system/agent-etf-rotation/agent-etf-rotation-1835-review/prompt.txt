@@ -9,9 +9,9 @@
 ## 执行
 1. 确认交易日，读取计划与 `portfolio_snapshot`。
 2. 对照计划和执行，记录偏差、价格来源及账户快照。
-3. 写入 `knowledge/交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系_复盘.md`。
+3. 写入 `交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系_复盘.md`（落 `knowledge/`）。
 
-无成交时仍输出维持结论；输入无效时输出链路异常且停止依赖步骤。写入简报 `knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-review.txt`，最终仅报告复盘结论和待处理风险。
+无成交时仍输出维持结论；输入无效时输出链路异常且停止依赖步骤。写入简报 `摘要/.abstract/{今天日期}_agent-etf-rotation-review.txt`（落 `knowledge/`），最终仅报告复盘结论和待处理风险。
 
 ## 投递与输出
 

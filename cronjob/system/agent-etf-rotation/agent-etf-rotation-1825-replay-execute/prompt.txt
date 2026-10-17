@@ -11,7 +11,7 @@
 2. 按计划的唯一动作、时点和价格规则查询价格并登记模拟成交。
 3. 使用 `portfolio_snapshot` 核验执行后现金和持仓。
 
-非交易日发送一行状态后结束（非交易日无其他动作）；计划或必要数据无效时，写明链路异常且不执行成交。写入简报 `knowledge/摘要/.abstract/{今天日期}_agent-etf-rotation-replay-execute.txt`，最终仅报告执行结果和异常。
+非交易日发送一行状态后结束（非交易日无其他动作）；计划或必要数据无效时，写明链路异常且不执行成交。写入简报 `摘要/.abstract/{今天日期}_agent-etf-rotation-replay-execute.txt`（落 `knowledge/`），最终仅报告执行结果和异常。
 
 ## 投递与输出
 

@@ -6,7 +6,7 @@
 
 - 窗口：上一自然周（上周一 00:00 至本周一 00:00，Asia/Shanghai）。运行日按 Asia/Shanghai 判定，任务跨零点完成仍按触发日处理。
 - 对象：`knowledge/` 下窗口内**新增**的文件。
-- 排除：`archive/`（本地记录区，优先级低）、`knowledge/摘要/.abstract/`（简报临时产物）。
+- 排除：`archive/`（归档物理根，本地记录区，优先级低）、`摘要/.abstract/`（简报临时产物，落 `knowledge/`）。
 - 规则来源：加载 `knowledge-management` 技能，按其 `reference/frontmatter.md`、`reference/routes.md` 判定；本 prompt 不复制字段清单与路径模板的完整规则。
 
 ## 执行步骤
@@ -32,7 +32,7 @@
 
 ## 输出
 
-- 简报写入 `knowledge/摘要/.abstract/{运行日}_global-mon0030-weekly-landing-check.txt`：窗口起止、检查文件数、各项问题数、必须修清单、环境缺失说明。该简报由当天 23:55 的摘要聚合任务消费。
+- 简报写入 `摘要/.abstract/{运行日}_global-mon0030-weekly-landing-check.txt`（落 `knowledge/`）：窗口起止、检查文件数、各项问题数、必须修清单、环境缺失说明。该简报由当天 23:55 的摘要聚合任务消费。
 - 不新增 knowledge 正式文档或目录。
 - 状态正常时同样写简报并发送一行状态。
 
