@@ -48,7 +48,7 @@ system-id: zslof_timing_trade
 ## 跨日状态
 
 - **存放**：当日的 `strategy_state.json` 写在当日过程资料目录 `交易/过程资料/<日期>/招商双债LOF择时体系/`（落 `knowledge/`），随该日期目录一起被归档；归档只改物理位置，逻辑路径不变。
-- **读取**（`state_lookup = latest_prior_process_date`）：取目标日之前最近一个存在状态的过程日 `交易/过程资料/<日期>/招商双债LOF择时体系/strategy_state.json`（读 `knowledge/`→`archive/`）；两处都存在时以 `knowledge/` 为准（本体系明确规则，见 `体系运作流程.md` 2.1；不使用 `duplicate` 报告语义）。
+- **读取**（`state_lookup = latest_prior_process_date`）：取目标日之前最近一个存在状态的过程日 `交易/过程资料/<日期>/招商双债LOF择时体系/strategy_state.json`（读 `knowledge/`→`archive/`）；两处都存在时以 `knowledge/` 为准（本体系明确规则，见 `交易/交易体系/招商双债LOF择时体系/体系运作流程.md` 2.1；不使用 `duplicate` 报告语义）。
 - **留痕**：产物记录 `source_state`（逻辑路径）与 `source_state_detail`（实际位置与来源日期）；找不到任何先前状态时按初始空仓状态推进，`source_state` 为 `null`。
 - **禁止**读取未来日期状态（`allow_future_state = false`）。
 
@@ -64,7 +64,7 @@ system-id: zslof_timing_trade
 - `signal_facts.json`：当日收盘信号与次日动作，含 `market`、`checks`（结构化判据）、`note`（判据摘要）、`state_anchors`、`parameters`；
 - `signal_report.md`：由运行定义模板渲染的可读报告。
 
-契约细节以运行定义 `system.yml` 的 `process_output` 为准。交易计划由任务按 `体系运作流程.md` 第 2.4 节写入 `交易/交易计划/`（落 `knowledge/`），MCP 不写计划。
+契约细节以运行定义 `system.yml` 的 `process_output` 为准。交易计划由任务按 `交易/交易体系/招商双债LOF择时体系/体系运作流程.md` 第 2.4 节写入 `交易/交易计划/`（落 `knowledge/`），MCP 不写计划。
 
 ## 重放校验（replay_check）
 
