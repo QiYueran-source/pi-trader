@@ -46,7 +46,7 @@ system-id: div_etf_grid_trade
 统一写入：
 
 ```text
-交易/过程资料/{date}/红利科创ETF双网格体系/
+交易/过程资料/{date}/红利科创ETF双网格体系/    （落 `knowledge/`；归档后同一逻辑路径位于 `archive/`）
 ```
 
 - `calibration_check.json`：空仓时的基准价重设检查与参数校验；
