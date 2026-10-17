@@ -54,7 +54,7 @@ ENV PATH="/opt/venv/bin:${PATH}"
 RUN groupmod --gid "${PI_GID}" node \
   && usermod --uid "${PI_UID}" --gid "${PI_GID}" node \
   && mkdir -p /home/node/.pi/agent \
-  && chown -R node:node /home/node
+  && chown -R node:node /home/node \
   && chown -R node:node /opt/uv/cache
 
 ENV HOME=/home/node
