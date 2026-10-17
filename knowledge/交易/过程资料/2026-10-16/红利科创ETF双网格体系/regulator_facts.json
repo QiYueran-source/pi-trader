@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-16",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "regulator_facts",
+  "generated_at": "2026-10-16T23:43:38.936967+00:00",
+  "version": "v4",
+  "positions_source": "交易/过程资料/2026-10-16/红利科创ETF双网格体系/positions.json",
+  "nav_amount": 19226.56,
+  "cash_amount": 10172.56,
+  "capital_guard": {
+    "weight_base": "system_nav",
+    "nav_amount": 19226.56,
+    "usage_ratio": 0.47091107,
+    "tier_hit": null,
+    "step_multiplier": 1.0,
+    "stop_buy": false,
+    "stop_ratio": 0.85,
+    "resume_ready": true,
+    "resume_ratio": 0.8,
+    "leg_weights": {
+      "dividend": 0.07161968,
+      "growth": 0.3992914
+    },
+    "leg_max_weight": 0.45,
+    "leg_cap_breach": {
+      "dividend": false,
+      "growth": false
+    }
+  },
+  "defense": {
+    "requested_level": "A0",
+    "level_spec": {
+      "step_multiplier": 1,
+      "shares_multiplier": 1,
+      "label": "常态"
+    },
+    "suggested_level": "A2",
+    "suggested_reason": "按风控调节器.md 映射：强确认且情绪极弱（量化分≥3）→A3；强确认或确认→A2；弱确认/观察中→A1；否则 A0",
+    "approval_required": true,
+    "approval_record": "default",
+    "approved": [],
+    "plan_after_approval": true
+  },
+  "legs": {
+    "dividend": {
+      "ts_code": "515180.SH",
+      "normal": {
+        "buy_step_ratio": 0.02,
+        "sell_step_ratio": 0.03,
+        "buy_shares": 1000,
+        "sell_shares": 800
+      },
+      "effective": {
+        "buy_step_ratio": 0.02,
+        "raw_step_ratio": 0.02,
+        "step_cap": 0.06,
+        "capped": false,
+        "buy_shares": 1000,
+        "buy_enabled": true,
+        "sell_enabled": true
+      },
+      "close": 1.377,
+      "market_value_amount": 1377.0,
+      "weight": 0.07161968,
+      "signals": {
+        "shock": {
+          "index": 79,
+          "trade_date": "20261016",
+          "drop_ratio": 0.03571429,
+          "sigma": 0.0118095,
+          "sigma_multiple": 3.024
+        },
+        "second_order": {
+          "state": "strong",
+          "days_elapsed": 0,
+          "recovered_ratio": 0.0,
+          "recovery_target": 0.01785715,
+          "prior_low": 1.397,
+          "lowest_since_shock": 1.377
+        },
+        "slow_bleed": {
+          "down_days": 2,
+          "cumulative_loss_ratio": 0.05942623,
+          "threshold": 0.03,
+          "hit": false
+        },
+        "state": "strong",
+        "sigma20": 0.0118095,
+        "basis": {
+          "sigma_window": 20,
+          "min_pct": 0.02,
+          "sigma_mult": 1.2
+        }
+      }
+    },
+    "growth": {
+      "ts_code": "159781.SZ",
+      "normal": {
+        "buy_step_ratio": 0.046,
+        "sell_step_ratio": 0.046,
+        "buy_shares": 1000,
+        "sell_shares": 1000
+      },
+      "effective": {
+        "buy_step_ratio": 0.046,
+        "raw_step_ratio": 0.046,
+        "step_cap": 0.1,
+        "capped": false,
+        "buy_shares": 1000,
+        "buy_enabled": true,
+        "sell_enabled": true
+      },
+      "close": 0.853,
+      "market_value_amount": 7677.0,
+      "weight": 0.3992914,
+      "signals": {
+        "shock": {
+          "index": 78,
+          "trade_date": "20261015",
+          "drop_ratio": 0.02840909,
+          "sigma": 0.02039186,
+          "sigma_multiple": 1.393
+        },
+        "second_order": {
+          "state": "strong",
+          "days_elapsed": 1,
+          "recovered_ratio": -0.00233918,
+          "recovery_target": 0.01420455,
+          "prior_low": 0.88,
+          "lowest_since_shock": 0.853
+        },
+        "slow_bleed": {
+          "down_days": 5,
+          "cumulative_loss_ratio": 0.09639831,
+          "threshold": 0.03067844,
+          "hit": true
+        },
+        "state": "strong",
+        "sigma20": 0.02045229,
+        "basis": {
+          "sigma_window": 20,
+          "min_pct": 0.02,
+          "sigma_mult": 1.2
+        }
+      }
+    }
+  },
+  "boundary_note": "档位价格与锚由券商软件维护；本文件只输出参数与建议，不含档位价格。",
+  "emotion": {
+    "available": true,
+    "limit_up_board_aware": 74,
+    "limit_down_board_aware": 26,
+    "advance": 3301,
+    "decline": 2128,
+    "quant_score": 0,
+    "narrative_label": null,
+    "narrative_note": "文本性质（结构性恶化 / 一次性外部冲击 / 无明确催化）由任务侧读取知识库资料后填写",
+    "board_aware": true
+  }
+}
