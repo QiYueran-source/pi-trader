@@ -92,11 +92,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.747Z",
-      "runCount": 4,
+      "runCount": 5,
       "description": "每天 23:55 聚合简报并生成正式摘要，成功后删除已消费简报（摘要为唯一留存记录）；不执行 Git 提交推送",
       "lastStatus": "success",
-      "lastRun": "2026-10-16T15:55:00.006Z",
-      "nextRun": "2026-10-17T15:55:00.000Z"
+      "lastRun": "2026-10-17T15:55:00.007Z",
+      "nextRun": "2026-10-18T15:55:00.000Z"
     },
     {
       "id": "baRE-HFfIi",
@@ -216,17 +216,6 @@
       "createdAt": "2026-10-17T15:49:56.254Z",
       "runCount": 0,
       "description": "交易日 18:50 基于正式复盘、持仓、市场信息和规则库生成下一交易日模拟计划。"
-    },
-    {
-      "id": "gh2CeIPCsL",
-      "name": "once-0100-c-group-checks",
-      "schedule": "0 0 1 * * *",
-      "prompt": "# 01:00 一次性补做（C 组：排查与验证）\n\n按期补做 C 组三项，完成即退役自身；只做这三项，不做其他改动。\n\n## 幂等检查\n\n先看 `摘要/.abstract/`（读 `knowledge/`）下是否已有 `*_C组补做.txt`：已有则说明本任务已完成过，直接跳到「退役」一步，不重复执行、不改任何文件。\n\n## 执行\n\n1. `T-2026-10-17-52` 查清 `交易/过程资料/2026-10-16/热门板块回调低吸体系/` 只剩 2 个文件的原因：用 git（`git log --diff-filter=AD --name-only -- knowledge/交易/过程资料/2026-10-16`、`git log --oneline -20`、`git show --stat`）比对提交时间线，并核对当日 19:10 复盘与 19:25 简报是否记录中断；结论写入 `交易/交易体系/热门板块回调低吸体系/更新日志/2026-10-17_运行定义迁入 MCP.md` 的遗留段（标注已查清与原因），回填 `.scratch-space/热点体系-MCP迁移方案.md` 中该项为 `[x]`。\n2. `T-2026-10-17-25` 双网格自检：`div-etf-grid-trade` 的 `risk_facts`／`sector_facts`／`regulator_facts` 各复算一次（优先沙盒：`PI_PROJECT_DIR` 指向临时目录后直接导入服务模块；否则用 `dry_run=true`），确认返回结构与事实值可用，并记录参数哈希。\n3. `T-2026-10-17-29` 双债自检：`zslof-timing-trade` 的 `calculate(operation=\"signal\")` 与 `replay_check` 各跑一次（同上，沙盒或 `dry_run`）。\n\n## 约束\n\n- 只用 MCP 或沙盒复算，不覆盖 `knowledge/` 下既有过程资料；确需写入时先确认当日目录还没有当日产物。\n- 若体系服务仍是改动前的代码（轮动 `validate_parameters` 只返回 `runtime`、hot-sector `get_manifest` 产物清单仍 8 项），说明 Pi 未重启：如实记录「需重启后再验」，不算失败。\n- 待办回填：`.scratch-space/双网格-MCP化-验证与遗留.md`、`.scratch-space/zslof-MCP迁移方案.md`；新发现的问题写成新的 `T-YYYY-MM-DD-N` 条目并落盘。\n- 写简报 `摘要/.abstract/{运行日}_C组补做.txt`（落 `knowledge/`）。\n\n## 退役\n\n完成后用 `schedule_prompt(action=\"list\")` 找到本任务 `once-0100-c-group-checks` 并 `remove` 退役自身；退役失败时在简报与回复中写明残留任务名，便于人工处理。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
-      "enabled": true,
-      "type": "cron",
-      "createdAt": "2026-10-17T15:52:59.941Z",
-      "runCount": 0,
-      "description": "01:00 补做 C 组（10-16 过程资料排查 + 双网格/双债自检），具备幂等检查、完成后自退役"
     }
   ],
   "version": 1
