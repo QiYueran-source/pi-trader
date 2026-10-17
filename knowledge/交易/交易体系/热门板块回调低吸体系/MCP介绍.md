@@ -20,7 +20,7 @@ system-id: hot_sector_pullback_system
 ├── mcp_server.py       # 服务入口与实现（四段事实、板块环境、渲染）
 ├── system.yml          # 运行契约：身份、账户、操作、参数与模板位置、产物契约、边界
 ├── params/             # 参数唯一来源（selection / sector_heat / entry / risk / runtime）
-└── templates/          # 模板唯一来源
+└── templates/          # 模板唯一来源（渲染用 4 个 `.j2` + 复盘／过程文档模板）
 ```
 
 调用口径（命名规则、入参约定、自检与迁入步骤）见 `trade-system` 技能的 `reference/mcp.md`。
@@ -102,4 +102,4 @@ system-id: hot_sector_pullback_system
 
 - 七个知识库脚本已由本服务实现取代，不再作为运行入口（历史版本见 git）：`select_candidates.py`、`sector_heat.py`、`entry_signal.py`、`risk_signal.py`、`render.py`、`runtime_support.py`、`prepare_shared_sector_context.py`。
 - `shared_sector_context.json` 停用：跨体系读取（双网格 `sector_facts`）取消，全市场板块环境由本体系 `sector_heat` 自算为 `sector_environment.json`；历史产物保留为证据。
-- 知识库内的 `params/`、`scripts/`、`templates/`、`system.yml` 已由运行定义目录取代，不再是参数或模板来源。
+- 知识库内的 `params/`、`scripts/`、`templates/`、`system.yml` 已删除，能力由运行定义目录承载（历史版本见 git）；跳日期证据与案例移到 `笔记/实证分析/`，复盘与过程文档模板随运行定义 `templates/` 一并提供。
