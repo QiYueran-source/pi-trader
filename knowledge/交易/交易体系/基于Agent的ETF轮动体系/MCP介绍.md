@@ -19,7 +19,7 @@ system-id: agent_etf_rotation_system
 .pi/mcp-servers/trade-system/agent_etf_rotation_system/
 ├── mcp_server.py       # 服务入口与实现（契约、参数校验、复盘渲染）
 ├── system.yml          # 运行契约：身份、成熟度、账户、操作、参数与模板位置、产物契约、边界
-├── params/             # 契约参数唯一来源（runtime：路径与文件名；不含判定阈值）
+├── params/             # 契约参数唯一来源（runtime：路径与文件名；universe：候选池与费率；不含判定阈值）
 └── templates/          # 模板唯一来源（review.md.j2 复盘结构）
 ```
 
@@ -30,7 +30,7 @@ system-id: agent_etf_rotation_system
 - **不获取行情**：ETF、指数与宏观数据由 Agent 经 `tushare-data` MCP 获取。
 - **不查询账户**：持仓、现金、成交由 Agent 经 `trade-management` MCP 获取与登记。
 - **不做计算与判定**：环境评估、候选比较、调仓判断与风控审查由 Agent 依 `规则库/` 执行；本服务不含任何阈值、打分或状态机。
-- **不写交易计划**：计划由 18:50 任务按 `体系运作流程.md` 与 `规则库/` 生成。
+- **不写交易计划**：计划由 18:50 任务按 `交易/交易体系/基于Agent的ETF轮动体系/体系运作流程.md` 与 `规则库/` 生成。
 
 ## 工具与入参
 
@@ -95,7 +95,7 @@ Agent 通过 `tushare-data` MCP 获取市场数据、通过 `trade-management` M
 | CPI／PMI／Shibor／美债收益率 | `get_cpi`／`get_pmi`／`get_shibor`／`get_us_treasury_curve` | 通胀、景气、流动性与海外利率环境 |
 | 账户、成交、持仓、现金 | `trade-management`（`portfolio_snapshot`／`trade_record` 等） | 模拟账户事实与记账 |
 
-候选池、代码与费率口径以 `规则库/ETF池.md` 为准（本文件不重复标的表）。所有取数结果检查 `ok`、`row_count`、`source` 与 `warnings`；空结果要区分非交易日、权限不足、参数错误与真实无数据。
+候选池、代码与费率以运行定义 `params/universe.json` 为准（`validate_parameters` 校验，`get_manifest` 的 `universe` 返回代码与费率；方法说明见 `规则库/ETF池.md`，本文件不重复标的表）。所有取数结果检查 `ok`、`row_count`、`source` 与 `warnings`；空结果要区分非交易日、权限不足、参数错误与真实无数据。
 
 **科创50 补充口径**：复盘或回放缺少 `588000.SH` 精确收盘价、成交量或指数参照时，用 `get_fund_daily(ts_code="588000.SH", …)` 取 ETF 行情、`get_index_daily(ts_code="000688.SH", …)` 取科创50 指数、`get_fund_minutes(ts_code="588000.SH", freq="1min", …)` 取分钟线。ETF 必须用 `get_fund_daily`，不能用股票日线工具；科创50 指数后缀为 `.SH`（不套用 000xxx 段的股票规则）。数据缺失或代理降级要在复盘中注明。
 

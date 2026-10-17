@@ -7,7 +7,7 @@ account-id:
 service:
   name: agent-etf-rotation-system   # .pi/mcp.json 注册键 = system-id 的连字符形式
   entry: mcp_server.py              # 本目录内，一个体系一个 MCP 服务
-overview: "固定六只 ETF 与现金替代之间的日频轮动。环境评估、候选比较、调仓判断与风控审查由 Agent 依知识库规则库执行；本服务只提供运行契约、参数校验与复盘渲染，不获取行情、不做计算、不做判定。"
+overview: "固定六只 ETF 与现金替代之间的日频轮动。环境评估、候选比较、调仓判断与风控审查由 Agent 依知识库规则库执行；本服务只提供运行契约、参数校验与复盘渲染，不获取行情、不做计算、不做判定。候选池与费率参数在 `params/universe.json`。"
 operations:
   - render
 parameters:

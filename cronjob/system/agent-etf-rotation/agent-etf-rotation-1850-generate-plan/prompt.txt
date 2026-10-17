@@ -10,6 +10,7 @@
 
 - 交易日判断与行情用 `tushare-data`；仓位与现金用 `trade-management.portfolio_snapshot`。
 - 判定按 `规则库/决策协议.md`（判定入口）与 `规则库/` 其余规则文档；体系 MCP `agent-etf-rotation-system` 只做契约校验（`validate_parameters`），本体系无机械计算，不调用历史脚本。
+- 候选池与费率从体系 MCP `agent-etf-rotation-system.get_manifest` 的 `universe` 读取（参数唯一来源：运行定义 `params/universe.json`），不写死代码清单。
 - 过程资料写入 `交易/过程资料/{今天日期}/基于Agent的ETF轮动体系/ETF轮动-选股分析.md`（落 `knowledge/`）；计划写入 `交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`（落 `knowledge/`）。
 - 简报写入 `摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`（落 `knowledge/`）。
 

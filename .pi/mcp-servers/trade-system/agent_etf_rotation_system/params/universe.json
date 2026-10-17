@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-06-08",
+  "cash_substitute": "511990.SH",
+  "instruments": [
+    {
+      "code": "510300.SH",
+      "name": "华泰柏瑞沪深300ETF",
+      "asset_class": "沪深300",
+      "fee_pct_per_year": 0.2,
+      "note": "期权标的、流动性第一、跟踪误差小"
+    },
+    {
+      "code": "588000.SH",
+      "name": "华夏科创50ETF",
+      "asset_class": "科创50",
+      "fee_pct_per_year": 0.2,
+      "note": "硬科技龙头、成交最活跃、跟踪误差小"
+    },
+    {
+      "code": "511260.SH",
+      "name": "国泰上证10年期国债ETF",
+      "asset_class": "10年国债",
+      "fee_pct_per_year": 0.2,
+      "note": "纯10年期国债、防御表达"
+    },
+    {
+      "code": "518880.SH",
+      "name": "华安黄金ETF",
+      "asset_class": "黄金",
+      "fee_pct_per_year": 0.2,
+      "note": "黄金与避险表达"
+    },
+    {
+      "code": "513500.SH",
+      "name": "博时标普500ETF",
+      "asset_class": "美股S&P500",
+      "fee_pct_per_year": 0.2,
+      "note": "海外风险资产表达"
+    },
+    {
+      "code": "511990.SH",
+      "name": "华宝添益",
+      "asset_class": "货币ETF",
+      "fee_pct_per_year": 0.25,
+      "note": "现金替代与低波停泊"
+    }
+  ],
+  "notes": "候选池与费率的唯一机器可读来源；费率为管理费+托管费合计（%/年），估值口径与核实时点见 as_of。标的增减按知识库 `规则库/ETF池.md` 的增减规则执行；改本文件后同步该文档与 `更新日志/`。"
+}

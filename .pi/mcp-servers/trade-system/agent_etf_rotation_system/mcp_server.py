@@ -14,6 +14,7 @@ import asyncio
 import hashlib
 import json
 import os
+import re
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -31,7 +32,7 @@ TEMPLATES_ROOT = SYSTEM_ROOT / "templates"
 SYSTEM_ID = SYSTEM_ROOT.name
 SYSTEM_NAME = "基于Agent的ETF轮动体系"
 SYSTEM_VERSION = "v1"
-PARAMETER_FILES = ("runtime",)
+PARAMETER_FILES = ("runtime", "universe")
 CONTENT_ROOT_NAMES = ("knowledge", "archive")
 REVIEW_ARTIFACTS = ("review",)
 if not (SYSTEM_ROOT / "system.yml").is_file():
@@ -156,7 +157,47 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]
     artifacts = require_string_list(runtime["render_artifacts"], "runtime.render_artifacts")
     if tuple(artifacts) != REVIEW_ARTIFACTS:
         fail("runtime.render_artifacts", f"必须为 {list(REVIEW_ARTIFACTS)}")
+    validate_universe(parameters["universe"])
     return {"valid": True, "files": list(PARAMETER_FILES)}
+
+
+CODE_PATTERN = re.compile(r"^\d{6}\.(SH|SZ)$")
+UNIVERSE_FIELDS = {"code", "name", "asset_class", "fee_pct_per_year", "note"}
+
+
+def validate_universe(universe: dict[str, Any]) -> None:
+    require_fields(universe, {"schema_version", "as_of", "cash_substitute", "instruments", "notes"}, "universe")
+    version = universe["schema_version"]
+    if isinstance(version, bool) or not isinstance(version, int) or version < 1:
+        fail("universe.schema_version", "必须是不小于 1 的整数")
+    require_string(universe["as_of"], "universe.as_of")
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", universe["as_of"]):
+        fail("universe.as_of", "必须为 YYYY-MM-DD")
+    require_string(universe["notes"], "universe.notes")
+    instruments = universe["instruments"]
+    if not isinstance(instruments, list) or not instruments:
+        fail("universe.instruments", "必须是非空数组")
+    codes: list[str] = []
+    for index, item in enumerate(instruments):
+        if not isinstance(item, dict):
+            fail(f"universe.instruments[{index}]", "必须是对象")
+        require_fields(item, UNIVERSE_FIELDS, f"universe.instruments[{index}]")
+        code = require_string(item["code"], f"universe.instruments[{index}].code")
+        if not CODE_PATTERN.match(code):
+            fail(f"universe.instruments[{index}].code", "必须形如 510300.SH")
+        require_string(item["name"], f"universe.instruments[{index}].name")
+        require_string(item["asset_class"], f"universe.instruments[{index}].asset_class")
+        require_string(item["note"], f"universe.instruments[{index}].note")
+        fee = item["fee_pct_per_year"]
+        if isinstance(fee, bool) or not isinstance(fee, (int, float)) or fee <= 0 or fee > 5:
+            fail(f"universe.instruments[{index}].fee_pct_per_year", "必须是 0-5 之间的数值")
+        codes.append(code)
+    if len(set(codes)) != len(codes):
+        fail("universe.instruments", "代码不得重复")
+    cash = require_string(universe["cash_substitute"], "universe.cash_substitute")
+    if cash not in codes:
+        fail("universe.cash_substitute", "必须在 instruments 代码列表内")
+    return None
 
 
 def parameter_metadata(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]:
@@ -261,7 +302,7 @@ TOOLS = [
     ),
     Tool(
         name="validate_parameters",
-        description="校验本体系的运行契约参数（params/runtime.json；本体系无判定阈值参数）。",
+        description="校验本体系的运行契约参数（params/runtime.json 路径与文件名；params/universe.json 候选池与费率；不含判定阈值）。",
         inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}}, "required": ["system_id"]},
     ),
     Tool(
@@ -306,6 +347,10 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
                 "template_root": str(TEMPLATES_ROOT),
                 "operations": ["render"],
                 "computes_facts": False,
+                "universe": {
+                    "cash_substitute": read_json(PARAMS_ROOT / "universe.json")["cash_substitute"],
+                    "instruments": read_json(PARAMS_ROOT / "universe.json")["instruments"],
+                },
                 "process_output": {"logical_root": f"{logical_process_root()}/{{date}}/{SYSTEM_NAME}", "physical_root": "knowledge", "artifacts": [read_json(PARAMS_ROOT / "runtime.json")["process_file"]]},
                 "plan_output": f"{logical_root('plan_root')}/{{date}}/{SYSTEM_NAME}_交易计划.md",
                 "review_output": f"{logical_root('review_root')}/{{date}}/{read_json(PARAMS_ROOT / 'runtime.json')['review_file']}",

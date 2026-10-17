@@ -64,11 +64,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.644Z",
-      "runCount": 4,
+      "runCount": 5,
       "description": "每天扫描超过30天的日期型知识文档和每日摘要，移动到 archive 并清理遗留空目录；不改写引用或同步财经分析库路径",
       "lastStatus": "success",
-      "lastRun": "2026-10-16T15:40:00.006Z",
-      "nextRun": "2026-10-17T15:40:00.000Z"
+      "lastRun": "2026-10-17T15:40:00.005Z",
+      "nextRun": "2026-10-18T15:40:00.000Z"
     },
     {
       "id": "5TG7ETOkjy",
@@ -130,7 +130,7 @@
       "id": "TqRLPsSoQK",
       "name": "agent-etf-rotation-1850-generate-plan",
       "schedule": "0 50 18 * * *",
-      "prompt": "# ETF轮动 · 生成下一交易日计划\n\n交易日 18:50 基于当日复盘、账户快照和体系规则生成下一交易日唯一模拟计划。\n\n## 执行指引\n\n按 `体系运作流程.md` **第 2.4 节「生成下一交易日计划（18:50）」** 执行：步骤与产物、异常分支均在该节；判定口径见 **第 2.5 节**，计划结构见 **第 2.6 节**，共同输入与前置见 **第 2.1 节**。\n\n## 运行契约\n\n- 交易日判断与行情用 `tushare-data`；仓位与现金用 `trade-management.portfolio_snapshot`。\n- 判定按 `规则库/决策协议.md`（判定入口）与 `规则库/` 其余规则文档；体系 MCP `agent-etf-rotation-system` 只做契约校验（`validate_parameters`），本体系无机械计算，不调用历史脚本。\n- 过程资料写入 `交易/过程资料/{今天日期}/基于Agent的ETF轮动体系/ETF轮动-选股分析.md`（落 `knowledge/`）；计划写入 `交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`（落 `knowledge/`）。\n- 简报写入 `摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`（落 `knowledge/`）。\n\n## 边界\n\n只生成模拟计划：不改规则库、不改运行定义 `params/`（含 `runtime.json`）、不执行成交、不改写上一日产物；输入缺失、日期不一致或上一轮闭环未核清时写链路异常并停止下游步骤，结论不清时默认继续持有或转现金。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
+      "prompt": "# ETF轮动 · 生成下一交易日计划\n\n交易日 18:50 基于当日复盘、账户快照和体系规则生成下一交易日唯一模拟计划。\n\n## 执行指引\n\n按 `体系运作流程.md` **第 2.4 节「生成下一交易日计划（18:50）」** 执行：步骤与产物、异常分支均在该节；判定口径见 **第 2.5 节**，计划结构见 **第 2.6 节**，共同输入与前置见 **第 2.1 节**。\n\n## 运行契约\n\n- 交易日判断与行情用 `tushare-data`；仓位与现金用 `trade-management.portfolio_snapshot`。\n- 判定按 `规则库/决策协议.md`（判定入口）与 `规则库/` 其余规则文档；体系 MCP `agent-etf-rotation-system` 只做契约校验（`validate_parameters`），本体系无机械计算，不调用历史脚本。\n- 候选池与费率从体系 MCP `agent-etf-rotation-system.get_manifest` 的 `universe` 读取（参数唯一来源：运行定义 `params/universe.json`），不写死代码清单。\n- 过程资料写入 `交易/过程资料/{今天日期}/基于Agent的ETF轮动体系/ETF轮动-选股分析.md`（落 `knowledge/`）；计划写入 `交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`（落 `knowledge/`）。\n- 简报写入 `摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`（落 `knowledge/`）。\n\n## 边界\n\n只生成模拟计划：不改规则库、不改运行定义 `params/`（含 `runtime.json`）、不执行成交、不改写上一日产物；输入缺失、日期不一致或上一轮闭环未核清时写链路异常并停止下游步骤，结论不清时默认继续持有或转现金。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.916Z",
@@ -215,11 +215,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-14T15:11:08.956Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "每天 23:30 扫描并审计动态知识文档的待办索引，向飞书推送状态并写入当日简报",
       "lastStatus": "success",
-      "lastRun": "2026-10-16T15:30:00.006Z",
-      "nextRun": "2026-10-17T15:30:00.000Z"
+      "lastRun": "2026-10-17T15:30:00.006Z",
+      "nextRun": "2026-10-18T15:30:00.000Z"
     },
     {
       "id": "qMETfApkhR",

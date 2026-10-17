@@ -11,6 +11,8 @@ system-id: agent_etf_rotation_system
 
 # 基于Agent的ETF轮动体系 - ETF池
 
+> 候选池的**代码与费率参数**在运行定义 `.pi/mcp-servers/trade-system/agent_etf_rotation_system/params/universe.json`（`validate_parameters` 校验，`get_manifest` 的 `universe` 返回）。本文件记选池原则、增减与核实规则；增减标的时两者同步，并写 `更新日志/`。
+
 > [!info] 选池原则
 > 低费率（管理费+托管费尽量低档）+ 高成交（流动性第一梯队），数据来源 Wind、交易所公告、基金公司官网（截至2026-06-08）
 
@@ -28,7 +30,7 @@ system-id: agent_etf_rotation_system
 ## 增减规则
 
 > [!tip] 规则
-> 增减标的需经 AI 复盘论证，写入 `更新日志/` 下的具体日志文档，更新本文件。
+> 增减标的需经 AI 复盘论证，写入 `更新日志/` 下的具体日志文档，同步运行定义 `params/universe.json`（代码与费率）与本文件（说明与快照表），增减后调 `validate_parameters` 复核。
 
 ## 核实规则
 
