@@ -1,6 +1,6 @@
 # 基于Agent的ETF轮动体系 · 每日复盘
-name: agent-etf-rotation-1835-review
-job_id: jCccxkQ4bp
+name: agent-etf-rotation-system-1835-review
+job_id: zRVf_L8QE4
 type: cron
 schedule: "0 35 18 * * *"   # Pi 6 字段：秒 分 时 日 月 周
 enabled: true

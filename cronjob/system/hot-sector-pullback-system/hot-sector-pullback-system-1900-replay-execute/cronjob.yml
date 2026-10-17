@@ -1,6 +1,6 @@
 # 热门板块回调低吸体系 · 回放执行
-name: hot-sector-pullback-1900-replay-execute
-job_id: wJFM6ILvZC
+name: hot-sector-pullback-system-1900-replay-execute
+job_id: ocsGw4cHDJ
 type: cron
 schedule: "0 0 19 * * *"   # Pi 6 字段：秒 分 时 日 月 周
 enabled: true

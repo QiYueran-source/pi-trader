@@ -1,6 +1,6 @@
 # 基于Agent的ETF轮动体系 · 回放执行
-name: agent-etf-rotation-1825-replay-execute
-job_id: eTMBYSzpSY
+name: agent-etf-rotation-system-1825-replay-execute
+job_id: ooO2mA-p-Z
 type: cron
 schedule: "0 25 18 * * *"   # Pi 6 字段：秒 分 时 日 月 周
 enabled: true

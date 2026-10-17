@@ -1,6 +1,6 @@
 # 热门板块回调低吸体系 · 每日复盘
-name: hot-sector-pullback-1910-review
-job_id: vmVgFNAk2s
+name: hot-sector-pullback-system-1910-review
+job_id: DaQOd-PWfN
 type: cron
 schedule: "0 10 19 * * *"   # Pi 6 字段：秒 分 时 日 月 周
 enabled: true

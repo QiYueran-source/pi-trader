@@ -1,6 +1,6 @@
 # 热门板块回调低吸体系 · 生成下一交易日交易计划
-name: hot-sector-pullback-1925-generate-plan
-job_id: MolP85Dprx
+name: hot-sector-pullback-system-1925-generate-plan
+job_id: pERjbj4iWI
 type: cron
 schedule: "0 25 19 * * *"   # Pi 6 字段：秒 分 时 日 月 周
 enabled: true

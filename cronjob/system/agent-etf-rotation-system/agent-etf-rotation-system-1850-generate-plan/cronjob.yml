@@ -1,6 +1,6 @@
 # 基于Agent的ETF轮动体系 · 生成下一交易日计划
-name: agent-etf-rotation-1850-generate-plan
-job_id: TqRLPsSoQK
+name: agent-etf-rotation-system-1850-generate-plan
+job_id: pNozbSw6GH
 type: cron
 schedule: "0 50 18 * * *"   # Pi 6 字段：秒 分 时 日 月 周
 enabled: true
