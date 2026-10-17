@@ -9,4 +9,4 @@ mode: inline   # 在主会话执行
 deliver: feishu   # 投递渠道；chat_id 见 cronjob/delivery.json
 prompt: prompt.txt
 created_at: 2026-09-28
-description: 每交易日 22:30 通过 MCP 核对当日事实并推送固定复盘清单，不写复盘结论
+description: 每交易日 22:30 通过 MCP 核对当日事实、汇总各体系未结 todo 并推送固定复盘清单，不写复盘结论

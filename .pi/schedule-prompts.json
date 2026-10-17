@@ -65,7 +65,7 @@
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.644Z",
       "runCount": 4,
-      "description": "每天扫描超过30天的日期型知识文档和每日摘要，移动到 archive 并清理遗留空目录",
+      "description": "每天扫描超过30天的日期型知识文档和每日摘要，移动到 archive 并清理遗留空目录；不改写引用或同步财经分析库路径",
       "lastStatus": "success",
       "lastRun": "2026-10-16T15:40:00.006Z",
       "nextRun": "2026-10-17T15:40:00.000Z"
