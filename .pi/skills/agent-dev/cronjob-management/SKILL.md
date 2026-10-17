@@ -46,7 +46,7 @@ cronjob/system/{system-id}/{system-id}-{HHMM}-{task}/
 cronjob/system/agent-etf-rotation/agent-etf-rotation-1850-generate-plan/
 ```
 
-`system-id` 必须来自对应交易体系的 `system.yml`，目录和任务名称使用英文连字符。体系型任务应引用该体系的流程和规则文档。
+`system-id` 必须来自对应交易体系的 `system.yml`（已迁入 MCP 的取运行定义目录 `.pi/mcp-servers/trade-system/<system-id>/` 下的 `system.yml`，尚未迁入的取知识库体系目录），目录和任务名称使用英文连字符。体系型任务应引用该体系的流程和规则文档。
 
 ## 设计任务
 

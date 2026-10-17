@@ -29,7 +29,7 @@ description: 管理交易体系的运行、交易计划、复盘和过程资料�
 
 ## 边界
 
-- 不直接执行体系脚本，不从知识库读取运行参数或模板；体系计算、参数校验与渲染一律通过 MCP。
+- 不直接执行体系脚本，不从知识库读取运行参数或模板；体系计算、参数校验与渲染一律通过 MCP。尚未提供 MCP 的体系按 `reference/mcp.md` 的「存量体系迁入」收口。
 - 不把计算结果、日期化状态或人工审批记录写回运行定义目录。
 - 过程资料不能替代交易计划，交易计划不能替代交易复盘。
 - 不用未来日期、其它体系或旧输出目录的结果冒充当前运行结果。
@@ -46,7 +46,7 @@ description: 管理交易体系的运行、交易计划、复盘和过程资料�
 
 ## 参考资料
 
-- [reference/mcp.md](reference/mcp.md)：体系 MCP 的命名规则、工具与入参、产物与错误口径、自检与新增体系步骤。
+- [reference/mcp.md](reference/mcp.md)：体系 MCP 的命名规则、工具与入参、产物与错误口径、自检，以及新增体系与存量体系迁入的步骤。
 - [reference/cronjob.md](reference/cronjob.md)：体系定时任务的目录命名、prompt 与 SOP 分工、注册与重启检查。
 - [reference/trade-system-management.md](reference/trade-system-management.md)：知识库体系文档与运行定义的目录边界、成熟度与变更链。
 - [reference/sop.md](reference/sop.md)：体系 `体系运作流程.md` 的必备内容与通用运行顺序。
