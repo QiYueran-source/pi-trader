@@ -35,7 +35,7 @@ system-id: div_etf_grid_trade
 | `get_manifest` | `system_id` | 运行定义路径、支持的操作、产物落盘位置 |
 | `validate_parameters` | `system_id` | `valid`、`files`、`parameter_version`、`parameter_hash`、`schema_versions` |
 | `calculate` | `system_id`、`operation`（`risk_facts`／`regulator_facts`／`sector_facts`）、`date`、`positions`（除 `sector_facts` 外必填）、`human_review`（可选）、`skip_emotion`（可选）、`dry_run`（可选） | 事实 JSON；`dry_run=false` 时写入过程资料 |
-| `render` | `system_id`、`artifact`、`date`、`document`（对应 JSON 全文） | 同名 `.md`，返回落盘路径 |
+| `render` | `system_id`、`artifact`、`date`、`document`（可选；省略时按 `date` + `artifact` 读同日过程资料） | 同名 `.md`，返回落盘路径 |
 
 - 每次调用重新读取并校验 `params/` 下 6 个参数文件，参数改动后无需重启服务。
 - 非交易日或当日无行情时按无数据报错，不使用其它日期数据替代。

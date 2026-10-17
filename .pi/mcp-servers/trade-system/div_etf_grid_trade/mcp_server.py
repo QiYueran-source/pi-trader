@@ -423,7 +423,7 @@ TOOLS = [
     Tool(name="get_manifest", description="查看红利科创 ETF 双网格体系运行定义和支持的操作。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}}, "required": ["system_id"]}),
     Tool(name="validate_parameters", description="校验指定交易体系当前参数。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}}, "required": ["system_id"]}),
     Tool(name="calculate", description="计算双网格风险事实、调节器事实或板块事实；默认写入日期化过程资料。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}, "operation": {"type": "string", "enum": ["risk_facts", "regulator_facts", "sector_facts"]}, "date": {"type": "string"}, "positions": {"type": "object", "required": ["positions", "cash"]}, "human_review": {"type": "object"}, "skip_emotion": {"type": "boolean"}, "dry_run": {"type": "boolean"}}, "required": ["system_id", "operation", "date"]}),
-    Tool(name="render", description="渲染已生成的双网格 JSON 事实为 Markdown。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}, "artifact": {"type": "string", "enum": ["risk_facts", "sector_facts", "regulator_facts"]}, "date": {"type": "string"}, "document": {"type": "object"}}, "required": ["system_id", "artifact", "date", "document"]}),
+    Tool(name="render", description="渲染已生成的双网格 JSON 事实为 Markdown；`document` 省略时按 `date` + `artifact` 读同日过程资料。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}, "artifact": {"type": "string", "enum": ["risk_facts", "sector_facts", "regulator_facts"]}, "date": {"type": "string"}, "document": {"type": "object"}}, "required": ["system_id", "artifact", "date"]}),
 ]
 
 server = Server("div-etf-grid-trade")
