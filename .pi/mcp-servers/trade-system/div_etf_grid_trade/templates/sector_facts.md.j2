@@ -1,18 +1,16 @@
 ---
-uuid: {{ report_uuid }}
 title: 红利科创ETF双网格体系 - 板块事实 {{ data.date }}
 tags:
   - 交易体系
   - 过程资料
   - 板块事实
-updated: {{ updated_at }}
-
+date: {{ data.date }}
 system-id: div_etf_grid_trade
 ---
 
 # 板块事实 | {{ data.date }}
 
-> 来源：`{{ source_path }}`。科技占比只作为 Agent 的状态判断输入，不单独触发状态切换。
+> 来源：`{{ source_path }}`。科技占比只作为状态判断输入，不单独触发状态切换。
 
 - 涨停股票数：{{ data.limit_up.stock_count }}
 - 涉及行业数：{{ data.limit_up.sector_count }}

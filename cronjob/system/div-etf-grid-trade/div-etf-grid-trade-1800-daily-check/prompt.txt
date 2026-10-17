@@ -9,12 +9,12 @@
 ## 运行契约
 
 - 交易日判断用 `tushare-data`；非交易日发送一行状态（`【1800 双网格】非交易日 ｜ 跳过`）后结束。
-- 只用 `trade-management`（YHZQ 持仓与现金）与 `tushare-data`（交易日、行情）；体系脚本按第 2.2 节的命令口径调用。
+- 只用 `trade-management`（YHZQ 持仓与现金）、`tushare-data`（交易日、行情）和体系 MCP `div-etf-grid-trade`（风险事实、调节器事实、板块事实与渲染）；不得直接运行体系脚本。
 - 简报写入 `knowledge/摘要/.abstract/{今天日期}_div-etf-grid-trade-daily-check.txt`。
 
 ## 边界
 
-不得切换防守档、不得修改静态规则与参数（含 `params/regulator.json`）、不得写复盘结论；不得用估算仓位或旧状态替代真实持仓。审批由会话在复盘时完成并写入 `human_review.json`，计划参数由会话按审批结果更新。
+不得切换防守档、不得修改静态规则与参数（含运行定义 `params/regulator.json`）、不得写复盘结论；不得用估算仓位或旧状态替代真实持仓。审批由会话在复盘时完成并写入 `human_review.json`，计划参数由会话按审批结果更新。
 
 ## 投递与输出
 

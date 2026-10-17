@@ -71,6 +71,6 @@ tags:
 ## 依据摘要
 
 - 规则：`交易/交易体系/红利科创ETF双网格体系/风控.md`、`网格参数.md`、`体系运作流程.md`
-- 参数：`params/regulator.json`（normal_state / capital_guard / defense_levels / signals）、`params/grid.json`、`params/risk.json`
+- 参数：运行定义 `.pi/mcp-servers/trade-system/div_etf_grid_trade/params/` 的 `regulator.json`（normal_state / capital_guard / defense_levels / signals）、`grid.json`、`risk.json`
 - 版本记录：`更新日志/2026-10-16_v4-储蓄网格与人工审批防守.md`
 - 上一份计划：`交易/交易计划/2026-10-16/红利科创ETF双网格体系_交易计划.md`（v3 口径，已由 v4 取代）

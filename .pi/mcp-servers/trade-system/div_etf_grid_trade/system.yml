@@ -1,0 +1,37 @@
+system-id: div_etf_grid_trade
+system-name: 红利科创ETF双网格体系
+version: v4
+maturity: 候选体系
+account-id:
+  - YHZQ
+service:
+  name: div-etf-grid-trade        # .pi/mcp.json 注册键 = system-id 的连字符形式
+  entry: mcp_server.py            # 本目录内，一个体系一个 MCP 服务
+overview: "储蓄型双网格；机械层只输出参数与建议，防守档升降和解除停买需要人工审批。"
+operations:
+  - risk_facts
+  - regulator_facts
+  - sector_facts
+rules:
+  source: knowledge/交易/交易体系/红利科创ETF双网格体系/风控.md
+  grid_source: knowledge/交易/交易体系/红利科创ETF双网格体系/网格参数.md
+parameters:
+  root: params
+templates:
+  root: templates
+process_output:
+  root: knowledge/交易/过程资料/{date}/红利科创ETF双网格体系
+  artifacts:
+    - positions.json
+    - risk_facts.json
+    - sector_facts.json
+    - regulator_facts.json
+    - calibration_check.json
+    - human_review.json
+boundaries:
+  calculates_rung_price: false
+  automatic_defense_switch: false
+  automatic_resume_buying: false
+  liquidation: forbidden
+  reduce_position: forbidden
+  real_order: forbidden
