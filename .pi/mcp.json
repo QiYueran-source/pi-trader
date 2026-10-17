@@ -12,6 +12,12 @@
         "/pi-trader/.pi/mcp-servers/trade-system/zslof_timing_trade/mcp_server.py"
       ]
     },
+    "agent-etf-rotation-system": {
+      "command": "/opt/venv/bin/python",
+      "args": [
+        "/pi-trader/.pi/mcp-servers/trade-system/agent_etf_rotation_system/mcp_server.py"
+      ]
+    },
     "tushare-data": {
       "command": "/opt/venv/bin/python",
       "args": [

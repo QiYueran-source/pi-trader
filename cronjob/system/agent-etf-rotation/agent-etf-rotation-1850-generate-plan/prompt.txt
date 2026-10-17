@@ -2,16 +2,20 @@
 
 交易日 18:50 基于当日复盘、账户快照和体系规则生成下一交易日唯一模拟计划。
 
-## 权威来源
-- `system.yml`、`体系运作流程.md`、`评估框架.md`、`调仓逻辑.md`、`风控逻辑.md`、当日正式复盘。
-- 市场数据仅使用 `tushare-data` MCP；仓位与现金仅使用 `trade-management.portfolio_snapshot`。
+## 执行指引
 
-## 执行
-1. 确认交易日和输入日期一致。
-2. 获取 ETF、指数、宏观与账户事实，按规则形成唯一动作。
-3. 写入过程资料及 `交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`（落 `knowledge/`）。
+按 `体系运作流程.md` **第 2.4 节「生成下一交易日计划（18:50）」** 执行：步骤与产物、异常分支均在该节；判定口径见 **第 2.5 节**，计划结构见 **第 2.6 节**，共同输入与前置见 **第 2.1 节**。
 
-输入无效时输出链路异常且不生成计划。写入简报 `摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`（落 `knowledge/`），最终仅报告下一交易日动作、理由、风险和计划路径。
+## 运行契约
+
+- 交易日判断与行情用 `tushare-data`；仓位与现金用 `trade-management.portfolio_snapshot`。
+- 判定按 `规则库/决策协议.md`（判定入口）与 `规则库/` 其余规则文档；体系 MCP `agent-etf-rotation-system` 只做契约校验（`validate_parameters`），本体系无机械计算，不调用历史脚本。
+- 过程资料写入 `交易/过程资料/{今天日期}/基于Agent的ETF轮动体系/ETF轮动-选股分析.md`（落 `knowledge/`）；计划写入 `交易/交易计划/{下一交易日}/基于Agent的ETF轮动体系_交易计划.md`（落 `knowledge/`）。
+- 简报写入 `摘要/.abstract/{今天日期}_agent-etf-rotation-generate-plan.txt`（落 `knowledge/`）。
+
+## 边界
+
+只生成模拟计划：不改规则库、不改运行定义 `params/`（含 `runtime.json`）、不执行成交、不改写上一日产物；输入缺失、日期不一致或上一轮闭环未核清时写链路异常并停止下游步骤，结论不清时默认继续持有或转现金。
 
 ## 投递与输出
 

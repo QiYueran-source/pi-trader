@@ -2,16 +2,20 @@
 
 交易日 18:35 复盘当日计划、模拟执行和市场事实，为下一交易日计划提供输入。
 
-## 权威来源
-- `体系运作流程.md`、当日正式计划、当日执行事实和复盘模板。
-- 市场数据使用 `tushare-data` MCP；账户、交易、现金和持仓使用 `trade-management` MCP。
+## 执行指引
 
-## 执行
-1. 确认交易日，读取计划与 `portfolio_snapshot`。
-2. 对照计划和执行，记录偏差、价格来源及账户快照。
-3. 写入 `交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系_复盘.md`（落 `knowledge/`）。
+按 `体系运作流程.md` **第 2.3 节「复盘（18:35）」** 执行：步骤与产物、`document` 必填字段、异常分支均在该节；共同输入与前置见 **第 2.1 节**。
 
-无成交时仍输出维持结论；输入无效时输出链路异常且停止依赖步骤。写入简报 `摘要/.abstract/{今天日期}_agent-etf-rotation-review.txt`（落 `knowledge/`），最终仅报告复盘结论和待处理风险。
+## 运行契约
+
+- 交易日判断用 `tushare-data`；非交易日发送一行状态（`【1835 轮动复盘】非交易日 ｜ 跳过`）后结束。
+- 市场数据用 `tushare-data`；账户、成交、持仓与现金用 `trade-management`。
+- 复盘由体系 MCP `agent-etf-rotation-system` 的 `render(artifact="review", date, document=...)` 渲染并落盘 `交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系_复盘.md`（落 `knowledge/`）；`document` 字段结构见 `MCP介绍.md`。
+- 简报写入 `摘要/.abstract/{今天日期}_agent-etf-rotation-review.txt`（落 `knowledge/`）。
+
+## 边界
+
+不重新评价当日动作、不改规则库与运行定义、不把计划写成已成交；复盘中的事实必须来自 MCP 查询结果，不补造价格、持仓或成交；无成交时仍生成复盘并说明无成交是否符合计划。
 
 ## 投递与输出
 

@@ -1,0 +1,29 @@
+system-id: agent_etf_rotation_system
+system-name: 基于Agent的ETF轮动体系
+version: v1
+maturity: 观察体系
+account-id:
+  - MNZH
+service:
+  name: agent-etf-rotation-system   # .pi/mcp.json 注册键 = system-id 的连字符形式
+  entry: mcp_server.py              # 本目录内，一个体系一个 MCP 服务
+overview: "固定六只 ETF 与现金替代之间的日频轮动。环境评估、候选比较、调仓判断与风控审查由 Agent 依知识库规则库执行；本服务只提供运行契约、参数校验与复盘渲染，不获取行情、不做计算、不做判定。"
+operations:
+  - render
+parameters:
+  root: params
+templates:
+  root: templates
+process_output:
+  root: knowledge/交易/过程资料/{date}/基于Agent的ETF轮动体系
+  artifacts:
+    - ETF轮动-选股分析.md
+plan_output: knowledge/交易/交易计划/{date}/基于Agent的ETF轮动体系_交易计划.md
+review_output: knowledge/交易/交易复盘/{date}/基于Agent的ETF轮动体系_复盘.md
+boundaries:
+  computes_facts: false        # 事实由 Agent 经 tushare-data / trade-management 获取，本服务不取数
+  queries_account: false
+  real_order: forbidden
+  modifies_rules: false
+  writes_plan: false
+  automatic_action: forbidden

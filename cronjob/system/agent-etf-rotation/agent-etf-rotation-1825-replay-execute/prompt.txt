@@ -2,16 +2,20 @@
 
 交易日 18:25 按当日正式计划回放 MNZH 模拟账户，不重新判断或改写计划。
 
-## 权威来源
-- `体系运作流程.md`、`system.yml` 和当日正式交易计划。
-- 市场价格仅使用 `tushare-data.get_fund_minutes`；账户与成交仅使用 `trade-management` MCP。
+## 执行指引
 
-## 执行
-1. 确认交易日与计划完整性。
-2. 按计划的唯一动作、时点和价格规则查询价格并登记模拟成交。
-3. 使用 `portfolio_snapshot` 核验执行后现金和持仓。
+按 `体系运作流程.md` **第 2.2 节「回放执行（18:25）」** 执行：步骤与产物、价格规则、异常分支均在该节；共同输入与前置见 **第 2.1 节**。
 
-非交易日发送一行状态后结束（非交易日无其他动作）；计划或必要数据无效时，写明链路异常且不执行成交。写入简报 `摘要/.abstract/{今天日期}_agent-etf-rotation-replay-execute.txt`（落 `knowledge/`），最终仅报告执行结果和异常。
+## 运行契约
+
+- 交易日判断用 `tushare-data`；非交易日发送一行状态（`【1825 轮动回放】非交易日 ｜ 跳过`）后结束。
+- 市场数据只用 `tushare-data`（`get_fund_minutes` 取计划时点价格）；账户与成交只用 `trade-management`（`trade_record` 登记、`portfolio_snapshot` 核验）。
+- 体系 MCP `agent-etf-rotation-system` 只提供契约校验；本体系无机械计算，不调用历史脚本。
+- 简报写入 `摘要/.abstract/{今天日期}_agent-etf-rotation-replay-execute.txt`（落 `knowledge/`）。
+
+## 边界
+
+只按计划回放并登记模拟成交：不重新判断动作、不改写计划、不改规则库与运行定义、不执行真实交易；计划或必要数据无效时写明链路异常且不执行成交。
 
 ## 投递与输出
 

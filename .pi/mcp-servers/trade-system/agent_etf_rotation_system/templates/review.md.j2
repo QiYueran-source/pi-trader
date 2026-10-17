@@ -1,0 +1,60 @@
+---
+title: 基于Agent的ETF轮动体系 - 交易复盘 {{ document.date }}
+summary: "{{ document.summary }}"
+date: {{ document.date }}
+tags:
+  - 交易复盘
+  - ETF轮动
+system-id: agent_etf_rotation_system
+---
+
+# 基于Agent的ETF轮动体系 交易复盘 | {{ document.date }}
+
+## 交易执行摘要
+
+- {{ document.trade_summary }}
+
+## 执行复盘
+
+| 项目 | 内容 |
+|---|---|
+{% for row in document.exec_review -%}
+| {{ row.item }} | {{ row.value }} |
+{% endfor %}
+{% if document.signal_check -%}
+- 危险信号 / 积极信号逐项核对：
+{% for line in document.signal_check -%}
+  - {{ line }}
+{% endfor %}
+{% endif %}
+{% if document.risk_state -%}
+- 风控状态：{{ document.risk_state }}
+{% endif %}
+
+## 体系复盘
+
+### 当前持仓状态
+
+{% for line in document.holdings -%}
+- {{ line }}
+{% endfor %}
+
+### 市场环境观察
+
+{% for line in document.market -%}
+- {{ line }}
+{% endfor %}
+
+### 体系改进建议（观察记录，不修改规则库）
+
+{% for line in document.improvements -%}
+- {{ line }}
+{% endfor %}
+
+## 决策参考（给下一交易日计划）
+
+{% for line in document.decision_refs -%}
+{{ loop.index }}. {{ line }}
+{% endfor %}
+
+> 本复盘记录模拟账户（MNZH）的计划与执行偏差，不代表真实成交；计划口径见 `交易/交易计划/{{ document.date }}/基于Agent的ETF轮动体系_交易计划.md`（读 `knowledge/`→`archive/`）。
