@@ -4,15 +4,15 @@
       "id": "WQll2C1BTe",
       "name": "global-1500-trade-remind",
       "schedule": "0 0 15 * * *",
-      "prompt": "# 15:00 全体系收盘提醒\n\n每天 15:00 执行，向用户推送今日全体系收盘提醒。\n\n1. 使用 `tushare-data.get_trade_calendar` 查询今天的交易日状态。依据结果的 `is_open` 判断；不要用工作日推断交易日。\n2. 非交易日发送一行状态（`【1500 收盘提醒】非交易日 ｜ 跳过`）后结束。\n3. 交易日扫描 `knowledge/交易/交易体系/` 下的体系目录，读取各体系 `system.yml` 或体系介绍以取得体系名称。可使用任务目录内的 `scan_systems.py`；如脚本失败，说明失败阶段和原因并停止。\n4. 推送简洁提醒，列出所有体系，并询问用户是否有需要录入的成交。不要自行查成交记录，也不要录入用户未提供的成交。\n\n只读任务，不修改文件、不执行交易。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
+      "prompt": "# 15:00 全体系收盘提醒\n\n每天 15:00 执行，向用户推送今日全体系收盘提醒。\n\n1. 使用 `tushare-data.get_trade_calendar` 查询今天的交易日状态。依据结果的 `is_open` 判断；不要用工作日推断交易日。\n2. 非交易日发送一行状态（`【1500 收盘提醒】非交易日 ｜ 跳过`）后结束。\n3. 交易日扫描各体系（MCP 运行定义 `.pi/mcp-servers/trade-system/` 与 `knowledge/交易/交易体系/` 下的体系目录），读取 `system.yml` 或体系介绍以取得体系名称。可使用任务目录内的 `scan_systems.py`；如脚本失败，说明失败阶段和原因并停止。\n4. 推送简洁提醒，列出所有体系，并询问用户是否有需要录入的成交。不要自行查成交记录，也不要录入用户未提供的成交。\n\n只读任务，不修改文件、不执行交易。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:12.108Z",
-      "runCount": 3,
+      "runCount": 5,
       "description": "每天 15:00 使用 MCP 判断交易日、扫描所有交易体系并推送收盘提醒",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T07:00:00.005Z",
-      "nextRun": "2026-10-16T07:00:00.000Z"
+      "lastRun": "2026-10-17T07:00:00.006Z",
+      "nextRun": "2026-10-18T07:00:00.000Z"
     },
     {
       "id": "-Gw3RIT9rr",
@@ -22,11 +22,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.484Z",
-      "runCount": 3,
+      "runCount": 5,
       "description": "每天 9:15 使用 MCP 判断交易日、扫描当日交易计划并推送执行简报",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T01:15:00.006Z",
-      "nextRun": "2026-10-16T01:15:00.000Z"
+      "lastRun": "2026-10-17T01:15:00.022Z",
+      "nextRun": "2026-10-18T01:15:00.000Z"
     },
     {
       "id": "TqQr_TE9Ni",
@@ -36,25 +36,25 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.536Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "每天 21:30 通过 MCP 复盘当日财经分析判断并生成复盘笔记",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T13:30:00.005Z",
-      "nextRun": "2026-10-16T13:30:00.000Z"
+      "lastRun": "2026-10-16T13:30:00.005Z",
+      "nextRun": "2026-10-17T13:30:00.000Z"
     },
     {
       "id": "WIisY3gTb8",
       "name": "global-2230-manual-review",
       "schedule": "0 30 22 * * *",
-      "prompt": "# 22:30 整体复盘追问\n\n加载 `portfolio-review` 技能，按技能「每日复盘追问」完成当日事实核验并向用户推送固定追问清单。本任务只核验事实和提问，不写复盘结论、不评价操作、不提供买卖建议、不生成跨体系交易计划。\n\n1. 用 `tushare-data.get_trade_calendar` 判断今天是否为 A 股交易日；非交易日写简报后发送一行状态（`【2230 复盘追问】非交易日 ｜ 跳过`）并结束。\n2. 交易日按技能「输入与边界」核验当日事实：获取全部账户、全部体系的成交与持仓，与 `knowledge/交易/交易计划/{今天日期}/` 逐笔对照并标注计划内、计划外或无法判断；市场事实和过程资料缺失时明确标注，不推断、不编造。\n3. 写入简报 `knowledge/摘要/.abstract/{今天日期}_global-2230-manual-review.txt`，记录交易日判断、事实核验结果和是否已推送清单。\n4. 交易日推送技能「每日复盘追问」中的固定清单，保持简短。\n\n事实与持仓只用 `trade-management` MCP，行情与交易日历只用 `tushare-data` MCP；不调用旧交易 CLI、旧 Python 脚本或任意 shell。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
+      "prompt": "# 22:30 整体复盘追问\n\n加载 `portfolio-review` 技能，按技能「每日复盘追问」完成当日事实核验并向用户推送固定追问清单，并额外汇总各体系当前未结的待办事项。本任务只核验事实和提问，不写复盘结论、不评价操作、不提供买卖建议、不生成跨体系交易计划。\n\n1. 用 `tushare-data.get_trade_calendar` 判断今天是否为 A 股交易日；非交易日写简报后发送一行状态（`【2230 复盘追问】非交易日 ｜ 跳过`）并结束。\n2. 交易日按技能「输入与边界」核验当日事实：获取全部账户、全部体系的成交与持仓，与 `knowledge/交易/交易计划/{今天日期}/` 逐笔对照并标注计划内、计划外或无法判断；市场事实和过程资料缺失时明确标注，不推断、不编造。\n3. 交易日按技能「每日复盘追问」第四节汇总各体系未结待办（`todo-management` MCP 的 `todo_list` 加技能中的筛选规则）；清单为空时写「无未结待办」，索引与文件冲突时以文件为准。\n4. 写入简报 `knowledge/摘要/.abstract/{今天日期}_global-2230-manual-review.txt`，记录交易日判断、事实核验结果、各体系未结待办汇总和是否已推送清单。\n5. 交易日推送技能「每日复盘追问」中的固定清单（含第四节「待手动复盘（各体系未结 todo）」），保持简短。\n\n事实与持仓只用 `trade-management` MCP，行情与交易日历只用 `tushare-data` MCP，待办索引只用 `todo-management` MCP；不调用旧交易 CLI、旧 Python 脚本或任意 shell。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。",
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.586Z",
-      "runCount": 3,
-      "description": "每交易日 22:30 通过 MCP 核对当日事实并推送固定复盘清单，不写复盘结论",
+      "runCount": 4,
+      "description": "每交易日 22:30 通过 MCP 核对当日事实、汇总各体系未结 todo 并推送固定复盘清单，不写复盘结论",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T14:30:00.008Z",
-      "nextRun": "2026-10-16T14:30:00.000Z"
+      "lastRun": "2026-10-16T14:30:00.016Z",
+      "nextRun": "2026-10-17T14:30:00.000Z"
     },
     {
       "id": "R3uHz5qogU",
@@ -64,11 +64,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.644Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "每天扫描超过30天的日期型知识文档和每日摘要，移动到 archive 并清理遗留空目录",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T15:40:00.007Z",
-      "nextRun": "2026-10-16T15:40:00.000Z"
+      "lastRun": "2026-10-16T15:40:00.006Z",
+      "nextRun": "2026-10-17T15:40:00.000Z"
     },
     {
       "id": "5TG7ETOkjy",
@@ -78,11 +78,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.699Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "每天清理保存超过7天的草稿箱文件",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T15:50:00.008Z",
-      "nextRun": "2026-10-16T15:50:00.000Z"
+      "lastRun": "2026-10-16T15:50:00.008Z",
+      "nextRun": "2026-10-17T15:50:00.000Z"
     },
     {
       "id": "YqvEQSQHRd",
@@ -92,11 +92,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.747Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "每天 23:55 聚合简报并生成正式摘要，成功后删除已消费简报（摘要为唯一留存记录）；不执行 Git 提交推送",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T15:55:00.006Z",
-      "nextRun": "2026-10-16T15:55:00.000Z"
+      "lastRun": "2026-10-16T15:55:00.006Z",
+      "nextRun": "2026-10-17T15:55:00.000Z"
     },
     {
       "id": "eTMBYSzpSY",
@@ -106,11 +106,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.802Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "交易日 18:25 按正式计划回放并在 MNZH 模拟账户执行。",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T10:25:00.006Z",
-      "nextRun": "2026-10-16T10:25:00.000Z"
+      "lastRun": "2026-10-16T10:25:00.009Z",
+      "nextRun": "2026-10-17T10:25:00.000Z"
     },
     {
       "id": "jCccxkQ4bp",
@@ -120,11 +120,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.858Z",
-      "runCount": 4,
+      "runCount": 5,
       "description": "交易日 18:35 根据正式计划、执行结果和 MNZH 模拟账户生成复盘。",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T10:35:00.004Z",
-      "nextRun": "2026-10-16T10:35:00.000Z"
+      "lastRun": "2026-10-16T10:35:00.006Z",
+      "nextRun": "2026-10-17T10:35:00.000Z"
     },
     {
       "id": "TqRLPsSoQK",
@@ -134,39 +134,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.916Z",
-      "runCount": 3,
+      "runCount": 4,
       "description": "交易日 18:50 基于正式复盘、持仓、市场信息和规则库生成下一交易日模拟计划。",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T10:50:00.012Z",
-      "nextRun": "2026-10-16T10:50:00.000Z"
-    },
-    {
-      "id": "hO6XAva9Kn",
-      "name": "div-etf-grid-trade-1800-param-check",
-      "schedule": "0 0 18 * * *",
-      "prompt": "# 红利科创ETF双网格 · 网格校准事实\n\n交易日盘后生成网格校准过程事实，不产生交易决策。\n\n## 权威来源\n- `system.yml`、`体系运作流程.md` 和 `网格参数.md`。\n- 交易日与行情仅使用 `tushare-data` MCP。\n\n## 执行\n1. 确认交易日并按参数检查校准触发条件。\n2. 计算并写入体系定义的日期化校准事实。\n\n非交易日发送一行状态后结束（非交易日无其他动作）；输入无效时写链路异常。不得生成计划、改状态或修改静态规则。写入简报 `knowledge/摘要/.abstract/{今天日期}_div-etf-grid-trade-1800-param-check.txt`，最终仅报告校准结论、过程资料与异常。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
-      "enabled": true,
-      "type": "cron",
-      "createdAt": "2026-10-11T23:59:43.970Z",
-      "runCount": 3,
-      "description": "交易日 18:00 生成网格校准过程事实；仅在触发时计算日期化网格参数",
-      "lastStatus": "success",
-      "lastRun": "2026-10-15T10:00:00.008Z",
-      "nextRun": "2026-10-16T10:00:00.000Z"
-    },
-    {
-      "id": "dDgn18iFtS",
-      "name": "div-etf-grid-trade-1810-risk-monitor",
-      "schedule": "0 10 18 * * *",
-      "prompt": "# 红利科创ETF双网格 · 收盘事实、状态与计划\n\n交易日盘后生成事实、固化状态并形成下一交易日唯一正式计划。\n\n## 权威来源\n- `system.yml`、`体系运作流程.md`、`风控.md`、`状态机管理.md`。\n- 行情与交易日仅使用 `tushare-data` MCP；YHZQ 仓位仅使用 `trade-management.portfolio_snapshot`。\n\n## 执行\n1. 确认交易日并获取当天行情、风险和账户快照。\n2. 按体系流程生成事实、状态提案、状态快照和必要的切换指令。\n3. 状态有效后生成计划。\n\n仓位或必要输入无效时，记录链路异常并停止状态固化与计划生成。写入简报 `knowledge/摘要/.abstract/{今天日期}_div-etf-grid-trade-1810-risk-monitor.txt`，最终仅报告状态、迁移、计划路径和人工待办。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
-      "enabled": true,
-      "type": "cron",
-      "createdAt": "2026-10-11T23:59:44.052Z",
-      "runCount": 3,
-      "description": "交易日 18:10 汇总真实持仓与日期化事实，固化状态并生成下一交易日唯一正式计划",
-      "lastStatus": "success",
-      "lastRun": "2026-10-15T10:10:00.009Z",
-      "nextRun": "2026-10-16T10:10:00.000Z"
+      "lastRun": "2026-10-16T10:50:00.010Z",
+      "nextRun": "2026-10-17T10:50:00.000Z"
     },
     {
       "id": "wJFM6ILvZC",
@@ -176,11 +148,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.148Z",
-      "runCount": 4,
+      "runCount": 5,
       "description": "交易日 19:00 严格回放当日正式计划，并在 MNZH 模拟账户记账。",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T11:00:00.013Z",
-      "nextRun": "2026-10-16T11:00:00.000Z"
+      "lastRun": "2026-10-16T11:00:00.011Z",
+      "nextRun": "2026-10-17T11:00:00.000Z"
     },
     {
       "id": "vmVgFNAk2s",
@@ -190,11 +162,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.186Z",
-      "runCount": 4,
+      "runCount": 5,
       "description": "交易日 19:10 复盘正式计划、模拟执行和过程事实，并生成可追溯复盘。",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T11:10:00.005Z",
-      "nextRun": "2026-10-16T11:10:00.000Z"
+      "lastRun": "2026-10-16T11:10:00.004Z",
+      "nextRun": "2026-10-17T11:10:00.000Z"
     },
     {
       "id": "MolP85Dprx",
@@ -204,25 +176,25 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.223Z",
-      "runCount": 4,
+      "runCount": 5,
       "description": "交易日 19:25 依据正式复盘、过程事实和体系规则生成下一交易日唯一模拟计划。",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T11:25:00.007Z",
-      "nextRun": "2026-10-16T11:25:00.000Z"
+      "lastRun": "2026-10-16T11:25:00.008Z",
+      "nextRun": "2026-10-17T11:25:00.000Z"
     },
     {
       "id": "baRE-HFfIi",
       "name": "zslof-timing-trade-1935-signal",
       "schedule": "0 35 19 * * *",
-      "prompt": "# 招商双债LOF择时 · 信号与计划\n\n交易日 19:35 按体系规则计算收盘信号，生成下一交易日唯一正式计划。\n\n## 权威来源\n- `system.yml`、`体系运作流程.md`、`择时参数.md` 和 `.pi/skills/trade/trade-system/SKILL.md`。\n- 交易日和行情仅使用 `tushare-data` MCP。\n\n## 执行\n1. 确认交易日并取得规则所需行情。\n2. 按参数计算信号并生成过程资料和下一交易日计划。\n3. 按 `择时参数.md` 的金额规范渲染计划。\n\n非交易日发送一行状态后结束（非交易日无其他动作）；数据无效时记录链路异常，不生成计划。写入简报 `knowledge/摘要/.abstract/{今天日期}_zslof-timing-trade-1935-signal.txt`，最终仅报告信号、动作和计划路径。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
+      "prompt": "# 招商双债LOF择时 · 信号与计划\n\n交易日 19:35 执行体系盘后流程。\n\n## 执行指引\n\n按 `体系运作流程.md` **第 2 节「盘后任务执行明细」** 执行：输入与前置、步骤与产物、判定口径、计划结构、汇报要点、异常分支均在该节。\n\n## 运行契约\n\n- 交易日判断与行情用 `tushare-data`；非交易日发送一行状态（`【1935 双债LOF】非交易日 ｜ 跳过`）后结束。\n- 简报写入 `knowledge/摘要/.abstract/{今天日期}_zslof-timing-trade-1935-signal.txt`。\n\n## 边界\n\n只生成信号与计划：不查询账户、不下单、不修改参数；状态或数据无效时记录链路异常并停止，不编造价格或信号；不把理论状态写成实际成交。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。",
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:44.262Z",
-      "runCount": 4,
-      "description": "交易日 19:35 计算收盘机械信号并生成下一交易日唯一正式计划",
+      "runCount": 5,
+      "description": "交易日 19:35 按体系 SOP 第 2 节计算收盘机械信号并生成下一交易日唯一正式计划",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T11:35:00.006Z",
-      "nextRun": "2026-10-16T11:35:00.000Z"
+      "lastRun": "2026-10-16T11:35:00.007Z",
+      "nextRun": "2026-10-17T11:35:00.000Z"
     },
     {
       "id": "0-tx86-WS-",
@@ -243,11 +215,22 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-14T15:11:08.956Z",
-      "runCount": 2,
+      "runCount": 3,
       "description": "每天 23:30 扫描并审计动态知识文档的待办索引，向飞书推送状态并写入当日简报",
       "lastStatus": "success",
-      "lastRun": "2026-10-15T15:30:00.006Z",
-      "nextRun": "2026-10-16T15:30:00.000Z"
+      "lastRun": "2026-10-16T15:30:00.006Z",
+      "nextRun": "2026-10-17T15:30:00.000Z"
+    },
+    {
+      "id": "qMETfApkhR",
+      "name": "div-etf-grid-trade-1800-daily-check",
+      "schedule": "0 0 18 * * *",
+      "prompt": "# 红利科创ETF双网格 · 盘后检查与次日参数计划\n\n交易日 18:00 执行体系盘后流程。\n\n## 执行指引\n\n按 `体系运作流程.md` **第 2 节「盘后任务执行明细」** 执行：输入与前置、步骤与产物、判定口径、计划三段结构、汇报要点、异常分支均在该节。\n\n## 运行契约\n\n- 交易日判断用 `tushare-data`；非交易日发送一行状态（`【1800 双网格】非交易日 ｜ 跳过`）后结束。\n- 只用 `trade-management`（YHZQ 持仓与现金）、`tushare-data`（交易日、行情）和体系 MCP `div-etf-grid-trade`（风险事实、调节器事实、板块事实与渲染）；不得直接运行体系脚本。\n- 简报写入 `knowledge/摘要/.abstract/{今天日期}_div-etf-grid-trade-daily-check.txt`。\n\n## 边界\n\n不得切换防守档、不得修改静态规则与参数（含运行定义 `params/regulator.json`）、不得写复盘结论；不得用估算仓位或旧状态替代真实持仓。审批由会话在复盘时完成并写入 `human_review.json`，计划参数由会话按审批结果更新。\n\n## 投递与输出\n\n- **投递**：读 `cronjob/delivery.json` 的 `feishuChatId`，用 `send_to_feishu` **显式传该 chat_id** 发送结果（运行时会话空闲时没有活跃聊天状态，不显式传会失败）。文件缺失或发送失败时，把内容留在回复中并说明原因。\n- **输出格式**：首行一行式状态，格式 `【任务简称】结论/动作 ｜ 关键数字`；正文只列必要要点（不超过 5 行），异常与待办各占一行。\n- **无动作也回执**：非交易日、无候选、无过期文件等情形同样发送一行状态，便于确认任务确实执行。\n",
+      "enabled": true,
+      "type": "cron",
+      "createdAt": "2026-10-17T02:23:00.032Z",
+      "runCount": 0,
+      "description": "交易日 18:00 按体系 SOP 第 2 节执行盘后检查与次日参数计划（v4；不切换防守档、不产生交易动作）"
     }
   ],
   "version": 1
