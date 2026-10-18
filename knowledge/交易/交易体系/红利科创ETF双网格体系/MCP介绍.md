@@ -17,11 +17,21 @@ system-id: div_etf_grid_trade
 
 ```text
 .pi/mcp-servers/trade-system/div_etf_grid_trade/
-├── mcp_server.py       # 服务入口与实现
+├── mcp_server.py       # 服务入口：工具注册与路由（sys.path 自举 + TOOLS + stdio）
+├── functions/          # 实现模块（入口只导入，不重复实现）
+│   ├── paths.py        # 根路径常量、normalize_date、read_json、process_dir
+│   ├── parameters.py   # 参数加载/校验/哈希
+│   ├── market.py       # tushare 客户端、行情取样、涨跌停与连跌口径
+│   ├── scaling.py      # floor100、apply_factors（倍数叠加）
+│   ├── signals.py      # rolling_sigma、leg_signals、emotion_facts
+│   ├── facts.py        # risk_facts、regulator_facts、sector_facts
+│   └── artifacts.py    # 产物落盘与 Markdown 渲染
 ├── system.yml          # 运行契约：身份、账户、操作、参数与模板位置、产物契约、边界
 ├── params/             # 参数唯一来源
 └── templates/          # 模板唯一来源
 ```
+
+依赖方向单向：`paths → parameters/market → scaling/signals → facts → artifacts → 入口`；子模块不自行推导根路径（一律从 `functions/paths.py` 取）。
 
 调用口径（命名规则、入参约定、自检与迁入步骤）见 `trade-system` 技能的 `reference/mcp.md`。术语与参数键名对照见 `交易/交易体系/红利科创ETF双网格体系/网格参数.md`。
 
