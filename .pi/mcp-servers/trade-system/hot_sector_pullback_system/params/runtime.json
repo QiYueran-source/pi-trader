@@ -1,9 +1,9 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "process_root": "knowledge/交易/过程资料",
   "plan_root": "knowledge/交易/交易计划",
   "review_root": "knowledge/交易/交易复盘",
   "directory_date_format": "%Y-%m-%d",
-  "trading_day_only": true,
-  "history_lookback_calendar_days": 70
+  "history_lookback_calendar_days": 70,
+  "note": "2026-10-18 删除未被实现读取的 trading_day_only（schema_version 1→2）；交易日判断改由本服务 is_trading_day 工具承担。"
 }

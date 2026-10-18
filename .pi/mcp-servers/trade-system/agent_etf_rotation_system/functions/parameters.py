@@ -66,7 +66,6 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]
             "plan_root",
             "review_root",
             "directory_date_format",
-            "trading_day_only",
             "process_file",
             "review_file",
             "render_artifacts",
@@ -83,7 +82,6 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]
         fail("runtime.process_root", "必须以 knowledge 开头（物理落盘根）")
     if runtime["directory_date_format"] != "%Y-%m-%d":
         fail("runtime.directory_date_format", "必须为 %Y-%m-%d")
-    require_bool(runtime["trading_day_only"], "runtime.trading_day_only")
     require_integer(runtime["trading_calendar_lookback_days"], "runtime.trading_calendar_lookback_days", 1)
     artifacts = require_string_list(runtime["render_artifacts"], "runtime.render_artifacts")
     if tuple(artifacts) != REVIEW_ARTIFACTS:

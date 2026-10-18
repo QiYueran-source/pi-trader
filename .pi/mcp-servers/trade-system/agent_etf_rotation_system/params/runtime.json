@@ -1,13 +1,15 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "process_root": "knowledge/交易/过程资料",
   "plan_root": "knowledge/交易/交易计划",
   "review_root": "knowledge/交易/交易复盘",
   "directory_date_format": "%Y-%m-%d",
-  "trading_day_only": true,
   "process_file": "ETF轮动-选股分析.md",
   "review_file": "基于Agent的ETF轮动体系_复盘.md",
-  "render_artifacts": ["review"],
+  "render_artifacts": [
+    "review"
+  ],
   "trading_calendar_lookback_days": 10,
-  "notes": "本文件只承载契约与路径，不含任何判定阈值；判定口径见知识库规则库文档。"
+  "notes": "本文件只承载契约与路径，不含任何判定阈值；判定口径见知识库规则库文档。",
+  "note": "2026-10-18 删除未被实现读取的 trading_day_only（schema_version 1→2）；交易日判断改由本服务 is_trading_day 工具承担。"
 }

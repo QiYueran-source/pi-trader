@@ -149,7 +149,15 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]
     runtime = parameters["runtime"]
     require_exact_fields(
         runtime,
-        {"schema_version", "process_root", "plan_root", "review_root", "directory_date_format", "trading_day_only", "history_lookback_calendar_days"},
+        {
+            "schema_version",
+            "process_root",
+            "plan_root",
+            "review_root",
+            "directory_date_format",
+            "history_lookback_calendar_days",
+            "note",
+        },
         "runtime",
     )
     require_string(runtime["process_root"], "runtime.process_root")
@@ -157,7 +165,6 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]
         require_string(runtime[field], f"runtime.{field}")
     if runtime["directory_date_format"] != "%Y-%m-%d":
         fail("runtime.directory_date_format", "必须为 %Y-%m-%d")
-    require_bool(runtime["trading_day_only"], "runtime.trading_day_only")
     require_integer(runtime["history_lookback_calendar_days"], "runtime.history_lookback_calendar_days")
     return {"valid": True, "files": list(PARAMETER_FILES)}
 

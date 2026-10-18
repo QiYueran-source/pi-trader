@@ -1,8 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "process_root": "knowledge/交易/过程资料",
   "directory_date_format": "%Y-%m-%d",
-  "trading_day_only": true,
   "history_lookback_calendar_days": 40,
   "strategy_state_file": "strategy_state.json",
   "signal_facts_file": "signal_facts.json",
@@ -10,5 +9,6 @@
   "state_lookup": "latest_prior_process_date",
   "allow_future_state": false,
   "state_anchor_date": "2026-08-10",
-  "state_anchor_note": "体系建立日；理论状态从该日起按收盘价重放。若某日人工重置状态，在此登记新锚并写更新日志。"
+  "state_anchor_note": "体系建立日；理论状态从该日起按收盘价重放。若某日人工重置状态，在此登记新锚并写更新日志。",
+  "note": "2026-10-18 删除未被实现读取的 trading_day_only（schema_version 1→2）；交易日判断改由本服务 is_trading_day 工具承担。"
 }

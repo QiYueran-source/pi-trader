@@ -45,7 +45,7 @@ system-name: 招商双债LOF择时体系
 
 ## 五、裁定与遗留
 
-- `params/runtime.json#trading_day_only` 只被校验类型、实现未使用：**暂不改**（用户 2026-10-18），与双网格同问题，待后续一并处理。
+- `params/runtime.json#trading_day_only` 只被校验类型、实现未使用：**已于 2026-10-18 删键**（见 `交易/交易体系/招商双债LOF择时体系/更新日志/2026-10-18_删除trading_day_only.md`）。
 - 跨日状态解析（`knowledge/` 优先、`archive/` 兜底）：**不抽共享模块**，各体系自带一份；口径以各体系 SOP 为准（本体系见 §2.1，2026-10-17 用户确认）。
 - 遗留待办：`T-2026-10-18-13`（删除 `timing.json#counter_semantics` 两条未被实现读取的英文口径）、`T-2026-10-18-14`（标注 `signal_timing`／`execution_timing` 为不可配置声明键）。
 - 当前运行中的 MCP 子进程仍加载拆分前的单文件（行为已验证一致），下次重启或新会话即加载新结构。

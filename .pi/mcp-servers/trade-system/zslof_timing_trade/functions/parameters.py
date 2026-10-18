@@ -76,11 +76,10 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]
         fail("timing", "必须使用收盘确认、次日开盘执行")
 
     runtime = parameters["runtime"]
-    require_fields(runtime, {"schema_version", "process_root", "directory_date_format", "trading_day_only", "history_lookback_calendar_days", "strategy_state_file", "signal_facts_file", "report_file", "state_lookup", "allow_future_state", "state_anchor_date"}, "runtime")
+    require_fields(runtime, {"schema_version", "process_root", "directory_date_format", "history_lookback_calendar_days", "strategy_state_file", "signal_facts_file", "report_file", "state_lookup", "allow_future_state", "state_anchor_date"}, "runtime")
     require_string(runtime["process_root"], "runtime.process_root")
     if runtime["directory_date_format"] != "%Y-%m-%d":
         fail("runtime.directory_date_format", "必须为 %Y-%m-%d")
-    require_bool(runtime["trading_day_only"], "runtime.trading_day_only")
     require_integer(runtime["history_lookback_calendar_days"], "runtime.history_lookback_calendar_days", 1)
     for field in ("strategy_state_file", "signal_facts_file", "report_file"):
         require_string(runtime[field], f"runtime.{field}")

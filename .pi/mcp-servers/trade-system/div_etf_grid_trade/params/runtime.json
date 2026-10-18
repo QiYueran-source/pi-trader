@@ -1,12 +1,12 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "process_root": "knowledge/交易/过程资料",
   "directory_date_format": "%Y-%m-%d",
-  "trading_day_only": true,
   "state_snapshot": {
     "file_name": "state_after.json",
     "lookup": "latest_prior_trading_day",
     "allow_same_day_read": true,
     "allow_future_read": false
-  }
+  },
+  "note": "2026-10-18 删除未被实现读取的 trading_day_only（schema_version 1→2）；交易日判断改由本服务 is_trading_day 工具承担。"
 }
