@@ -1,14 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "confirmation_days": 2,
   "stop_loss_enabled": true,
   "chase_enabled": true,
   "order_amount": 25000,
   "signal_timing": "close_confirmed",
   "execution_timing": "next_open",
-  "counter_semantics": {
-    "no_high": "close <= peak increments counter; sell requires close < peak",
-    "no_low": "close >= trough increments counter; buy requires close > trough",
-    "stop_loss_priority": true
-  }
+  "note": "计数与优先级口径不在此文件：判定规则唯一来源是知识库 `交易/交易体系/招商双债LOF择时体系/择时参数.md`（状态计数、优先级），实现按该协议输出。2026-10-18 删除未被实现读取的 counter_semantics 块（schema_version 1→2）。"
 }

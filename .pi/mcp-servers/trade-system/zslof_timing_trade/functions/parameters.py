@@ -67,15 +67,13 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]
     require_string(instrument["commission"]["description"], "instrument.commission.description")
 
     timing = parameters["timing"]
-    require_fields(timing, {"schema_version", "confirmation_days", "stop_loss_enabled", "chase_enabled", "order_amount", "signal_timing", "execution_timing", "counter_semantics"}, "timing")
+    require_fields(timing, {"schema_version", "confirmation_days", "stop_loss_enabled", "chase_enabled", "order_amount", "signal_timing", "execution_timing"}, "timing")
     require_integer(timing["confirmation_days"], "timing.confirmation_days", 1)
     require_bool(timing["stop_loss_enabled"], "timing.stop_loss_enabled")
     require_bool(timing["chase_enabled"], "timing.chase_enabled")
     require_integer(timing["order_amount"], "timing.order_amount", 1)
     if timing["signal_timing"] != "close_confirmed" or timing["execution_timing"] != "next_open":
         fail("timing", "必须使用收盘确认、次日开盘执行")
-    require_fields(timing["counter_semantics"], {"no_high", "no_low", "stop_loss_priority"}, "timing.counter_semantics")
-    require_bool(timing["counter_semantics"]["stop_loss_priority"], "timing.counter_semantics.stop_loss_priority")
 
     runtime = parameters["runtime"]
     require_fields(runtime, {"schema_version", "process_root", "directory_date_format", "trading_day_only", "history_lookback_calendar_days", "strategy_state_file", "signal_facts_file", "report_file", "state_lookup", "allow_future_state", "state_anchor_date"}, "runtime")
