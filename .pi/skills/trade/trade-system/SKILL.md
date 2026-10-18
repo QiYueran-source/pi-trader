@@ -50,3 +50,4 @@ description: 管理交易体系的运行、交易计划、复盘和过程资料�
 - [reference/cronjob.md](reference/cronjob.md)：体系定时任务的目录命名、prompt 与 SOP 分工、注册与重启检查。
 - [reference/trade-system-management.md](reference/trade-system-management.md)：知识库体系文档与运行定义的目录边界、成熟度与变更链。
 - [reference/sop.md](reference/sop.md)：体系 `体系运作流程.md` 的必备内容与通用运行顺序。
+- [reference/single-source.md](reference/single-source.md)：单一事实源——每类事实的唯一存放位置、允许与不允许的写法、以运行时为准、历史不回改与冲突收口。
