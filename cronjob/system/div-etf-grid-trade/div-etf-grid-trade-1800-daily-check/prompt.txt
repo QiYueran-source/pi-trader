@@ -8,8 +8,8 @@
 
 ## 运行契约
 
-- 交易日判断用 `tushare-data`；非交易日发送一行状态（`【1800 双网格】非交易日 ｜ 跳过`）后结束。
-- 只用 `trade-management`（YHZQ 持仓与现金）、`tushare-data`（交易日、行情）和体系 MCP `div-etf-grid-trade`（风险事实、调节器事实、板块事实与渲染）；不得直接运行体系脚本。
+- 交易日判断用体系 MCP `div-etf-grid-trade` 的 `is_trading_day`（本服务自带，不依赖其它 MCP）；非交易日发送一行状态（`【1800 双网格】非交易日 ｜ 跳过`）后结束。
+- 只用 `trade-management`（YHZQ 持仓与现金）、`tushare-data`（行情）和体系 MCP `div-etf-grid-trade`（交易日判断、风险事实、调节器事实、板块事实与渲染）；不得直接运行体系脚本。
 - 简报写入 `摘要/.abstract/{今天日期}_div-etf-grid-trade-daily-check.txt`（落 `knowledge/`）。
 
 ## 边界
