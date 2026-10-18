@@ -26,6 +26,7 @@
 
 - `cash_balance`：查询指定账户和交易体系的现金余额。
 - `cash_list`：查询指定账户和交易体系的现金流水。
+- `cash_record`：登记**非成交**的现金流水（分红、利息、注资、取现、费用、调整）。只写 `cash_flow`，**不写成交记录、不动持仓与 FIFO**；金额带符号（入账为正、出账为负），`kind` 以 `[kind]` 前缀写入 `reason`。写入前必须获得用户确认。
 
 ## 自选股
 
@@ -39,6 +40,7 @@
 - 查询单只证券盈亏：使用 `trade_pnl`。
 - 查询明细成交：使用 `trade_list` 或 `trade_get`。
 - 登记已确认成交：使用 `trade_record`。
+- 登记已确认的非成交现金流水（分红/利息/注资/取现/费用/调整）：使用 `cash_record`；不要用 `trade_record` 记现金事件（会多出一笔成交并污染 FIFO）。
 - 查询现金流水：使用 `cash_balance` 或 `cash_list`。
 - 查询或维护观察标的：使用 `watchlist_list`、`watchlist_get` 或 `watchlist_upsert`。
 

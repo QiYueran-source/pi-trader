@@ -22,6 +22,7 @@ from mcp.types import TextContent, Tool
 DB_PATH = Path(os.getenv("TRADE_DB_PATH", "/pi-trader/database/trade_management.db"))
 VALID_STATUS = {"watching", "candidate", "trading"}
 VALID_SIDE = {"buy", "sell"}
+VALID_CASH_KIND = {"deposit", "withdraw", "dividend", "interest", "fee", "adjust", "other"}
 
 
 def _json(value: Any) -> str:
@@ -147,6 +148,33 @@ def cash_list(account_id: str, system_id: str, limit: int = 20) -> dict[str, Any
     with db() as conn:
         result = rows(conn.execute("SELECT id,amount,occurred_at,reason FROM cash_flow WHERE account_id=? AND system_id=? ORDER BY occurred_at DESC,id DESC LIMIT ?", (account_id, system_id, limit)))
     return {"total": len(result), "flows": result}
+
+
+def cash_record(account_id: str, system_id: str, amount: float, occurred_at: str, reason: str, kind: str = "other") -> dict[str, Any]:
+    """登记非成交的现金流水（分红、利息、注资、取现、费用、调整）。只写 cash_flow，不写 trade、不动持仓与 FIFO。"""
+    if kind not in VALID_CASH_KIND:
+        raise ValueError(f"kind 必须是 {sorted(VALID_CASH_KIND)} 之一")
+    if not system_id or not str(system_id).strip():
+        raise ValueError("system_id 不能为空")
+    if isinstance(amount, bool) or not isinstance(amount, (int, float)) or float(amount) == 0:
+        raise ValueError("amount 必须是非零数字（入账为正、出账为负）")
+    if not re.match(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$", occurred_at):
+        raise ValueError("occurred_at 格式必须为 YYYY-MM-DD HH:MM:SS")
+    if not reason or not str(reason).strip():
+        raise ValueError("reason 不能为空")
+    cash_amount = round(float(amount), 2)
+    full_reason = f"[{kind}] {str(reason).strip()}"
+    with db() as conn:
+        account = conn.execute("SELECT id FROM account WHERE id=?", (account_id,)).fetchone()
+        if not account:
+            return {"error": f"账户不存在：{account_id}"}
+        duplicate = conn.execute("SELECT id FROM cash_flow WHERE account_id=? AND system_id=? AND amount=? AND occurred_at=? AND reason=?", (account_id, system_id, cash_amount, occurred_at, full_reason)).fetchone()
+        if duplicate:
+            return {"error": f"疑似重复现金流水，已有记录 #{duplicate['id']}"}
+        cur = conn.execute("INSERT INTO cash_flow(account_id,system_id,amount,occurred_at,reason) VALUES(?,?,?,?,?)", (account_id, system_id, cash_amount, occurred_at, full_reason))
+        flow_id = cur.lastrowid
+        balance = conn.execute("SELECT COALESCE(SUM(amount),0) AS balance FROM cash_flow WHERE account_id=? AND system_id=?", (account_id, system_id)).fetchone()["balance"]
+    return {"cash_flow_id": flow_id, "kind": kind, "amount": cash_amount, "balance": round(balance, 2), "status": "recorded"}
 
 
 def trade_pnl(account_id: str, code: str, system_id: str | None = None, current_price: float | None = None) -> dict[str, Any]:
@@ -296,6 +324,7 @@ TOOLS = [
     Tool(name="portfolio_snapshot", description="查询账户在指定体系下的现金、持仓和交易截止时间。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"}},"required":["account_id","system_id"]}),
     Tool(name="cash_balance", description="查询账户某交易体系的现金余额。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"}},"required":["account_id","system_id"]}),
     Tool(name="cash_list", description="查询现金流水。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"},"limit":{"type":"integer","default":20}},"required":["account_id","system_id"]}),
+    Tool(name="cash_record", description="登记非成交的现金流水（分红、利息、注资、取现、费用、调整）：只写现金流水，不写成交记录、不动持仓与 FIFO；金额带符号（入账为正、出账为负），kind 会以 [kind] 前缀写入 reason。写入前必须获得用户确认。", inputSchema={"type":"object","properties":{"account_id":{"type":"string"},"system_id":{"type":"string"},"amount":{"type":"number"},"occurred_at":{"type":"string"},"reason":{"type":"string"},"kind":{"type":"string","enum":sorted(VALID_CASH_KIND),"default":"other"}},"required":["account_id","system_id","amount","occurred_at","reason"]}),
     Tool(name="watchlist_list", description="查询自选股，可按状态筛选。", inputSchema={"type":"object","properties":{"status":{"type":"string","enum":sorted(VALID_STATUS)}}}),
     Tool(name="watchlist_get", description="查看单只自选股。", inputSchema={"type":"object","properties":{"code":{"type":"string"}},"required":["code"]}),
     Tool(name="watchlist_upsert", description="创建或更新自选股。写入前必须获得用户明确确认。", inputSchema={"type":"object","properties":{"code":{"type":"string"},"name":{"type":"string"},"status":{"type":"string","enum":sorted(VALID_STATUS)},"systems":{"type":"array","items":{"type":"object"}},"reason":{"type":"string"}},"required":["code","name","status","systems"]}),
@@ -310,7 +339,7 @@ async def list_tools() -> list[Tool]: return TOOLS
 async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
     a = arguments or {}
     try:
-        dispatch = {"account_list": lambda: account_list(), "account_get": lambda: account_get(a["account_id"]), "account_create": lambda: account_create(a["account_id"], a["name"], a["fee"], a.get("note", "")), "trade_list": lambda: trade_list(a.get("account_id"), a.get("system_id"), a.get("code")), "trade_get": lambda: trade_get(int(a["trade_id"])), "trade_record": lambda: trade_record(**a), "trade_pnl": lambda: trade_pnl(a["account_id"], a["code"], a.get("system_id"), a.get("current_price")), "position_list": lambda: position_list(a["account_id"], a["system_id"]), "portfolio_snapshot": lambda: portfolio_snapshot(a["account_id"], a["system_id"]), "cash_balance": lambda: cash_balance(a["account_id"], a["system_id"]), "cash_list": lambda: cash_list(a["account_id"], a["system_id"], a.get("limit", 20)), "watchlist_list": lambda: watchlist_list(a.get("status")), "watchlist_get": lambda: watchlist_get(a["code"]), "watchlist_upsert": lambda: watchlist_upsert(a["code"], a["name"], a["status"], a["systems"], a.get("reason", ""))}
+        dispatch = {"account_list": lambda: account_list(), "account_get": lambda: account_get(a["account_id"]), "account_create": lambda: account_create(a["account_id"], a["name"], a["fee"], a.get("note", "")), "trade_list": lambda: trade_list(a.get("account_id"), a.get("system_id"), a.get("code")), "trade_get": lambda: trade_get(int(a["trade_id"])), "trade_record": lambda: trade_record(**a), "trade_pnl": lambda: trade_pnl(a["account_id"], a["code"], a.get("system_id"), a.get("current_price")), "position_list": lambda: position_list(a["account_id"], a["system_id"]), "portfolio_snapshot": lambda: portfolio_snapshot(a["account_id"], a["system_id"]), "cash_balance": lambda: cash_balance(a["account_id"], a["system_id"]), "cash_list": lambda: cash_list(a["account_id"], a["system_id"], a.get("limit", 20)), "cash_record": lambda: cash_record(a["account_id"], a["system_id"], a["amount"], a["occurred_at"], a["reason"], a.get("kind", "other")), "watchlist_list": lambda: watchlist_list(a.get("status")), "watchlist_get": lambda: watchlist_get(a["code"]), "watchlist_upsert": lambda: watchlist_upsert(a["code"], a["name"], a["status"], a["systems"], a.get("reason", ""))}
         if name not in dispatch: return [TextContent(type="text", text=_json({"error": f"未知工具：{name}"}))]
         return [TextContent(type="text", text=_json(dispatch[name]()))]
     except Exception as exc:
