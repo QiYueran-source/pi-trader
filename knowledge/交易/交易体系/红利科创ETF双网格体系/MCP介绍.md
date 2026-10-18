@@ -49,7 +49,7 @@ system-id: div_etf_grid_trade
 
 - 每次调用重新读取并校验 `params/` 下 6 个参数文件，参数改动后无需重启服务。
 - 非交易日或当日无行情时按无数据报错，不使用其它日期数据替代。
-- 情绪涨跌停采用分板口径（主板 10%、创业板/科创板 20%、北交所 30%），与 `sector_facts` 一致。
+- 情绪涨跌停采用分板口径（幅度见 `params/regulator.json#signals.emotion.board_aware_note`），与 `sector_facts` 一致。
 
 ## 过程产物
 

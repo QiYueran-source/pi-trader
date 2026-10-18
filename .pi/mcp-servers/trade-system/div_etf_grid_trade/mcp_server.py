@@ -106,14 +106,6 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
     return [TextContent(type="text", text=json.dumps(result, ensure_ascii=False, default=str))]
 
 
-async def list_tools_legacy() -> list[Tool]:
-    return list_tools_result()
-
-
-async def call_tool_legacy(name: str, arguments: dict[str, Any]) -> list[TextContent]:
-    return call_tool_result(name, arguments)
-
-
 if hasattr(server, "list_tools") and hasattr(server, "call_tool"):
     @server.list_tools()
     async def list_tools() -> list[Tool]:
