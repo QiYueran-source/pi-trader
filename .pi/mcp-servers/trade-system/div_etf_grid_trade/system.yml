@@ -7,7 +7,8 @@ account-id:
 service:
   name: div-etf-grid-trade        # .pi/mcp.json 注册键 = system-id 的连字符形式
   entry: mcp_server.py            # 本目录内，一个体系一个 MCP 服务
-overview: "储蓄型双网格；机械层只输出参数与建议，防守档升降和解除停买需要人工审批。"
+overview: "储蓄型双网格；机械层只输出参数与建议（缩放规则见 params/regulator.json#scaling），防守档升降和解除停买需要人工审批。"
+scaling_rule: "防守倍数买卖双向（档距与份数）；资金倍数只乘买入档距；买入档距受 step_cap，卖出档距无上限；份数按 100 份向下取整；保底仓触达即停卖该腿。"
 operations:
   - risk_facts
   - regulator_facts

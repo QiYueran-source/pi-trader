@@ -23,7 +23,7 @@ system-id: div_etf_grid_trade
 └── templates/          # 模板唯一来源
 ```
 
-调用口径（命名规则、入参约定、自检与迁入步骤）见 `trade-system` 技能的 `reference/mcp.md`。
+调用口径（命名规则、入参约定、自检与迁入步骤）见 `trade-system` 技能的 `reference/mcp.md`。术语与参数键名对照见 `交易/交易体系/红利科创ETF双网格体系/网格参数.md`。
 
 ## 工具与入参
 
@@ -53,8 +53,10 @@ system-id: div_etf_grid_trade
 - `positions.json`：运行前的实际持仓事实；
 - `risk_facts.json`：风险事实（双标的）；
 - `sector_facts.json`：板块事实；
-- `regulator_facts.json`：硬闸占用、实际档距、信号评估与建议防守档；
+- `regulator_facts.json`：硬闸占用、买卖两侧实际档距与份数、保底仓与卖腿开关、信号评估与建议防守档；
 - `human_review.json`：防守档审批留痕（默认空）。
+
+`regulator_facts.json` 的 `legs.<腿>.effective` 字段：`buy_step_ratio`、`buy_raw_step_ratio`、`step_cap`、`capped`、`buy_shares`、`buy_enabled`、`sell_step_ratio`、`sell_raw_step_ratio`、`sell_shares`、`sell_enabled`、`sell_disabled_reason`、`reserve_floor`（后两项用于保底仓停卖）。每个量吃哪些倍数由 `params/regulator.json#scaling` 声明：买入档距＝防守×资金且受买入上限；卖出档距＝防守且无上限；买卖份数＝防守份数倍数并按 100 份向下取整。
 
 契约细节以运行定义 `system.yml` 的 `process_output` 为准；历史 `output/` 目录（v3 之前的产物布局）只作迁移前证据保留，体系 MCP 不读取也不写入。
 

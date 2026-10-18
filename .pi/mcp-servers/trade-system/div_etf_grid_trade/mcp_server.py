@@ -30,6 +30,7 @@ TEMPLATES_ROOT = SYSTEM_ROOT / "templates"
 SYSTEM_ID = SYSTEM_ROOT.name
 SYSTEM_NAME = "红利科创ETF双网格体系"
 PARAMETER_FILES = ("grid", "instruments", "regulator", "risk", "runtime", "sector_classification")
+EXPANSION_KEYS = {"buy_step_ratio", "sell_step_ratio", "buy_shares", "sell_shares"}
 if not (SYSTEM_ROOT / "system.yml").is_file():
     raise RuntimeError(f"体系运行定义缺失：{SYSTEM_ROOT / 'system.yml'}")
 
@@ -65,6 +66,26 @@ def read_json(path: Path) -> dict[str, Any]:
     return value
 
 
+def floor100(value: float) -> int:
+    """申报份数取整：向下取到 100 的整数倍，最小 100 份（ETF 最小交易单位）。"""
+    return max(100, int(value // 100) * 100)
+
+
+def apply_factors(value: float, factors: Any, *, defense_multiplier: float, capital_multiplier: float) -> float:
+    """按 params/regulator.json#scaling 声明的因子列表缩放一个量。"""
+    result = float(value)
+    if not isinstance(factors, list):
+        raise ValueError("scaling 的 factors 必须是数组")
+    for factor in factors:
+        if factor == "defense":
+            result *= float(defense_multiplier)
+        elif factor == "capital":
+            result *= float(capital_multiplier)
+        else:
+            raise ValueError(f"未知缩放因子：{factor}")
+    return result
+
+
 def load_parameters() -> dict[str, dict[str, Any]]:
     parameters = {name: read_json(PARAMS_ROOT / f"{name}.json") for name in PARAMETER_FILES}
     validate_parameters(parameters)
@@ -88,6 +109,45 @@ def validate_parameters(parameters: dict[str, dict[str, Any]]) -> dict[str, Any]
     guard = regulator.get("capital_guard", {})
     if float(guard.get("resume_u", 1)) >= float(guard.get("stop_buy_u", 0)):
         raise ValueError("capital_guard.resume_u 必须低于 stop_buy_u")
+    scaling = regulator.get("scaling")
+    declared = {name: value for name, value in scaling.items() if not name.startswith("note")} if isinstance(scaling, dict) else {}
+    if set(declared) != EXPANSION_KEYS:
+        raise ValueError(f"regulator.scaling 必须且只能包含：{', '.join(sorted(EXPANSION_KEYS))}")
+    scaling = declared
+    for name in sorted(EXPANSION_KEYS):
+        item = scaling[name]
+        if not isinstance(item, dict):
+            raise ValueError(f"scaling.{name} 必须是对象")
+        factors = item.get("factors")
+        if not isinstance(factors, list) or not factors or any(factor not in {"defense", "capital"} for factor in factors):
+            raise ValueError(f"scaling.{name}.factors 必须是非空数组且只含 defense / capital")
+        if item.get("cap") not in {None, "step_cap"}:
+            raise ValueError(f"scaling.{name}.cap 只能是 null 或 step_cap")
+        if item.get("rounding") not in {None, "floor100"}:
+            raise ValueError(f"scaling.{name}.rounding 只能是 null 或 floor100")
+    for name in ("buy_shares", "sell_shares"):
+        item = scaling[name]
+        if item.get("cap") is not None:
+            raise ValueError(f"scaling.{name} 不支持 cap（档距上限只用于档距）")
+    for name in ("buy_step_ratio", "sell_step_ratio"):
+        if scaling[name].get("rounding") is not None:
+            raise ValueError(f"scaling.{name} 不支持 rounding（取整只用于份数）")
+    for key in normal:
+        for field in ("buy_shares", "sell_shares"):
+            shares = normal[key].get(field)
+            if not isinstance(shares, int) or isinstance(shares, bool) or shares <= 0 or shares % 100:
+                raise ValueError(f"regulator.normal_state.{key}.{field} 必须是 100 的正整数倍")
+    reserve = regulator.get("reserve_shares", {})
+    if reserve.get("enabled"):
+        if reserve.get("mode") != "shares":
+            raise ValueError("reserve_shares.mode 目前只支持 shares")
+        per_leg = reserve.get("per_leg")
+        if not isinstance(per_leg, dict) or set(per_leg) != {"dividend", "growth"}:
+            raise ValueError("reserve_shares.per_leg 必须包含 dividend 与 growth")
+        for key in sorted(per_leg):
+            floor_shares = per_leg[key]
+            if not isinstance(floor_shares, int) or isinstance(floor_shares, bool) or floor_shares < 0 or floor_shares % 100:
+                raise ValueError(f"reserve_shares.per_leg.{key} 必须是 100 的非负整数倍")
     if regulator.get("policy", {}).get("liquidation") != "forbidden":
         raise ValueError("v4 禁止清仓")
     if regulator.get("policy", {}).get("reduce_position") != "forbidden":
@@ -323,21 +383,67 @@ def regulator_facts(target_date: str, parameters: dict[str, dict[str, Any]], pos
         if ratio >= float(tier["u"]):
             tier_hit, multiplier = tier, float(tier["step_multiplier"])
     guard = {"weight_base": guard_spec["weight_base"], "nav_amount": round(nav, 2), "usage_ratio": round(ratio, 8), "tier_hit": tier_hit, "step_multiplier": multiplier, "stop_buy": ratio >= float(guard_spec["stop_buy_u"]), "stop_ratio": float(guard_spec["stop_buy_u"]), "resume_ready": ratio <= float(guard_spec["resume_u"]), "resume_ratio": float(guard_spec["resume_u"]), "leg_weights": {key: round(value / nav, 8) if nav else 0.0 for key, value in leg_values.items()}, "leg_max_weight": float(guard_spec["leg_max_weight"]), "leg_cap_breach": {key: (value / nav if nav else 0.0) >= float(guard_spec["leg_max_weight"]) for key, value in leg_values.items()}}
+    scaling = regulator["scaling"]
     review = human_review or {"level": "A0", "approved": []}
     level = str(review.get("level", "A0"))
     level_spec = regulator["defense_levels"].get(level, regulator["defense_levels"]["A0"])
+    reserve = regulator.get("reserve_shares", {})
+    reserve_enabled = bool(reserve.get("enabled"))
+    reserve_floors = reserve.get("per_leg", {}) if reserve_enabled else {}
     legs = {}
     for key, rows in rows_by_id.items():
         normal = regulator["normal_state"][key]
         signals = leg_signals(rows, regulator["signals"])
-        raw = float(normal["buy_step_ratio"]) * float(level_spec["step_multiplier"]) * multiplier
+        defense_step = float(level_spec["step_multiplier"])
+        defense_shares = float(level_spec["shares_multiplier"])
         cap = float(guard_spec["step_cap"][key])
-        legs[key] = {"ts_code": normal["code"], "normal": {field: normal[field] for field in ("buy_step_ratio", "sell_step_ratio", "buy_shares", "sell_shares")}, "effective": {"buy_step_ratio": round(min(raw, cap), 8), "raw_step_ratio": round(raw, 8), "step_cap": cap, "capped": raw > cap, "buy_shares": int(round(int(normal["buy_shares"]) * float(level_spec["shares_multiplier"]))), "buy_enabled": bool(normal["buy_enabled"]) and not guard["stop_buy"] and not guard["leg_cap_breach"][key], "sell_enabled": bool(normal["sell_enabled"])}, "close": closes[key], "market_value_amount": round(leg_values[key], 2), "weight": guard["leg_weights"][key], "signals": signals}
+
+        buy_cap = cap if scaling["buy_step_ratio"].get("cap") == "step_cap" else None
+        sell_cap = cap if scaling["sell_step_ratio"].get("cap") == "step_cap" else None
+        buy_step_raw = apply_factors(normal["buy_step_ratio"], scaling["buy_step_ratio"]["factors"], defense_multiplier=defense_step, capital_multiplier=multiplier)
+        buy_step = min(buy_step_raw, buy_cap) if buy_cap is not None else buy_step_raw
+        sell_step_raw = apply_factors(normal["sell_step_ratio"], scaling["sell_step_ratio"]["factors"], defense_multiplier=defense_step, capital_multiplier=multiplier)
+        sell_step = min(sell_step_raw, sell_cap) if sell_cap is not None else sell_step_raw
+
+        buy_shares_raw = apply_factors(normal["buy_shares"], scaling["buy_shares"]["factors"], defense_multiplier=defense_shares, capital_multiplier=multiplier)
+        sell_shares_raw = apply_factors(normal["sell_shares"], scaling["sell_shares"]["factors"], defense_multiplier=defense_shares, capital_multiplier=multiplier)
+        buy_shares = floor100(buy_shares_raw) if scaling["buy_shares"].get("rounding") == "floor100" else int(round(buy_shares_raw))
+        sell_shares = floor100(sell_shares_raw) if scaling["sell_shares"].get("rounding") == "floor100" else int(round(sell_shares_raw))
+
+        floor_shares = int(reserve_floors.get(key, 0) or 0)
+        held_shares = int(positions.get(key, {}).get("shares", 0) or 0)
+        reserve_hit = bool(floor_shares) and held_shares <= floor_shares
+        sell_enabled = bool(normal["sell_enabled"]) and not reserve_hit
+        legs[key] = {
+            "ts_code": normal["code"],
+            "normal": {field: normal[field] for field in ("buy_step_ratio", "sell_step_ratio", "buy_shares", "sell_shares")},
+            "effective": {
+                "buy_step_ratio": round(buy_step, 8),
+                "buy_raw_step_ratio": round(buy_step_raw, 8),
+                "raw_step_ratio": round(buy_step_raw, 8),
+                "step_cap": buy_cap,
+                "capped": buy_cap is not None and buy_step_raw > buy_cap,
+                "buy_shares": buy_shares,
+                "buy_enabled": bool(normal["buy_enabled"]) and not guard["stop_buy"] and not guard["leg_cap_breach"][key],
+                "sell_step_ratio": round(sell_step, 8),
+                "sell_raw_step_ratio": round(sell_step_raw, 8),
+                "sell_step_cap": sell_cap,
+                "capped_sell": sell_cap is not None and sell_step_raw > sell_cap,
+                "sell_shares": sell_shares,
+                "sell_enabled": sell_enabled,
+                "sell_disabled_reason": "reserve_floor" if reserve_hit else None,
+                "reserve_floor": floor_shares,
+            },
+            "close": closes[key],
+            "market_value_amount": round(leg_values[key], 2),
+            "weight": guard["leg_weights"][key],
+            "signals": signals,
+        }
     emotion = None if skip_emotion else emotion_facts(pro, api_date, regulator["signals"]["emotion"])
     score = int(emotion.get("quant_score", 0)) if emotion else 0
     states = [leg["signals"]["state"] for leg in legs.values()]
     suggested = "A3" if "strong" in states and score >= 3 else "A2" if "strong" in states or "confirmed" in states else "A1" if "weak" in states or "pending" in states else "A0"
-    result = {"nav_amount": round(nav, 2), "cash_amount": round(cash_amount, 2), "positions_source": position_source, "capital_guard": guard, "defense": {"requested_level": level, "level_spec": level_spec, "suggested_level": suggested, "suggested_reason": "强确认且情绪极弱→A3；强确认或确认→A2；弱确认/观察中→A1；否则 A0", "approval_required": True, "approval_record": "mcp_input" if human_review else "default", "approved": review.get("approved", []), "plan_after_approval": bool(regulator["approval"]["plan_after_approval"])}, "legs": legs, "boundary_note": "档位价格与锚由券商软件维护；本文件只输出参数与建议，不含档位价格。"}
+    result = {"nav_amount": round(nav, 2), "cash_amount": round(cash_amount, 2), "positions_source": position_source, "capital_guard": guard, "defense": {"requested_level": level, "level_spec": level_spec, "suggested_level": suggested, "suggested_reason": "强确认且情绪极弱→A3；强确认或确认→A2；弱确认/观察中→A1；否则 A0", "approval_required": True, "approval_record": "mcp_input" if human_review else "default", "approved": review.get("approved", []), "plan_after_approval": bool(regulator["approval"]["plan_after_approval"])}, "legs": legs, "boundary_note": "档位价格与锚由券商软件维护（锚不因参数变更而重设）；本文件只输出参数与建议，不含档位价格。买入档距受档距上限约束，卖出档距随防守倍数缩放、不随资金倍数缩放且不设上限；份数按 100 的整数倍向下取整；保底仓触达即停卖该腿（回到下限之上自动恢复）。"}
     if emotion is not None:
         result["emotion"] = emotion
     return artifact("regulator_facts", directory_date, parameters, result)
@@ -441,7 +547,7 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         elif name == "get_manifest":
             if args.get("system_id") != SYSTEM_ID:
                 raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")
-            result = {"system_id": SYSTEM_ID, "name": SYSTEM_NAME, "system_root": str(SYSTEM_ROOT), "parameter_root": str(PARAMS_ROOT), "template_root": str(TEMPLATES_ROOT), "operations": ["risk_facts", "regulator_facts", "sector_facts"], "writes_to": "knowledge/交易/过程资料/{date}/红利科创ETF双网格体系"}
+            result = {"system_id": SYSTEM_ID, "name": SYSTEM_NAME, "system_root": str(SYSTEM_ROOT), "parameter_root": str(PARAMS_ROOT), "template_root": str(TEMPLATES_ROOT), "operations": ["risk_facts", "regulator_facts", "sector_facts"], "writes_to": "knowledge/交易/过程资料/{date}/红利科创ETF双网格体系", "expansion": {"declaration": "regulator.scaling", "note": "每个量吃哪些倍数由 params/regulator.json#scaling 声明：买入档距=防守×资金且受档距上限；卖出档距=防守且无上限；买卖份数=防守份数倍数并按 100 份向下取整", "multiplier_sources": {"defense": "regulator.defense_levels[].step_multiplier / shares_multiplier", "capital": "regulator.capital_guard.tiers[].step_multiplier"}}, "reserve_shares": "regulator.reserve_shares（enabled=true 时持仓 ≤ 保底下限即停卖该腿，产物给 sell_disabled_reason=reserve_floor）", "leg_effective_fields": ["buy_step_ratio", "buy_raw_step_ratio", "step_cap", "capped", "buy_shares", "buy_enabled", "sell_step_ratio", "sell_raw_step_ratio", "sell_shares", "sell_enabled", "sell_disabled_reason", "reserve_floor"]}
         elif name == "validate_parameters":
             if args.get("system_id") != SYSTEM_ID:
                 raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")

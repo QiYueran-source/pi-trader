@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "version": "v4",
   "effective_from": "2026-10-16",
   "mode": "savings_grid_manual_approval",
@@ -35,6 +35,13 @@
     "anchor_reset": "weekly_when_flat",
     "anchor_reset_note": "无持仓时每周重设基准价；参数（档距/份数）变更不需要重设基准价",
     "plan_output": "参数版（档距/份数/买卖开关/防守档/硬闸提示），不输出逐档价格"
+  },
+  "scaling": {
+    "note": "每个量吃哪些倍数：defense=防守倍数（defense_levels）、capital=资金倍数（capital_guard.tiers）；倍数数值不在此处重复",
+    "buy_step_ratio": {"factors": ["defense", "capital"], "cap": "step_cap"},
+    "sell_step_ratio": {"factors": ["defense"], "cap": null},
+    "buy_shares": {"factors": ["defense"], "rounding": "floor100"},
+    "sell_shares": {"factors": ["defense"], "rounding": "floor100"}
   },
   "capital_guard": {
     "weight_base": "system_nav",
@@ -153,9 +160,13 @@
     "record_location": "交易/过程资料/{date}/红利科创ETF双网格体系/human_review.json"
   },
   "reserve_shares": {
-    "enabled": false,
-    "ratio": 0.3333,
-    "note": "券商软件支持下限数量，当前不启用；如需保底仓改为 true 并设 ratio"
+    "enabled": true,
+    "mode": "shares",
+    "per_leg": {
+      "dividend": 1000,
+      "growth": 1000
+    },
+    "note": "保底仓：持仓触达下限即停卖该腿（产物给 sell_disabled_reason=reserve_floor），回到下限之上自动恢复；券商端同步设最低保留数量，机械层只出开关与原因"
   },
   "policy": {
     "liquidation": "forbidden",
