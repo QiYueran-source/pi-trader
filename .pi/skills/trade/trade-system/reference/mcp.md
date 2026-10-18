@@ -52,6 +52,8 @@
 - `render` 的 `document` 可省略：省略时按 `date` + `artifact` 读同日过程资料；需要附加输入（如关联状态）时按体系契约传入。渲染出的来源行使用逻辑路径。
 - 操作名与入参以实现注册的工具与工具 schema 为准（`get_manifest` 的 `operations` 由实现给出）；同一操作可以落盘多份产物（实现需在返回中给出各自路径）。
 
+交易日判断：每个体系服务自带 `is_trading_day`（数据源 tushare.trade_cal/SSE，各服务各自实现、不共用）。体系任务用本体系工具；全局任务不绑定单一体系，用 `tushare-data.get_trade_calendar`。
+
 ## 产物与落盘
 
 - 过程资料写入 `knowledge/交易/过程资料/<YYYY-MM-DD>/<体系名称>/`，文件名以 `params/runtime.json`（跑批体系）或实现约定的产物契约为准。

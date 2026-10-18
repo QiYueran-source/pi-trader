@@ -8,7 +8,7 @@
 
 ## 运行契约
 
-- 交易日判断用 `tushare-data`；非交易日发送一行状态（`【1835 轮动复盘】非交易日 ｜ 跳过`）后结束。
+- 交易日判断用体系 MCP `agent-etf-rotation-system` 的 `is_trading_day`（本服务自带，不依赖其它 MCP）；非交易日发送一行状态（`【1835 轮动复盘】非交易日 ｜ 跳过`）后结束。
 - 市场数据用 `tushare-data`；账户、成交、持仓与现金用 `trade-management`。
 - 复盘由体系 MCP `agent-etf-rotation-system` 的 `render(artifact="review", date, document=...)` 渲染并落盘 `交易/交易复盘/{今天日期}/基于Agent的ETF轮动体系_复盘.md`（落 `knowledge/`）；`document` 字段结构见 `MCP介绍.md`。
 - 简报写入 `摘要/.abstract/{今天日期}_agent-etf-rotation-review.txt`（落 `knowledge/`）。
