@@ -18,7 +18,8 @@ system-id: zslof_timing_trade
 
 ```text
 .pi/mcp-servers/trade-system/zslof_timing_trade/
-├── mcp_server.py       # 服务入口与实现（状态推进、信号判定、重放校验、渲染）
+├── mcp_server.py       # 服务入口（只做工具注册与路由）
+├── functions/          # 实现模块（paths / parameters / market / state / signals / artifacts）
 ├── system.yml          # 运行契约：身份、账户、操作、参数与模板位置、产物契约、状态规则、边界
 ├── params/             # 参数唯一来源（instrument / timing / runtime）
 └── templates/          # 模板唯一来源（signal_report.md.j2）
