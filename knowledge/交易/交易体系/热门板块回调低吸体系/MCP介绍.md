@@ -17,9 +17,10 @@ system-id: hot_sector_pullback_system
 
 ```text
 .pi/mcp-servers/trade-system/hot_sector_pullback_system/
-├── mcp_server.py       # 服务入口与实现（四段事实、板块环境、渲染）
+├── mcp_server.py       # 服务入口（只做工具注册与路由）
+├── functions/          # 实现模块（paths / parameters / market / limitup / selection / sector_heat / signals / artifacts）
 ├── params/             # 参数唯一来源（selection / sector_heat / entry / risk / runtime）
-└── templates/          # 模板唯一来源（渲染用 4 个 `.j2` + 复盘／过程文档模板）
+└── templates/          # 模板唯一来源（渲染用 4 个 `.j2` + 复盘结构参考 `review-template.md`）
 ```
 
 调用口径（命名规则、入参约定、自检与迁入步骤）见 `trade-system` 技能的 `reference/mcp.md`。
@@ -88,7 +89,7 @@ system-id: hot_sector_pullback_system
 
 - 调用失败返回 `{"ok": false, "error": "..."}`，不产生产物；体系不符、非法操作与缺失必填参数在入口层被拦截。
 - 上游产物缺失时报错（如 `sector_heat`、`entry_signal` 缺当日候选产物），不自动补跑、不用历史产物替代。
-- 开盘段分钟线按 `params/risk.json` 的 `fallback_sources`（默认 `["official","promax"]`）顺序降级；全失败标 `unavailable`，仍产出 `risk_signal.json`、`state.json`、`prudent_tags.json`，且不刷新审慎标签。
+- 开盘段分钟线只取官方 `client.stk_mins`（`params/risk.json#opening_signal` 无备源配置；原 promax 兜底已于 2026-10-18 删除）；失败标 `unavailable`，仍产出 `risk_signal.json`、`state.json`、`prudent_tags.json`，且不刷新审慎标签。
 - 服务不可用时如实报告，不改为执行仓库内的历史脚本。
 
 ## 依赖
@@ -102,4 +103,4 @@ system-id: hot_sector_pullback_system
 
 - 七个知识库脚本已由本服务实现取代，不再作为运行入口（历史版本见 git）：`select_candidates.py`、`sector_heat.py`、`entry_signal.py`、`risk_signal.py`、`render.py`、`runtime_support.py`、`prepare_shared_sector_context.py`。
 - `shared_sector_context.json` 停用：跨体系读取（双网格 `sector_facts`）取消，全市场板块环境由本体系 `sector_heat` 自算为 `sector_environment.json`；历史产物保留为证据。
-- 知识库内的 `params/`、`scripts/`、`templates/` 与运行契约文件已删除，能力由运行定义目录承载（历史版本见 git）；跳日期证据与案例移到 `笔记/实证分析/`，复盘与过程文档模板随运行定义 `templates/` 一并提供。
+- 知识库内的 `params/`、`scripts/`、`templates/` 与运行契约文件已删除，能力由运行定义目录承载（历史版本见 git）；跨日期证据与案例移到 `笔记/实证分析/`；复盘结构参考在运行定义 `templates/review-template.md`，过程资料落盘的设计模式与实践参考移到 `笔记/体系搭建/`。

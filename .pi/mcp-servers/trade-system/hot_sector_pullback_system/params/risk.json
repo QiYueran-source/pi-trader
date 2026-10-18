@@ -1,15 +1,12 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "opening_signal": {
     "bar_frequency": "5min",
     "start_time": "09:30",
     "end_time": "10:00",
     "reference_price": "session_open",
     "rapid_drop_pct": 0.03,
-    "fallback_sources": [
-      "official",
-      "promax"
-    ]
+    "note": "开盘段只取 official（client.stk_mins）；原 promax 兜底依赖的 tushare-proxy 技能目录不存在，2026-10-18 随口径收口删除。"
   },
   "prudent_tag": {
     "state_file": "prudent_tags.json",

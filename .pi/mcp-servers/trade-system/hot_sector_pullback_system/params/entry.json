@@ -1,6 +1,11 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "volume_multiplier": 1.2,
   "volume_average_period": 20,
-  "breakout_ma_period": 5
+  "breakout_ma_period": 5,
+  "benchmark_tiers": {
+    "stabilize_above_pct": 0,
+    "extreme_weak_at_or_below_pct": -2,
+    "note": "大盘三档边界，单位为百分比数值（-2 表示 −2%）；标的见实现常量 BENCHMARK_INDEX（399006.SZ）。2026-10-18 由实现硬编码改为参数（schema_version 1→2）。"
+  }
 }
