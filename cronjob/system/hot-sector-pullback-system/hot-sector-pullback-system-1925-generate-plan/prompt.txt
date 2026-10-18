@@ -8,10 +8,10 @@
 
 ## 运行契约
 
-- 交易日判断用 `tushare-data.get_trade_calendar`；非交易日发送一行状态（`【1925 回调低吸计划】非交易日 ｜ 跳过`）后结束。
+- 交易日判断用体系 MCP `hot-sector-pullback-system` 的 `is_trading_day`（本服务自带，不依赖其它 MCP）；非交易日发送一行状态（`【1925 回调低吸计划】非交易日 ｜ 跳过`）后结束。
 - 四段事实与渲染只用体系 MCP `hot-sector-pullback-system`：`validate_parameters` → `calculate`（`select_candidates`／`sector_heat`／`entry_signal`／`risk_signal`）→ `render`；不执行历史脚本。
 - 持仓与现金只用 `trade-management.portfolio_snapshot`（MNZH）；行情与交易日只用 `tushare-data`。
-- 运行契约以运行定义 `.pi/mcp-servers/trade-system/hot_sector_pullback_system/system.yml` 为准；过程资料写入 `交易/过程资料/{今天日期}/热门板块回调低吸体系/`，计划写入 `交易/交易计划/{下一交易日}/热门板块回调低吸体系_交易计划.md`（落 `knowledge/`）。
+- 运行契约以体系 MCP `hot-sector-pullback-system` 的 `get_manifest` 返回与运行定义 `params/runtime.json` 为准；过程资料写入 `交易/过程资料/{今天日期}/热门板块回调低吸体系/`，计划写入 `交易/交易计划/{下一交易日}/热门板块回调低吸体系_交易计划.md`（落 `knowledge/`）。
 - 简报写入 `摘要/.abstract/{今天日期}_hot-sector-pullback-generate-plan.txt`（落 `knowledge/`）。
 
 ## 边界
