@@ -8,7 +8,7 @@
 
 ## 运行契约
 
-- 交易日判断与行情用 `tushare-data`；非交易日发送一行状态（`【1935 双债LOF】非交易日 ｜ 跳过`）后结束。
+- 交易日判断用体系 MCP `zslof-timing-trade` 的 `is_trading_day`（本服务自带，不依赖其它 MCP）；行情用 `tushare-data`。非交易日发送一行状态（`【1935 双债LOF】非交易日 ｜ 跳过`）后结束。
 - 体系计算用体系 MCP `zslof-timing-trade`：`calculate(operation="signal")` 推进状态并落盘过程资料，`render(artifact="signal_report")` 渲染报告；需要复核时用 `replay_check`。不得直接运行体系脚本。
 - 简报写入 `摘要/.abstract/{今天日期}_zslof-timing-trade-1935-signal.txt`（落 `knowledge/`）。
 
