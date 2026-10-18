@@ -48,8 +48,8 @@ HIT_LIMIT_EPSILON = 0.01
 TUSHARE_PROXY_SCRIPTS = Path(
     os.environ.get("TUSHARE_PROXY_SCRIPTS", str(REPO_ROOT / ".pi/skills/source/tushare/tushare-proxy/scripts"))
 )
-if not (SYSTEM_ROOT / "system.yml").is_file():
-    raise RuntimeError(f"体系运行定义缺失：{SYSTEM_ROOT / 'system.yml'}")
+if not PARAMS_ROOT.is_dir():
+    raise RuntimeError(f"体系参数目录缺失：{PARAMS_ROOT}")
 
 
 def load_env() -> None:

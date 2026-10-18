@@ -11,13 +11,13 @@ description: 管理交易体系的运行、交易计划、复盘和过程资料�
 
 | 资产 | 位置 | 内容 |
 |:--|:--|:--|
-| 运行定义与 MCP 服务 | `.pi/mcp-servers/trade-system/<system-id>/` | 实现、`system.yml`、`params/`、`templates/`；一个体系一个服务，见 `reference/mcp.md` |
+| 运行定义与 MCP 服务 | `.pi/mcp-servers/trade-system/<system-id>/` | 实现（入口 + `functions/`）、`params/`、`templates/`；目录名即 `system-id`，一个体系一个服务，见 `reference/mcp.md` |
 | 知识库体系文档 | `knowledge/交易/交易体系/<体系名称>/` | 体系介绍、MCP 介绍、运作流程、规则说明与更新日志；不放参数、模板与脚本，也不放跨日期证据（证据、案例与设计记录写入 `knowledge/笔记/<题材>/`，引用用逻辑路径） |
 | 体系定时任务 | `cronjob/system/<system-id 连字符形式>/` | 见 `reference/cronjob.md` |
 
 ## 使用流程
 
-1. 确认目标体系与 `system-id`（取自运行定义 `system.yml`）。
+1. 确认目标体系与 `system-id`（取运行定义目录名；知识库侧见 `体系介绍.md` 的 Frontmatter）。
 2. 通过该体系 MCP 读运行契约：`list_systems`、`get_manifest` 取体系身份、成熟度、支持的操作、参数与模板位置、产物落盘位置。
 3. 读体系文档：`体系介绍.md` 与 `体系运作流程.md`；规则细节读对应专题文档，执行细节以 SOP 章节为准。
 4. 确认运行日期、交易日状态、成熟度、账户范围，以及上游过程资料与前置任务是否齐备。
@@ -42,7 +42,7 @@ description: 管理交易体系的运行、交易计划、复盘和过程资料�
 
 - 遵循 `knowledge-management` 技能的路径、Frontmatter 和写作规范。
 - 体系运行口径以该体系 `体系运作流程.md` 为唯一事实源；任务 `prompt.txt` 只写运行契约并指向 SOP 的具体章节。
-- 使用运行定义 `system.yml` 中的 `system-id`，不自行创建或改写体系标识。
+- 使用运行定义目录名作为 `system-id`，不自行创建或改写体系标识。
 
 ## 参考资料
 

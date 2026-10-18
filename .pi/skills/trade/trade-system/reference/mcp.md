@@ -12,12 +12,11 @@
 .pi/mcp-servers/trade-system/<system-id>/
 ├── mcp_server.py      # 服务入口；只做工具注册与路由
 ├── functions/         # 实现模块（按职责拆分，视规模取用）
-├── system.yml         # 运行契约：system-id、成熟度、账户、支持的操作、参数与模板位置、产物契约、边界
 ├── params/            # 参数唯一来源（每个文件带 schema_version）
 └── templates/         # 过程资料模板唯一来源
 ```
 
-体系一般都有参数、模板与实现逻辑，按上述结构摆放：`params/`、`templates/`、`system.yml` 是运行定义的常规组成；`functions/` 视规模取用，简单体系让 `mcp_server.py` 单文件承载实现即可。**此结构为参考，不强制。**
+体系一般都有参数、模板与实现逻辑，按上述结构摆放：`params/`、`templates/` 是运行定义的常规组成；`functions/` 视规模取用，简单体系让 `mcp_server.py` 单文件承载实现即可。**此结构为参考，不强制。** 目录名即 `system-id`；体系的身份（名称、成熟度、账户）写在知识库 `体系介绍.md`，不另设运行契约文件。
 
 `.pi/mcp-servers/trade-system/` 只是容器目录，不放实现。
 
@@ -51,11 +50,11 @@
 - `positions` 必须包含真实持仓与现金（`cash` 必填），由 `trade-management` MCP 生成，不用估算值。
 - 每次调用重新读取并校验 `params/`；参数改动后无需重启服务。
 - `render` 的 `document` 可省略：省略时按 `date` + `artifact` 读同日过程资料；需要附加输入（如关联状态）时按体系契约传入。渲染出的来源行使用逻辑路径。
-- 操作名与入参以体系 `system.yml` 的 `operations` 与工具 schema 为准；同一操作可以落盘多份产物（实现需在返回中给出各自路径）。
+- 操作名与入参以实现注册的工具与工具 schema 为准（`get_manifest` 的 `operations` 由实现给出）；同一操作可以落盘多份产物（实现需在返回中给出各自路径）。
 
 ## 产物与落盘
 
-- 过程资料写入 `knowledge/交易/过程资料/<YYYY-MM-DD>/<体系名称>/`，文件名以运行定义 `system.yml` 的 `process_output` 为准。
+- 过程资料写入 `knowledge/交易/过程资料/<YYYY-MM-DD>/<体系名称>/`，文件名以 `params/runtime.json`（跑批体系）或实现约定的产物契约为准。
 - 过程资料不是交易指令；实际成交、持仓与账户变化由 `trade-management` 负责。
 - 渲染出的文档正文引用其它动态知识时使用逻辑路径，不带 `knowledge/` 或 `archive/` 前缀。
 
@@ -70,7 +69,7 @@
 
 新增或修改运行定义后，重载 MCP 客户端并确认：
 
-1. 工具发现正常，命名空间为 `mcp__<注册键下划线形式>__*`，工具数量与 `system.yml` 的操作一致。
+1. 工具发现正常，命名空间为 `mcp__<注册键下划线形式>__*`，工具数量与 `list_systems`／`get_manifest` 的返回一致。
 2. `get_manifest` 返回的运行定义、参数与模板路径存在。
 3. `validate_parameters` 通过；改参数后哈希发生变化。
 4. 参数或模板迁移、实现改动后，用同一输入复算一次，比对事实值不发生变化。
@@ -79,7 +78,7 @@
 ## 新增体系
 
 1. 复制一份运行定义目录，目录名取新的 `system-id`。
-2. 写 `mcp_server.py`、`params/`、`templates/` 与 `system.yml`。
+2. 写 `mcp_server.py`（以及 `functions/`，视规模）、`params/`、`templates/`，并在知识库补 `体系介绍.md`。
 3. 在 `.pi/mcp.json` 增加一条服务（键 = `system-id` 连字符形式）。
 4. 重载后按「自检」核对。
 
@@ -87,12 +86,12 @@
 
 ## 存量体系迁入
 
-知识库内仍保留 `params/`、`scripts/`、`templates/` 或 `system.yml` 的体系，按以下顺序收口到运行定义：
+知识库内仍保留 `params/`、`scripts/` 或 `templates/` 的体系，按以下顺序收口到运行定义：
 
 1. 建运行定义目录 `.pi/mcp-servers/trade-system/<system-id>/`，把实现、参数与模板放进去；参数选取当前生效的那一份，带上 `schema_version`。
 2. 在 `.pi/mcp.json` 注册服务，重载后按「自检」核对。
 3. 用同一输入比对：新服务的事实值与迁移前的脚本产物逐字段一致（元数据、文案差异单独确认）。
-4. 删除知识库内的 `params/`、`scripts/`、`templates/`、`system.yml`；脚本能力已由实现覆盖，历史版本留 git。
+4. 删除知识库内的 `params/`、`scripts/`、`templates/`；脚本能力已由实现覆盖，历史版本留 git。
 5. 同步知识库文档：体系介绍的文件索引、运作流程的步骤表与变更链、参数说明、规则文档及接口速查。
 6. 同步任务：prompt 里的事实来源改为本体系的服务名，写运行契约并指向 SOP 章节；按 `agent-dev/cronjob-management` 重注册并自检。
 7. 写一篇 `更新日志/<YYYY-MM-DD>_<主题>.md`，记动因、变更、验证与遗留。

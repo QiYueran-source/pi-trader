@@ -4,7 +4,7 @@
 
 | 资产 | 位置 | 内容 |
 |:--|:--|:--|
-| 运行定义与 MCP 服务 | `.pi/mcp-servers/trade-system/<system-id>/` | `mcp_server.py`、`system.yml`、`params/`、`templates/` |
+| 运行定义与 MCP 服务 | `.pi/mcp-servers/trade-system/<system-id>/` | `mcp_server.py`（入口，及 `functions/` 实现模块）、`params/`、`templates/` |
 | 知识库体系文档 | `knowledge/交易/交易体系/<体系名称>/` | 体系介绍、MCP 介绍、运作流程、规则与专题、`更新日志/` |
 | 体系定时任务 | `cronjob/system/<system-id 连字符形式>/` | 任务声明与 prompt |
 
@@ -29,7 +29,7 @@
 
 ## 体系标识与成熟度
 
-- `system-id` 取自运行定义的 `system.yml`，并在文档、任务与产物中保持一致；不自行创建或改写。
+- `system-id` 即运行定义目录名，并在文档、任务与产物中保持一致；不自行创建或改写。
 - 体系成熟度通常包括 `观察体系`、`候选体系` 和 `执行体系`。
 - 观察体系以验证为主；是否允许实际交易以体系自身规则和用户明确要求为准。
 - 体系规则、参数、实现或稳定产物发生变化时，更新对应体系文档和更新日志。
@@ -41,7 +41,7 @@
 1. 改运行定义目录内的文件。
 2. 用 MCP `validate_parameters` 校验参数；改实现或模板时用同一输入复算一次并比对事实值。
 3. 写 `更新日志/<YYYY-MM-DD>_<主题>.md`，记动因、变更、验证与遗留。
-4. 同步受影响文档与任务：规则、SOP、`system.yml` 契约、任务 prompt 与运行时注册。
+4. 同步受影响文档与任务：规则、SOP、任务 prompt 与运行时注册。
 5. 重载 MCP 客户端并自检（见 [mcp.md](mcp.md)）。
 
 ## 交易计划与复盘

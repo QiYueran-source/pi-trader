@@ -23,8 +23,8 @@ SYSTEM_NAME = "招商双债LOF择时体系"
 SYSTEM_VERSION = "v1"
 PARAMETER_FILES = ("instrument", "runtime", "timing")
 CONTENT_ROOT_NAMES = ("knowledge", "archive")
-if not (SYSTEM_ROOT / "system.yml").is_file():
-    raise RuntimeError(f"体系运行定义缺失：{SYSTEM_ROOT / 'system.yml'}")
+if not PARAMS_ROOT.is_dir():
+    raise RuntimeError(f"体系参数目录缺失：{PARAMS_ROOT}")
 
 def load_env() -> None:
     env_file = REPO_ROOT / ".pi/mcp-servers/tushare/.env"

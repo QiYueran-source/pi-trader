@@ -26,7 +26,6 @@ system-id: div_etf_grid_trade
 │   ├── signals.py      # rolling_sigma、leg_signals、emotion_facts
 │   ├── facts.py        # risk_facts、regulator_facts、sector_facts
 │   └── artifacts.py    # 产物落盘与 Markdown 渲染
-├── system.yml          # 运行契约：身份、账户、操作、参数与模板位置、产物契约、边界
 ├── params/             # 参数唯一来源
 └── templates/          # 模板唯一来源
 ```
@@ -69,7 +68,7 @@ system-id: div_etf_grid_trade
 
 `regulator_facts.json` 的 `legs.<腿>.effective` 字段：`buy_step_ratio`、`buy_raw_step_ratio`、`step_cap`、`capped`、`buy_shares`、`buy_enabled`、`sell_step_ratio`、`sell_raw_step_ratio`、`sell_shares`、`sell_enabled`、`sell_disabled_reason`、`reserve_floor`（后两项用于保底仓停卖）。每个量吃哪些倍数由 `params/regulator.json#scaling` 声明：买入档距＝防守×资金且受买入上限；卖出档距＝防守且无上限；买卖份数＝防守份数倍数并按 100 份向下取整。
 
-契约细节以运行定义 `system.yml` 的 `process_output` 为准；历史 `output/` 目录（v3 之前的产物布局）只作迁移前证据保留，体系 MCP 不读取也不写入。
+契约细节以 `get_manifest` 的返回与运行定义 `params/runtime.json` 为准；历史 `output/` 目录（v3 之前的产物布局）只作迁移前证据保留，体系 MCP 不读取也不写入。
 
 ## 输入结构
 

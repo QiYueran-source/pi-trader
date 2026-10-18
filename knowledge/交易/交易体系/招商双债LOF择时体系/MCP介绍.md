@@ -20,7 +20,6 @@ system-id: zslof_timing_trade
 .pi/mcp-servers/trade-system/zslof_timing_trade/
 ├── mcp_server.py       # 服务入口（只做工具注册与路由）
 ├── functions/          # 实现模块（paths / parameters / market / state / signals / artifacts）
-├── system.yml          # 体系声明：身份、成熟度、账户、服务、操作、边界，并指向规则与参数（不复制参数取值）
 ├── params/             # 参数唯一来源（instrument / timing / runtime）
 └── templates/          # 模板唯一来源（signal_report.md.j2）
 ```
@@ -66,7 +65,7 @@ system-id: zslof_timing_trade
 - `signal_facts.json`：当日收盘信号与次日动作，含 `market`、`checks`（结构化判据）、`note`（判据摘要）、`state_anchors`、`parameters`；
 - `signal_report.md`：由运行定义模板渲染的可读报告。
 
-契约细节（文件名与状态文件）以运行定义 `params/runtime.json` 为准；落盘位置见 `system.yml#process_output.root`。交易计划由任务按 `交易/交易体系/招商双债LOF择时体系/体系运作流程.md` 第 2.4 节写入 `交易/交易计划/`（落 `knowledge/`），MCP 不写计划。
+契约细节（文件名与状态文件）以运行定义 `params/runtime.json` 为准；落盘位置见 `params/runtime.json#process_root` 与体系名称。交易计划由任务按 `交易/交易体系/招商双债LOF择时体系/体系运作流程.md` 第 2.4 节写入 `交易/交易计划/`（落 `knowledge/`），MCP 不写计划。
 
 ## 重放校验（replay_check）
 

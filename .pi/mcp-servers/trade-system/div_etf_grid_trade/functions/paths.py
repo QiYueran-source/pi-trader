@@ -21,8 +21,8 @@ TEMPLATES_ROOT = SYSTEM_ROOT / "templates"
 SYSTEM_ID = SYSTEM_ROOT.name
 SYSTEM_NAME = "红利科创ETF双网格体系"
 PARAMETER_FILES = ("grid", "instruments", "regulator", "risk", "runtime", "sector_classification")
-if not (SYSTEM_ROOT / "system.yml").is_file():
-    raise RuntimeError(f"体系运行定义缺失：{SYSTEM_ROOT / 'system.yml'}")
+if not PARAMS_ROOT.is_dir():
+    raise RuntimeError(f"体系参数目录缺失：{PARAMS_ROOT}")
 
 
 def load_env() -> None:

@@ -22,11 +22,11 @@
       "enabled": true,
       "type": "cron",
       "createdAt": "2026-10-11T23:59:43.484Z",
-      "runCount": 5,
+      "runCount": 6,
       "description": "每天 9:15 使用 MCP 判断交易日、扫描当日交易计划并推送执行简报",
       "lastStatus": "success",
-      "lastRun": "2026-10-17T01:15:00.022Z",
-      "nextRun": "2026-10-18T01:15:00.000Z"
+      "lastRun": "2026-10-18T01:15:00.009Z",
+      "nextRun": "2026-10-19T01:15:00.000Z"
     },
     {
       "id": "TqQr_TE9Ni",
