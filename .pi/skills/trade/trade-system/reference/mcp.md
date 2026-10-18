@@ -4,15 +4,20 @@
 
 交易体系的计算、参数读取与校验、模板渲染统一由 MCP 完成。**一个交易体系一个 MCP 服务**，服务入口、参数与模板都在该体系的运行定义目录内；Agent 不直接执行体系脚本，也不从知识库读取运行参数或模板。
 
+通用 MCP 规范（`.pi/mcp.json` 配置、连接与工具发现、服务实现结构）由 `agent-dev/mcp-management` 技能负责，本文件只写体系侧的命名映射、入参与产物口径。
+
 ## 运行定义目录
 
 ```text
 .pi/mcp-servers/trade-system/<system-id>/
-├── mcp_server.py      # 服务入口与实现（自包含）
+├── mcp_server.py      # 服务入口；只做工具注册与路由
+├── functions/         # 实现模块（按职责拆分，视规模取用）
 ├── system.yml         # 运行契约：system-id、成熟度、账户、支持的操作、参数与模板位置、产物契约、边界
 ├── params/            # 参数唯一来源（每个文件带 schema_version）
 └── templates/         # 过程资料模板唯一来源
 ```
+
+体系一般都有参数、模板与实现逻辑，按上述结构摆放：`params/`、`templates/`、`system.yml` 是运行定义的常规组成；`functions/` 视规模取用，简单体系让 `mcp_server.py` 单文件承载实现即可。**此结构为参考，不强制。**
 
 `.pi/mcp-servers/trade-system/` 只是容器目录，不放实现。
 
