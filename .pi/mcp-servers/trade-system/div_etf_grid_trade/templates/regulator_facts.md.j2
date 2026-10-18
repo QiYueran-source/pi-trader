@@ -15,16 +15,17 @@
 
 ## 双腿参数与信号
 
-| 腿 | 收盘 | 权重 | 实际买入档距 | 买入份数 | 买/卖 | 信号 |
-|:--|--:|--:|--:|--:|:--:|:--|
+| 腿 | 防守档 | 收盘 | 权重 | 实际买入档距 | 实际卖出档距 | 买入份数 | 卖出份数 | 买/卖 | 信号 |
+|:--|:--|--:|--:|--:|--:|--:|--:|:--:|:--|
 {% for key, leg in data.legs.items() -%}
-| {{ key }}（{{ leg.ts_code }}） | {{ leg.close }} | {{ '%.2f%%' % (leg.weight * 100) }} | {{ '%.2f%%' % (leg.effective.buy_step_ratio * 100) }}{{ '（已触上限）' if leg.effective.capped else '' }} | {{ leg.effective.buy_shares }} | {{ '开' if leg.effective.buy_enabled else '停' }} / {{ '开' if leg.effective.sell_enabled else '关' }} | {{ leg.signals.state }} |
+| {{ key }}（{{ leg.ts_code }}） | {{ leg.defense_level }} | {{ leg.close }} | {{ '%.2f%%' % (leg.weight * 100) }} | {{ '%.2f%%' % (leg.effective.buy_step_ratio * 100) }}{{ '（已触上限）' if leg.effective.capped else '' }} | {{ '%.2f%%' % (leg.effective.sell_step_ratio * 100) }} | {{ leg.effective.buy_shares }} | {{ leg.effective.sell_shares }}{{ '（停卖：保底仓）' if leg.effective.sell_disabled_reason == 'reserve_floor' else '' }} | {{ '开' if leg.effective.buy_enabled else '停' }} / {{ '开' if leg.effective.sell_enabled else '关' }} | {{ leg.signals.state }} |
 {% endfor %}
 
 ## 防守档
 
-- 当前档：**{{ data.defense.requested_level }}**（档距 ×{{ data.defense.level_spec.step_multiplier }}、份数 ×{{ data.defense.level_spec.shares_multiplier }}）
-- 建议档：**{{ data.defense.suggested_level }}**（{{ data.defense.suggested_reason }}）
+- 体系档：**{{ data.defense.requested_level }}**（档距 ×{{ data.defense.level_spec.step_multiplier }}、份数 ×{{ data.defense.level_spec.shares_multiplier }}）{% if data.defense.requested_per_leg %}；按腿覆盖：{% for key, level in data.defense.requested_per_leg.items() %}{{ key }} {{ level }}{{ '、' if not loop.last }}{% endfor %}{% else %}；无按腿覆盖（两腿同体系档）{% endif %}
+- 生效档：{% for key, level in data.defense.effective_levels.items() %}{{ key }} **{{ level }}**（档距 ×{{ data.legs[key].defense_spec.step_multiplier }}、份数 ×{{ data.legs[key].defense_spec.shares_multiplier }}）{{ '、' if not loop.last }}{% endfor %}
+- 建议档：体系 **{{ data.defense.suggested_level }}**；分腿 {% for key, level in data.defense.suggested_per_leg.items() %}{{ key }} {{ level }}{{ '、' if not loop.last }}{% endfor %}（{{ data.defense.suggested_reason }}）
 - 审批：{{ '需要人工审批，未审批不切换' if data.defense.approval_required else '不需要' }}；留痕 = {{ data.defense.approval_record }}
 
 {% if data.emotion is defined %}

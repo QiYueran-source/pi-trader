@@ -385,8 +385,19 @@ def regulator_facts(target_date: str, parameters: dict[str, dict[str, Any]], pos
     guard = {"weight_base": guard_spec["weight_base"], "nav_amount": round(nav, 2), "usage_ratio": round(ratio, 8), "tier_hit": tier_hit, "step_multiplier": multiplier, "stop_buy": ratio >= float(guard_spec["stop_buy_u"]), "stop_ratio": float(guard_spec["stop_buy_u"]), "resume_ready": ratio <= float(guard_spec["resume_u"]), "resume_ratio": float(guard_spec["resume_u"]), "leg_weights": {key: round(value / nav, 8) if nav else 0.0 for key, value in leg_values.items()}, "leg_max_weight": float(guard_spec["leg_max_weight"]), "leg_cap_breach": {key: (value / nav if nav else 0.0) >= float(guard_spec["leg_max_weight"]) for key, value in leg_values.items()}}
     scaling = regulator["scaling"]
     review = human_review or {"level": "A0", "approved": []}
+    level_table = {name: spec for name, spec in regulator["defense_levels"].items() if isinstance(spec, dict)}
     level = str(review.get("level", "A0"))
-    level_spec = regulator["defense_levels"].get(level, regulator["defense_levels"]["A0"])
+    per_leg_review = review.get("per_leg") or {}
+    if not isinstance(per_leg_review, dict):
+        raise ValueError("human_review.per_leg 必须是对象（腿名 → 防守档）")
+    unknown = sorted(set(per_leg_review) - set(ids))
+    if unknown:
+        raise ValueError(f"human_review.per_leg 只支持 {', '.join(sorted(ids))}，收到：{', '.join(unknown)}")
+    for name in [level, *(str(value) for value in per_leg_review.values())]:
+        if name not in level_table:
+            raise ValueError(f"防守档不存在：{name}（可选：{', '.join(sorted(level_table))}）")
+    leg_levels = {key: str(per_leg_review.get(key, level)) for key in ids}
+    level_spec = level_table[level]
     reserve = regulator.get("reserve_shares", {})
     reserve_enabled = bool(reserve.get("enabled"))
     reserve_floors = reserve.get("per_leg", {}) if reserve_enabled else {}
@@ -394,8 +405,8 @@ def regulator_facts(target_date: str, parameters: dict[str, dict[str, Any]], pos
     for key, rows in rows_by_id.items():
         normal = regulator["normal_state"][key]
         signals = leg_signals(rows, regulator["signals"])
-        defense_step = float(level_spec["step_multiplier"])
-        defense_shares = float(level_spec["shares_multiplier"])
+        defense_step = float(level_table[leg_levels[key]]["step_multiplier"])
+        defense_shares = float(level_table[leg_levels[key]]["shares_multiplier"])
         cap = float(guard_spec["step_cap"][key])
 
         buy_cap = cap if scaling["buy_step_ratio"].get("cap") == "step_cap" else None
@@ -434,6 +445,8 @@ def regulator_facts(target_date: str, parameters: dict[str, dict[str, Any]], pos
                 "sell_disabled_reason": "reserve_floor" if reserve_hit else None,
                 "reserve_floor": floor_shares,
             },
+            "defense_level": leg_levels[key],
+            "defense_spec": level_table[leg_levels[key]],
             "close": closes[key],
             "market_value_amount": round(leg_values[key], 2),
             "weight": guard["leg_weights"][key],
@@ -441,9 +454,13 @@ def regulator_facts(target_date: str, parameters: dict[str, dict[str, Any]], pos
         }
     emotion = None if skip_emotion else emotion_facts(pro, api_date, regulator["signals"]["emotion"])
     score = int(emotion.get("quant_score", 0)) if emotion else 0
+    def suggest_level(state: str) -> str:
+        return "A3" if state == "strong" and score >= 3 else "A2" if state in {"strong", "confirmed"} else "A1" if state in {"weak", "pending"} else "A0"
+
     states = [leg["signals"]["state"] for leg in legs.values()]
     suggested = "A3" if "strong" in states and score >= 3 else "A2" if "strong" in states or "confirmed" in states else "A1" if "weak" in states or "pending" in states else "A0"
-    result = {"nav_amount": round(nav, 2), "cash_amount": round(cash_amount, 2), "positions_source": position_source, "capital_guard": guard, "defense": {"requested_level": level, "level_spec": level_spec, "suggested_level": suggested, "suggested_reason": "强确认且情绪极弱→A3；强确认或确认→A2；弱确认/观察中→A1；否则 A0", "approval_required": True, "approval_record": "mcp_input" if human_review else "default", "approved": review.get("approved", []), "plan_after_approval": bool(regulator["approval"]["plan_after_approval"])}, "legs": legs, "boundary_note": "档位价格与锚由券商软件维护（锚不因参数变更而重设）；本文件只输出参数与建议，不含档位价格。买入档距受档距上限约束，卖出档距随防守倍数缩放、不随资金倍数缩放且不设上限；份数按 100 的整数倍向下取整；保底仓触达即停卖该腿（回到下限之上自动恢复）。"}
+    suggested_per_leg = {key: suggest_level(leg["signals"]["state"]) for key, leg in legs.items()}
+    result = {"nav_amount": round(nav, 2), "cash_amount": round(cash_amount, 2), "positions_source": position_source, "capital_guard": guard, "defense": {"requested_level": level, "requested_per_leg": per_leg_review, "effective_levels": leg_levels, "level_spec": level_spec, "suggested_level": suggested, "suggested_per_leg": suggested_per_leg, "suggested_reason": "强确认且情绪极弱→A3；强确认或确认→A2；弱确认/观察中→A1；否则 A0", "approval_required": True, "approval_record": "mcp_input" if human_review else "default", "approved": review.get("approved", []), "plan_after_approval": bool(regulator["approval"]["plan_after_approval"])}, "legs": legs, "boundary_note": "档位价格与锚由券商软件维护（锚不因参数变更而重设）；本文件只输出参数与建议，不含档位价格。买入档距受档距上限约束，卖出档距随防守倍数缩放、不随资金倍数缩放且不设上限；份数按 100 的整数倍向下取整；保底仓触达即停卖该腿（回到下限之上自动恢复）；防守档为体系级（`human_review.level`），可用 `human_review.per_leg` 按腿覆盖。"}
     if emotion is not None:
         result["emotion"] = emotion
     return artifact("regulator_facts", directory_date, parameters, result)
@@ -547,7 +564,7 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         elif name == "get_manifest":
             if args.get("system_id") != SYSTEM_ID:
                 raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")
-            result = {"system_id": SYSTEM_ID, "name": SYSTEM_NAME, "system_root": str(SYSTEM_ROOT), "parameter_root": str(PARAMS_ROOT), "template_root": str(TEMPLATES_ROOT), "operations": ["risk_facts", "regulator_facts", "sector_facts"], "writes_to": "knowledge/交易/过程资料/{date}/红利科创ETF双网格体系", "expansion": {"declaration": "regulator.scaling", "note": "每个量吃哪些倍数由 params/regulator.json#scaling 声明：买入档距=防守×资金且受档距上限；卖出档距=防守且无上限；买卖份数=防守份数倍数并按 100 份向下取整", "multiplier_sources": {"defense": "regulator.defense_levels[].step_multiplier / shares_multiplier", "capital": "regulator.capital_guard.tiers[].step_multiplier"}}, "reserve_shares": "regulator.reserve_shares（enabled=true 时持仓 ≤ 保底下限即停卖该腿，产物给 sell_disabled_reason=reserve_floor）", "leg_effective_fields": ["buy_step_ratio", "buy_raw_step_ratio", "step_cap", "capped", "buy_shares", "buy_enabled", "sell_step_ratio", "sell_raw_step_ratio", "sell_shares", "sell_enabled", "sell_disabled_reason", "reserve_floor"]}
+            result = {"system_id": SYSTEM_ID, "name": SYSTEM_NAME, "system_root": str(SYSTEM_ROOT), "parameter_root": str(PARAMS_ROOT), "template_root": str(TEMPLATES_ROOT), "operations": ["risk_facts", "regulator_facts", "sector_facts"], "writes_to": "knowledge/交易/过程资料/{date}/红利科创ETF双网格体系", "expansion": {"declaration": "regulator.scaling", "note": "每个量吃哪些倍数由 params/regulator.json#scaling 声明：买入档距=防守×资金且受档距上限；卖出档距=防守且无上限；买卖份数=防守份数倍数并按 100 份向下取整", "multiplier_sources": {"defense": "regulator.defense_levels[].step_multiplier / shares_multiplier", "capital": "regulator.capital_guard.tiers[].step_multiplier"}}, "defense_levels": {"levels": sorted(name for name, spec in load_parameters()["regulator"]["defense_levels"].items() if isinstance(spec, dict)), "scope": "体系级 human_review.level，可用 human_review.per_leg 按腿覆盖（缺省沿用体系档）", "output_fields": ["defense.requested_level", "defense.requested_per_leg", "defense.effective_levels", "legs[].defense_level"]}, "reserve_shares": "regulator.reserve_shares（enabled=true 时持仓 ≤ 保底下限即停卖该腿，产物给 sell_disabled_reason=reserve_floor）", "leg_effective_fields": ["buy_step_ratio", "buy_raw_step_ratio", "step_cap", "capped", "buy_shares", "buy_enabled", "sell_step_ratio", "sell_raw_step_ratio", "sell_shares", "sell_enabled", "sell_disabled_reason", "reserve_floor"]}
         elif name == "validate_parameters":
             if args.get("system_id") != SYSTEM_ID:
                 raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")

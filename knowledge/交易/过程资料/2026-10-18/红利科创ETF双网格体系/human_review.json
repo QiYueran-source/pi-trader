@@ -1,0 +1,34 @@
+{
+  "system_id": "div_etf_grid_trade",
+  "level": "A0",
+  "per_leg": {
+    "dividend": "A0",
+    "growth": "A2"
+  },
+  "approved": [
+    "A0@dividend",
+    "A2@growth"
+  ],
+  "records": [
+    {
+      "date": "2026-10-18",
+      "decided_at": "2026-10-18",
+      "channel": "会话",
+      "leg": "growth",
+      "from_level": "A0",
+      "to_level": "A2",
+      "reason": "用户审批：科技切 A2；机械层体系级建议同为 A2。次日（2026-10-19）开盘生效",
+      "signal_summary": "一阶冲击 10-15（−2.84%、1.39σ）、二阶确认未收复 50%、纯阴跌 5 日累计 −9.64% 命中；state=strong"
+    },
+    {
+      "date": "2026-10-18",
+      "decided_at": "2026-10-18",
+      "channel": "会话",
+      "leg": "dividend",
+      "from_level": "A0",
+      "to_level": "A0",
+      "reason": "用户审批：红利维持常态 A0（不升档）；次日（2026-10-19）生效",
+      "signal_summary": "一阶冲击 10-16（−3.57%、3.02σ）、纯阴跌未命中；state=strong"
+    }
+  ]
+}

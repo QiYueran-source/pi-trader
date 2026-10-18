@@ -78,7 +78,7 @@ system-id: div_etf_grid_trade
 - `market_value_amount` 可省略，缺省时按 `shares × 当日收盘价` 计算。
 - 体系不访问券商账户；调用端必须先用 `trade-management` MCP 生成真实持仓事实。
 
-`human_review`（防守档审批留痕，可选）字段见运行定义 `params/regulator.json#approval`。
+`human_review`（防守档审批留痕，可选）字段见运行定义 `params/regulator.json#approval`；其中 `level` 为体系级防守档，`per_leg`（如 `{"growth": "A2"}`）按腿覆盖、未写出的腿沿用 `level`。产物回显 `defense.effective_levels` 与 `legs[].defense_level`。
 
 ## 错误与降级
 
