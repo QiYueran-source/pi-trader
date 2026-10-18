@@ -17,7 +17,8 @@ system-id: agent_etf_rotation_system
 
 ```text
 .pi/mcp-servers/trade-system/agent_etf_rotation_system/
-├── mcp_server.py       # 服务入口与实现（契约、参数校验、复盘渲染）
+├── mcp_server.py       # 服务入口（只做工具注册与路由）
+├── functions/          # 实现模块（paths / parameters / market / artifacts）
 ├── params/             # 契约参数唯一来源（runtime：路径与文件名；universe：候选池与费率；不含判定阈值）
 └── templates/          # 模板唯一来源（review.md.j2 复盘结构）
 ```
