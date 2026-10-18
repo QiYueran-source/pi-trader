@@ -23,6 +23,7 @@ if str(Path(__file__).resolve().parent) not in sys.path:
     sys.path.insert(0, str(Path(__file__).resolve().parent))  # noqa: E402（自举后才能导入 functions）
 
 from functions.artifacts import render_artifact, write_artifact  # noqa: E402
+from functions.market import fetch_trade_calendar, get_client  # noqa: E402
 from functions.parameters import load_parameters, parameter_metadata, validate_parameters  # noqa: E402
 from functions.paths import PARAMS_ROOT, SYSTEM_ID, SYSTEM_NAME, SYSTEM_ROOT, SYSTEM_VERSION, TEMPLATES_ROOT, logical_process_root, normalize_date, process_dir, read_json  # noqa: E402
 from functions.signals import calculate_signal, replay_check  # noqa: E402
@@ -50,6 +51,7 @@ TOOLS = [
     Tool(name="list_systems", description="列出本服务实现的交易体系。", inputSchema={"type": "object", "properties": {}}),
     Tool(name="get_manifest", description="查看招商双债LOF择时体系运行定义和支持的操作。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}}, "required": ["system_id"]}),
     Tool(name="validate_parameters", description="校验本体系当前参数。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}}, "required": ["system_id"]}),
+    Tool(name="is_trading_day", description="判断指定日期（默认今天）是否为交易日；数据源 tushare.trade_cal（SSE），本服务自带判断，不依赖其它 MCP。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}, "date": {"type": "string"}}, "required": ["system_id"]}),
     Tool(name="calculate", description="计算当日收盘信号与理论状态（signal），或从锚日重放校验（replay_check）；signal 默认写入过程资料。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}, "operation": {"type": "string", "enum": ["signal", "replay_check"]}, "date": {"type": "string"}, "dry_run": {"type": "boolean"}}, "required": ["system_id", "operation", "date"]}),
     Tool(name="render", description="把当日信号事实渲染为可读信号报告。", inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}, "artifact": {"type": "string", "enum": ["signal_report"]}, "date": {"type": "string"}, "document": {"type": "object"}, "state": {"type": "object"}}, "required": ["system_id", "artifact", "date"]}),
 ]
@@ -86,6 +88,19 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
                 raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")
             parameters = load_parameters()
             result = {"system_id": SYSTEM_ID, **validate_parameters(parameters), **parameter_metadata(parameters)}
+        elif name == "is_trading_day":
+            if args.get("system_id") != SYSTEM_ID:
+                raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")
+            api_date, directory_date = normalize_date(args.get("date"))
+            calendar = fetch_trade_calendar(get_client(), api_date)
+            result = {
+                "ok": True,
+                "system_id": SYSTEM_ID,
+                "date": directory_date,
+                "is_open": calendar["is_open"],
+                "pretrade_date": calendar["pretrade_date"],
+                "source": "tushare.trade_cal/SSE",
+            }
         elif name == "calculate":
             if args.get("system_id") != SYSTEM_ID:
                 raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")

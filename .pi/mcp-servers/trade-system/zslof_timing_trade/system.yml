@@ -1,35 +1,28 @@
 system-id: zslof_timing_trade
 system-name: 招商双债LOF择时体系
-version: v1
+version: v1                       # 体系契约版本（产物 parameter_version 取自它）
 maturity: 执行体系
 account-id:
-  - YHZQ
+  - YHZQ                          # 体系声明；机器可读账户值见 params/instrument.json#account
 service:
   name: zslof-timing-trade        # .pi/mcp.json 注册键 = system-id 的连字符形式
   entry: mcp_server.py            # 本目录内，一个体系一个 MCP 服务
-overview: "基于招商双债增强债券 LOF（161716.SZ）的机械波段择时；收盘确认信号、次日开盘人工执行，体系不查询账户、不下单。"
+overview: "储蓄型机械波段择时：收盘确认信号、次日开盘人工执行；体系不查询账户、不下单。标的与费率见 params/instrument.json。"
 operations:
   - signal
   - replay_check
 rules:
   source: knowledge/交易/交易体系/招商双债LOF择时体系/择时参数.md
+utilities:
+  - is_trading_day                 # 交易日判断（本服务自带，数据源 tushare.trade_cal/SSE）
 parameters:
-  root: params
+  root: params                    # 参数唯一来源（文件清单与取值只在此目录）
 templates:
-  root: templates
+  root: templates                 # 模板唯一来源
 process_output:
-  root: knowledge/交易/过程资料/{date}/招商双债LOF择时体系
-  artifacts:
-    - strategy_state.json
-    - signal_facts.json
-    - signal_report.md
+  root: knowledge/交易/过程资料/{date}/招商双债LOF择时体系   # 落盘位置；文件名见 params/runtime.json
 state:
-  strategy_state_file: strategy_state.json
-  lookup: latest_prior_process_date
-  content_roots:
-    - knowledge
-    - archive
-  anchor_date: 2026-08-10
+  note: "状态文件、查找方式、锚日与双头根目录均以 params/runtime.json 为准，本文件不复制取值"
 boundaries:
   queries_account: false
   real_order: forbidden

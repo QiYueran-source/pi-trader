@@ -16,6 +16,8 @@ operations:
 rules:
   source: knowledge/交易/交易体系/红利科创ETF双网格体系/风控.md
   grid_source: knowledge/交易/交易体系/红利科创ETF双网格体系/网格参数.md
+utilities:
+  - is_trading_day                 # 交易日判断（本服务自带，数据源 tushare.trade_cal/SSE）
 parameters:
   root: params
 templates:

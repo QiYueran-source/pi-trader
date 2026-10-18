@@ -34,6 +34,7 @@ system-id: hot_sector_pullback_system
 | `list_systems` | — | 本服务实现的体系 |
 | `get_manifest` | `system_id` | 运行定义路径、支持的操作、产物落盘位置 |
 | `validate_parameters` | `system_id` | `valid`、`files`、`parameter_version`、`parameter_hash`、`schema_versions` |
+| `is_trading_day` | `system_id`、`date`（可选，默认今天） | 该日期是否交易日（`is_open`）与上一交易日（`pretrade_date`）；数据源 tushare.trade_cal/SSE，**本服务自带判断，不依赖其它 MCP** |
 | `calculate` | `system_id`、`operation`、`date`、`industries`（可选）、`positions`（`risk_signal` 必填）、`dry_run`（可选） | 事实 JSON；`dry_run=false` 时写入过程资料 |
 | `render` | `system_id`、`artifact`、`date`、`document`（可选）、`dry_run`（可选） | 同名 Markdown，返回落盘路径 |
 
@@ -96,7 +97,7 @@ system-id: hot_sector_pullback_system
 - 服务由 `/opt/venv/bin/python` 启动（`.pi/mcp.json` 已配置），依赖含 `mcp`、`tushare`、`pandas`、`jinja2`。
 - Tushare token 读取项目 MCP 的 `.pi/mcp-servers/tushare/.env`，不写入仓库其它文件。
 - 官方 `stk_mins` 限频实测 1 次/小时，与 19:00／19:10／19:25 三个任务同处一小时，降级口径见 `交易/交易体系/热门板块回调低吸体系/风控.md`。
-- 行情与交易日历的取数接口见 `tushare` 技能；账户、成交、持仓与现金事实见 `trade-management` 技能。
+- 行情取数接口见 `tushare` 技能；交易日判断用本服务自带的 `is_trading_day`（tushare.trade_cal/SSE）；账户、成交、持仓与现金事实见 `trade-management` 技能。
 
 ## 已退役
 

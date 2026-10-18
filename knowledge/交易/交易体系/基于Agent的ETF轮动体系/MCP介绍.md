@@ -27,7 +27,7 @@ system-id: agent_etf_rotation_system
 
 ## 本服务不做什么
 
-- **不获取行情**：ETF、指数与宏观数据由 Agent 经 `tushare-data` MCP 获取。
+- **不获取行情**：ETF、指数与宏观数据由 Agent 经 `tushare-data` MCP 获取；唯一例外是交易日判断——本服务自带 `is_trading_day`（直接调用 tushare `trade_cal`，token 读 `.pi/mcp-servers/tushare/.env`）。
 - **不查询账户**：持仓、现金、成交由 Agent 经 `trade-management` MCP 获取与登记。
 - **不做计算与判定**：环境评估、候选比较、调仓判断与风控审查由 Agent 依 `规则库/` 执行；本服务不含任何阈值、打分或状态机。
 - **不写交易计划**：计划由 18:50 任务按 `交易/交易体系/基于Agent的ETF轮动体系/体系运作流程.md` 与 `规则库/` 生成。
@@ -41,6 +41,7 @@ system-id: agent_etf_rotation_system
 | `list_systems` | — | 本服务实现的体系 |
 | `get_manifest` | `system_id` | 运行定义路径、成熟度、支持的操作、产物契约、边界 |
 | `validate_parameters` | `system_id` | `valid`、`files`、`parameter_version`、`parameter_hash`、`schema_versions` |
+| `is_trading_day` | `system_id`、`date`（可选，默认今天） | 该日期是否交易日（`is_open`）与上一交易日（`pretrade_date`）；数据源 tushare.trade_cal/SSE，**本服务自带判断，不依赖其它 MCP** |
 | `render` | `system_id`、`artifact`（`review`）、`date`、`document`、`dry_run`（可选） | 复盘 Markdown；`dry_run=true` 只返回全文不落盘 |
 
 ## 复盘渲染（render, artifact=review）
@@ -81,11 +82,11 @@ system-id: agent_etf_rotation_system
 
 ## 行情与账户工具入口
 
-Agent 通过 `tushare-data` MCP 获取市场数据、通过 `trade-management` MCP 获取与登记账户事实；不读取 Token，不直接调用 `tushare` Python 客户端。
+Agent 通过 `tushare-data` MCP 获取市场数据、通过 `trade-management` MCP 获取与登记账户事实；交易日判断由本服务自带的 `is_trading_day` 完成，除此之外不自行取数。
 
 | 数据 | 工具 | 主要用途 |
 |---|---|---|
-| 交易日历 | `get_trade_calendar` | 判断交易日与下一交易日 |
+| 交易日历 | 本服务 `is_trading_day`（tushare.trade_cal/SSE） | 判断交易日与上一交易日 |
 | ETF 日线 | `get_fund_daily` | 区间收益、波动、回撤、成交量 |
 | ETF 复权因子 | `get_fund_adj` | 除权与收益口径核验 |
 | ETF 分钟线 | `get_fund_minutes` | 按计划时点回放成交 |
@@ -108,5 +109,5 @@ Agent 通过 `tushare-data` MCP 获取市场数据、通过 `trade-management` M
 ## 依赖
 
 - 服务由 `/opt/venv/bin/python` 启动（`.pi/mcp.json` 已配置），依赖含 `mcp`、`jinja2`。
-- 服务不读取行情 Token；行情取数由 `tushare-data` MCP 负责（其 token 在 `.pi/mcp-servers/tushare/.env`）。
+- 行情取数由 `tushare-data` MCP 负责（其 token 在 `.pi/mcp-servers/tushare/.env`）；本服务为交易日判断直接调用 tushare `trade_cal`，token 读同一文件。
 - `/opt/venv` 属 root 且不在挂载点上（随容器可写层）：容器重建后若报 `ModuleNotFoundError`，由 root 执行 `uv pip install --python /opt/venv/bin/python jinja2` 补回。

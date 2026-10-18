@@ -49,6 +49,27 @@ def load_env() -> None:
                 os.environ.setdefault(key.strip(), value.strip().strip("\"'"))
 
 
+def get_client() -> Any:
+    """本服务自带的 tushare 客户端（token 读 `.pi/mcp-servers/tushare/.env`）。"""
+    load_env()
+    token = os.environ.get("TUSHARE_TOKEN", "").strip()
+    if not token:
+        raise RuntimeError("TUSHARE_TOKEN 未配置")
+    import tushare as ts
+    ts.set_token(token)
+    return ts.pro_api()
+
+
+def fetch_trade_calendar(pro: Any, api_date: str) -> dict[str, Any]:
+    """单日交易日历：是否开市与上一交易日（来源 tushare.trade_cal，SSE）。"""
+    frame = pro.trade_cal(exchange="SSE", start_date=api_date, end_date=api_date, fields="exchange,cal_date,is_open,pretrade_date")
+    if frame is None or frame.empty:
+        raise ValueError(f"未获取到交易日历：{api_date}")
+    record = frame.to_dict("records")[0]
+    previous = record.get("pretrade_date")
+    return {"is_open": int(record["is_open"]) == 1, "pretrade_date": str(previous) if previous else None}
+
+
 def normalize_date(value: str | None) -> tuple[str, str]:
     if value is None:
         parsed = date.today()
@@ -306,6 +327,11 @@ TOOLS = [
         inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}}, "required": ["system_id"]},
     ),
     Tool(
+        name="is_trading_day",
+        description="判断指定日期（默认今天）是否为交易日；数据源 tushare.trade_cal（SSE），本服务自带判断，不依赖其它 MCP。",
+        inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}, "date": {"type": "string"}}, "required": ["system_id"]},
+    ),
+    Tool(
         name="render",
         description="按运行定义模板渲染交易复盘（内容由调用端以 document 提供；dry_run 只返回全文不落盘）。",
         inputSchema={
@@ -334,7 +360,7 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
     try:
         if name == "list_systems":
             result = {"systems": [{"system_id": SYSTEM_ID, "name": SYSTEM_NAME, "operations": ["render"]}]}
-        elif name in {"get_manifest", "validate_parameters", "render"} and args.get("system_id") != SYSTEM_ID:
+        elif name in {"get_manifest", "validate_parameters", "is_trading_day", "render"} and args.get("system_id") != SYSTEM_ID:
             raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")
         elif name == "get_manifest":
             result = {
@@ -359,6 +385,17 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         elif name == "validate_parameters":
             parameters = load_parameters()
             result = {"system_id": SYSTEM_ID, **validate_parameters(parameters), **parameter_metadata(parameters)}
+        elif name == "is_trading_day":
+            api_date, directory_date = normalize_date(args.get("date"))
+            calendar = fetch_trade_calendar(get_client(), api_date)
+            result = {
+                "ok": True,
+                "system_id": SYSTEM_ID,
+                "date": directory_date,
+                "is_open": calendar["is_open"],
+                "pretrade_date": calendar["pretrade_date"],
+                "source": "tushare.trade_cal/SSE",
+            }
         elif name == "render":
             _, directory_date = normalize_date(args["date"])
             if args.get("artifact") != "review":

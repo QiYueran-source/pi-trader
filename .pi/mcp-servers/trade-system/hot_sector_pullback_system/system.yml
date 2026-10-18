@@ -13,6 +13,8 @@ operations:
   - sector_heat
   - entry_signal
   - risk_signal
+utilities:
+  - is_trading_day                 # 交易日判断（本服务自带，数据源 tushare.trade_cal/SSE）
 parameters:
   root: params
 templates:

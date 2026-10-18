@@ -339,6 +339,16 @@ def fetch_trade_days(client: Any, start_date: str, end_date: str) -> list[str]:
     return sorted(calendar.loc[calendar["is_open"] == 1, "cal_date"].astype(str).tolist())
 
 
+def fetch_trade_calendar(client: Any, api_date: str) -> dict[str, Any]:
+    """单日交易日历：是否开市与上一交易日（来源 tushare.trade_cal，SSE）。"""
+    frame = client.trade_cal(exchange="SSE", start_date=api_date, end_date=api_date, fields="exchange,cal_date,is_open,pretrade_date")
+    if frame is None or frame.empty:
+        raise ValueError(f"未获取到交易日历：{api_date}")
+    record = frame.to_dict("records")[0]
+    previous = record.get("pretrade_date")
+    return {"is_open": int(record["is_open"]) == 1, "pretrade_date": str(previous) if previous else None}
+
+
 def fetch_daily_market(client: Any, trade_days: list[str], fields: str) -> Any:
     import pandas as pd
     frames = []
@@ -1292,6 +1302,11 @@ TOOLS = [
         inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}}, "required": ["system_id"]},
     ),
     Tool(
+        name="is_trading_day",
+        description="判断指定日期（默认今天）是否为交易日；数据源 tushare.trade_cal（SSE），本服务自带判断，不依赖其它 MCP。",
+        inputSchema={"type": "object", "properties": {"system_id": {"type": "string"}, "date": {"type": "string"}}, "required": ["system_id"]},
+    ),
+    Tool(
         name="calculate",
         description="计算候选（select_candidates）、板块热度与全市场板块环境（sector_heat）、建仓信号（entry_signal）或持仓风控（risk_signal）；dry_run 只返回结果不落盘。",
         inputSchema={
@@ -1336,7 +1351,7 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
     try:
         if name == "list_systems":
             result = {"systems": [{"system_id": SYSTEM_ID, "name": SYSTEM_NAME, "operations": list(OPERATIONS)}]}
-        elif name in {"get_manifest", "validate_parameters", "calculate", "render"} and args.get("system_id") != SYSTEM_ID:
+        elif name in {"get_manifest", "validate_parameters", "is_trading_day", "calculate", "render"} and args.get("system_id") != SYSTEM_ID:
             raise ValueError(f"当前 MCP 不支持体系：{args.get('system_id')}")
         elif name == "get_manifest":
             runtime = read_json(PARAMS_ROOT / "runtime.json")
@@ -1384,6 +1399,17 @@ def call_tool_result(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         elif name == "validate_parameters":
             parameters = load_parameters()
             result = {"system_id": SYSTEM_ID, **validate_parameters(parameters), **parameter_metadata(parameters)}
+        elif name == "is_trading_day":
+            api_date, directory_date = normalize_date(args.get("date"))
+            calendar = fetch_trade_calendar(get_client(), api_date)
+            result = {
+                "ok": True,
+                "system_id": SYSTEM_ID,
+                "date": directory_date,
+                "is_open": calendar["is_open"],
+                "pretrade_date": calendar["pretrade_date"],
+                "source": "tushare.trade_cal/SSE",
+            }
         elif name == "calculate":
             result = tool_calculate(args)
         elif name == "render":
