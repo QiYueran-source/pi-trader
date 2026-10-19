@@ -58,7 +58,11 @@ RUN groupmod --gid "${PI_GID}" node \
   && chown -R node:node /opt/uv/cache
 
 ENV HOME=/home/node
-ENV PI_MODEL_CONFIG=/home/node/.pi/agent/models.json
+
+# 部署配置目录，由 Compose 只读挂载 config/。
+# 启动时 entrypoint 把 models.json 等同步到 /home/node/.pi/agent。
+ENV PI_CONFIG_DIR=/opt/pi-config
+ENV PI_CODING_AGENT_DIR=/home/node/.pi/agent
 
 # 工作目录
 WORKDIR /pi-trader

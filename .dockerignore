@@ -1,0 +1,12 @@
+.git
+.gitignore
+.cursor
+.vscode
+.env
+.secrets.env
+database
+archive
+__pycache__
+**/__pycache__
+*.pyc
+*.log

@@ -17,9 +17,10 @@ services:
       # 宿主机挂载
       - ${PI_WORK_PATH_ON_HOST:?请设置 PI_WORK_PATH_ON_HOST}:/pi-trader
       - ${SSH_HOST_PATH:?请设置 SSH_HOST_PATH}:/home/node/.ssh:ro
+      # 部署配置：启动时同步到 /home/node/.pi/agent
+      - ./config:/opt/pi-config:ro
       # 卷挂载
       - pi-agent-home:/home/node/.pi/agent
-      - ./.pi/models.json:/home/node/.pi/agent/models.json:ro
-      
+
 volumes:
   pi-agent-home:

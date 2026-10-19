@@ -5,7 +5,6 @@
 # env
 .env
 .secrets.env
-.pi/mcp-servers/tushare/.env
 
 # 依赖
 .rely
@@ -18,7 +17,3 @@ __pycache__
 
 # 归档
 archive/
-!.pi/skills/writing/archive/
-
-# 同步脚本
-*.git
