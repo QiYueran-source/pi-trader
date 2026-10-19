@@ -57,7 +57,7 @@ tags:
 ## 依据摘要
 
 - 人工裁定：`交易/交易体系/红利科创ETF双网格体系/更新日志/2026-10-16_人工裁定-暂缓bear切换并临时调宽买入步长.md`
-- 参数：`交易/交易体系/红利科创ETF双网格体系/params/grid.json`（`manual_overrides` 块）
+- 参数：运行定义 `.pi/mcp-servers/trade-system/div_etf_grid_trade/params/` 的 `grid.json`（`manual_overrides` 块）
 - 规则：`交易/交易体系/红利科创ETF双网格体系/网格参数.md`（新增「人工临时覆盖」节）、`风控.md`
 - 10-15 事实与状态记录：`交易/过程资料/2026-10-15/红利科创ETF双网格体系/`（7 件，迁移记录保留为历史）
 
