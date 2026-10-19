@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-19",
+  "artifact": "sector_environment",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-19T11:27:47.501371+00:00",
+  "note": "涨停/跌停＝分板精确阈值（北交所 30%／双创 20%／主板 10%／ST 5%，容差 0.01）；剔除 N/C 新股与上市首日；涨停行业分布与 sample 只统计 clean（剔 ST），跌停剔 ST；大盘三档＝399006.SZ 当日涨跌幅（企稳>0／非极端弱 -2%~0／极端弱 ≤-2%，边界见 params/entry.json#benchmark_tiers）。",
+  "parameter_version": "v1",
+  "parameter_hash": "2a1dc08dd0f471e8dcf312ea3e4e63919d51df8fe1c6fdae553321d306dbb5e4",
+  "schema_versions": {
+    "entry": 2,
+    "risk": 2,
+    "runtime": 2,
+    "sector_heat": 1,
+    "selection": 1
+  },
+  "market": {
+    "up": 2274,
+    "down": 3128,
+    "flat": 160,
+    "limit_up": 44,
+    "limit_up_clean": 39,
+    "limit_down_clean": 13,
+    "total_amount_yi": 14446.6303,
+    "previous_amount_yi": 15690.66,
+    "amount_change_yi": -1244.0297
+  },
+  "limit_up_by_industry": [
+    {
+      "industry": "汽车配件",
+      "limit_up_clean": 9
+    },
+    {
+      "industry": "元器件",
+      "limit_up_clean": 6
+    },
+    {
+      "industry": "软件服务",
+      "limit_up_clean": 4
+    },
+    {
+      "industry": "塑料",
+      "limit_up_clean": 3
+    },
+    {
+      "industry": "新型电力",
+      "limit_up_clean": 3
+    },
+    {
+      "industry": "家居用品",
+      "limit_up_clean": 2
+    },
+    {
+      "industry": "通信设备",
+      "limit_up_clean": 2
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "机械基件",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "医疗保健",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "仓储物流",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "文教休闲",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "IT设备",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "化学制药",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "中成药",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "染料涂料",
+      "limit_up_clean": 1
+    },
+    {
+      "industry": "纺织机械",
+      "limit_up_clean": 1
+    }
+  ],
+  "limit_up_sample": [
+    "000576.SZ 甘化科工（电气设备）",
+    "001216.SZ 华瓷股份（家居用品）",
+    "001323.SZ 慕思股份（家居用品）",
+    "002164.SZ 宁波东力（机械基件）",
+    "002368.SZ 太极股份（软件服务）",
+    "002626.SZ 金达威（医疗保健）",
+    "002724.SZ 海洋王（元器件）",
+    "002889.SZ 东方嘉盛（仓储物流）",
+    "002929.SZ 润建股份（通信设备）",
+    "003021.SZ 兆威机电（元器件）",
+    "003029.SZ 吉大正元（软件服务）",
+    "300852.SZ 四会富仕（元器件）",
+    "301119.SZ 正强股份（汽车配件）",
+    "301313.SZ 凡拓数创（文教休闲）",
+    "301591.SZ 肯特股份（塑料）",
+    "301666.SZ 大普微（IT设备）",
+    "600032.SH 浙江新能（新型电力）",
+    "600148.SH 长春一东（汽车配件）",
+    "600178.SH 东安动力（汽车配件）",
+    "600267.SH 海正药业（化学制药）"
+  ],
+  "highest_board": {
+    "count": 3,
+    "code": "003029.SZ",
+    "name": "吉大正元",
+    "industry": "软件服务"
+  },
+  "benchmark": {
+    "ts_code": "399006.SZ",
+    "pct_chg": -0.9412,
+    "tier": "非极端弱"
+  }
+}

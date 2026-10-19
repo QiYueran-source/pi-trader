@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-19",
+  "artifact": "hottest_industry_candidate",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-19T11:29:27.790973+00:00",
+  "note": "窗口＝最近 22 个交易日；涨停＝分板精确（北交所 30%／双创 20%／主板 10%／ST 5%，容差 0.01），剔除 N/C 新股与上市首日；回调过滤＝逐日重算 MA10 后逐日比较，反弹窗口 5 个交易日。",
+  "parameter_version": "v1",
+  "parameter_hash": "2a1dc08dd0f471e8dcf312ea3e4e63919d51df8fe1c6fdae553321d306dbb5e4",
+  "schema_versions": {
+    "entry": 2,
+    "risk": 2,
+    "runtime": 2,
+    "sector_heat": 1,
+    "selection": 1
+  },
+  "params": {
+    "limit_up_window_days": 22,
+    "min_limit_up_count": 1,
+    "max_limit_up_count": 2,
+    "pullback_ma_period": 10,
+    "rebound_window_days": 5
+  },
+  "stats": {
+    "total_limit_up_stocks": 586,
+    "total_candidates": 9,
+    "candidate_sectors": 1
+  },
+  "candidates": [
+    {
+      "code": "002655.SZ",
+      "name": "共达电声",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260916",
+        "20260917"
+      ],
+      "current_close": 32.22,
+      "pullback_ma": 31.991,
+      "pullback_pct": -20.97,
+      "bounceback_days": 1
+    },
+    {
+      "code": "688781.SH",
+      "name": "视涯科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260922"
+      ],
+      "current_close": 42.34,
+      "pullback_ma": 40.974,
+      "pullback_pct": -18.5,
+      "bounceback_days": 1
+    },
+    {
+      "code": "301282.SZ",
+      "name": "金禄电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261015"
+      ],
+      "current_close": 45.62,
+      "pullback_ma": 42.44,
+      "pullback_pct": -8.61,
+      "bounceback_days": 4
+    },
+    {
+      "code": "002724.SZ",
+      "name": "海洋王",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20261016",
+        "20261019"
+      ],
+      "current_close": 8.42,
+      "pullback_ma": 7.19,
+      "pullback_pct": 0.0,
+      "bounceback_days": 2
+    },
+    {
+      "code": "003021.SZ",
+      "name": "兆威机电",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261019"
+      ],
+      "current_close": 67.22,
+      "pullback_ma": 65.659,
+      "pullback_pct": 0.0,
+      "bounceback_days": 1
+    },
+    {
+      "code": "300852.SZ",
+      "name": "四会富仕",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261019"
+      ],
+      "current_close": 76.94,
+      "pullback_ma": 70.191,
+      "pullback_pct": 0.0,
+      "bounceback_days": 1
+    },
+    {
+      "code": "603595.SH",
+      "name": "ST东尼",
+      "industry": "元器件",
+      "board_count": 2,
+      "board_dates": [
+        "20260910",
+        "20261016"
+      ],
+      "current_close": 32.34,
+      "pullback_ma": 30.683,
+      "pullback_pct": 0.75,
+      "bounceback_days": 2
+    },
+    {
+      "code": "600237.SH",
+      "name": "铜峰电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260911"
+      ],
+      "current_close": 9.33,
+      "pullback_ma": 8.841,
+      "pullback_pct": 1.19,
+      "bounceback_days": 3
+    },
+    {
+      "code": "301132.SZ",
+      "name": "满坤科技",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20260914"
+      ],
+      "current_close": 70.91,
+      "pullback_ma": 67.356,
+      "pullback_pct": 21.48,
+      "bounceback_days": 4
+    }
+  ],
+  "industry": [
+    "元器件"
+  ]
+}

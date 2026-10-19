@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-19",
+  "artifact": "entry_signal",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-19T11:29:50.502324+00:00",
+  "note": "条件＝收盘 > MA5 且 量 ≥ 1.2×20 日均量（含当日）；输入＝hottest_industry_candidate.json（9 只候选）。",
+  "parameter_version": "v1",
+  "parameter_hash": "2a1dc08dd0f471e8dcf312ea3e4e63919d51df8fe1c6fdae553321d306dbb5e4",
+  "schema_versions": {
+    "entry": 2,
+    "risk": 2,
+    "runtime": 2,
+    "sector_heat": 1,
+    "selection": 1
+  },
+  "source": "交易/过程资料/2026-10-19/热门板块回调低吸体系/hottest_industry_candidate.json",
+  "params": {
+    "volume_multiplier": 1.2,
+    "volume_average_period": 20,
+    "breakout_ma_period": 5,
+    "benchmark_tiers": {
+      "stabilize_above_pct": 0,
+      "extreme_weak_at_or_below_pct": -2,
+      "note": "大盘三档边界，单位为百分比数值（-2 表示 −2%）；标的见实现常量 BENCHMARK_INDEX（399006.SZ）。2026-10-18 由实现硬编码改为参数（schema_version 1→2）。"
+    }
+  },
+  "stats": {
+    "total_candidates": 9,
+    "with_daily_data": 9,
+    "signals": 3
+  },
+  "signals": [
+    {
+      "code": "003021.SZ",
+      "name": "兆威机电",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261019"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261019",
+      "close": 67.22,
+      "breakout_ma": 63.328,
+      "breakout_above_pct": 6.15,
+      "volume": 51156,
+      "volume_ma": 27163,
+      "volume_ratio": 1.88,
+      "pass": true
+    },
+    {
+      "code": "300852.SZ",
+      "name": "四会富仕",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261019"
+      ],
+      "pullback_pct": 0.0,
+      "signal_date": "20261019",
+      "close": 76.94,
+      "breakout_ma": 71.126,
+      "breakout_above_pct": 8.17,
+      "volume": 265332,
+      "volume_ma": 140928,
+      "volume_ratio": 1.88,
+      "pass": true
+    },
+    {
+      "code": "301282.SZ",
+      "name": "金禄电子",
+      "industry": "元器件",
+      "board_count": 1,
+      "board_dates": [
+        "20261015"
+      ],
+      "pullback_pct": -8.61,
+      "signal_date": "20261019",
+      "close": 45.62,
+      "breakout_ma": 44.31,
+      "breakout_above_pct": 2.96,
+      "volume": 293574,
+      "volume_ma": 170154,
+      "volume_ratio": 1.73,
+      "pass": true
+    }
+  ]
+}

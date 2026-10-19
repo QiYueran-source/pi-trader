@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-19",
+  "artifact": "risk_signal",
+  "system_id": "hot_sector_pullback_system",
+  "generated_at": "2026-10-19T11:32:12.562159+00:00",
+  "note": "空仓契约：无持仓时不继承旧快照，state/prudent_tags 置为空仓位结构。",
+  "parameter_version": "v1",
+  "parameter_hash": "2a1dc08dd0f471e8dcf312ea3e4e63919d51df8fe1c6fdae553321d306dbb5e4",
+  "schema_versions": {
+    "entry": 2,
+    "risk": 2,
+    "runtime": 2,
+    "sector_heat": 1,
+    "selection": 1
+  },
+  "params": {
+    "opening_signal": {
+      "bar_frequency": "5min",
+      "start_time": "09:30",
+      "end_time": "10:00",
+      "reference_price": "session_open",
+      "rapid_drop_pct": 0.03,
+      "note": "开盘段只取 official（client.stk_mins）；原 promax 兜底依赖的 tushare-proxy 技能目录不存在，2026-10-18 随口径收口删除。"
+    },
+    "prudent_tag": {
+      "state_file": "prudent_tags.json",
+      "valid_trading_days": 3,
+      "snapshot_lookback_trading_days": 3,
+      "refresh_on_bearish_signal": true
+    },
+    "position_state": {
+      "state_file": "state.json"
+    },
+    "exit_rules": {
+      "hard_stop_loss_pct": 0.05,
+      "ma5": {
+        "period": 5,
+        "break_action": "observe_or_reduce",
+        "normal_observation_days": 3,
+        "prudent_observation_days": 0,
+        "reduce_ratio": 0.5
+      },
+      "ma10": {
+        "period": 10,
+        "break_action": "liquidate",
+        "execution_timing": "next_open"
+      }
+    }
+  },
+  "data_sources": {},
+  "stats": {
+    "positions": 0,
+    "evaluated": 0,
+    "actions": 0,
+    "hold": 0
+  },
+  "risk_actions": [],
+  "holdings": []
+}
