@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-19",
+  "system_id": "zslof_timing_trade",
+  "artifact": "strategy_state",
+  "generated_at": "2026-10-19T11:36:29.134283+00:00",
+  "version": "v1",
+  "parameter_version": "v1",
+  "parameter_hash": "13e71701812a94c0a621eea21533803f41f5852990429b09787d03a4aee70816",
+  "schema_versions": {
+    "instrument": 1,
+    "runtime": 2,
+    "timing": 2
+  },
+  "source_state": "交易/过程资料/2026-10-16/招商双债LOF择时体系/strategy_state.json",
+  "source_state_detail": {
+    "location": "knowledge",
+    "directory_date": "2026-10-16",
+    "physical_path": "/pi-trader/knowledge/交易/过程资料/2026-10-16/招商双债LOF择时体系/strategy_state.json"
+  },
+  "state": {
+    "strategy_position": "flat",
+    "peak": 1.655,
+    "trough": 1.65,
+    "no_high_days": 0,
+    "no_low_days": 0,
+    "buy_trough": null,
+    "last_sell_peak": 1.655,
+    "last_processed_trade_date": "20261019",
+    "last_signal": "sell",
+    "last_signal_trade_date": "20261012"
+  }
+}

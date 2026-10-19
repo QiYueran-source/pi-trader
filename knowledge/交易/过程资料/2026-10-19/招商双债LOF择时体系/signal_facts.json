@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-19",
+  "system_id": "zslof_timing_trade",
+  "artifact": "signal_facts",
+  "generated_at": "2026-10-19T11:36:29.134367+00:00",
+  "version": "v1",
+  "parameter_version": "v1",
+  "parameter_hash": "13e71701812a94c0a621eea21533803f41f5852990429b09787d03a4aee70816",
+  "schema_versions": {
+    "instrument": 1,
+    "runtime": 2,
+    "timing": 2
+  },
+  "instrument": {
+    "instrument_id": "zslof",
+    "ts_code": "161716.SZ",
+    "name": "招商双债增强债券(LOF)"
+  },
+  "market": {
+    "trade_date": "20261019",
+    "close": 1.65,
+    "pre_close": 1.652,
+    "daily_change_ratio": -0.00121065,
+    "volume": 115557.36,
+    "volume_change_ratio": 0.07888354,
+    "source_data_start_date": "20260909"
+  },
+  "strategy_position": "flat",
+  "position_before": "flat",
+  "signal": null,
+  "next_trading_action": "no_action",
+  "state_anchors": {
+    "peak": 1.655,
+    "trough": 1.65,
+    "buy_trough": null,
+    "last_sell_peak": 1.655
+  },
+  "checks": [
+    {
+      "label": "创新低",
+      "met": true,
+      "detail": "收盘 1.65 低于原谷值 1.652 → 谷值更新为 1.65，no_low_days 归零"
+    },
+    {
+      "label": "普通买入条件",
+      "met": false,
+      "detail": "计数腿 0 ≥ 2：不成立；价格腿 收盘 1.65 严格高于谷值 1.65：不成立"
+    },
+    {
+      "label": "追回买入条件",
+      "met": false,
+      "detail": "追回锚 1.655；收盘 1.65 未突破（差 0.005）"
+    },
+    {
+      "label": "止损",
+      "met": null,
+      "detail": "空仓期不检查止损（止损仅作用于持仓期跌破买入前谷值）"
+    }
+  ],
+  "parameters": {
+    "confirmation_days": 2,
+    "stop_loss_enabled": true,
+    "chase_enabled": true,
+    "order_amount": 25000,
+    "execution_timing": "next_open"
+  },
+  "state_source_path": "交易/过程资料/2026-10-16/招商双债LOF择时体系/strategy_state.json",
+  "note": "创新低成立（收盘 1.65 低于原谷值 1.652 → 谷值更新为 1.65，no_low_days 归零）；普通买入条件不成立（计数腿 0 ≥ 2：不成立；价格腿 收盘 1.65 严格高于谷值 1.65：不成立）；追回买入条件不成立（追回锚 1.655；收盘 1.65 未突破（差 0.005））；止损不适用（空仓期不检查止损（止损仅作用于持仓期跌破买入前谷值））；signal = null。"
+}
