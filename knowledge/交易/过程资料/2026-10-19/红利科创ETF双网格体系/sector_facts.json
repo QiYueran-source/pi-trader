@@ -1,0 +1,222 @@
+{
+  "date": "2026-10-19",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "sector_facts",
+  "generated_at": "2026-10-19T10:03:09.494992+00:00",
+  "version": "v4",
+  "parameter_version": "v4",
+  "parameter_hash": "9176f07c7bd13eeae5e3d4a8db3b3b4c14fd7e56b1981dc73c02cd877a3b7996",
+  "schema_versions": {
+    "grid": 2,
+    "instruments": 1,
+    "regulator": 2,
+    "risk": 3,
+    "runtime": 2,
+    "sector_classification": 1
+  },
+  "source_trade_date": "20261019",
+  "classification_parameter_version": 1,
+  "limit_up": {
+    "stock_count": 49,
+    "sector_count": 22,
+    "technology_stock_count": 2,
+    "technology_stock_ratio": 0.04081633
+  },
+  "top_sectors": [
+    {
+      "industry": "汽车配件",
+      "limit_up_count": 10,
+      "sample_stocks": [
+        {
+          "ts_code": "002085.SZ",
+          "name": "万丰奥威",
+          "pct_change_ratio": 0.099899
+        },
+        {
+          "ts_code": "301119.SZ",
+          "name": "正强股份",
+          "pct_change_ratio": 0.20007
+        },
+        {
+          "ts_code": "600148.SH",
+          "name": "长春一东",
+          "pct_change_ratio": 0.100123
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "元器件",
+      "limit_up_count": 6,
+      "sample_stocks": [
+        {
+          "ts_code": "002724.SZ",
+          "name": "海洋王",
+          "pct_change_ratio": 0.100654
+        },
+        {
+          "ts_code": "003021.SZ",
+          "name": "兆威机电",
+          "pct_change_ratio": 0.099984
+        },
+        {
+          "ts_code": "300852.SZ",
+          "name": "四会富仕",
+          "pct_change_ratio": 0.199938
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "软件服务",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "002368.SZ",
+          "name": "太极股份",
+          "pct_change_ratio": 0.100086
+        },
+        {
+          "ts_code": "003029.SZ",
+          "name": "吉大正元",
+          "pct_change_ratio": 0.100045
+        },
+        {
+          "ts_code": "603859.SH",
+          "name": "能科科技",
+          "pct_change_ratio": 0.100028
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "塑料",
+      "limit_up_count": 4,
+      "sample_stocks": [
+        {
+          "ts_code": "002886.SZ",
+          "name": "沃特股份",
+          "pct_change_ratio": 0.099863
+        },
+        {
+          "ts_code": "301591.SZ",
+          "name": "肯特股份",
+          "pct_change_ratio": 0.199949
+        },
+        {
+          "ts_code": "603330.SH",
+          "name": "天洋新材",
+          "pct_change_ratio": 0.10035
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "家居用品",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "001211.SZ",
+          "name": "双枪科技",
+          "pct_change_ratio": 0.099885
+        },
+        {
+          "ts_code": "001216.SZ",
+          "name": "华瓷股份",
+          "pct_change_ratio": 0.1
+        },
+        {
+          "ts_code": "001323.SZ",
+          "name": "慕思股份",
+          "pct_change_ratio": 0.100163
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "新型电力",
+      "limit_up_count": 3,
+      "sample_stocks": [
+        {
+          "ts_code": "600032.SH",
+          "name": "浙江新能",
+          "pct_change_ratio": 0.100282
+        },
+        {
+          "ts_code": "601778.SH",
+          "name": "晶科科技",
+          "pct_change_ratio": 0.101538
+        },
+        {
+          "ts_code": "603693.SH",
+          "name": "江苏新能",
+          "pct_change_ratio": 0.1
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "机械基件",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002164.SZ",
+          "name": "宁波东力",
+          "pct_change_ratio": 0.100375
+        },
+        {
+          "ts_code": "002514.SZ",
+          "name": "*ST宝馨",
+          "pct_change_ratio": 0.098214
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "通信设备",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "002929.SZ",
+          "name": "润建股份",
+          "pct_change_ratio": 0.100047
+        },
+        {
+          "ts_code": "600487.SH",
+          "name": "亨通光电",
+          "pct_change_ratio": 0.100044
+        }
+      ],
+      "is_technology": true
+    },
+    {
+      "industry": "染料涂料",
+      "limit_up_count": 2,
+      "sample_stocks": [
+        {
+          "ts_code": "300798.SZ",
+          "name": "锦鸡股份",
+          "pct_change_ratio": 0.199478
+        },
+        {
+          "ts_code": "603188.SH",
+          "name": "亚邦股份",
+          "pct_change_ratio": 0.10099
+        }
+      ],
+      "is_technology": false
+    },
+    {
+      "industry": "电气设备",
+      "limit_up_count": 1,
+      "sample_stocks": [
+        {
+          "ts_code": "000576.SZ",
+          "name": "甘化科工",
+          "pct_change_ratio": 0.100342
+        }
+      ],
+      "is_technology": false
+    }
+  ]
+}

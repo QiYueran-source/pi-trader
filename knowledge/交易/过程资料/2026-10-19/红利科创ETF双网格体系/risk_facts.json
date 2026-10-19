@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-19",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "risk_facts",
+  "generated_at": "2026-10-19T10:03:08.011382+00:00",
+  "version": "v4",
+  "parameter_version": "v4",
+  "parameter_hash": "9176f07c7bd13eeae5e3d4a8db3b3b4c14fd7e56b1981dc73c02cd877a3b7996",
+  "schema_versions": {
+    "grid": 2,
+    "instruments": 1,
+    "regulator": 2,
+    "risk": 3,
+    "runtime": 2,
+    "sector_classification": 1
+  },
+  "parameter_schema_version": 3,
+  "positions_source": "trade_management_mcp",
+  "facts": {
+    "dividend": {
+      "market": {
+        "trade_date": "20261019",
+        "close": 1.39,
+        "daily_change_ratio": 0.00944081,
+        "volume_ratio": 1.19253917,
+        "average_range_ratio": 0.01269781,
+        "consecutive_down_trading_days": 0,
+        "consecutive_down_loss_ratio": 0.0
+      },
+      "price_boundary_reference": {
+        "reference_price": 1.443,
+        "lower_boundary": 1.08225,
+        "upper_boundary": 1.8759,
+        "source": "params/risk.json#price_boundary.by_instrument.dividend"
+      },
+      "position": {
+        "shares": 2000,
+        "market_value_amount": 2780.0,
+        "leg_weight": 0.14494869,
+        "weight_base": "system_nav",
+        "nav_amount": 19179.2,
+        "nav_source": "positions.cash"
+      },
+      "threshold_hits": {
+        "below_price_boundary": false,
+        "above_price_boundary": false,
+        "consecutive_down": false,
+        "sharp_drop_with_volume": false,
+        "sharp_rise_notice": false,
+        "sharp_rise_take_profit_notice": false
+      }
+    },
+    "growth": {
+      "market": {
+        "trade_date": "20261019",
+        "close": 0.84,
+        "daily_change_ratio": -0.01524033,
+        "volume_ratio": 0.91287251,
+        "average_range_ratio": 0.03051889,
+        "consecutive_down_trading_days": 6,
+        "consecutive_down_loss_ratio": 0.11016949
+      },
+      "price_boundary_reference": {
+        "reference_price": 0.944,
+        "lower_boundary": 0.6608,
+        "upper_boundary": 1.2272,
+        "source": "params/risk.json#price_boundary.by_instrument.growth"
+      },
+      "position": {
+        "shares": 9000,
+        "market_value_amount": 7560.0,
+        "leg_weight": 0.39417703,
+        "weight_base": "system_nav",
+        "nav_amount": 19179.2,
+        "nav_source": "positions.cash"
+      },
+      "threshold_hits": {
+        "below_price_boundary": false,
+        "above_price_boundary": false,
+        "consecutive_down": true,
+        "sharp_drop_with_volume": false,
+        "sharp_rise_notice": false,
+        "sharp_rise_take_profit_notice": false
+      }
+    }
+  },
+  "note": "v4：采集双标的；系统不计算券商档位价格。"
+}

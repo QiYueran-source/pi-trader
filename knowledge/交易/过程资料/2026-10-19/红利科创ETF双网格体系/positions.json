@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-19",
+  "system_id": "div_etf_grid_trade",
+  "artifact": "positions",
+  "generated_at": "2026-10-19T10:05:00+00:00",
+  "source": "trade_management_mcp",
+  "positions_source": "portfolio_snapshot(YHZQ, div_etf_grid_trade)",
+  "trade_as_of": "2026-10-16 09:30:00",
+  "cash": 8839.2,
+  "positions": {
+    "dividend": {
+      "shares": 2000,
+      "market_value_amount": 2780.0,
+      "close": 1.39
+    },
+    "growth": {
+      "shares": 9000,
+      "market_value_amount": 7560.0,
+      "close": 0.84
+    }
+  },
+  "system_total_asset": 19179.2,
+  "note": "来源：trade-management MCP portfolio_snapshot（YHZQ 按体系独立记账）。cash 8,839.20 含 2026-10-19 补记的红利除息股息 61.00 元（cash_flow #121，按除息日 2026-10-16 入账）。账本 trade_as_of 仍为 2026-10-16 09:30:00，用户 2026-10-19 15:00 确认当日无成交，账本与当日实际一致。市值按 10-19 收盘计：红利 2,000×1.390=2,780.00、双创 9,000×0.840=7,560.00；体系合计（现金＋持仓市值）=19,179.20。同一账户下 159781 与主观多头体系共仓（该体系净持 7,000 份），卖出腿设单前须核对可用份额。"
+}
